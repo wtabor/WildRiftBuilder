@@ -6,6 +6,30 @@ import {
   type Champion,
 } from "../../src/lib/schema/index";
 import type { ChampionMeta } from "./adapters/ry2x";
+import type { RiotMeta } from "./adapters/riot";
+
+/**
+ * Enrich the canonical metadata (ry2x: roster + Wild Rift availability) with the
+ * official Riot source (titles, roles, art). ry2x remains the source of truth for
+ * which champions exist and whether they're in Wild Rift; Riot wins on the fields
+ * it provides. Riot-only champions are ignored — availability must come from ry2x.
+ */
+export function enrichWithRiot(
+  base: ChampionMeta[],
+  riot: RiotMeta[],
+): ChampionMeta[] {
+  const riotByKey = new Map(riot.map((r) => [r.key, r]));
+  return base.map((m) => {
+    const r = riotByKey.get(m.key);
+    if (!r) return m;
+    return {
+      ...m,
+      title: r.title || m.title,
+      roles: r.roles.length ? r.roles : m.roles,
+      imageUrl: r.imageUrl ?? m.imageUrl,
+    };
+  });
+}
 
 /**
  * Shape of one entry in data/overrides/champions.json — the hand-verified layer.
@@ -93,6 +117,7 @@ export function mergeChampions(
       resourceType: ov.resourceType,
       stats: ov.stats,
       abilities: ov.abilities,
+      ...(m.imageUrl ? { icon: m.imageUrl } : {}),
     });
     champions.push(champion);
     report.emitted.push(m.key);

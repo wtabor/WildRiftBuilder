@@ -73,7 +73,8 @@
           7
         ]
       }
-    ]
+    ],
+    "icon": "https://wildrift.leagueoflegends.com/static/champions/ahri.jpg"
   },
   {
     "id": "ashe",
@@ -166,7 +167,8 @@
           60
         ]
       }
-    ]
+    ],
+    "icon": "https://wildrift.leagueoflegends.com/static/champions/ashe.jpg"
   },
   {
     "id": "darius",
@@ -236,7 +238,8 @@
           80
         ]
       }
-    ]
+    ],
+    "icon": "https://wildrift.leagueoflegends.com/static/champions/darius.jpg"
   },
   {
     "id": "jinx",
@@ -305,6 +308,7 @@
           55
         ]
       }
-    ]
+    ],
+    "icon": "https://wildrift.leagueoflegends.com/static/champions/jinx.jpg"
   }
 ]

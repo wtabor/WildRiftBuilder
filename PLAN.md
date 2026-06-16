@@ -159,6 +159,11 @@ hand-verified overrides  ──────────────────�
 
 - [ ] **Build compare (A vs B, value diffs)** — Phase 2; see above. _(Next up.)_
 - [ ] Fill & verify the overrides layer for the full WR champion roster; flip patches to `verified`.
+- [x] Official Riot (Wild Rift website) metadata adapter — enriches titles/roles/art; numbers stay in overrides.
 - [ ] Item-source adapter (e.g. riftgg) so items go through the same scrape→verify flow as champions.
+- [ ] Surface champion art (`icon`) in the UI now that the pipeline populates it.
 - [ ] Phase 3 damage engine: wire `src/lib/damage` into the UI.
 - [ ] Supabase-backed accounts & saved builds.
+
+> **CI note:** GitHub Actions has been removed; **Vercel** is the CI/CD — its build runs
+> `typecheck → validate-data → tests → build` (see `vercel.json`) and deploys a preview per push.

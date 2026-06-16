@@ -22,9 +22,17 @@ export const SOURCES: SourceDef[] = [
   {
     id: "ry2x",
     provides:
-      "Champion metadata (id, name, title, classes, lanes, Wild Rift availability, difficulty/damage/survive/utility ratings). Merged from Riot Data Dragon + the CN Wild Rift API.",
+      "Champion metadata (id, name, title, classes, lanes, Wild Rift availability, difficulty/damage/survive/utility ratings). Merged from Riot Data Dragon + the CN Wild Rift API. Canonical roster + WR availability.",
     url: "https://ry2x.github.io/WildRift-Merged-Champion-Data/data_en_US.json",
     license: "MIT",
     snapshot: "data/sources/raw/ry2x.sample.json",
+  },
+  {
+    id: "riot-wr",
+    provides:
+      "OFFICIAL Riot Wild Rift website content: champion titles, roles, ability text, and art. Metadata/art only — no per-level stats or item stats.",
+    url: "https://wildrift.leagueoflegends.com/en-us/champions/",
+    license: "Riot Games content (attribution; see Riot legal/Jibe terms)",
+    snapshot: "data/sources/raw/riot-wr.sample.json",
   },
 ];

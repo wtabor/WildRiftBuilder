@@ -40,6 +40,8 @@ export interface ChampionMeta {
   roles: string[];
   lanes: string[];
   availableInWildRift: boolean;
+  /** Splash/portrait URL, enriched from the official Riot source when available. */
+  imageUrl?: string;
 }
 
 const CLASS_LABELS: Record<string, string> = {

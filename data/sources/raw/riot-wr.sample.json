@@ -1,0 +1,30 @@
+[
+  {
+    "key": "ashe",
+    "name": "Ashe",
+    "title": "the Frost Archer",
+    "roles": ["Marksman"],
+    "image": "https://wildrift.leagueoflegends.com/static/champions/ashe.jpg"
+  },
+  {
+    "key": "ahri",
+    "name": "Ahri",
+    "title": "the Nine-Tailed Fox",
+    "roles": ["Mage", "Assassin"],
+    "image": "https://wildrift.leagueoflegends.com/static/champions/ahri.jpg"
+  },
+  {
+    "key": "darius",
+    "name": "Darius",
+    "title": "the Hand of Noxus",
+    "roles": ["Fighter", "Tank"],
+    "image": "https://wildrift.leagueoflegends.com/static/champions/darius.jpg"
+  },
+  {
+    "key": "jinx",
+    "name": "Jinx",
+    "title": "the Loose Cannon",
+    "roles": ["Marksman"],
+    "image": "https://wildrift.leagueoflegends.com/static/champions/jinx.jpg"
+  }
+]

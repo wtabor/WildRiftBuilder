@@ -30,9 +30,20 @@ hit arbitrary source hosts at build time. Instead we commit a **raw snapshot**
 per source and run the pipeline against it. Refresh snapshots out-of-band from a
 machine with network access:
 
-| Source | Snapshot | Refresh from |
-|---|---|---|
-| ry2x merged champion data (MIT) | `raw/ry2x.sample.json` | https://ry2x.github.io/WildRift-Merged-Champion-Data/data_en_US.json |
+| Source | Provides | Snapshot | Refresh from |
+|---|---|---|---|
+| ry2x merged champion data (MIT) | Canonical roster + WR availability + ratings | `raw/ry2x.sample.json` | https://ry2x.github.io/WildRift-Merged-Champion-Data/data_en_US.json |
+| **Riot Wild Rift website (official)** | Titles, roles, art — **metadata only, no stats** | `raw/riot-wr.sample.json` | https://wildrift.leagueoflegends.com/en-us/champions/ |
+
+### On official Riot data
+
+Riot has **no Data Dragon and no public stat API for Wild Rift** — Data Dragon is
+PC League only. The only official Riot source for Wild Rift is the website content
+above, which gives names/roles/ability text/art but **not** per-level base stats or
+item stat tables. So the official source enriches metadata/art while the
+**hand-verified overrides remain the only source of the numbers**. ry2x stays the
+canonical roster (it carries WR availability); Riot enriches matching champions and
+Riot-only entries are ignored.
 
 > The committed `ry2x.sample.json` is a **representative sample** in the source's
 > shape, not a full pull — replace it with a real snapshot when refreshing.

@@ -14,7 +14,8 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { ItemsFileSchema, PatchMetaSchema } from "../../src/lib/schema/index";
 import { parseRy2x } from "./adapters/ry2x";
-import { mergeChampions, parseOverrides } from "./merge";
+import { parseRiot } from "./adapters/riot";
+import { enrichWithRiot, mergeChampions, parseOverrides } from "./merge";
 import { SOURCES } from "./sources";
 
 const ROOT = process.cwd();
@@ -31,9 +32,13 @@ function writeJson(path: string, value: unknown): void {
 
 console.log(`Building patch ${PATCH}…\n`);
 
-// 1. Champions: scraped metadata × hand-verified overrides.
+// 1. Champions: canonical metadata (ry2x) enriched with official Riot metadata,
+//    then combined with the hand-verified overrides.
 const ry2x = SOURCES.find((s) => s.id === "ry2x")!;
-const meta = parseRy2x(loadJson(ry2x.snapshot));
+const riot = SOURCES.find((s) => s.id === "riot-wr")!;
+const baseMeta = parseRy2x(loadJson(ry2x.snapshot));
+const riotMeta = parseRiot(loadJson(riot.snapshot));
+const meta = enrichWithRiot(baseMeta, riotMeta);
 const overrides = parseOverrides(loadJson("data/overrides/champions.json"));
 const { champions, report } = mergeChampions(meta, overrides);
 

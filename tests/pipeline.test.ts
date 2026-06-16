@@ -1,6 +1,11 @@
 import { describe, it, expect } from "vitest";
 import { parseRy2x } from "../scripts/import/adapters/ry2x";
-import { mergeChampions, parseOverrides } from "../scripts/import/merge";
+import { parseRiot } from "../scripts/import/adapters/riot";
+import {
+  enrichWithRiot,
+  mergeChampions,
+  parseOverrides,
+} from "../scripts/import/merge";
 
 const rawSnapshot = [
   {
@@ -68,8 +73,38 @@ describe("parseOverrides", () => {
   });
 });
 
+const rawRiot = [
+  {
+    key: "ahri",
+    name: "Ahri",
+    title: "the Nine-Tailed Fox",
+    roles: ["Mage", "Assassin"],
+    image: "https://wildrift.leagueoflegends.com/static/champions/ahri.jpg",
+  },
+  // Riot-only champion that ry2x doesn't list — must be ignored.
+  { key: "yuumi", name: "Yuumi", title: "the Magical Cat", roles: ["Support"] },
+];
+
+describe("parseRiot + enrichWithRiot", () => {
+  it("enriches matching champions with title, roles, and art", () => {
+    const base = parseRy2x(rawSnapshot);
+    const enriched = enrichWithRiot(base, parseRiot(rawRiot));
+    const ahri = enriched.find((m) => m.key === "ahri")!;
+    expect(ahri.imageUrl).toContain("ahri.jpg");
+    expect(ahri.roles).toEqual(["Mage", "Assassin"]);
+    // ry2x stays the source of truth for availability.
+    expect(ahri.availableInWildRift).toBe(true);
+  });
+
+  it("ignores Riot-only champions not in the canonical roster", () => {
+    const base = parseRy2x(rawSnapshot);
+    const enriched = enrichWithRiot(base, parseRiot(rawRiot));
+    expect(enriched.find((m) => m.key === "yuumi")).toBeUndefined();
+  });
+});
+
 describe("mergeChampions", () => {
-  const meta = parseRy2x(rawSnapshot);
+  const meta = enrichWithRiot(parseRy2x(rawSnapshot), parseRiot(rawRiot));
   const overrides = parseOverrides(rawOverrides);
   const { champions, report } = mergeChampions(meta, overrides);
 
@@ -91,8 +126,9 @@ describe("mergeChampions", () => {
     expect(report.unverified).not.toContain("ahri"); // override marked verified
   });
 
-  it("produces schema-valid champions with merged metadata", () => {
+  it("produces schema-valid champions with merged metadata and Riot art", () => {
     expect(champions[0].roles).toEqual(["Mage", "Assassin"]);
     expect(champions[0].stats.attackDamage.base).toBe(53);
+    expect(champions[0].icon).toContain("ahri.jpg");
   });
 });
