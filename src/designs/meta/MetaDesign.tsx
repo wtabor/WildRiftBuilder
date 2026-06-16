@@ -161,7 +161,7 @@ function SectionTitle({ title, sub, right }: { title: string; sub?: string; righ
 function Panel({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <section
-      className={`rounded-lg border border-meta-border bg-meta-panel shadow-soft ${className}`}
+      className={`rounded-2xl border border-meta-border bg-meta-panel shadow-soft ${className}`}
     >
       {children}
     </section>
@@ -187,7 +187,7 @@ function Portrait({
     : `linear-gradient(150deg, hsl(${hue} 62% 48%), hsl(${(hue + 45) % 360} 60% 32%))`;
   return (
     <span
-      className={`grid shrink-0 place-items-center rounded-md font-bold text-white ${className}`}
+      className={`grid shrink-0 place-items-center rounded-xl font-bold text-white ${className}`}
       style={{ background: bg, width: size, height: size, fontSize: size * 0.34 }}
     >
       {initials(name)}
@@ -200,7 +200,7 @@ function Portrait({
 function Rail({ onChampions, championsActive }: { onChampions: () => void; championsActive: boolean }) {
   return (
     <aside className="sticky top-0 hidden h-screen w-14 shrink-0 flex-col items-center gap-1 border-r border-meta-border bg-meta-bg2 py-3 md:flex">
-      <span className="mb-2 grid h-9 w-9 place-items-center rounded-md bg-gradient-to-br from-meta-blue to-meta-purple text-sm font-extrabold text-white">
+      <span className="mb-2 grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-meta-blue to-meta-purple text-sm font-extrabold text-white">
         WR
       </span>
       <RailBtn label="Builder" active={!championsActive}>
@@ -229,7 +229,7 @@ function RailBtn({
       onClick={onClick}
       title={label}
       aria-label={label}
-      className={`grid h-10 w-10 place-items-center rounded-md transition ${
+      className={`grid h-10 w-10 place-items-center rounded-xl transition ${
         active ? "bg-meta-blue/15 text-meta-blue2" : "text-meta-dim hover:bg-meta-panel hover:text-meta-text"
       }`}
     >
@@ -271,7 +271,7 @@ function TopBar({
             onChange={(e) => onSearch(e.target.value)}
             onFocus={onFocusSearch}
             placeholder="Search champion…"
-            className="w-full rounded-md border border-meta-border bg-meta-panel py-2 pl-9 pr-3 text-sm text-meta-text outline-none transition placeholder:text-meta-mute focus:border-meta-blue"
+            className="w-full rounded-xl border border-meta-border bg-meta-panel py-2 pl-9 pr-3 text-sm text-meta-text outline-none transition placeholder:text-meta-mute focus:border-meta-blue"
           />
         </div>
         <div className="flex items-center gap-2">
@@ -285,7 +285,7 @@ function TopBar({
           </span>
           <button
             onClick={copy}
-            className="flex items-center gap-1.5 rounded-md bg-meta-blue px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-meta-blue2"
+            className="flex items-center gap-1.5 rounded-xl bg-meta-blue px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-meta-blue2"
           >
             {copied ? <CheckIcon width={15} height={15} /> : <ShareIcon width={15} height={15} />}
             {copied ? "Copied" : "Share"}
@@ -350,15 +350,16 @@ function ChampionHeader({
             <div className="mt-3 flex items-center gap-1.5">
               {ABILITY_SLOTS.map((slot) => {
                 const a = abilityBySlot.get(slot);
+                const tone = !a
+                  ? "bg-meta-bg2 text-meta-dim ring-meta-border/60"
+                  : slot === "R"
+                    ? "bg-meta-orange/10 text-meta-orange ring-meta-orange/30"
+                    : "bg-meta-panel2 text-meta-blue2 ring-meta-border";
                 return (
                   <span
                     key={slot}
                     title={a ? `${SLOT_LABEL[slot]} · ${a.name}: ${a.description}` : `${SLOT_LABEL[slot]} (no data)`}
-                    className={`grid h-9 w-9 place-items-center rounded-md text-xs font-bold ring-1 transition ${
-                      a
-                        ? "bg-meta-panel2 text-meta-blue2 ring-meta-border"
-                        : "bg-meta-bg2 text-meta-dim ring-meta-border/60"
-                    }`}
+                    className={`grid h-9 w-9 place-items-center rounded-xl text-xs font-bold ring-1 transition ${tone}`}
                   >
                     {SLOT_LABEL[slot]}
                   </span>
@@ -369,7 +370,7 @@ function ChampionHeader({
 
           <button
             onClick={onChange}
-            className="self-start rounded-md border border-meta-border bg-meta-panel2 px-3 py-1.5 text-sm font-medium text-meta-text transition hover:border-meta-blue"
+            className="self-start rounded-xl border border-meta-border bg-meta-panel2 px-3 py-1.5 text-sm font-medium text-meta-text transition hover:border-meta-blue"
           >
             Change champion
           </button>
@@ -405,9 +406,9 @@ function Tabs() {
 
 function LevelBar({ level, onChange }: { level: number; onChange: (n: number) => void }) {
   return (
-    <div className="mt-3 flex flex-wrap items-center gap-3 rounded-lg border border-meta-border bg-meta-panel px-3 py-2.5 shadow-soft">
+    <div className="mt-3 flex flex-wrap items-center gap-3 rounded-2xl border border-meta-border bg-meta-panel px-3 py-2.5 shadow-soft">
       <span className="text-xs font-semibold uppercase tracking-wide text-meta-mute">Level</span>
-      <div className="flex items-center overflow-hidden rounded-md border border-meta-border">
+      <div className="flex items-center overflow-hidden rounded-xl border border-meta-border">
         <button
           onClick={() => onChange(level - 1)}
           className="px-2.5 py-1 text-meta-mute transition hover:bg-meta-panel2 hover:text-meta-text"
@@ -454,7 +455,7 @@ function StatStrip({ totals }: { totals: ReturnType<typeof computeBuild> }) {
     { label: "Atk Speed", value: totals.attackSpeed.toFixed(2) },
   ];
   return (
-    <div className="mt-3 grid grid-cols-3 overflow-hidden rounded-lg border border-meta-border bg-meta-panel shadow-soft sm:grid-cols-4 lg:grid-cols-7">
+    <div className="mt-3 grid grid-cols-3 overflow-hidden rounded-2xl border border-meta-border bg-meta-panel shadow-soft sm:grid-cols-4 lg:grid-cols-7">
       {cells.map((c, i) => (
         <div
           key={c.label}
@@ -522,7 +523,7 @@ function BuildPath({
               >
                 <span className="relative">
                   <Portrait name={it.name} seed={it.id} color={ITEM_CLASS_COLOR[itemClass(it)]} size={48} />
-                  <span className="absolute inset-0 grid place-items-center rounded-md bg-meta-bg2/85 opacity-0 transition group-hover:opacity-100">
+                  <span className="absolute inset-0 grid place-items-center rounded-xl bg-meta-bg2/85 opacity-0 transition group-hover:opacity-100">
                     <XIcon width={16} height={16} className="text-meta-coral" />
                   </span>
                 </span>
@@ -530,7 +531,7 @@ function BuildPath({
               </button>
             ) : (
               <div className="flex w-16 flex-col items-center gap-1">
-                <span className="grid h-12 w-12 place-items-center rounded-md border border-dashed border-meta-border text-meta-dim">
+                <span className="grid h-12 w-12 place-items-center rounded-xl border border-dashed border-meta-border text-meta-dim">
                   <PlusIcon width={16} height={16} />
                 </span>
                 <span className="text-[10px] text-meta-dim">empty</span>
@@ -585,7 +586,7 @@ function Shop({ onAdd, full }: { onAdd: (id: string) => void; full: boolean }) {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search items…"
-              className="w-40 rounded-md border border-meta-border bg-meta-panel2 py-1.5 pl-8 pr-2 text-sm outline-none focus:border-meta-blue"
+              className="w-40 rounded-xl border border-meta-border bg-meta-panel2 py-1.5 pl-8 pr-2 text-sm outline-none focus:border-meta-blue"
             />
           </div>
         }
@@ -598,7 +599,7 @@ function Shop({ onAdd, full }: { onAdd: (id: string) => void; full: boolean }) {
             <button
               key={f.key}
               onClick={() => toggle(f.key)}
-              className={`flex shrink-0 items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition ${
+              className={`flex shrink-0 items-center gap-1.5 rounded-xl px-2.5 py-1.5 text-xs font-medium transition ${
                 active
                   ? "bg-meta-blue text-white"
                   : "border border-meta-border bg-meta-panel2 text-meta-mute hover:text-meta-text"
@@ -612,7 +613,7 @@ function Shop({ onAdd, full }: { onAdd: (id: string) => void; full: boolean }) {
       </div>
 
       {full && (
-        <p className="mt-3 rounded-md bg-meta-gold/10 px-3 py-2 text-xs text-meta-gold">
+        <p className="mt-3 rounded-xl bg-meta-gold/10 px-3 py-2 text-xs text-meta-gold">
           Build is full (6/6) — remove an item to add another.
         </p>
       )}
@@ -644,7 +645,7 @@ function ItemCard({
     <button
       onClick={() => onAdd(item.id)}
       disabled={disabled}
-      className="group flex flex-col rounded-md border border-meta-border bg-meta-panel2 p-2.5 text-left transition hover:border-meta-blue disabled:cursor-not-allowed disabled:opacity-40"
+      className="group flex flex-col rounded-xl border border-meta-border bg-meta-panel2 p-2.5 text-left transition hover:border-meta-blue disabled:cursor-not-allowed disabled:opacity-40"
     >
       <div className="flex items-start gap-2.5">
         <Portrait name={item.name} seed={item.id} color={ITEM_CLASS_COLOR[itemClass(item)]} size={40} />
@@ -749,7 +750,7 @@ function ChampionGrid({
         {canClose && (
           <button
             onClick={onClose}
-            className="rounded-md border border-meta-border bg-meta-panel px-3 py-1.5 text-sm text-meta-mute transition hover:text-meta-text"
+            className="rounded-xl border border-meta-border bg-meta-panel px-3 py-1.5 text-sm text-meta-mute transition hover:text-meta-text"
           >
             Back to build
           </button>
@@ -767,7 +768,7 @@ function ChampionGrid({
             value={query}
             onChange={(e) => onQuery(e.target.value)}
             placeholder="Search champions…"
-            className="w-full rounded-md border border-meta-border bg-meta-panel2 py-2 pl-9 pr-3 text-sm outline-none focus:border-meta-blue"
+            className="w-full rounded-xl border border-meta-border bg-meta-panel2 py-2 pl-9 pr-3 text-sm outline-none focus:border-meta-blue"
             autoFocus
           />
         </div>
