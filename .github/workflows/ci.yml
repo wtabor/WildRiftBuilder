@@ -25,6 +25,14 @@ jobs:
       - name: Validate patch data
         run: npm run validate-data
 
+      - name: Patch data is in sync with the pipeline
+        run: |
+          npm run build-data
+          git diff --exit-code data/patches || {
+            echo "::error::data/patches is out of sync. Run 'npm run build-data' and commit the result.";
+            exit 1;
+          }
+
       - name: Unit tests
         run: npm test
 

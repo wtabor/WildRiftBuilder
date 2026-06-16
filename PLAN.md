@@ -103,7 +103,10 @@ Design rules:
 - Shareable build URL + patch badge (trust signal: "data current as of patch X").
 
 ### Phase 2 — comparison, accounts, passives
-- A/B build side-by-side comparison.
+- **Build compare (A vs B)** — pick two builds for the same champion/level and show a
+  side-by-side stat table with the **per-stat delta** (e.g. `+15 AD`, `−400 HP`), green/red
+  coloured, plus the gold-cost difference. Reuses `computeBuild` for both sides; the diff is
+  `sumStats(buildA, negate(buildB))`. _(Requested next-up todo.)_
 - Item passive/active effects surfaced in the stat panel.
 - Save builds → **Supabase (Postgres + Auth)**.
 
@@ -123,9 +126,39 @@ Design rules:
 - **Supabase** (Phase 2+) for accounts & saved builds.
 - Static patch-versioned JSON as the data layer; importers in `scripts/`.
 
+## 6a. Data pipeline (implemented)
+
+The "hybrid: scrape → hand-verify" strategy is now real (see `data/sources/README.md`):
+
+```
+scraped source snapshot ──(adapter)──> champion metadata ─┐
+                                                          ├─(merge)─> data/patches/<patch>/
+hand-verified overrides  ─────────────────────────────────┘
+```
+
+- `data/sources/raw/*.json` — committed source snapshots (refreshed out-of-band; CI/cloud
+  are allowlisted and can't fetch live).
+- `data/overrides/*.json` — the hand-verified numeric layer (stats, abilities), with a
+  per-champion `verified` flag.
+- `scripts/import/` — `sources.ts` (registry), `adapters/ry2x.ts` (pure raw→metadata),
+  `merge.ts` (pure metadata×overrides→champions), `build-patch.ts` (orchestrator).
+- `npm run build-data` regenerates `data/patches/<patch>/`; CI fails if the committed output
+  drifts from the pipeline. A champion ships only if it's in Wild Rift **and** has an override,
+  so placeholder numbers can never leak. A patch is marked `verified` only when every emitted
+  champion is verified.
+
 ## 7. Open questions / risks
 
-- **Data accuracy & upkeep** is the recurring cost — needs a per-patch verification routine.
-- CN WR API access from CI may be blocked by the allowlist → importers may need to run locally,
-  with verified output committed.
+- **Data accuracy & upkeep** is the recurring cost — the overrides layer must be filled in and
+  flipped to `verified: true` per champion, per patch. Current data is structurally real but the
+  numbers are **not yet in-game-verified**.
+- Source snapshots can't refresh from CI (allowlist) → refresh locally and commit.
 - Ability/passive data is the hardest to source for Phase 3 and will be largely hand-authored.
+
+## 8. Todo backlog
+
+- [ ] **Build compare (A vs B, value diffs)** — Phase 2; see above. _(Next up.)_
+- [ ] Fill & verify the overrides layer for the full WR champion roster; flip patches to `verified`.
+- [ ] Item-source adapter (e.g. riftgg) so items go through the same scrape→verify flow as champions.
+- [ ] Phase 3 damage engine: wire `src/lib/damage` into the UI.
+- [ ] Supabase-backed accounts & saved builds.

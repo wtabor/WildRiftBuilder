@@ -1,0 +1,121 @@
+{
+  "_comment": "Hand-verified numeric layer of the hybrid pipeline. The importer pulls champion METADATA (names, roles, WR availability) from the scraped source snapshot; the per-level STATS and ABILITIES below are authored/verified by hand and win over the source. A champion is only emitted into a patch when it is available in Wild Rift AND has an entry here. Set `verified: true` only once the numbers are checked against in-game values.",
+  "ashe": {
+    "verified": false,
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": { "base": 59, "perLevel": 3 },
+      "attackSpeed": { "base": 0.658, "perLevel": 0.0333 },
+      "armor": { "base": 26, "perLevel": 3.4 },
+      "magicResist": { "base": 30, "perLevel": 1.3 },
+      "maxHealth": { "base": 610, "perLevel": 100 },
+      "healthRegen": { "base": 3.5, "perLevel": 0.55 },
+      "mana": { "base": 280, "perLevel": 32 },
+      "manaRegen": { "base": 6.97, "perLevel": 0.4 },
+      "moveSpeed": 325,
+      "critDamageBase": 0.75
+    },
+    "abilities": [
+      {
+        "slot": "Q",
+        "name": "Ranger's Focus",
+        "description": "Consume Focus to fire a flurry of arrows.",
+        "baseDamage": [0, 0, 0, 0],
+        "damageType": "physical",
+        "scalings": [{ "stat": "attackDamage", "ratio": 1.0 }],
+        "cooldown": [6, 6, 6, 6]
+      },
+      {
+        "slot": "R",
+        "name": "Enchanted Crystal Arrow",
+        "description": "Fire a global arrow that stuns the first champion hit.",
+        "baseDamage": [200, 400, 600],
+        "damageType": "magic",
+        "scalings": [{ "stat": "abilityPower", "ratio": 1.0 }],
+        "cooldown": [100, 80, 60]
+      }
+    ]
+  },
+  "ahri": {
+    "verified": false,
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": { "base": 53, "perLevel": 3 },
+      "abilityPower": { "base": 0, "perLevel": 0 },
+      "attackSpeed": { "base": 0.668, "perLevel": 0.02 },
+      "armor": { "base": 21, "perLevel": 3.5 },
+      "magicResist": { "base": 30, "perLevel": 1.3 },
+      "maxHealth": { "base": 590, "perLevel": 96 },
+      "healthRegen": { "base": 2.5, "perLevel": 0.6 },
+      "mana": { "base": 418, "perLevel": 25 },
+      "manaRegen": { "base": 8, "perLevel": 0.8 },
+      "moveSpeed": 330,
+      "critDamageBase": 0.75
+    },
+    "abilities": [
+      {
+        "slot": "Q",
+        "name": "Orb of Deception",
+        "description": "Send and return an orb, dealing magic then true damage.",
+        "baseDamage": [40, 65, 90, 115],
+        "damageType": "magic",
+        "scalings": [{ "stat": "abilityPower", "ratio": 0.4 }],
+        "cooldown": [7, 7, 7, 7]
+      }
+    ]
+  },
+  "darius": {
+    "verified": false,
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": { "base": 64, "perLevel": 4 },
+      "attackSpeed": { "base": 0.625, "perLevel": 0.01 },
+      "armor": { "base": 33, "perLevel": 4 },
+      "magicResist": { "base": 32, "perLevel": 1.3 },
+      "maxHealth": { "base": 652, "perLevel": 114 },
+      "healthRegen": { "base": 9, "perLevel": 0.95 },
+      "mana": { "base": 263, "perLevel": 38 },
+      "manaRegen": { "base": 6.6, "perLevel": 0.45 },
+      "moveSpeed": 340,
+      "critDamageBase": 0.75
+    },
+    "abilities": [
+      {
+        "slot": "R",
+        "name": "Noxian Guillotine",
+        "description": "Execute an enemy champion, dealing true damage that scales with bleed stacks.",
+        "baseDamage": [150, 250, 350],
+        "damageType": "true",
+        "scalings": [{ "stat": "bonusAttackDamage", "ratio": 0.75 }],
+        "cooldown": [100, 90, 80]
+      }
+    ]
+  },
+  "jinx": {
+    "verified": false,
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": { "base": 57, "perLevel": 3.2 },
+      "attackSpeed": { "base": 0.625, "perLevel": 0.04 },
+      "armor": { "base": 24, "perLevel": 3.5 },
+      "magicResist": { "base": 30, "perLevel": 1.3 },
+      "maxHealth": { "base": 600, "perLevel": 100 },
+      "healthRegen": { "base": 3.5, "perLevel": 0.5 },
+      "mana": { "base": 280, "perLevel": 35 },
+      "manaRegen": { "base": 6.7, "perLevel": 0.4 },
+      "moveSpeed": 325,
+      "critDamageBase": 0.75
+    },
+    "abilities": [
+      {
+        "slot": "R",
+        "name": "Super Mega Death Rocket!",
+        "description": "Fire a global rocket that gains damage over distance and deals more to low-health targets.",
+        "baseDamage": [250, 400, 550],
+        "damageType": "physical",
+        "scalings": [{ "stat": "bonusAttackDamage", "ratio": 1.5 }],
+        "cooldown": [75, 65, 55]
+      }
+    ]
+  }
+}

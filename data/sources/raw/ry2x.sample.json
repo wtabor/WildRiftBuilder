@@ -1,0 +1,52 @@
+[
+  {
+    "key": "ashe",
+    "hero_id": 22,
+    "name": "Ashe",
+    "title": "the Frost Archer",
+    "classes": ["marksman"],
+    "lanes": ["dragon"],
+    "is_wr": true,
+    "ratings": { "difficulty": 1, "damage": 3, "survive": 1, "utility": 2 }
+  },
+  {
+    "key": "ahri",
+    "hero_id": 103,
+    "name": "Ahri",
+    "title": "the Nine-Tailed Fox",
+    "classes": ["mage", "assassin"],
+    "lanes": ["mid"],
+    "is_wr": true,
+    "ratings": { "difficulty": 2, "damage": 3, "survive": 1, "utility": 2 }
+  },
+  {
+    "key": "darius",
+    "hero_id": 122,
+    "name": "Darius",
+    "title": "the Hand of Noxus",
+    "classes": ["fighter", "tank"],
+    "lanes": ["baron"],
+    "is_wr": true,
+    "ratings": { "difficulty": 2, "damage": 3, "survive": 2, "utility": 1 }
+  },
+  {
+    "key": "jinx",
+    "hero_id": 222,
+    "name": "Jinx",
+    "title": "the Loose Cannon",
+    "classes": ["marksman"],
+    "lanes": ["dragon"],
+    "is_wr": true,
+    "ratings": { "difficulty": 2, "damage": 3, "survive": 1, "utility": 1 }
+  },
+  {
+    "key": "teemo",
+    "hero_id": 17,
+    "name": "Teemo",
+    "title": "the Swift Scout",
+    "classes": ["marksman", "mage"],
+    "lanes": ["baron"],
+    "is_wr": false,
+    "ratings": { "difficulty": 1, "damage": 2, "survive": 1, "utility": 2 }
+  }
+]

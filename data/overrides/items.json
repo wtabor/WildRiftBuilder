@@ -3,15 +3,9 @@
     "id": "infinity-edge",
     "name": "Infinity Edge",
     "cost": 3400,
-    "tags": [
-      "AD",
-      "Crit"
-    ],
+    "tags": ["AD", "Crit"],
     "slot": "item",
-    "stats": {
-      "attackDamage": 65,
-      "critChance": 0.25
-    },
+    "stats": { "attackDamage": 65, "critChance": 0.25 },
     "effects": [
       {
         "name": "Perfection",
@@ -24,15 +18,9 @@
     "id": "bloodthirster",
     "name": "Bloodthirster",
     "cost": 3400,
-    "tags": [
-      "AD",
-      "Lifesteal"
-    ],
+    "tags": ["AD", "Lifesteal"],
     "slot": "item",
-    "stats": {
-      "attackDamage": 55,
-      "lifeSteal": 0.12
-    },
+    "stats": { "attackDamage": 55, "lifeSteal": 0.12 },
     "effects": [
       {
         "name": "Bloodthirst",
@@ -45,17 +33,9 @@
     "id": "phantom-dancer",
     "name": "Phantom Dancer",
     "cost": 2800,
-    "tags": [
-      "AS",
-      "Crit",
-      "MoveSpeed"
-    ],
+    "tags": ["AS", "Crit", "MoveSpeed"],
     "slot": "item",
-    "stats": {
-      "attackSpeed": 0.3,
-      "critChance": 0.2,
-      "moveSpeedPercent": 0.07
-    },
+    "stats": { "attackSpeed": 0.3, "critChance": 0.2, "moveSpeedPercent": 0.07 },
     "effects": [
       {
         "name": "Spectral Waltz",
@@ -68,18 +48,9 @@
     "id": "mortal-reminder",
     "name": "Mortal Reminder",
     "cost": 3000,
-    "tags": [
-      "AD",
-      "AS",
-      "Crit",
-      "GrievousWounds"
-    ],
+    "tags": ["AD", "AS", "Crit", "GrievousWounds"],
     "slot": "item",
-    "stats": {
-      "attackDamage": 45,
-      "attackSpeed": 0.25,
-      "critChance": 0.2
-    },
+    "stats": { "attackDamage": 45, "attackSpeed": 0.25, "critChance": 0.2 },
     "effects": [
       {
         "name": "Sepsis",
@@ -92,13 +63,9 @@
     "id": "rabadons-deathcap",
     "name": "Rabadon's Deathcap",
     "cost": 3600,
-    "tags": [
-      "AP"
-    ],
+    "tags": ["AP"],
     "slot": "item",
-    "stats": {
-      "abilityPower": 120
-    },
+    "stats": { "abilityPower": 120 },
     "effects": [
       {
         "name": "Magical Opus",
@@ -111,18 +78,9 @@
     "id": "ludens-echo",
     "name": "Luden's Echo",
     "cost": 3200,
-    "tags": [
-      "AP",
-      "Mana",
-      "AbilityHaste"
-    ],
+    "tags": ["AP", "Mana", "AbilityHaste"],
     "slot": "item",
-    "stats": {
-      "abilityPower": 90,
-      "mana": 600,
-      "abilityHaste": 20,
-      "magicPenFlat": 6
-    },
+    "stats": { "abilityPower": 90, "mana": 600, "abilityHaste": 20, "magicPenFlat": 6 },
     "effects": [
       {
         "name": "Echo",
@@ -135,31 +93,18 @@
     "id": "void-staff",
     "name": "Void Staff",
     "cost": 2900,
-    "tags": [
-      "AP",
-      "MagicPen"
-    ],
+    "tags": ["AP", "MagicPen"],
     "slot": "item",
-    "stats": {
-      "abilityPower": 65,
-      "magicPenPercent": 0.4
-    },
+    "stats": { "abilityPower": 65, "magicPenPercent": 0.4 },
     "effects": []
   },
   {
     "id": "warmogs-armor",
     "name": "Warmog's Armor",
     "cost": 3100,
-    "tags": [
-      "Health",
-      "HealthRegen"
-    ],
+    "tags": ["Health", "HealthRegen"],
     "slot": "item",
-    "stats": {
-      "maxHealth": 800,
-      "healthRegen": 200,
-      "abilityHaste": 10
-    },
+    "stats": { "maxHealth": 800, "healthRegen": 200, "abilityHaste": 10 },
     "effects": [
       {
         "name": "Warmog's Heart",
@@ -172,18 +117,9 @@
     "id": "sunfire-aegis",
     "name": "Sunfire Aegis",
     "cost": 2900,
-    "tags": [
-      "Health",
-      "Armor",
-      "MagicResist"
-    ],
+    "tags": ["Health", "Armor", "MagicResist"],
     "slot": "item",
-    "stats": {
-      "armor": 30,
-      "magicResist": 30,
-      "maxHealth": 450,
-      "abilityHaste": 10
-    },
+    "stats": { "maxHealth": 450, "armor": 30, "magicResist": 30, "abilityHaste": 10 },
     "effects": [
       {
         "name": "Immolate",
@@ -196,15 +132,9 @@
     "id": "guardian-angel",
     "name": "Guardian Angel",
     "cost": 3200,
-    "tags": [
-      "AD",
-      "Armor"
-    ],
+    "tags": ["AD", "Armor"],
     "slot": "item",
-    "stats": {
-      "attackDamage": 45,
-      "armor": 40
-    },
+    "stats": { "attackDamage": 45, "armor": 40 },
     "effects": [
       {
         "name": "Rebirth",
@@ -217,32 +147,18 @@
     "id": "gluttonous-greaves",
     "name": "Gluttonous Greaves",
     "cost": 1100,
-    "tags": [
-      "Boots",
-      "MoveSpeed",
-      "Omnivamp"
-    ],
+    "tags": ["Boots", "MoveSpeed", "Omnivamp"],
     "slot": "boots",
-    "stats": {
-      "moveSpeedFlat": 45,
-      "omnivamp": 0.08
-    },
+    "stats": { "moveSpeedFlat": 45, "omnivamp": 0.08 },
     "effects": []
   },
   {
     "id": "boots-of-swiftness",
     "name": "Boots of Swiftness",
     "cost": 1000,
-    "tags": [
-      "Boots",
-      "MoveSpeed",
-      "Tenacity"
-    ],
+    "tags": ["Boots", "MoveSpeed", "Tenacity"],
     "slot": "boots",
-    "stats": {
-      "moveSpeedFlat": 40,
-      "tenacity": 0.2
-    },
+    "stats": { "moveSpeedFlat": 40, "tenacity": 0.2 },
     "effects": []
   }
 ]

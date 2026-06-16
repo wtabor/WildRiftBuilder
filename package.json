@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "build-data": "tsx scripts/import/build-patch.ts",
     "validate-data": "tsx scripts/validate.ts"
   },
   "dependencies": {

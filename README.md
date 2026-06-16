@@ -33,7 +33,9 @@ state so Phase 3 is additive, not a rewrite.
 | Path | Role |
 |---|---|
 | `src/lib/schema/` | Zod schemas + TS types — single source of truth (already models abilities & item effects) |
-| `data/patches/<patch>/` | Versioned, hand-verifiable static JSON (champions, items, meta) |
+| `data/sources/`, `data/overrides/` | Hybrid data pipeline inputs: scraped source snapshots + the hand-verified numeric layer ([details](./data/sources/README.md)) |
+| `scripts/import/` | Pipeline: source adapters → merge with overrides → validated patch data (`npm run build-data`) |
+| `data/patches/<patch>/` | **Generated** versioned static JSON (champions, items, meta) consumed by the app |
 | `src/lib/stats/` | Pure stat engine (champion + items → totals) — the MVP core |
 | `src/lib/damage/` | Pure damage engine — Phase 3 stub, wired to the schema |
 | `src/lib/data/` | Typed loaders/selectors over the JSON |
@@ -48,6 +50,7 @@ npm install
 npm run dev           # http://localhost:3000
 npm run typecheck     # tsc --noEmit
 npm run test          # vitest
+npm run build-data    # regenerate data/patches/* from sources + overrides
 npm run validate-data # schema-check all patch data
 npm run build         # production build
 ```
