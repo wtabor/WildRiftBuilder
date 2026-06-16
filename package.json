@@ -4,7 +4,7 @@
   "private": true,
   "description": "An accurate, current, interactive stat & build calculator for League of Legends: Wild Rift.",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
