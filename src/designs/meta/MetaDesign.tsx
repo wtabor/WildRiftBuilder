@@ -7,7 +7,7 @@ import { encodeBuild, useBuildState } from "@/state/buildState";
 import { STAT_META, type Ability, type Champion, type Item, type StatBlock, type StatKey } from "@/lib/schema";
 import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/statDisplay";
 import { formatStat, formatGold } from "@/lib/format";
-import { initials, hashHue, itemClass, ITEM_CLASS_COLOR } from "@/lib/visual";
+import { initials, hashHue, itemClass, ITEM_CLASS_COLOR, championIconUrl } from "@/lib/visual";
 import { useShare } from "@/lib/useShare";
 import {
   SearchIcon,
@@ -172,23 +172,40 @@ function Portrait({
   color,
   size = 44,
   className = "",
+  src,
 }: {
   name: string;
   seed: string;
   color?: string;
   size?: number;
   className?: string;
+  /** Optional real artwork; falls back to the monogram if it fails to load. */
+  src?: string;
 }) {
+  const [failed, setFailed] = useState(false);
   const hue = hashHue(seed);
   const bg = color
     ? `linear-gradient(150deg, ${color}, ${color}88)`
     : `linear-gradient(150deg, hsl(${hue} 62% 48%), hsl(${(hue + 45) % 360} 60% 32%))`;
   return (
     <span
-      className={`grid shrink-0 place-items-center rounded-xl font-bold text-white ${className}`}
+      className={`relative grid shrink-0 place-items-center overflow-hidden rounded-xl font-bold text-white ${className}`}
       style={{ background: bg, width: size, height: size, fontSize: size * 0.34 }}
     >
       {initials(name)}
+      {src && !failed && (
+        // Real CDN artwork rendered client-side over the monogram placeholder.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={name}
+          width={size}
+          height={size}
+          loading="lazy"
+          onError={() => setFailed(true)}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      )}
     </span>
   );
 }
@@ -318,7 +335,13 @@ function ChampionHeader({
         />
         <div className="relative flex flex-wrap items-center gap-4 p-4">
           <div className="relative">
-            <Portrait name={champion.name} seed={champion.id} size={76} className="ring-2 ring-meta-border" />
+            <Portrait
+              name={champion.name}
+              seed={champion.id}
+              src={champion.icon ? championIconUrl(champion.icon) : undefined}
+              size={76}
+              className="ring-2 ring-meta-border"
+            />
             <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 rounded bg-meta-raised px-1.5 py-0.5 text-[10px] font-bold text-meta-gold ring-1 ring-meta-border">
               Lv {level}
             </span>
@@ -779,6 +802,7 @@ function ChampionGrid({
                 <Portrait
                   name={c.name}
                   seed={c.id}
+                  src={c.icon ? championIconUrl(c.icon) : undefined}
                   size={72}
                   className={`transition group-hover:ring-2 ${
                     c.id === selectedId ? "ring-2 ring-meta-blue" : "ring-1 ring-meta-border group-hover:ring-meta-blue"

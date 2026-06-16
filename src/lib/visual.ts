@@ -46,6 +46,22 @@ export const ITEM_CLASS_COLOR: Record<ItemClass, string> = {
   utility: "#9aa6c4",
 };
 
+/**
+ * Champion portraits come from Riot's Data Dragon CDN (League PC), whose square
+ * champion art matches the Wild Rift roster character-for-character. The `icon`
+ * stored on each champion is the Data Dragon key (e.g. "Ashe", "MonkeyKing" for
+ * Wukong). The CDN version is pinned here — bump it to pick up newer art. The
+ * art is identical across versions for a given champion, so the exact value is
+ * not load-bearing. Callers render the result in an <img> with a monogram
+ * fallback, so a stale/invalid URL degrades to the initials tile, never a
+ * broken image.
+ */
+export const DDRAGON_VERSION = "15.1.1";
+
+export function championIconUrl(icon: string): string {
+  return `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/img/champion/${icon}.png`;
+}
+
 /** Which stat keys belong to a build's "primary" identity, for summaries. */
 export const PRIMARY_STATS: StatKey[] = [
   "attackDamage",
