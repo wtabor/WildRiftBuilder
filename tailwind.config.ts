@@ -5,10 +5,11 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        // No network font fetch at build time — robust system stacks per design.
-        sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+        // Geist (self-hosted via the `geist` package — bundled woff2, no build-time
+        // network fetch), with robust system fallbacks.
+        sans: ['var(--font-geist-sans)', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
         display: ['"Trajan Pro"', 'Georgia', '"Times New Roman"', 'serif'],
-        mono: ['ui-monospace', '"SF Mono"', 'SFMono-Regular', 'Menlo', 'Consolas', '"Liberation Mono"', 'monospace'],
+        mono: ['var(--font-geist-mono)', 'ui-monospace', '"SF Mono"', 'SFMono-Regular', 'Menlo', 'Consolas', '"Liberation Mono"', 'monospace'],
       },
       colors: {
         // ── Hextech / Wild Rift in-game palette (Design: Hextech Arsenal) ──

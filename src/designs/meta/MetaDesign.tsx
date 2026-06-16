@@ -9,7 +9,6 @@ import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/stat
 import { formatStat, formatGold } from "@/lib/format";
 import { initials, hashHue, itemClass, ITEM_CLASS_COLOR } from "@/lib/visual";
 import { useShare } from "@/lib/useShare";
-import { DesignSwitcher } from "@/designs/shared/DesignSwitcher";
 import {
   SearchIcon,
   ShareIcon,
@@ -85,7 +84,6 @@ export default function MetaDesign() {
         <div className="min-w-0 flex-1">
           <TopBar
             patch={patch}
-            query={query}
             search={champQuery}
             onSearch={(v) => {
               setChampQuery(v);
@@ -242,13 +240,11 @@ function RailBtn({
 
 function TopBar({
   patch,
-  query,
   search,
   onSearch,
   onFocusSearch,
 }: {
   patch: string;
-  query: string;
   search: string;
   onSearch: (v: string) => void;
   onFocusSearch: () => void;
@@ -290,7 +286,6 @@ function TopBar({
             {copied ? <CheckIcon width={15} height={15} /> : <ShareIcon width={15} height={15} />}
             {copied ? "Copied" : "Share"}
           </button>
-          <DesignSwitcher current="meta" query={query} />
         </div>
       </div>
     </header>
