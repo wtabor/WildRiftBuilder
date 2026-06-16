@@ -32,13 +32,14 @@ export default function GalleryPage() {
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             Wild Rift Builder —{" "}
             <span className="bg-gradient-to-r from-aurora-teal via-aurora-violet to-aurora-pink bg-clip-text text-transparent">
-              three design directions
+              four design directions
             </span>
           </h1>
           <p className="mt-4 text-lg text-aurora-mute">
-            One accurate stat &amp; build engine, three distinct interfaces. Each is a fully
-            functional builder — your champion, level, and items are shared across all three, so you
-            can flip between them with the same build and judge the feel. Pick one to open.
+            One accurate stat &amp; build engine, several distinct interfaces. Each is a fully
+            functional builder — your champion, level, and items are shared across all of them, so
+            you can flip between them with the same build and judge the feel. Start with the
+            highlighted direction, or open any of them.
           </p>
         </div>
 
@@ -48,9 +49,16 @@ export default function GalleryPage() {
             <Link
               key={d.id}
               href={`/designs/${d.id}`}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] p-1.5 transition hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.05]"
+              className={`group relative flex flex-col overflow-hidden rounded-2xl border bg-white/[0.025] p-1.5 transition hover:-translate-y-1 hover:bg-white/[0.05] ${
+                d.featured ? "border-white/25 ring-1 ring-white/15" : "border-white/10 hover:border-white/25"
+              }`}
               style={{ animationDelay: `${i * 80}ms` }}
             >
+              {d.featured && (
+                <span className="absolute right-3 top-3 z-10 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-black">
+                  Current direction
+                </span>
+              )}
               <DesignPreview id={d.id} accent={d.accent} accent2={d.accent2} />
               <div className="flex flex-1 flex-col p-4">
                 <div className="flex items-center gap-2">
@@ -89,7 +97,7 @@ export default function GalleryPage() {
         {/* Footer note */}
         <footer className="mt-16 border-t border-white/10 pt-6 text-sm text-aurora-mute">
           <p>
-            All three designs read from the same pure stat engine and patch-versioned data — being{" "}
+            Every design reads from the same pure stat engine and patch-versioned data — being{" "}
             <em>correct</em> where other tools are wrong is the point. See{" "}
             <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs">DESIGN_WORKFLOW.md</code> for
             the iterative review loop.
@@ -108,6 +116,37 @@ export default function GalleryPage() {
 
 /* CSS-only mini-mock that hints at each design's visual language. */
 function DesignPreview({ id, accent, accent2 }: { id: string; accent: string; accent2: string }) {
+  if (id === "meta") {
+    // Light, U.GG-structured, trajectory.ai palette.
+    return (
+      <div className="relative h-36 overflow-hidden rounded-xl bg-[#f7f5f1]">
+        <div className="flex h-full">
+          <div className="flex w-8 flex-col items-center gap-1.5 border-r border-[#e7e4dd] bg-white py-2">
+            <span className="h-5 w-5 rounded" style={{ background: `linear-gradient(135deg, ${accent}, ${accent2})` }} />
+            <span className="h-4 w-4 rounded bg-[#eceae4]" />
+          </div>
+          <div className="flex-1 space-y-1.5 p-2.5">
+            <div className="flex items-center gap-1.5">
+              <span className="h-2.5 w-1 rounded-full" style={{ background: accent }} />
+              <span className="h-2 w-20 rounded bg-[#17171a]/80" />
+            </div>
+            <div className="flex gap-1.5">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="flex-1 rounded border border-[#e7e4dd] bg-white px-1 py-1">
+                  <div className="mx-auto h-1 w-3/4 rounded" style={{ background: i === 0 ? accent : "#d8d4cb" }} />
+                </div>
+              ))}
+            </div>
+            <div className="grid grid-cols-3 gap-1.5">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="h-5 rounded border border-[#e7e4dd] bg-white" />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
   if (id === "aurora") {
     return (
       <div className="relative h-36 overflow-hidden rounded-xl bg-[#0a1020]">

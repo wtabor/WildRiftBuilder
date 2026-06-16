@@ -12,7 +12,8 @@
 const BASE = process.env.BASE_URL ?? "http://localhost:3000";
 
 const ROUTES = [
-  { path: "/", marker: "three design directions" },
+  { path: "/", marker: "design directions" },
+  { path: "/designs/meta", marker: "Champion Select" },
   { path: "/designs/aurora", marker: "Aurora" },
   { path: "/designs/hextech", marker: "Choose your champion" },
   { path: "/designs/console", marker: "stat-console" },

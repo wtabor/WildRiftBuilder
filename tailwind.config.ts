@@ -48,6 +48,24 @@ const config: Config = {
           red: "#f85149",
           blue: "#58a6ff",
         },
+        // ── Meta (Design: U.GG-style structure, trajectory.ai light palette) ──
+        meta: {
+          bg: "#f7f5f1",
+          bg2: "#ffffff",
+          panel: "#ffffff",
+          panel2: "#f4f2ee",
+          raised: "#eceae4",
+          border: "#e7e4dd",
+          text: "#17171a",
+          mute: "#71717a",
+          dim: "#a1a1aa",
+          blue: "#2f5bea",
+          blue2: "#2547c8",
+          purple: "#6b4be0",
+          coral: "#ef4444",
+          gold: "#b4831e",
+          green: "#16a34a",
+        },
       },
       keyframes: {
         "aurora-drift": {

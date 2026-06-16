@@ -14,9 +14,22 @@ export interface DesignMeta {
   accent2: string;
   /** Short list of what makes this design distinct. */
   highlights: string[];
+  /** The active direction we're iterating on (surfaced in the gallery). */
+  featured?: boolean;
 }
 
 export const DESIGNS: DesignMeta[] = [
+  {
+    id: "meta",
+    name: "Meta",
+    tagline: "Aggregator · build-guide · data-rich",
+    blurb:
+      "Modeled on U.GG's champion build page: a very dark navy shell with lighter rounded panels, blue→purple accent bars on every section header, a tabbed champion header with a P/Q/W/E/R row, a horizontal headline-stat strip, and an interactive item build path. The current direction we're iterating on.",
+    accent: "#4f7bf0",
+    accent2: "#8b5cf6",
+    highlights: ["Champion header + P/Q/W/E/R row", "Headline stat strip + build path", "Left icon rail, champions grid"],
+    featured: true,
+  },
   {
     id: "aurora",
     name: "Aurora",
