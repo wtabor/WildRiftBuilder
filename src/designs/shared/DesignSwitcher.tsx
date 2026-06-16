@@ -61,7 +61,7 @@ export function DesignSwitcher({ current, query }: { current: string; query: str
               </Link>
             ))}
             <Link
-              href={`/${suffix}`}
+              href={`/designs${suffix}`}
               onClick={() => setOpen(false)}
               className="mt-1 flex items-center justify-between rounded-lg border-t border-white/10 px-3 py-2 text-white/60 transition hover:bg-white/5"
             >
