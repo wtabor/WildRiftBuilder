@@ -1,0 +1,140 @@
+[
+  {
+    "id": "infinity-edge",
+    "name": "Infinity Edge",
+    "cost": 3400,
+    "tags": ["AD", "Crit"],
+    "slot": "item",
+    "stats": { "attackDamage": 65, "critChance": 0.25 },
+    "effects": [
+      {
+        "name": "Perfection",
+        "kind": "passive",
+        "description": "If you have at least 60% crit chance, critical strikes deal an additional 12% damage."
+      }
+    ]
+  },
+  {
+    "id": "bloodthirster",
+    "name": "Bloodthirster",
+    "cost": 3400,
+    "tags": ["AD", "Lifesteal"],
+    "slot": "item",
+    "stats": { "attackDamage": 55, "lifeSteal": 0.12 },
+    "effects": [
+      {
+        "name": "Bloodthirst",
+        "kind": "passive",
+        "description": "Excess life steal is stored as a shield for up to 50 (+ AD) damage."
+      }
+    ]
+  },
+  {
+    "id": "phantom-dancer",
+    "name": "Phantom Dancer",
+    "cost": 2800,
+    "tags": ["AS", "Crit", "MoveSpeed"],
+    "slot": "item",
+    "stats": { "attackSpeed": 0.3, "critChance": 0.2, "moveSpeedPercent": 0.07 },
+    "effects": [
+      {
+        "name": "Spectral Waltz",
+        "kind": "passive",
+        "description": "Attacks grant move speed; at full stacks gain ghosting and bonus attack speed."
+      }
+    ]
+  },
+  {
+    "id": "rabadons-deathcap",
+    "name": "Rabadon's Deathcap",
+    "cost": 3600,
+    "tags": ["AP"],
+    "slot": "item",
+    "stats": { "abilityPower": 120 },
+    "effects": [
+      {
+        "name": "Magical Opus",
+        "kind": "passive",
+        "description": "Increases your total Ability Power by 40%."
+      }
+    ]
+  },
+  {
+    "id": "ludens-echo",
+    "name": "Luden's Echo",
+    "cost": 3200,
+    "tags": ["AP", "Mana", "AbilityHaste"],
+    "slot": "item",
+    "stats": { "abilityPower": 90, "mana": 600, "abilityHaste": 20, "magicPenFlat": 6 },
+    "effects": [
+      {
+        "name": "Echo",
+        "kind": "passive",
+        "description": "Damaging an enemy with an ability deals bonus magic damage to it and nearby enemies."
+      }
+    ]
+  },
+  {
+    "id": "warmogs-armor",
+    "name": "Warmog's Armor",
+    "cost": 3100,
+    "tags": ["Health", "HealthRegen"],
+    "slot": "item",
+    "stats": { "maxHealth": 800, "healthRegen": 200, "abilityHaste": 10 },
+    "effects": [
+      {
+        "name": "Warmog's Heart",
+        "kind": "passive",
+        "description": "With enough bonus health, rapidly regenerate health when out of combat."
+      }
+    ]
+  },
+  {
+    "id": "sunfire-aegis",
+    "name": "Sunfire Aegis",
+    "cost": 2900,
+    "tags": ["Health", "Armor", "MagicResist"],
+    "slot": "item",
+    "stats": { "maxHealth": 450, "armor": 30, "magicResist": 30, "abilityHaste": 10 },
+    "effects": [
+      {
+        "name": "Immolate",
+        "kind": "passive",
+        "description": "Deal magic damage per second to nearby enemies; ramps up in combat."
+      }
+    ]
+  },
+  {
+    "id": "guardian-angel",
+    "name": "Guardian Angel",
+    "cost": 3200,
+    "tags": ["AD", "Armor"],
+    "slot": "item",
+    "stats": { "attackDamage": 45, "armor": 40 },
+    "effects": [
+      {
+        "name": "Rebirth",
+        "kind": "passive",
+        "description": "Upon taking lethal damage, restore a portion of health and mana after a short delay."
+      }
+    ]
+  },
+  {
+    "id": "gluttonous-greaves",
+    "name": "Gluttonous Greaves",
+    "cost": 1100,
+    "tags": ["Boots", "MoveSpeed", "Omnivamp"],
+    "slot": "boots",
+    "stats": { "moveSpeedFlat": 45, "omnivamp": 0.08 },
+    "effects": []
+  },
+  {
+    "id": "boots-of-swiftness",
+    "name": "Boots of Swiftness",
+    "cost": 1000,
+    "tags": ["Boots", "MoveSpeed", "Tenacity"],
+    "slot": "boots",
+    "stats": { "moveSpeedFlat": 40, "tenacity": 0.2 },
+    "effects": []
+  }
+]
