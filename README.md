@@ -21,6 +21,20 @@ accuracy + freshness — is the entire point of this project.
 - Live total stat panel (champion base + per-level growth + item stats), grouped offense/defense/utility.
 - Shareable builds via URL; a patch badge that signals whether the data is hand-verified.
 
+## Three design directions
+
+The builder ships as **three distinct, polished UIs** over one shared engine — open the
+gallery at `/` to compare, or jump straight in:
+
+| Route | Design | Personality |
+|---|---|---|
+| `/designs/aurora` | **Aurora** | Modern premium SaaS — glassmorphism, drifting gradients, mobile bottom-sheet |
+| `/designs/hextech` | **Hextech Arsenal** | Immersive in-game HUD — beveled gold panels, hex item tiles, splash banner |
+| `/designs/console` | **Stat Console** | Dense pro terminal — sortable item table, monospace stats, delta-from-base |
+
+Build state is URL-encoded, so the in-app switcher carries the same build across all
+three. The full iteration playbook lives in **[DESIGN_WORKFLOW.md](./DESIGN_WORKFLOW.md)**.
+
 > ⚠️ The data under `data/patches/7.1/` is **illustrative sample data**, not yet hand-verified
 > against in-game Wild Rift values. The patch badge shows "sample data" until `meta.json` is marked
 > `"verified": true`.
@@ -37,8 +51,11 @@ state so Phase 3 is additive, not a rewrite.
 | `src/lib/stats/` | Pure stat engine (champion + items → totals) — the MVP core |
 | `src/lib/damage/` | Pure damage engine — Phase 3 stub, wired to the schema |
 | `src/lib/data/` | Typed loaders/selectors over the JSON |
-| `src/components/`, `src/app/` | Next.js UI |
+| `src/lib/statDisplay.ts`, `src/lib/visual.ts`, `src/lib/icons.tsx` | Shared, design-agnostic presentation helpers |
+| `src/designs/<id>/` | The three self-contained UI designs (presentation only) |
+| `src/app/` | Next.js routes — gallery (`/`) + `designs/<id>` |
 | `scripts/validate.ts` | Schema validation gate for patch data |
+| `scripts/smoke.mjs` | Route render check (the automated half of the design loop) |
 | `tests/` | Engine unit tests (correctness = the moat) |
 
 ## Develop
@@ -50,6 +67,7 @@ npm run typecheck     # tsc --noEmit
 npm run test          # vitest
 npm run validate-data # schema-check all patch data
 npm run build         # production build
+npm run smoke         # fetch every route, assert 200 (needs `npm run dev` running)
 ```
 
 ## Tech
