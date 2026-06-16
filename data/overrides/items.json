@@ -6,6 +6,7 @@
     "tags": ["AD", "Crit"],
     "slot": "item",
     "stats": { "attackDamage": 65, "critChance": 0.25 },
+    "provenance": { "attackDamage": "7.1g" },
     "effects": [
       {
         "name": "Perfection",

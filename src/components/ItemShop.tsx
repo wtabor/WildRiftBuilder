@@ -5,6 +5,7 @@ import { items } from "@/lib/data";
 import { goldEfficiency } from "@/lib/stats/engine";
 import { STAT_META, type Item, type StatKey } from "@/lib/schema";
 import { formatGold } from "@/lib/format";
+import { ProvenanceTooltip } from "./ProvenanceTooltip";
 
 /** Stat filters — the feature competing mobile apps notably lack. */
 const STAT_FILTERS: { key: StatKey; label: string }[] = [
@@ -98,38 +99,58 @@ function ItemCard({
   disabled: boolean;
 }) {
   const eff = goldEfficiency(item);
-  const statLines = (Object.keys(item.stats) as StatKey[])
-    .filter((k) => item.stats[k])
-    .map((k) => {
-      const meta = STAT_META[k];
-      const v = item.stats[k]!;
-      const display = meta.format === "percent" ? `${Math.round(v * 1000) / 10}%` : v;
-      return `+${display} ${meta.label}`;
-    });
+  const statKeys = (Object.keys(item.stats) as StatKey[]).filter((k) => item.stats[k]);
+
+  function add() {
+    if (!disabled) onAdd(item.id);
+  }
 
   return (
-    <button
-      onClick={() => onAdd(item.id)}
-      disabled={disabled}
+    // A div (not button) so the per-value patch links can be real <a> elements;
+    // link clicks stopPropagation so they don't also add the item.
+    <div
+      role="button"
+      tabIndex={disabled ? -1 : 0}
+      aria-disabled={disabled}
+      onClick={add}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          add();
+        }
+      }}
       title={item.effects.map((e) => `${e.name}: ${e.description}`).join("\n")}
-      className="flex flex-col rounded-md border border-rift-border bg-rift-bg p-2.5 text-left transition hover:border-rift-gold disabled:cursor-not-allowed disabled:opacity-40"
+      className={`flex cursor-pointer flex-col rounded-md border border-rift-border bg-rift-bg p-2.5 text-left transition hover:border-rift-gold ${
+        disabled ? "cursor-not-allowed opacity-40" : ""
+      }`}
     >
       <div className="flex items-center justify-between">
         <span className="text-sm font-semibold text-rift-gold2">{item.name}</span>
-        <span className="font-mono text-xs text-rift-gold">{formatGold(item.cost)}g</span>
+        <span className="font-mono text-xs text-rift-gold">
+          <ProvenanceTooltip version={item.provenance?.cost}>
+            {formatGold(item.cost)}g
+          </ProvenanceTooltip>
+        </span>
       </div>
       <ul className="mt-1 space-y-0.5">
-        {statLines.map((line) => (
-          <li key={line} className="text-xs text-rift-gold2/70">
-            {line}
-          </li>
-        ))}
+        {statKeys.map((k) => {
+          const meta = STAT_META[k];
+          const v = item.stats[k]!;
+          const display = meta.format === "percent" ? `${Math.round(v * 1000) / 10}%` : v;
+          return (
+            <li key={k} className="text-xs text-rift-gold2/70">
+              <ProvenanceTooltip version={item.provenance?.[k]}>
+                +{display} {meta.label}
+              </ProvenanceTooltip>
+            </li>
+          );
+        })}
       </ul>
       {eff !== null && (
         <span className="mt-1 text-xs text-rift-blue/80">
           {Math.round(eff * 100)}% gold efficient
         </span>
       )}
-    </button>
+    </div>
   );
 }

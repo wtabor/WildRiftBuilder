@@ -94,6 +94,7 @@
   "jinx": {
     "verified": false,
     "resourceType": "mana",
+    "provenance": { "attackDamage": "7.1g", "R": "7.1g" },
     "stats": {
       "attackDamage": { "base": 57, "perLevel": 3.2 },
       "attackSpeed": { "base": 0.625, "perLevel": 0.04 },

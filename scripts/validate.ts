@@ -9,6 +9,7 @@ import {
   ChampionsFileSchema,
   ItemsFileSchema,
   PatchMetaSchema,
+  PatchRegistrySchema,
 } from "../src/lib/schema/index";
 
 const PATCHES_DIR = join(process.cwd(), "data", "patches");
@@ -47,6 +48,12 @@ for (const dir of patches) {
     ChampionsFileSchema.parse(loadJson(join(base, "champions.json"))),
   );
   check("items.json", () => ItemsFileSchema.parse(loadJson(join(base, "items.json"))));
+}
+
+const registryPath = join(PATCHES_DIR, "registry.json");
+if (existsSync(registryPath)) {
+  console.log("Patch registry:");
+  check("registry.json", () => PatchRegistrySchema.parse(loadJson(registryPath)));
 }
 
 if (failures > 0) {

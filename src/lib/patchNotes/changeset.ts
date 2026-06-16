@@ -87,10 +87,13 @@ export function applyChangeset(
     if (op.kind === "champion-stat") {
       const champ = champions[op.championId] as Record<string, unknown> | undefined;
       const stats = champ?.stats as Record<string, unknown> | undefined;
-      if (!stats || !setPath(stats, op.path, op.to)) {
+      if (!champ || !stats || !setPath(stats, op.path, op.to)) {
         skipped.push(`champion ${op.championId} ${op.path} (not found)`);
         continue;
       }
+      // Stamp provenance under the top-level stat key (e.g. "attackDamage.base" → "attackDamage").
+      const prov = (champ.provenance ??= {}) as Record<string, string>;
+      prov[op.path.split(".")[0]] = changeset.patch;
       applied.push(`${op.championId}.${op.path} → ${op.to}`);
     } else {
       const item = items.find((i) => i.id === op.itemId);
@@ -104,6 +107,8 @@ export function applyChangeset(
         const stats = (item.stats ??= {}) as Record<string, unknown>;
         stats[op.field] = op.to;
       }
+      const prov = (item.provenance ??= {}) as Record<string, string>;
+      prov[op.field] = changeset.patch;
       applied.push(`${op.itemId}.${op.field} → ${op.to}`);
     }
   }

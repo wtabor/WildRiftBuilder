@@ -16,6 +16,7 @@ import { ItemsFileSchema, PatchMetaSchema } from "../../src/lib/schema/index";
 import { parseRy2x } from "./adapters/ry2x";
 import { parseRiot } from "./adapters/riot";
 import { enrichWithRiot, mergeChampions, parseOverrides } from "./merge";
+import { fillItemProvenance } from "./provenance";
 import { SOURCES } from "./sources";
 
 const ROOT = process.cwd();
@@ -32,21 +33,27 @@ function writeJson(path: string, value: unknown): void {
 
 console.log(`Building patch ${PATCH}…\n`);
 
+// The baseline patch any unstamped value defaults to is the shipped patch.
+const meta_json = PatchMetaSchema.parse(loadJson(`data/patches/${PATCH}/meta.json`));
+const baseline = meta_json.patch;
+
 // 1. Champions: canonical metadata (ry2x) enriched with official Riot metadata,
-//    then combined with the hand-verified overrides.
+//    then combined with the hand-verified overrides (+ filled provenance).
 const ry2x = SOURCES.find((s) => s.id === "ry2x")!;
 const riot = SOURCES.find((s) => s.id === "riot-wr")!;
 const baseMeta = parseRy2x(loadJson(ry2x.snapshot));
 const riotMeta = parseRiot(loadJson(riot.snapshot));
 const meta = enrichWithRiot(baseMeta, riotMeta);
 const overrides = parseOverrides(loadJson("data/overrides/champions.json"));
-const { champions, report } = mergeChampions(meta, overrides);
+const { champions, report } = mergeChampions(meta, overrides, baseline);
 
-// 2. Items: validated passthrough from the overrides layer.
-const items = ItemsFileSchema.parse(loadJson("data/overrides/items.json"));
+// 2. Items: validated, then provenance filled per value.
+const items = ItemsFileSchema.parse(loadJson("data/overrides/items.json")).map((item) => ({
+  ...item,
+  provenance: fillItemProvenance(item, baseline),
+}));
 
 // 3. Update patch meta with verification status derived from coverage.
-const meta_json = PatchMetaSchema.parse(loadJson(`data/patches/${PATCH}/meta.json`));
 const fullyVerified = report.emitted.length > 0 && report.unverified.length === 0;
 const nextMeta = { ...meta_json, verified: fullyVerified };
 

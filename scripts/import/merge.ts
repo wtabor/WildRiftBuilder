@@ -3,8 +3,10 @@ import {
   ChampionSchema,
   GrowthStatSchema,
   AbilitySchema,
+  ProvenanceSchema,
   type Champion,
 } from "../../src/lib/schema/index";
+import { fillChampionProvenance } from "./provenance";
 import type { ChampionMeta } from "./adapters/ry2x";
 import type { RiotMeta } from "./adapters/riot";
 
@@ -52,6 +54,8 @@ export const ChampionOverrideSchema = z.object({
     critDamageBase: z.number().default(0.75),
   }),
   abilities: z.array(AbilitySchema).default([]),
+  /** Sparse per-value provenance (stat key / ability slot → patch); expanded by the pipeline. */
+  provenance: ProvenanceSchema.default({}),
 });
 
 export type ChampionOverride = z.infer<typeof ChampionOverrideSchema>;
@@ -90,6 +94,7 @@ export interface MergeResult {
 export function mergeChampions(
   meta: ChampionMeta[],
   overrides: Record<string, ChampionOverride>,
+  baseline: string,
 ): MergeResult {
   const champions: Champion[] = [];
   const report: MergeReport = {
@@ -117,6 +122,7 @@ export function mergeChampions(
       resourceType: ov.resourceType,
       stats: ov.stats,
       abilities: ov.abilities,
+      provenance: fillChampionProvenance(ov.stats, ov.abilities, ov.provenance, baseline),
       ...(m.imageUrl ? { icon: m.imageUrl } : {}),
     });
     champions.push(champion);

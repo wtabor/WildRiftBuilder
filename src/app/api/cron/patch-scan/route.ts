@@ -7,6 +7,7 @@ import { extractChangeset } from "@/lib/patchNotes/extract";
 import { openUpdatePr } from "@/lib/patchNotes/github";
 import championsOverridesRaw from "@data/overrides/champions.json";
 import itemsOverridesRaw from "@data/overrides/items.json";
+import registryRaw from "@data/patches/registry.json";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -64,6 +65,15 @@ export async function GET(request: Request): Promise<Response> {
 
   const result = applyChangeset(championsOverrides, itemsOverrides, changeset);
 
+  // Record the new patch in the registry so provenance tooltips can resolve it.
+  const registry = {
+    ...(registryRaw as Record<string, unknown>),
+    [latest.version]: {
+      date: new Date().toISOString().slice(0, 10),
+      url: latest.url,
+    },
+  };
+
   if (dryRun) {
     return NextResponse.json({
       status: "dry-run",
@@ -101,6 +111,10 @@ export async function GET(request: Request): Promise<Response> {
       {
         path: "data/overrides/items.json",
         content: JSON.stringify(result.items, null, 2) + "\n",
+      },
+      {
+        path: "data/patches/registry.json",
+        content: JSON.stringify(registry, null, 2) + "\n",
       },
     ],
   });

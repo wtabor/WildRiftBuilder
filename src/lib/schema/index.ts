@@ -4,6 +4,27 @@ import { StatBlockSchema, type StatBlock } from "./stats";
 export * from "./stats";
 
 /* -------------------------------------------------------------------------- */
+/*  Provenance — which patch each value last changed in                        */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Maps a value key (a stat key, "cost", or an ability slot) to the patch version
+ * that value was last changed in, e.g. { "attackDamage": "7.1g" }. The UI resolves
+ * the version to a date + patch-notes URL via the patch registry.
+ */
+export const ProvenanceSchema = z.record(z.string(), z.string());
+export type Provenance = z.infer<typeof ProvenanceSchema>;
+
+/** Registry of patch versions → release date + patch-notes URL. */
+export const PatchRegistryEntrySchema = z.object({
+  date: z.string().optional(),
+  url: z.string().optional(),
+});
+export const PatchRegistrySchema = z.record(z.string(), PatchRegistryEntrySchema);
+export type PatchRegistry = z.infer<typeof PatchRegistrySchema>;
+export type PatchRegistryEntry = z.infer<typeof PatchRegistryEntrySchema>;
+
+/* -------------------------------------------------------------------------- */
 /*  Items                                                                      */
 /* -------------------------------------------------------------------------- */
 
@@ -36,6 +57,8 @@ export const ItemSchema = z.object({
   stats: StatBlockSchema.default({}),
   effects: z.array(ItemEffectSchema).default([]),
   icon: z.string().optional(),
+  /** Per-value provenance: stat key or "cost" → patch version. Filled by the pipeline. */
+  provenance: ProvenanceSchema.default({}),
 });
 
 export type Item = z.infer<typeof ItemSchema>;
@@ -101,6 +124,8 @@ export const ChampionSchema = z.object({
   }),
   abilities: z.array(AbilitySchema).default([]),
   icon: z.string().optional(),
+  /** Per-value provenance: stat key or ability slot → patch version. Filled by the pipeline. */
+  provenance: ProvenanceSchema.default({}),
 });
 
 export type Champion = z.infer<typeof ChampionSchema>;

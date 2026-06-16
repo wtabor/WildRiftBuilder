@@ -106,7 +106,7 @@ describe("parseRiot + enrichWithRiot", () => {
 describe("mergeChampions", () => {
   const meta = enrichWithRiot(parseRy2x(rawSnapshot), parseRiot(rawRiot));
   const overrides = parseOverrides(rawOverrides);
-  const { champions, report } = mergeChampions(meta, overrides);
+  const { champions, report } = mergeChampions(meta, overrides, "7.1");
 
   it("emits only WR champions that have an override", () => {
     expect(report.emitted).toEqual(["ahri"]);
@@ -130,5 +130,11 @@ describe("mergeChampions", () => {
     expect(champions[0].roles).toEqual(["Mage", "Assassin"]);
     expect(champions[0].stats.attackDamage.base).toBe(53);
     expect(champions[0].icon).toContain("ahri.jpg");
+  });
+
+  it("fills per-stat provenance, defaulting to the baseline patch", () => {
+    // ahri override has no provenance → every displayed stat defaults to baseline.
+    expect(champions[0].provenance.attackDamage).toBe("7.1");
+    expect(champions[0].provenance.moveSpeedFlat).toBe("7.1");
   });
 });

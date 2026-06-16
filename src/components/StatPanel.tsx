@@ -1,7 +1,14 @@
 "use client";
 
-import { STAT_KEYS, STAT_META, type StatBlock, type StatKey } from "@/lib/schema";
+import {
+  STAT_KEYS,
+  STAT_META,
+  type Provenance,
+  type StatBlock,
+  type StatKey,
+} from "@/lib/schema";
 import { formatStat } from "@/lib/format";
+import { ProvenanceTooltip } from "./ProvenanceTooltip";
 
 const GROUPS: { id: "offense" | "defense" | "utility"; label: string; color: string }[] = [
   { id: "offense", label: "Offense", color: "text-rift-ad" },
@@ -12,9 +19,12 @@ const GROUPS: { id: "offense" | "defense" | "utility"; label: string; color: str
 export function StatPanel({
   stats,
   attackSpeed,
+  provenance,
 }: {
   stats: StatBlock;
   attackSpeed: number;
+  /** The selected champion's per-stat provenance, for "last changed" tooltips. */
+  provenance?: Provenance;
 }) {
   return (
     <div className="rounded-lg border border-rift-border bg-rift-panel p-4">
@@ -35,7 +45,13 @@ export function StatPanel({
               </h3>
               <dl className="grid grid-cols-1 gap-x-4 gap-y-1 sm:grid-cols-2">
                 {keys.map((k) => (
-                  <Row key={k} statKey={k} stats={stats} attackSpeed={attackSpeed} />
+                  <Row
+                    key={k}
+                    statKey={k}
+                    stats={stats}
+                    attackSpeed={attackSpeed}
+                    version={provenance?.[k]}
+                  />
                 ))}
               </dl>
             </div>
@@ -55,10 +71,12 @@ function Row({
   statKey,
   stats,
   attackSpeed,
+  version,
 }: {
   statKey: StatKey;
   stats: StatBlock;
   attackSpeed: number;
+  version?: string;
 }) {
   const meta = STAT_META[statKey];
   // Attack speed is special: show the final attacks-per-second value, not the ratio.
@@ -69,7 +87,9 @@ function Row({
   return (
     <div className="flex items-baseline justify-between border-b border-rift-border/40 py-0.5">
       <dt className="text-sm text-rift-gold2/80">{meta.label}</dt>
-      <dd className="font-mono text-sm font-semibold text-rift-gold2">{display}</dd>
+      <dd className="font-mono text-sm font-semibold text-rift-gold2">
+        <ProvenanceTooltip version={version}>{display}</ProvenanceTooltip>
+      </dd>
     </div>
   );
 }

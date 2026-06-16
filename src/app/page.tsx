@@ -66,7 +66,11 @@ export default function BuilderPage() {
                 onRemove={removeItemAt}
                 onClear={clearItems}
               />
-              <StatPanel stats={totals.stats} attackSpeed={totals.attackSpeed} />
+              <StatPanel
+                stats={totals.stats}
+                attackSpeed={totals.attackSpeed}
+                provenance={champion.provenance}
+              />
             </>
           ) : (
             <div className="rounded-lg border border-dashed border-rift-border bg-rift-panel p-6 text-center text-sm text-rift-gold2/60">

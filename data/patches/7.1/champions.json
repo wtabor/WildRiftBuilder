@@ -74,7 +74,20 @@
         ]
       }
     ],
-    "icon": "https://wildrift.leagueoflegends.com/static/champions/ahri.jpg"
+    "icon": "https://wildrift.leagueoflegends.com/static/champions/ahri.jpg",
+    "provenance": {
+      "attackDamage": "7.1",
+      "abilityPower": "7.1",
+      "attackSpeed": "7.1",
+      "armor": "7.1",
+      "magicResist": "7.1",
+      "maxHealth": "7.1",
+      "healthRegen": "7.1",
+      "mana": "7.1",
+      "manaRegen": "7.1",
+      "moveSpeedFlat": "7.1",
+      "Q": "7.1"
+    }
   },
   {
     "id": "ashe",
@@ -168,7 +181,20 @@
         ]
       }
     ],
-    "icon": "https://wildrift.leagueoflegends.com/static/champions/ashe.jpg"
+    "icon": "https://wildrift.leagueoflegends.com/static/champions/ashe.jpg",
+    "provenance": {
+      "attackDamage": "7.1",
+      "attackSpeed": "7.1",
+      "armor": "7.1",
+      "magicResist": "7.1",
+      "maxHealth": "7.1",
+      "healthRegen": "7.1",
+      "mana": "7.1",
+      "manaRegen": "7.1",
+      "moveSpeedFlat": "7.1",
+      "Q": "7.1",
+      "R": "7.1"
+    }
   },
   {
     "id": "darius",
@@ -239,7 +265,19 @@
         ]
       }
     ],
-    "icon": "https://wildrift.leagueoflegends.com/static/champions/darius.jpg"
+    "icon": "https://wildrift.leagueoflegends.com/static/champions/darius.jpg",
+    "provenance": {
+      "attackDamage": "7.1",
+      "attackSpeed": "7.1",
+      "armor": "7.1",
+      "magicResist": "7.1",
+      "maxHealth": "7.1",
+      "healthRegen": "7.1",
+      "mana": "7.1",
+      "manaRegen": "7.1",
+      "moveSpeedFlat": "7.1",
+      "R": "7.1"
+    }
   },
   {
     "id": "jinx",
@@ -309,6 +347,18 @@
         ]
       }
     ],
-    "icon": "https://wildrift.leagueoflegends.com/static/champions/jinx.jpg"
+    "icon": "https://wildrift.leagueoflegends.com/static/champions/jinx.jpg",
+    "provenance": {
+      "attackDamage": "7.1g",
+      "attackSpeed": "7.1",
+      "armor": "7.1",
+      "magicResist": "7.1",
+      "maxHealth": "7.1",
+      "healthRegen": "7.1",
+      "mana": "7.1",
+      "manaRegen": "7.1",
+      "moveSpeedFlat": "7.1",
+      "R": "7.1g"
+    }
   }
 ]

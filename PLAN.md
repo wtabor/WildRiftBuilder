@@ -183,6 +183,7 @@ the sources) and is exercised on Vercel.
 ## 8. Todo backlog
 
 - [x] Scheduled patch-notes scanner → LLM changeset → review PR (auto-update numbers, human-verified).
+- [x] Per-value provenance: every item/champion value tracks the patch it last changed in; UI tooltips link to that patch's notes. The scanner stamps provenance automatically when it applies a changeset.
 - [ ] Surface `/api/patch-status` staleness in the UI header (latest patch + "update available").
 - [ ] **Build compare (A vs B, value diffs)** — Phase 2; see above. _(Next up.)_
 - [ ] Fill & verify the overrides layer for the full WR champion roster; flip patches to `verified`.
