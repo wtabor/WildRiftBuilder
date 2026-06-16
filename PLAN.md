@@ -155,8 +155,35 @@ hand-verified overrides  ──────────────────�
 - Source snapshots can't refresh from CI (allowlist) → refresh locally and commit.
 - Ability/passive data is the hardest to source for Phase 3 and will be largely hand-authored.
 
+## 7a. Scheduled patch scanner (implemented)
+
+A scheduled job keeps the dataset current against the **official Wild Rift patch
+notes** (`/api/cron/patch-scan`, wired to a Vercel Cron in `vercel.json`, daily):
+
+1. Fetch the patch-notes feed — official Riot first (browser headers, since the
+   site is bot-protected), third-party mirror as fallback (`src/lib/patchNotes/fetch.ts`).
+2. Compare the latest patch to our shipped `meta.patch` (`version.ts`).
+3. If we're behind, fetch the notes and **extract a numeric changeset with Claude**
+   (`extract.ts`, `claude-opus-4-8` + structured output) against the current data.
+4. Apply it to the overrides layer (`changeset.ts`, pure) and **open a review PR**
+   (`github.ts`) — LLM-proposed numbers are **never auto-merged**; a maintainer
+   verifies against the in-game client, runs `npm run build-data`, and flips
+   `verified: true`.
+
+`/api/patch-status` is a lightweight feed/staleness endpoint for the UI ("latest:
+7.1g — your data is 7.1 ⚠"). `scripts/patch-notes/scan.ts` runs the scan locally.
+
+The pure logic (version compare, feed parsing, changeset apply) is unit-tested;
+the network/LLM/GitHub glue is runtime-only (the allowlisted sandbox can't reach
+the sources) and is exercised on Vercel.
+
+**Required env (Vercel):** `CRON_SECRET` (auth), `ANTHROPIC_API_KEY` (extract),
+`GITHUB_TOKEN` + `PATCH_BOT_REPO` (open the PR; `PATCH_BOT_BASE` optional, default `main`).
+
 ## 8. Todo backlog
 
+- [x] Scheduled patch-notes scanner → LLM changeset → review PR (auto-update numbers, human-verified).
+- [ ] Surface `/api/patch-status` staleness in the UI header (latest patch + "update available").
 - [ ] **Build compare (A vs B, value diffs)** — Phase 2; see above. _(Next up.)_
 - [ ] Fill & verify the overrides layer for the full WR champion roster; flip patches to `verified`.
 - [x] Official Riot (Wild Rift website) metadata adapter — enriches titles/roles/art; numbers stay in overrides.
