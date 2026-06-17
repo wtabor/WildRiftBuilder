@@ -36,7 +36,8 @@
     ],
     "slot": "item",
     "stats": {
-      "attackDamage": 65
+      "attackDamage": 65,
+      "lifeSteal": 0.15
     },
     "effects": [
       {
@@ -72,11 +73,6 @@
         "name": "Spectral Waltz",
         "kind": "passive",
         "description": "Your next basic attack against a champion grants 25% bonus Attack Speed and 7% bonus Movement Speed for 3 seconds (10 second cooldown). Basic attacks reduce the remaining cooldown by 1 second."
-      },
-      {
-        "name": "Lifeline",
-        "kind": "passive",
-        "description": "If you would take damage that would reduce your Health below 35% of maximum, you first gain a shield that absorbs 240 - 590 (based on level) damage for 5 seconds."
       }
     ],
     "icon": "3046"
@@ -224,38 +220,5 @@
         "description": "Unique - Conversion: +7% Omnivamp (heals for 7% of all damage dealt). Boots item; you may only equip one pair of boots per champion. Can be upgraded with a boots enchantment."
       }
     ]
-  },
-  {
-    "id": "boots-of-swiftness",
-    "name": "Boots of Swiftness",
-    "cost": 1000,
-    "tags": [
-      "Boots",
-      "MoveSpeed",
-      "Tenacity"
-    ],
-    "slot": "boots",
-    "stats": {
-      "moveSpeedFlat": 40,
-      "tenacity": 0.2
-    },
-    "effects": [
-      {
-        "name": "Footwear",
-        "kind": "passive",
-        "description": "Unique - Footwear: +50 Movement Speed."
-      },
-      {
-        "name": "Sleek",
-        "kind": "passive",
-        "description": "Unique - Sleek: Movement speed slows are reduced by 30% (slow resist)."
-      },
-      {
-        "name": "Sprint",
-        "kind": "active",
-        "description": "Unique - Sprint: Increases Movement Speed by 15% for 3 seconds. Dealing or taking damage from champions removes Sprint (60 second cooldown)."
-      }
-    ],
-    "icon": "3009"
   }
 ]

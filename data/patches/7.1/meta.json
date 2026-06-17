@@ -2,9 +2,10 @@
   "patch": "7.1g",
   "releaseDate": "2026-06-01",
   "sources": [
-    "SAMPLE DATA — illustrative only, NOT yet hand-verified against in-game values",
-    "https://www.riftgg.app/en/items",
-    "https://www.wildriftfire.com/"
+    "PARTIALLY VERIFIED — most items cross-checked against wildriftfire / official WR wiki; sunfire-aegis and bloodthirster exact stats still UNCONFIRMED (pending a clean wildriftfire scrape)",
+    "https://www.wildriftfire.com/",
+    "https://wiki.leagueoflegends.com/en-us/WR:Items",
+    "https://www.riftgg.app/en/items"
   ],
   "verified": false
 }
