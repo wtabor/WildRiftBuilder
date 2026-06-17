@@ -12,7 +12,7 @@ body {
 }
 
 body {
-  /* Neutral near-black base; each design wrapper paints its own theme on top. */
+  /* Neutral near-black base; the Meta builder paints its own light surface on top. */
   @apply bg-[#06080f] text-white antialiased;
 }
 
@@ -43,53 +43,6 @@ body {
     scrollbar-width: none;
   }
 
-  /* Aurora: frosted glass surface. */
-  .glass {
-    background: rgba(255, 255, 255, 0.035);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-  .glass-hover {
-    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
-  }
-  .glass-hover:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.16);
-  }
-
-  /* Hextech: beveled / clipped corners like the in-game panels. */
-  .clip-bevel {
-    clip-path: polygon(
-      14px 0,
-      100% 0,
-      100% calc(100% - 14px),
-      calc(100% - 14px) 100%,
-      0 100%,
-      0 14px
-    );
-  }
-  .clip-bevel-sm {
-    clip-path: polygon(
-      8px 0,
-      100% 0,
-      100% calc(100% - 8px),
-      calc(100% - 8px) 100%,
-      0 100%,
-      0 8px
-    );
-  }
-  .hex-clip {
-    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-  }
-
-  /* Console: faint engineering grid backdrop. */
-  .grid-bg {
-    background-image: linear-gradient(rgba(31, 39, 51, 0.6) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(31, 39, 51, 0.6) 1px, transparent 1px);
-    background-size: 28px 28px;
-  }
-
   .tabular {
     font-variant-numeric: tabular-nums;
   }
@@ -100,40 +53,15 @@ body {
   }
 }
 
-/* ── Styled range inputs (per design) ──────────────────────────────────── */
-input[type="range"].aurora-range,
-input[type="range"].hex-range,
-input[type="range"].con-range {
+/* ── Styled range input (level slider) ─────────────────────────────────── */
+input[type="range"].meta-range {
   -webkit-appearance: none;
   appearance: none;
   height: 6px;
   border-radius: 9999px;
   outline: none;
   cursor: pointer;
-}
-input[type="range"].aurora-range {
-  background: linear-gradient(90deg, #2dd4bf, #a78bfa);
-}
-input[type="range"].hex-range {
-  background: linear-gradient(90deg, #785a28, #c8aa6e);
-}
-input[type="range"].con-range {
-  background: #1f2733;
-}
-input[type="range"].meta-range {
   background: #e7e4dd;
-}
-input[type="range"].aurora-range::-webkit-slider-thumb,
-input[type="range"].hex-range::-webkit-slider-thumb,
-input[type="range"].con-range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 18px;
-  width: 18px;
-  border-radius: 9999px;
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.35);
-  transition: transform 0.1s ease;
 }
 input[type="range"].meta-range::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -150,32 +78,6 @@ input[type="range"].meta-range::-moz-range-thumb {
   border: none;
   border-radius: 9999px;
   background: #2f5bea;
-}
-input[type="range"].con-range::-webkit-slider-thumb {
-  height: 14px;
-  width: 14px;
-  border-radius: 3px;
-  background: #3fb950;
-  box-shadow: none;
-}
-input[type="range"].aurora-range::-webkit-slider-thumb:active,
-input[type="range"].hex-range::-webkit-slider-thumb:active {
-  transform: scale(1.15);
-}
-input[type="range"].aurora-range::-moz-range-thumb,
-input[type="range"].hex-range::-moz-range-thumb {
-  height: 18px;
-  width: 18px;
-  border: none;
-  border-radius: 9999px;
-  background: #fff;
-}
-input[type="range"].con-range::-moz-range-thumb {
-  height: 14px;
-  width: 14px;
-  border: none;
-  border-radius: 3px;
-  background: #3fb950;
 }
 
 @media (prefers-reduced-motion: reduce) {

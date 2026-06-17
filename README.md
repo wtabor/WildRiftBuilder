@@ -21,19 +21,20 @@ accuracy + freshness — is the entire point of this project.
 - Live total stat panel (champion base + per-level growth + item stats), grouped offense/defense/utility.
 - Shareable builds via URL; a patch badge that signals whether the data is hand-verified.
 
-## Three design directions
+## The interface
 
-The builder ships as **three distinct, polished UIs** over one shared engine — open the
-gallery at `/` to compare, or jump straight in:
+The builder is a single, polished UI — the **Meta** design — served at `/`: a U.GG-style
+structure on a light, trajectory.ai-inspired surface, over the shared stat engine. UI notes
+and the polish checklist live in **[DESIGN_WORKFLOW.md](./DESIGN_WORKFLOW.md)**.
 
-| Route | Design | Personality |
-|---|---|---|
-| `/designs/aurora` | **Aurora** | Modern premium SaaS — glassmorphism, drifting gradients, mobile bottom-sheet |
-| `/designs/hextech` | **Hextech Arsenal** | Immersive in-game HUD — beveled gold panels, hex item tiles, splash banner |
-| `/designs/console` | **Stat Console** | Dense pro terminal — sortable item table, monospace stats, delta-from-base |
+- **Champion portraits** are real art from Riot's Data Dragon CDN — the Wild Rift roster
+  matches PC League character-for-character — with a colored monogram fallback if an image
+  fails to load.
+- **Item tiles** use colored monograms for now: Wild Rift items diverge from PC League and
+  have no canonical public icon CDN (see [PLAN.md §3](./PLAN.md)), so real item art waits on
+  a verified Wild Rift asset source rather than showing wrong League icons.
 
-Build state is URL-encoded, so the in-app switcher carries the same build across all
-three. The full iteration playbook lives in **[DESIGN_WORKFLOW.md](./DESIGN_WORKFLOW.md)**.
+Build state is URL-encoded, so any build is shareable straight from its link.
 
 > ⚠️ The data under `data/patches/7.1/` is **illustrative sample data**, not yet hand-verified
 > against in-game Wild Rift values. The patch badge shows "sample data" until `meta.json` is marked
@@ -52,10 +53,10 @@ state so Phase 3 is additive, not a rewrite.
 | `src/lib/damage/` | Pure damage engine — Phase 3 stub, wired to the schema |
 | `src/lib/data/` | Typed loaders/selectors over the JSON |
 | `src/lib/statDisplay.ts`, `src/lib/visual.ts`, `src/lib/icons.tsx` | Shared, design-agnostic presentation helpers |
-| `src/designs/<id>/` | The three self-contained UI designs (presentation only) |
-| `src/app/` | Next.js routes — gallery (`/`) + `designs/<id>` |
+| `src/designs/meta/` | The Meta builder UI (presentation only) |
+| `src/app/` | Next.js route — the builder at `/` |
 | `scripts/validate.ts` | Schema validation gate for patch data |
-| `scripts/smoke.mjs` | Route render check (the automated half of the design loop) |
+| `scripts/smoke.mjs` | Route render check (the automated UI gate) |
 | `tests/` | Engine unit tests (correctness = the moat) |
 
 ## Develop
@@ -72,5 +73,5 @@ npm run smoke         # fetch every route, assert 200 (needs `npm run dev` runni
 
 ## Tech
 
-Next.js (App Router) · TypeScript · Tailwind · Zod · Vitest. Deploys on Vercel.
+Next.js (App Router) · TypeScript · Tailwind · Zod · Vitest · Geist (self-hosted). Deploys on Vercel.
 Supabase (accounts / saved builds) lands in Phase 2.
