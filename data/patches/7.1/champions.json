@@ -3,17 +3,43 @@
     "id": "ashe",
     "name": "Ashe",
     "title": "the Frost Archer",
-    "roles": ["Marksman"],
+    "roles": [
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
-      "attackDamage": { "base": 59, "perLevel": 3 },
-      "attackSpeed": { "base": 0.658, "perLevel": 0.0333 },
-      "armor": { "base": 26, "perLevel": 3.4 },
-      "magicResist": { "base": 30, "perLevel": 1.3 },
-      "maxHealth": { "base": 610, "perLevel": 100 },
-      "healthRegen": { "base": 3.5, "perLevel": 0.55 },
-      "mana": { "base": 280, "perLevel": 32 },
-      "manaRegen": { "base": 6.97, "perLevel": 0.4 },
+      "attackDamage": {
+        "base": 59,
+        "perLevel": 3
+      },
+      "attackSpeed": {
+        "base": 0.658,
+        "perLevel": 0.0333
+      },
+      "armor": {
+        "base": 26,
+        "perLevel": 3.4
+      },
+      "magicResist": {
+        "base": 30,
+        "perLevel": 1.3
+      },
+      "maxHealth": {
+        "base": 610,
+        "perLevel": 100
+      },
+      "healthRegen": {
+        "base": 3.5,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 280,
+        "perLevel": 32
+      },
+      "manaRegen": {
+        "base": 6.97,
+        "perLevel": 0.4
+      },
       "moveSpeed": 325,
       "critDamageBase": 0.75
     },
@@ -22,38 +48,97 @@
         "slot": "Q",
         "name": "Ranger's Focus",
         "description": "Consume Focus to fire a flurry of arrows.",
-        "baseDamage": [0, 0, 0, 0],
+        "baseDamage": [
+          0,
+          0,
+          0,
+          0
+        ],
         "damageType": "physical",
-        "scalings": [{ "stat": "attackDamage", "ratio": 1.0 }],
-        "cooldown": [6, 6, 6, 6]
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          6,
+          6,
+          6,
+          6
+        ]
       },
       {
         "slot": "R",
         "name": "Enchanted Crystal Arrow",
         "description": "Fire a global arrow that stuns the first champion hit.",
-        "baseDamage": [200, 400, 600],
+        "baseDamage": [
+          200,
+          400,
+          600
+        ],
         "damageType": "magic",
-        "scalings": [{ "stat": "abilityPower", "ratio": 1.0 }],
-        "cooldown": [100, 80, 60]
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          100,
+          80,
+          60
+        ]
       }
-    ]
+    ],
+    "icon": "Ashe"
   },
   {
     "id": "ahri",
     "name": "Ahri",
     "title": "the Nine-Tailed Fox",
-    "roles": ["Mage", "Assassin"],
+    "roles": [
+      "Mage",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
-      "attackDamage": { "base": 53, "perLevel": 3 },
-      "abilityPower": { "base": 0, "perLevel": 0 },
-      "attackSpeed": { "base": 0.668, "perLevel": 0.02 },
-      "armor": { "base": 21, "perLevel": 3.5 },
-      "magicResist": { "base": 30, "perLevel": 1.3 },
-      "maxHealth": { "base": 590, "perLevel": 96 },
-      "healthRegen": { "base": 2.5, "perLevel": 0.6 },
-      "mana": { "base": 418, "perLevel": 25 },
-      "manaRegen": { "base": 8, "perLevel": 0.8 },
+      "attackDamage": {
+        "base": 53,
+        "perLevel": 3
+      },
+      "abilityPower": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "attackSpeed": {
+        "base": 0.668,
+        "perLevel": 0.02
+      },
+      "armor": {
+        "base": 21,
+        "perLevel": 3.5
+      },
+      "magicResist": {
+        "base": 30,
+        "perLevel": 1.3
+      },
+      "maxHealth": {
+        "base": 590,
+        "perLevel": 96
+      },
+      "healthRegen": {
+        "base": 2.5,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 418,
+        "perLevel": 25
+      },
+      "manaRegen": {
+        "base": 8,
+        "perLevel": 0.8
+      },
       "moveSpeed": 330,
       "critDamageBase": 0.75
     },
@@ -62,28 +147,71 @@
         "slot": "Q",
         "name": "Orb of Deception",
         "description": "Send and return an orb, dealing magic then true damage.",
-        "baseDamage": [40, 65, 90, 115],
+        "baseDamage": [
+          40,
+          65,
+          90,
+          115
+        ],
         "damageType": "magic",
-        "scalings": [{ "stat": "abilityPower", "ratio": 0.4 }],
-        "cooldown": [7, 7, 7, 7]
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          7,
+          7,
+          7,
+          7
+        ]
       }
-    ]
+    ],
+    "icon": "Ahri"
   },
   {
     "id": "darius",
     "name": "Darius",
     "title": "the Hand of Noxus",
-    "roles": ["Fighter", "Tank"],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
-      "attackDamage": { "base": 64, "perLevel": 4 },
-      "attackSpeed": { "base": 0.625, "perLevel": 0.01 },
-      "armor": { "base": 33, "perLevel": 4 },
-      "magicResist": { "base": 32, "perLevel": 1.3 },
-      "maxHealth": { "base": 652, "perLevel": 114 },
-      "healthRegen": { "base": 9, "perLevel": 0.95 },
-      "mana": { "base": 263, "perLevel": 38 },
-      "manaRegen": { "base": 6.6, "perLevel": 0.45 },
+      "attackDamage": {
+        "base": 64,
+        "perLevel": 4
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.01
+      },
+      "armor": {
+        "base": 33,
+        "perLevel": 4
+      },
+      "magicResist": {
+        "base": 32,
+        "perLevel": 1.3
+      },
+      "maxHealth": {
+        "base": 652,
+        "perLevel": 114
+      },
+      "healthRegen": {
+        "base": 9,
+        "perLevel": 0.95
+      },
+      "mana": {
+        "base": 263,
+        "perLevel": 38
+      },
+      "manaRegen": {
+        "base": 6.6,
+        "perLevel": 0.45
+      },
       "moveSpeed": 340,
       "critDamageBase": 0.75
     },
@@ -92,11 +220,25 @@
         "slot": "R",
         "name": "Noxian Guillotine",
         "description": "Execute an enemy champion, dealing true damage that scales with bleed stacks.",
-        "baseDamage": [150, 250, 350],
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
         "damageType": "true",
-        "scalings": [{ "stat": "bonusAttackDamage", "ratio": 0.75 }],
-        "cooldown": [100, 90, 80]
+        "scalings": [
+          {
+            "stat": "bonusAttackDamage",
+            "ratio": 0.75
+          }
+        ],
+        "cooldown": [
+          100,
+          90,
+          80
+        ]
       }
-    ]
+    ],
+    "icon": "Darius"
   }
 ]

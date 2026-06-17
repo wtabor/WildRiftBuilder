@@ -11,9 +11,11 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "validate-data": "tsx scripts/validate.ts"
+    "validate-data": "tsx scripts/validate.ts",
+    "smoke": "node scripts/smoke.mjs"
   },
   "dependencies": {
+    "geist": "^1.7.2",
     "next": "15.5.19",
     "react": "19.1.0",
     "react-dom": "19.1.0",

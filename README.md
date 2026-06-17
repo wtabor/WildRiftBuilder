@@ -21,6 +21,21 @@ accuracy + freshness — is the entire point of this project.
 - Live total stat panel (champion base + per-level growth + item stats), grouped offense/defense/utility.
 - Shareable builds via URL; a patch badge that signals whether the data is hand-verified.
 
+## The interface
+
+The builder is a single, polished UI — the **Meta** design — served at `/`: a U.GG-style
+structure on a light, trajectory.ai-inspired surface, over the shared stat engine. UI notes
+and the polish checklist live in **[DESIGN_WORKFLOW.md](./DESIGN_WORKFLOW.md)**.
+
+- **Champion portraits** are real art from Riot's Data Dragon CDN — the Wild Rift roster
+  matches PC League character-for-character — with a colored monogram fallback if an image
+  fails to load.
+- **Item tiles** use colored monograms for now: Wild Rift items diverge from PC League and
+  have no canonical public icon CDN (see [PLAN.md §3](./PLAN.md)), so real item art waits on
+  a verified Wild Rift asset source rather than showing wrong League icons.
+
+Build state is URL-encoded, so any build is shareable straight from its link.
+
 > ⚠️ The data under `data/patches/7.1/` is **illustrative sample data**, not yet hand-verified
 > against in-game Wild Rift values. The patch badge shows "sample data" until `meta.json` is marked
 > `"verified": true`.
@@ -37,8 +52,11 @@ state so Phase 3 is additive, not a rewrite.
 | `src/lib/stats/` | Pure stat engine (champion + items → totals) — the MVP core |
 | `src/lib/damage/` | Pure damage engine — Phase 3 stub, wired to the schema |
 | `src/lib/data/` | Typed loaders/selectors over the JSON |
-| `src/components/`, `src/app/` | Next.js UI |
+| `src/lib/statDisplay.ts`, `src/lib/visual.ts`, `src/lib/icons.tsx` | Shared, design-agnostic presentation helpers |
+| `src/designs/meta/` | The Meta builder UI (presentation only) |
+| `src/app/` | Next.js route — the builder at `/` |
 | `scripts/validate.ts` | Schema validation gate for patch data |
+| `scripts/smoke.mjs` | Route render check (the automated UI gate) |
 | `tests/` | Engine unit tests (correctness = the moat) |
 
 ## Develop
@@ -50,9 +68,10 @@ npm run typecheck     # tsc --noEmit
 npm run test          # vitest
 npm run validate-data # schema-check all patch data
 npm run build         # production build
+npm run smoke         # fetch every route, assert 200 (needs `npm run dev` running)
 ```
 
 ## Tech
 
-Next.js (App Router) · TypeScript · Tailwind · Zod · Vitest. Deploys on Vercel.
+Next.js (App Router) · TypeScript · Tailwind · Zod · Vitest · Geist (self-hosted). Deploys on Vercel.
 Supabase (accounts / saved builds) lands in Phase 2.
