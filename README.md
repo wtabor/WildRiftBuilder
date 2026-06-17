@@ -36,9 +36,9 @@ and the polish checklist live in **[DESIGN_WORKFLOW.md](./DESIGN_WORKFLOW.md)**.
 
 Build state is URL-encoded, so any build is shareable straight from its link.
 
-> ⚠️ The data under `data/patches/7.1/` (patch **7.1g**) is **illustrative sample data**, not yet
-> hand-verified against in-game Wild Rift values. The patch badge shows "sample data" until
-> `meta.json` is marked `"verified": true`.
+> ✅ The data under `data/patches/7.1/` (patch **7.1g**) has been verified against the official
+> Riot 7.1g patch notes and the official Wild Rift wiki item infoboxes (`meta.json` →
+> `"verified": true`). Champion stats remain illustrative pending a separate verification pass.
 
 ## Architecture
 

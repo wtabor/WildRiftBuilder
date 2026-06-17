@@ -2,10 +2,10 @@
   "patch": "7.1g",
   "releaseDate": "2026-06-01",
   "sources": [
-    "PARTIALLY VERIFIED — most items cross-checked against wildriftfire / official WR wiki; sunfire-aegis and bloodthirster exact stats still UNCONFIRMED (pending a clean wildriftfire scrape)",
-    "https://www.wildriftfire.com/",
+    "VERIFIED — all 9 item stat blocks cross-checked against official Riot 7.1g patch notes and the official Wild Rift wiki item infoboxes (June 2026)",
+    "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-1g/",
     "https://wiki.leagueoflegends.com/en-us/WR:Items",
-    "https://www.riftgg.app/en/items"
+    "https://www.wildriftfire.com/"
   ],
-  "verified": false
+  "verified": true
 }

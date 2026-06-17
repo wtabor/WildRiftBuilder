@@ -29,26 +29,25 @@
   {
     "id": "bloodthirster",
     "name": "Bloodthirster",
-    "cost": 3400,
+    "cost": 3100,
     "tags": [
       "AD",
-      "Lifesteal"
+      "Lifesteal",
+      "Crit",
+      "Health"
     ],
     "slot": "item",
     "stats": {
-      "attackDamage": 65,
-      "lifeSteal": 0.15
+      "attackDamage": 55,
+      "critChance": 0.25,
+      "maxHealth": 250,
+      "lifeSteal": 0.08
     },
     "effects": [
       {
         "name": "Bloody",
         "kind": "passive",
-        "description": "Grants +15% Physical Vamp, healing you for 15% of the physical damage you deal."
-      },
-      {
-        "name": "Bloodsworn",
-        "kind": "passive",
-        "description": "Physical Vamp that overheals you generates a shield that absorbs up to 40 - 320 (based on level) damage. This shield decays over 10 seconds while out of combat."
+        "description": "Unique – Bloody: +8% Physical Vamp. Critical strikes gain an additional 4% Physical Vamp."
       }
     ],
     "icon": "3072"
@@ -66,9 +65,15 @@
     "stats": {
       "attackDamage": 20,
       "attackSpeed": 0.4,
-      "critChance": 0.25
+      "critChance": 0.25,
+      "moveSpeedPercent": 0.05
     },
     "effects": [
+      {
+        "name": "Shadowwalk",
+        "kind": "passive",
+        "description": "Unique – Shadowwalk: +5% Movement Speed."
+      },
       {
         "name": "Spectral Waltz",
         "kind": "passive",
@@ -158,20 +163,24 @@
     "tags": [
       "Health",
       "Armor",
-      "MagicResist"
+      "AbilityHaste"
     ],
     "slot": "item",
     "stats": {
-      "maxHealth": 450,
-      "armor": 30,
-      "magicResist": 30,
-      "abilityHaste": 10
+      "maxHealth": 425,
+      "armor": 20,
+      "abilityHaste": 15
     },
     "effects": [
       {
         "name": "Immolate",
         "kind": "passive",
-        "description": "While in combat, deal 16 - 25 (based on level) (+0.8% bonus health) magic damage per second to nearby enemies (325 range), increased to 130% against monsters, and 175% - 250% (based on level) against minions. Damaging champions or epic monsters with Immolate increases the damage by 11% for 5 seconds, stacking up to 4 times for 44%."
+        "description": "Unique – Immolate: While in combat, deal 16 - 25 (based on level) (+0.8% bonus health) magic damage per second to nearby enemies (325 range), increased to 130% against monsters and 175% - 250% (based on level) against minions. Damaging champions or epic monsters with Immolate increases the damage by 11% for 5 seconds, stacking up to 4 times for 44%."
+      },
+      {
+        "name": "Flametouch",
+        "kind": "passive",
+        "description": "Unique – Flametouch: At maximum Immolate stacks, your basic attacks burn nearby enemies for 50% of Immolate's damage over 3 seconds."
       }
     ],
     "icon": "3068"
