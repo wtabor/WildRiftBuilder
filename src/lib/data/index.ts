@@ -16,7 +16,7 @@ import metaRaw from "@data/patches/7.1/meta.json";
  * folder under data/patches/<patch>/ and bump these imports (or, later, make
  * this dynamic with a patch selector).
  */
-export const CURRENT_PATCH = "7.1";
+export const CURRENT_PATCH = "7.1g";
 
 // Parse once at module load so any malformed data fails loudly and early.
 export const patchMeta: PatchMeta = PatchMetaSchema.parse(metaRaw);

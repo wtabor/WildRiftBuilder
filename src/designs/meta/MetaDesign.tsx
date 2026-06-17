@@ -125,7 +125,7 @@ export default function MetaDesign() {
                         onRemove={removeItemAt}
                         onClear={clearItems}
                       />
-                      <Shop onAdd={addItem} full={full} />
+                      <Shop onAdd={addItem} full={full} ownedIds={build.itemIds} />
                     </div>
                     <aside className="space-y-3">
                       <StatPanel stats={totals.stats} attackSpeed={totals.attackSpeed} />
@@ -573,7 +573,16 @@ function BuildPath({
 
 /* ── Shop ─────────────────────────────────────────────────────────────── */
 
-function Shop({ onAdd, full }: { onAdd: (id: string) => void; full: boolean }) {
+function Shop({
+  onAdd,
+  full,
+  ownedIds,
+}: {
+  onAdd: (id: string) => void;
+  full: boolean;
+  ownedIds: string[];
+}) {
+  const owned = useMemo(() => new Set(ownedIds), [ownedIds]);
   const [q, setQ] = useState("");
   const [filters, setFilters] = useState<Set<StatKey>>(new Set());
 
@@ -643,9 +652,18 @@ function Shop({ onAdd, full }: { onAdd: (id: string) => void; full: boolean }) {
       )}
 
       <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-3">
-        {filtered.map((it) => (
-          <ItemCard key={it.id} item={it} onAdd={onAdd} disabled={full} />
-        ))}
+        {filtered.map((it) => {
+          const isOwned = owned.has(it.id);
+          return (
+            <ItemCard
+              key={it.id}
+              item={it}
+              onAdd={onAdd}
+              disabled={full || isOwned}
+              owned={isOwned}
+            />
+          );
+        })}
         {filtered.length === 0 && (
           <p className="col-span-full py-6 text-center text-sm text-meta-mute">No items match.</p>
         )}
@@ -658,10 +676,12 @@ function ItemCard({
   item,
   onAdd,
   disabled,
+  owned,
 }: {
   item: Item;
   onAdd: (id: string) => void;
   disabled: boolean;
+  owned?: boolean;
 }) {
   const eff = goldEfficiency(item);
   const lines = itemStatLines(item);
@@ -686,9 +706,15 @@ function ItemCard({
             {formatGold(item.cost)}
           </div>
         </div>
-        <span className="grid h-6 w-6 shrink-0 place-items-center rounded bg-meta-raised text-meta-mute transition group-hover:bg-meta-blue group-hover:text-white">
-          <PlusIcon width={14} height={14} />
-        </span>
+        {owned ? (
+          <span className="shrink-0 rounded bg-meta-green/15 px-1.5 py-0.5 text-[10px] font-bold text-meta-green">
+            Owned
+          </span>
+        ) : (
+          <span className="grid h-6 w-6 shrink-0 place-items-center rounded bg-meta-raised text-meta-mute transition group-hover:bg-meta-blue group-hover:text-white">
+            <PlusIcon width={14} height={14} />
+          </span>
+        )}
       </div>
       <ul className="mt-2 space-y-0.5">
         {lines.map((l) => (
@@ -699,6 +725,15 @@ function ItemCard({
           </li>
         ))}
       </ul>
+      {item.effects.length > 0 && (
+        <ul className="mt-2 space-y-1 border-t border-meta-border/60 pt-2">
+          {item.effects.map((e) => (
+            <li key={e.name} className="text-[10px] leading-snug text-meta-mute">
+              <span className="font-bold text-meta-text/80">{e.name}</span> {e.description}
+            </li>
+          ))}
+        </ul>
+      )}
       {eff !== null && (
         <span
           className={`mt-2 inline-flex w-fit rounded px-1.5 py-0.5 text-[10px] font-bold ${

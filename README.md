@@ -36,9 +36,9 @@ and the polish checklist live in **[DESIGN_WORKFLOW.md](./DESIGN_WORKFLOW.md)**.
 
 Build state is URL-encoded, so any build is shareable straight from its link.
 
-> ⚠️ The data under `data/patches/7.1/` is **illustrative sample data**, not yet hand-verified
-> against in-game Wild Rift values. The patch badge shows "sample data" until `meta.json` is marked
-> `"verified": true`.
+> ⚠️ The data under `data/patches/7.1/` (patch **7.1g**) is **illustrative sample data**, not yet
+> hand-verified against in-game Wild Rift values. The patch badge shows "sample data" until
+> `meta.json` is marked `"verified": true`.
 
 ## Architecture
 

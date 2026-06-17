@@ -62,7 +62,10 @@ export function useBuildState() {
 
   const addItem = useCallback((itemId: string) => {
     setBuild((b) =>
-      b.itemIds.length >= MAX_ITEMS ? b : { ...b, itemIds: [...b.itemIds, itemId] },
+      // Max 6 items, and never two of the same major item (e.g. two Bloodthirsters).
+      b.itemIds.length >= MAX_ITEMS || b.itemIds.includes(itemId)
+        ? b
+        : { ...b, itemIds: [...b.itemIds, itemId] },
     );
   }, []);
 
