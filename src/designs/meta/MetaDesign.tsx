@@ -7,7 +7,7 @@ import { encodeBuild, useBuildState } from "@/state/buildState";
 import { STAT_META, type Ability, type Champion, type Item, type StatBlock, type StatKey } from "@/lib/schema";
 import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/statDisplay";
 import { formatStat, formatGold } from "@/lib/format";
-import { initials, hashHue, itemClass, ITEM_CLASS_COLOR, championIconUrl } from "@/lib/visual";
+import { initials, hashHue, itemClass, ITEM_CLASS_COLOR, championIconUrl, itemIconUrl } from "@/lib/visual";
 import { useShare } from "@/lib/useShare";
 import {
   SearchIcon,
@@ -540,7 +540,13 @@ function BuildPath({
                 className="group flex w-16 flex-col items-center gap-1"
               >
                 <span className="relative">
-                  <Portrait name={it.name} seed={it.id} color={ITEM_CLASS_COLOR[itemClass(it)]} size={48} />
+                  <Portrait
+                    name={it.name}
+                    seed={it.id}
+                    src={it.icon ? itemIconUrl(it.icon) : undefined}
+                    color={ITEM_CLASS_COLOR[itemClass(it)]}
+                    size={48}
+                  />
                   <span className="absolute inset-0 grid place-items-center rounded-xl bg-meta-bg2/85 opacity-0 transition group-hover:opacity-100">
                     <XIcon width={16} height={16} className="text-meta-coral" />
                   </span>
@@ -666,7 +672,13 @@ function ItemCard({
       className="group flex flex-col rounded-xl border border-meta-border bg-meta-panel2 p-2.5 text-left transition hover:border-meta-blue disabled:cursor-not-allowed disabled:opacity-40"
     >
       <div className="flex items-start gap-2.5">
-        <Portrait name={item.name} seed={item.id} color={ITEM_CLASS_COLOR[itemClass(item)]} size={40} />
+        <Portrait
+          name={item.name}
+          seed={item.id}
+          src={item.icon ? itemIconUrl(item.icon) : undefined}
+          color={ITEM_CLASS_COLOR[itemClass(item)]}
+          size={40}
+        />
         <div className="min-w-0 flex-1">
           <div className="truncate text-sm font-semibold text-meta-text">{item.name}</div>
           <div className="flex items-center gap-1 text-xs font-medium text-meta-gold">

@@ -62,6 +62,17 @@ export function championIconUrl(icon: string): string {
   return `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/img/champion/${icon}.png`;
 }
 
+/**
+ * Item art also comes from Data Dragon. Wild Rift items diverge from PC League
+ * and have no canonical public icon CDN, so the `icon` stored on an item is the
+ * closest League item ID (a numeric string, e.g. "3031" for Infinity Edge);
+ * Wild-Rift-only items with no League equivalent are left without an icon and
+ * fall back to the monogram tile. Same <img>/onError safety net as champions.
+ */
+export function itemIconUrl(icon: string): string {
+  return `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/img/item/${icon}.png`;
+}
+
 /** Which stat keys belong to a build's "primary" identity, for summaries. */
 export const PRIMARY_STATS: StatKey[] = [
   "attackDamage",
