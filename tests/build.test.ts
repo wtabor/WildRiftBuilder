@@ -13,7 +13,14 @@ function addItem(b: BuildState, itemId: string): BuildState {
     : { ...b, itemIds: [...b.itemIds, itemId] };
 }
 
-const base: BuildState = { championId: "ashe", level: 1, itemIds: [] };
+const base: BuildState = {
+  championId: "ashe",
+  level: 1,
+  itemIds: [],
+  itemIdsB: [],
+  compare: false,
+  active: "A",
+};
 
 describe("addItem dedup rule", () => {
   it("adds a new item", () => {
@@ -37,7 +44,18 @@ describe("addItem dedup rule", () => {
 
 describe("encode/decode round-trip", () => {
   it("preserves a build through the URL", () => {
-    const b: BuildState = { championId: "ashe", level: 7, itemIds: ["infinity-edge"] };
+    const b: BuildState = {
+      championId: "ashe", level: 7, itemIds: ["infinity-edge"],
+      itemIdsB: [], compare: false, active: "A",
+    };
+    expect(decodeBuild(encodeBuild(b))).toEqual(b);
+  });
+
+  it("preserves a two-build comparison through the URL", () => {
+    const b: BuildState = {
+      championId: "ashe", level: 9, itemIds: ["infinity-edge"],
+      itemIdsB: ["bloodthirster", "phantom-dancer"], compare: true, active: "B",
+    };
     expect(decodeBuild(encodeBuild(b))).toEqual(b);
   });
 });
