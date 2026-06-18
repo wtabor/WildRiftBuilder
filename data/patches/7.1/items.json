@@ -2356,5 +2356,204 @@
         "description": "Deal 0% \u2013 12% (based on target's bonus health) increased damage against enemy champions."
       }
     ]
+  },
+  {
+    "id": "staff-of-flowing-water",
+    "name": "Staff of Flowing Water",
+    "cost": 2600,
+    "tags": [
+      "AP",
+      "AbilityHaste",
+      "Health"
+    ],
+    "slot": "item",
+    "stats": {
+      "abilityPower": 45.0,
+      "abilityHaste": 20.0,
+      "healAndShieldPower": 0.05,
+      "maxHealth": 100.0
+    },
+    "effects": [
+      {
+        "name": "Rapids",
+        "kind": "passive",
+        "description": "Healing or shielding another allied champion grants both of you 10 ability haste and 20 \u2013 40 (based on target's level) ability power for 6 seconds."
+      }
+    ]
+  },
+  {
+    "id": "goredrinker",
+    "name": "Goredrinker",
+    "cost": 500,
+    "tags": [
+      "Enchant"
+    ],
+    "slot": "enchant",
+    "stats": {},
+    "effects": [
+      {
+        "name": "Thirsting Slash",
+        "kind": "active",
+        "description": "Deal 280% base AD physical damage to nearby enemies, healing for 20% AD(+ 12% missing health) for each champion hit (400-range) (15-second cooldown)."
+      }
+    ]
+  },
+  {
+    "id": "stridebreaker",
+    "name": "Stridebreaker",
+    "cost": 500,
+    "tags": [
+      "Enchant"
+    ],
+    "slot": "enchant",
+    "stats": {},
+    "effects": [
+      {
+        "name": "Breaking Shockwave",
+        "kind": "active",
+        "description": "Dash in the target direction (200-range), dealing 150% AD physical damage and slowing nearby enemies by 30% for 3 seconds (400-range) (35-second cooldown)."
+      }
+    ]
+  },
+  {
+    "id": "galeforce",
+    "name": "Galeforce",
+    "cost": 500,
+    "tags": [
+      "Enchant"
+    ],
+    "slot": "enchant",
+    "stats": {},
+    "effects": [
+      {
+        "name": "Cloudburst",
+        "kind": "active",
+        "description": "Dash in the target direction (325-range), firing three missiles to the most wounded enemy, prioritizing enemy champions (600-range) (50-second cooldown). Each missile deals 17 \u2013 50 (based on level)(+ 45% bonus AD) physical damage, for a total of 50 \u2013 150 (based on level)(+ 45% bonus AD)."
+      }
+    ]
+  },
+  {
+    "id": "dream-maker",
+    "name": "Dream Maker",
+    "cost": 500,
+    "tags": [
+      "Enchant"
+    ],
+    "slot": "enchant",
+    "stats": {},
+    "effects": [
+      {
+        "name": "Dream Maker",
+        "kind": "passive",
+        "description": "You gain the _Dream Bubbles_ buff every 8 seconds. Granting an active heal or shield to another allied champion will send _Dream Bubbles_ to them for 3 seconds, which grants 15% \u2013 30% (based on level) bonus move speed and enhances their next 2 basic attacks to deal 20 \u2013 90 (based on your level) bonus magic damage on-hit. Limitations Limited to 1 Boots enchantment. Recipe Cost 500 Sell 350 ID Builds into Berserker's Greaves Boots of Dynamism Boots of Mana Gluttonous Greaves Ionian Boots of Lucidity Mercury's Treads Plated Steelcaps Menu - Boots Dream Maker is an enchantment in Wild Rift."
+      }
+    ]
+  },
+  {
+    "id": "protobelt",
+    "name": "Protobelt",
+    "cost": 500,
+    "tags": [
+      "Enchant"
+    ],
+    "slot": "enchant",
+    "stats": {},
+    "effects": [
+      {
+        "name": "Protobelt",
+        "kind": "active",
+        "description": "Dash forward and unleash a cone of missiles that deal 75 \u2013 145 (based on level)magic damage. If champions or monsters are hit by more than one missile, the additional missiles deal only 10% damage (60 second cooldown). - Limited to 1 Boots enchantment."
+      }
+    ]
+  },
+  {
+    "id": "stasis",
+    "name": "Stasis",
+    "cost": 1000,
+    "tags": [
+      "Enchant"
+    ],
+    "slot": "enchant",
+    "stats": {},
+    "effects": [
+      {
+        "name": "Stasis",
+        "kind": "active",
+        "description": "Put yourself in stasis for 2.5 seconds, rendering yourself untargetable and invulnerable for the duration but becoming unable to move, declare basic attacks, cast abilities or item actives, or use any summoner spells during this time (120 second cooldown). - Limited to 1 Boots enchantment."
+      }
+    ]
+  },
+  {
+    "id": "quicksilver",
+    "name": "Quicksilver",
+    "cost": 800,
+    "tags": [
+      "Enchant"
+    ],
+    "slot": "enchant",
+    "stats": {},
+    "effects": [
+      {
+        "name": "Quicksilver",
+        "kind": "active",
+        "description": "Removes all crowd control (except knock-ups and knock-backs) effects currently affecting you, and gain 50% bonus movement speed for 1.5 seconds (60 second cooldown). - Limited to 1 Boots enchantment."
+      },
+      {
+        "name": "Perseverance",
+        "kind": "passive",
+        "description": "Incoming crowd control duration is reduced by 25% (except Airborne, Drowsy, Nearsight, Stasis, and Suppression). After Quicksilver ends, gain 30% Tenacity and 30% slow resist for 1.5 seconds. Limitations Limited to 1 Boots enchantment. Recipe Cost 800 Sell 560 ID Builds into Berserker's Greaves Boots of Dynamism Boots of Mana Gluttonous Greaves Ionian Boots of Lucidity Mercury's Treads Plated Steelcaps Menu - Boots Quicksilver Enchant is an enchantment in Wild Rift."
+      }
+    ]
+  },
+  {
+    "id": "veil",
+    "name": "Veil",
+    "cost": 500,
+    "tags": [
+      "Enchant"
+    ],
+    "slot": "enchant",
+    "stats": {},
+    "effects": [
+      {
+        "name": "Veil",
+        "kind": "active",
+        "description": "The nearby targeted ally gains a spell shield for 3 seconds (45 second cooldown)."
+      }
+    ]
+  },
+  {
+    "id": "gargoyle",
+    "name": "Gargoyle",
+    "cost": 500,
+    "tags": [
+      "Enchant"
+    ],
+    "slot": "enchant",
+    "stats": {},
+    "effects": [
+      {
+        "name": "Stoneplate",
+        "kind": "active",
+        "description": "Gain bonus health equal to 40% / 100% (based on nearby enemy champions) maximum health, while dealing 60% reduced outgoing damage for 4 seconds (45 second cooldown). - Limited to 1 Boots enchantment."
+      }
+    ]
+  },
+  {
+    "id": "glorious",
+    "name": "Glorious",
+    "cost": 500,
+    "tags": [
+      "Enchant"
+    ],
+    "slot": "enchant",
+    "stats": {},
+    "effects": [
+      {
+        "name": "Glory",
+        "kind": "active",
+        "description": "Gain 15% bonus movement speed for 4 seconds, increasing to 60% towards enemy champions or turrets. After 4 seconds or upon reaching an enemy champion emits a shockwave that slows nearby enemies by 50% for 2 seconds (45 second cooldown). - Limited to 1 Boots enchantment."
+      }
+    ]
   }
 ]

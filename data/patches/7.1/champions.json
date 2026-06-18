@@ -6225,5 +6225,140 @@
     },
     "abilities": [],
     "icon": "Thresh"
+  },
+  {
+    "id": "annie",
+    "name": "Annie",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Annie"
+  },
+  {
+    "id": "aurelion-sol",
+    "name": "Aurelion Sol",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 9.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "AurelionSol"
+  },
+  {
+    "id": "bard",
+    "name": "Bard",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 5.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.5
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 10.0,
+        "perLevel": 0.6
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Bard"
   }
 ]
