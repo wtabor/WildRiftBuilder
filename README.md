@@ -71,6 +71,18 @@ npm run build         # production build
 npm run smoke         # fetch every route, assert 200 (needs `npm run dev` running)
 ```
 
+## Automated data upkeep
+
+Accuracy + freshness is the moat, so two Claude-Code-driven GitHub Actions keep the
+dataset honest and complete (see `.github/workflows/`). Both need an `ANTHROPIC_API_KEY`
+repo secret; the backfill loop additionally needs a `WORKFLOW_PAT` (a PAT with
+`repo` + `workflow` scope) to re-dispatch itself across batches.
+
+| Workflow | Trigger | What it does |
+|---|---|---|
+| **Data Accuracy Verify** (`data-verify.yml`) | Daily (07:00 UTC) + manual | Audits every champion/item we ship against verified sources (official patch notes, riftgg, wildriftfire), corrects discrepancies on a branch, and opens a PR. Files an issue if a source is unreachable. |
+| **Roster Backfill** (`data-backfill.yml`) | Manual | Adds missing champions/items a batch per run and re-triggers itself until the full live roster is in the app. Each batch opens a PR; progress is tracked in [ROSTER.md](./ROSTER.md). |
+
 ## Tech
 
 Next.js (App Router) · TypeScript · Tailwind · Zod · Vitest · Geist (self-hosted). Deploys on Vercel.

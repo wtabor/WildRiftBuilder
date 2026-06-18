@@ -1,0 +1,121 @@
+name: Roster Backfill (add missing champions & items)
+
+# Workflow 2 — Backfill the full Wild Rift roster.
+#
+# The app currently ships only a handful of champions/items (sample data). This
+# workflow adds the ones that are MISSING, a batch per run, and re-triggers
+# itself until the roster is complete. The /goal is: keep going until every
+# Wild Rift champion and item is in our app, with schema-valid, sourced data.
+#
+# Why batches + self-re-dispatch instead of one giant run: a single Action run
+# has a time limit and a giant PR is unreviewable. Each run adds a bounded
+# batch, opens a PR, and (if work remains) queues the next run.
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_size:
+        description: "How many missing entities to add this run"
+        required: false
+        default: "8"
+      patch:
+        description: "Patch dir under data/patches to fill (blank = newest)"
+        required: false
+        default: ""
+      continue:
+        description: "Re-dispatch self until complete (needs WORKFLOW_PAT)"
+        required: false
+        default: "true"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: data-backfill
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    outputs:
+      remaining: ${{ steps.agent.outputs.remaining }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Add a batch of missing champions & items with Claude
+        id: agent
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: >-
+            --allowedTools "Read,Grep,Glob,Edit,Write,WebSearch,WebFetch,Bash(npm run validate-data),Bash(npm run typecheck),Bash(npm test),Bash(git checkout:*),Bash(git switch:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(gh pr create:*)"
+          prompt: |
+            You are the Wild Rift Builder roster-backfill agent. Read PLAN.md (§3, §4),
+            DESIGN_WORKFLOW.md, and the Zod schema at src/lib/schema/index.ts so every
+            record you add is schema-valid.
+
+            GOAL: continue until ALL Wild Rift champions and items are in our app.
+            This run adds ONE batch; the workflow re-runs to finish the rest.
+
+            Target patch: use the `patch` input "${{ github.event.inputs.patch }}" if
+            set, else the newest dir under data/patches/.
+            Batch size: ${{ github.event.inputs.batch_size }} (split sensibly between
+            champions and items; if one category is already complete, spend the whole
+            batch on the other).
+
+            Steps:
+              1. Build the authoritative roster: the full live list of Wild Rift
+                 champions and items from verified sources (official Wild Rift site,
+                 riftgg.app/items, wildriftfire.com). Cross-check ROSTER.md in the repo
+                 if present and update it.
+              2. Diff against champions.json / items.json to find what's MISSING.
+              3. Pick up to the batch size of missing entities and author full records
+                 — base stats, per-level growth, costs, stats, and abilities/effects
+                 where sourced — matching the schema and the style of existing records.
+                 Use Wild Rift values ONLY; never PC League / Data Dragon numbers.
+              4. Run `npm run validate-data`, `npm run typecheck`, and `npm test`. All
+                 MUST pass; fix until green.
+              5. Create branch `claude/backfill-<run_id>`, commit (message lists what
+                 was added + sources), push, and open a PR
+                 "Roster backfill: +N champions, +M items (patch <patch>)". The PR body
+                 lists each added entity with its source URL.
+              6. Report progress: write the count of entities STILL missing after this
+                 batch to the step output named `remaining` (e.g. via
+                 `echo "remaining=NN" >> "$GITHUB_OUTPUT"`). Use 0 when the roster is
+                 complete. Also append a one-line tally to the run summary.
+
+            Only add entities you can source. If a value is unverifiable, leave that
+            entity for a later run rather than guessing — note it in the PR body.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Loop: if entities remain and continuation is on, queue the next run.
+      # GITHUB_TOKEN-triggered dispatches do NOT start new workflow runs, so this
+      # uses WORKFLOW_PAT (a repo/Actions-scoped PAT). Without it, the loop stops
+      # after one batch and you re-run manually.
+      - name: Re-dispatch self until roster complete
+        if: >-
+          github.event.inputs.continue == 'true' &&
+          steps.agent.outputs.remaining != '' &&
+          steps.agent.outputs.remaining != '0'
+        env:
+          GH_TOKEN: ${{ secrets.WORKFLOW_PAT }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::WORKFLOW_PAT not set — stopping after this batch. Re-run manually to continue."
+            exit 0
+          fi
+          echo "Roster not complete (${{ steps.agent.outputs.remaining }} remaining); queuing next batch."
+          gh workflow run data-backfill.yml \
+            --ref "${{ github.ref_name }}" \
+            -f batch_size="${{ github.event.inputs.batch_size }}" \
+            -f patch="${{ github.event.inputs.patch }}" \
+            -f continue=true
