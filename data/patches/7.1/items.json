@@ -2334,5 +2334,27 @@
         "description": "Casting your ultimate ability will create a blizzard aura that damages nearby enemies, dealing 320 \u2013 600 (based on level) magic damage total, dealing 16 \u2013 30 (based on level) magic damage every 0.5 seconds over 10 seconds and slowing them by 25% for 1 second. You also leave behind a brief path that grants 40 bonus move speed to allied champions (30 second cooldown, on-cast)."
       }
     ]
+  },
+  {
+    "id": "lord-dominiks-regard",
+    "name": "Lord Dominik's Regard",
+    "cost": 3300,
+    "tags": [
+      "AD",
+      "Crit"
+    ],
+    "slot": "item",
+    "stats": {
+      "attackDamage": 25.0,
+      "armorPenPercent": 0.36,
+      "critChance": 0.15
+    },
+    "effects": [
+      {
+        "name": "Giant Slayer",
+        "kind": "passive",
+        "description": "Deal 0% \u2013 12% (based on target's bonus health) increased damage against enemy champions."
+      }
+    ]
   }
 ]
