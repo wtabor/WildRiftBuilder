@@ -6135,5 +6135,95 @@
     },
     "abilities": [],
     "icon": "Zyra"
+  },
+  {
+    "id": "senna",
+    "name": "Senna",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 50.0,
+        "perLevel": 0.0
+      },
+      "attackSpeed": {
+        "base": 0.2,
+        "perLevel": 0.012
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 570.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 65.0
+      },
+      "manaRegen": {
+        "base": 21.0,
+        "perLevel": 0.5
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.5
+    },
+    "abilities": [],
+    "icon": "Senna"
+  },
+  {
+    "id": "thresh",
+    "name": "Thresh",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 0.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 10.5,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.3
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Thresh"
   }
 ]
