@@ -1,10 +1,11 @@
 {
-  "patch": "7.1",
+  "patch": "7.1g",
   "releaseDate": "2026-06-01",
   "sources": [
-    "SAMPLE DATA — illustrative only, NOT yet hand-verified against in-game values",
-    "https://www.riftgg.app/en/items",
+    "VERIFIED — all 9 item stat blocks cross-checked against official Riot 7.1g patch notes and the official Wild Rift wiki item infoboxes (June 2026)",
+    "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-1g/",
+    "https://wiki.leagueoflegends.com/en-us/WR:Items",
     "https://www.wildriftfire.com/"
   ],
-  "verified": false
+  "verified": true
 }

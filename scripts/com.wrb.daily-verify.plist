@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Daily Wild Rift data-accuracy check (launchd user agent).
+
+  Install:
+    cp scripts/com.wrb.daily-verify.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.wrb.daily-verify.plist
+  Uninstall:
+    launchctl unload ~/Library/LaunchAgents/com.wrb.daily-verify.plist
+
+  Runs scripts/daily-verify.sh at 10:00 daily (launchd runs a missed job at the
+  next wake, so a sleeping laptop still gets covered). The job loads the
+  Firecrawl key from 1Password via `op`, so the 1Password app must be UNLOCKED
+  when it runs. If you want it to run fully unattended, switch to a 1Password
+  service-account token (see README) or set FIRECRAWL_API_KEY below directly.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.wrb.daily-verify</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/wtabor/CODE/WildRiftBuilder/scripts/daily-verify.sh</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>10</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+  <key>RunAtLoad</key>
+  <false/>
+  <key>StandardOutPath</key>
+  <string>/Users/wtabor/.cache/wrb/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/wtabor/.cache/wrb/launchd.err.log</string>
+</dict>
+</plist>

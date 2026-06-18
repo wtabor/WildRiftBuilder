@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { champions, getChampion, getItems, items, patchMeta } from "@/lib/data";
-import { computeBuild, goldEfficiency } from "@/lib/stats/engine";
+import { computeBuild, goldEfficiency, type BuildTotals } from "@/lib/stats/engine";
 import { encodeBuild, useBuildState } from "@/state/buildState";
 import { STAT_META, type Ability, type Champion, type Item, type StatBlock, type StatKey } from "@/lib/schema";
 import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/statDisplay";
@@ -48,8 +48,10 @@ const SLOT_LABEL: Record<Ability["slot"], string> = {
 };
 
 export default function MetaDesign() {
-  const { build, patch, setChampion, setLevel, addItem, removeItemAt, clearItems, maxItems } =
-    useBuildState();
+  const {
+    build, patch, setChampion, setLevel, addItem, removeItemAt, clearItems,
+    setActive, toggleCompare, maxItems,
+  } = useBuildState();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [champQuery, setChampQuery] = useState("");
 
@@ -59,12 +61,18 @@ export default function MetaDesign() {
 
   const champion = build.championId ? getChampion(build.championId) : undefined;
   const buildItems = useMemo(() => getItems(build.itemIds), [build.itemIds]);
+  const buildItemsB = useMemo(() => getItems(build.itemIdsB), [build.itemIdsB]);
   const totals = useMemo(
     () => (champion ? computeBuild(champion, build.level, buildItems) : null),
     [champion, build.level, buildItems],
   );
+  const totalsB = useMemo(
+    () => (champion && build.compare ? computeBuild(champion, build.level, buildItemsB) : null),
+    [champion, build.level, buildItemsB, build.compare],
+  );
   const query = encodeBuild(build);
-  const full = build.itemIds.length >= maxItems;
+  const activeList = build.active === "B" ? build.itemIdsB : build.itemIds;
+  const full = activeList.length >= maxItems;
   const showPicker = !champion || pickerOpen;
 
   function pick(id: string) {
@@ -119,16 +127,43 @@ export default function MetaDesign() {
                   <div className="mt-3 grid gap-3 lg:grid-cols-[minmax(0,1fr)_22rem]">
                     <div className="min-w-0 space-y-3">
                       <BuildPath
+                        label={build.compare ? "Build A" : "Your Build"}
                         items={buildItems}
                         maxItems={maxItems}
                         goldCost={totals.goldCost}
-                        onRemove={removeItemAt}
-                        onClear={clearItems}
+                        onRemove={(i) => removeItemAt("A", i)}
+                        onClear={() => clearItems("A")}
+                        active={build.compare && build.active === "A"}
+                        onFocus={build.compare ? () => setActive("A") : undefined}
+                        compareEnabled={build.compare}
+                        onToggleCompare={toggleCompare}
                       />
-                      <Shop onAdd={addItem} full={full} />
+                      {build.compare && totalsB && (
+                        <BuildPath
+                          label="Build B"
+                          items={buildItemsB}
+                          maxItems={maxItems}
+                          goldCost={totalsB.goldCost}
+                          onRemove={(i) => removeItemAt("B", i)}
+                          onClear={() => clearItems("B")}
+                          active={build.active === "B"}
+                          onFocus={() => setActive("B")}
+                          compareEnabled={build.compare}
+                        />
+                      )}
+                      <Shop
+                        onAdd={addItem}
+                        full={full}
+                        ownedIds={activeList}
+                        addingTo={build.compare ? build.active : undefined}
+                      />
                     </div>
                     <aside className="space-y-3">
-                      <StatPanel stats={totals.stats} attackSpeed={totals.attackSpeed} />
+                      {build.compare && totalsB ? (
+                        <CompareStatPanel a={totals} b={totalsB} />
+                      ) : (
+                        <StatPanel stats={totals.stats} attackSpeed={totals.attackSpeed} />
+                      )}
                     </aside>
                   </div>
                 </>
@@ -156,9 +191,18 @@ function SectionTitle({ title, sub, right }: { title: string; sub?: string; righ
   );
 }
 
-function Panel({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function Panel({
+  children,
+  className = "",
+  onClick,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+}) {
   return (
     <section
+      onClick={onClick}
       className={`rounded-2xl border border-meta-border bg-meta-panel shadow-soft ${className}`}
     >
       {children}
@@ -496,32 +540,70 @@ function StatStrip({ totals }: { totals: ReturnType<typeof computeBuild> }) {
 /* ── Build path ───────────────────────────────────────────────────────── */
 
 function BuildPath({
+  label = "Your Build",
   items: buildItems,
   maxItems,
   goldCost,
   onRemove,
   onClear,
+  active = false,
+  onFocus,
+  compareEnabled = false,
+  onToggleCompare,
 }: {
+  label?: string;
   items: Item[];
   maxItems: number;
   goldCost: number;
   onRemove: (i: number) => void;
   onClear: () => void;
+  active?: boolean;
+  onFocus?: () => void;
+  compareEnabled?: boolean;
+  onToggleCompare?: () => void;
 }) {
   const slots = Array.from({ length: maxItems }, (_, i) => buildItems[i] ?? null);
   return (
-    <Panel className="p-4" >
+    <Panel
+      className={`p-4 transition ${onFocus ? "cursor-pointer" : ""} ${
+        active ? "ring-2 ring-meta-blue" : ""
+      }`}
+      onClick={onFocus}
+    >
       <SectionTitle
-        title="Your Build"
+        title={label}
         sub={`${buildItems.length}/${maxItems} items`}
         right={
           <div className="flex items-center gap-3">
+            {active && (
+              <span className="rounded bg-meta-blue/15 px-1.5 py-0.5 text-[10px] font-bold text-meta-blue">
+                Adding here
+              </span>
+            )}
             <span className="tabular flex items-center gap-1 text-sm font-bold text-meta-gold">
               <GoldIcon width={15} height={15} />
               {formatGold(goldCost)}
             </span>
+            {onToggleCompare && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggleCompare();
+                }}
+                className={`rounded-lg border px-2 py-0.5 text-xs font-medium transition ${
+                  compareEnabled
+                    ? "border-meta-blue bg-meta-blue/10 text-meta-blue"
+                    : "border-meta-border text-meta-mute hover:text-meta-text"
+                }`}
+              >
+                {compareEnabled ? "Comparing" : "Compare"}
+              </button>
+            )}
             <button
-              onClick={onClear}
+              onClick={(e) => {
+                e.stopPropagation();
+                onClear();
+              }}
               disabled={buildItems.length === 0}
               className="text-xs text-meta-mute transition hover:text-meta-coral disabled:opacity-30"
             >
@@ -573,7 +655,18 @@ function BuildPath({
 
 /* ── Shop ─────────────────────────────────────────────────────────────── */
 
-function Shop({ onAdd, full }: { onAdd: (id: string) => void; full: boolean }) {
+function Shop({
+  onAdd,
+  full,
+  ownedIds,
+  addingTo,
+}: {
+  onAdd: (id: string) => void;
+  full: boolean;
+  ownedIds: string[];
+  addingTo?: "A" | "B";
+}) {
+  const owned = useMemo(() => new Set(ownedIds), [ownedIds]);
   const [q, setQ] = useState("");
   const [filters, setFilters] = useState<Set<StatKey>>(new Set());
 
@@ -599,6 +692,7 @@ function Shop({ onAdd, full }: { onAdd: (id: string) => void; full: boolean }) {
     <Panel className="p-4">
       <SectionTitle
         title="Item Shop"
+        sub={addingTo ? `→ Build ${addingTo}` : undefined}
         right={
           <div className="relative">
             <SearchIcon
@@ -643,9 +737,18 @@ function Shop({ onAdd, full }: { onAdd: (id: string) => void; full: boolean }) {
       )}
 
       <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-3">
-        {filtered.map((it) => (
-          <ItemCard key={it.id} item={it} onAdd={onAdd} disabled={full} />
-        ))}
+        {filtered.map((it) => {
+          const isOwned = owned.has(it.id);
+          return (
+            <ItemCard
+              key={it.id}
+              item={it}
+              onAdd={onAdd}
+              disabled={full || isOwned}
+              owned={isOwned}
+            />
+          );
+        })}
         {filtered.length === 0 && (
           <p className="col-span-full py-6 text-center text-sm text-meta-mute">No items match.</p>
         )}
@@ -658,10 +761,12 @@ function ItemCard({
   item,
   onAdd,
   disabled,
+  owned,
 }: {
   item: Item;
   onAdd: (id: string) => void;
   disabled: boolean;
+  owned?: boolean;
 }) {
   const eff = goldEfficiency(item);
   const lines = itemStatLines(item);
@@ -686,9 +791,15 @@ function ItemCard({
             {formatGold(item.cost)}
           </div>
         </div>
-        <span className="grid h-6 w-6 shrink-0 place-items-center rounded bg-meta-raised text-meta-mute transition group-hover:bg-meta-blue group-hover:text-white">
-          <PlusIcon width={14} height={14} />
-        </span>
+        {owned ? (
+          <span className="shrink-0 rounded bg-meta-green/15 px-1.5 py-0.5 text-[10px] font-bold text-meta-green">
+            Owned
+          </span>
+        ) : (
+          <span className="grid h-6 w-6 shrink-0 place-items-center rounded bg-meta-raised text-meta-mute transition group-hover:bg-meta-blue group-hover:text-white">
+            <PlusIcon width={14} height={14} />
+          </span>
+        )}
       </div>
       <ul className="mt-2 space-y-0.5">
         {lines.map((l) => (
@@ -699,6 +810,15 @@ function ItemCard({
           </li>
         ))}
       </ul>
+      {item.effects.length > 0 && (
+        <ul className="mt-2 space-y-1 border-t border-meta-border/60 pt-2">
+          {item.effects.map((e) => (
+            <li key={e.name} className="text-[10px] leading-snug text-meta-mute">
+              <span className="font-bold text-meta-text/80">{e.name}</span> {e.description}
+            </li>
+          ))}
+        </ul>
+      )}
       {eff !== null && (
         <span
           className={`mt-2 inline-flex w-fit rounded px-1.5 py-0.5 text-[10px] font-bold ${
@@ -743,6 +863,89 @@ function StatPanel({ stats, attackSpeed }: { stats: StatBlock; attackSpeed: numb
                     <span className="tabular font-bold text-meta-text">{r.display}</span>
                   </div>
                 ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Panel>
+  );
+}
+
+/* ── Comparison stat panel (A vs B) ───────────────────────────────────── */
+
+function CompareStatPanel({ a, b }: { a: BuildTotals; b: BuildTotals }) {
+  const rowsA = statRows(a.stats, a.attackSpeed);
+  const rowsB = statRows(b.stats, b.attackSpeed);
+  type Cell = { label: string; group: StatGroup; aDisp?: string; bDisp?: string; aVal: number; bVal: number };
+  const byKey = new Map<StatKey, Cell>();
+  for (const r of rowsA)
+    byKey.set(r.key, { label: r.label, group: r.group, aDisp: r.display, aVal: r.value, bVal: 0 });
+  for (const r of rowsB) {
+    const e = byKey.get(r.key) ?? { label: r.label, group: r.group, aVal: 0, bVal: 0 };
+    e.bDisp = r.display;
+    e.bVal = r.value;
+    byKey.set(r.key, e);
+  }
+  const groups: StatGroup[] = ["offense", "defense", "utility"];
+  const cells = [...byKey.entries()];
+
+  const Head = () => (
+    <div className="flex items-center justify-between gap-2 border-b border-meta-border pb-1.5 text-[11px] font-bold uppercase tracking-wider text-meta-mute">
+      <span className="flex-1">Stat</span>
+      <span className="w-14 text-right text-meta-blue">A</span>
+      <span className="w-14 text-right text-meta-purple">B</span>
+    </div>
+  );
+
+  const goldDelta = b.goldCost - a.goldCost;
+  return (
+    <Panel className="p-4">
+      <div id="stats" className="-mt-16 pt-16" />
+      <SectionTitle title="Compare" sub="Build A vs B" />
+      <div className="mt-3">
+        <Head />
+        <div className="flex items-center justify-between gap-2 border-b border-meta-border/60 py-1.5 text-sm">
+          <span className="flex flex-1 items-center gap-2 text-meta-text/80">
+            <GoldIcon width={14} height={14} className="text-meta-mute" /> Gold
+          </span>
+          <span className="tabular w-14 text-right font-bold text-meta-text">{formatGold(a.goldCost)}</span>
+          <span
+            className={`tabular w-14 text-right font-bold ${
+              goldDelta === 0 ? "text-meta-text" : goldDelta < 0 ? "text-meta-green" : "text-meta-coral"
+            }`}
+            title={goldDelta ? `${goldDelta > 0 ? "+" : ""}${goldDelta} vs A` : "same"}
+          >
+            {formatGold(b.goldCost)}
+          </span>
+        </div>
+      </div>
+      <div className="mt-3 space-y-4">
+        {groups.map((g) => {
+          const gr = cells.filter(([, c]) => c.group === g);
+          if (gr.length === 0) return null;
+          return (
+            <div key={g}>
+              <h3 className={`mb-1.5 text-[11px] font-bold uppercase tracking-wider ${GROUP_ACCENT[g]}`}>
+                {GROUP_LABEL[g]}
+              </h3>
+              <div>
+                {gr.map(([key, c]) => {
+                  const better = c.bVal > c.aVal ? "text-meta-green" : c.bVal < c.aVal ? "text-meta-coral" : "text-meta-text";
+                  return (
+                    <div
+                      key={key}
+                      className="flex items-center justify-between gap-2 border-b border-meta-border/60 py-1.5 text-sm last:border-0"
+                    >
+                      <span className="flex flex-1 items-center gap-2 text-meta-text/80">
+                        <StatIcon statKey={key} width={14} height={14} className="text-meta-mute" />
+                        {c.label}
+                      </span>
+                      <span className="tabular w-14 text-right font-bold text-meta-text">{c.aDisp ?? "—"}</span>
+                      <span className={`tabular w-14 text-right font-bold ${better}`}>{c.bDisp ?? "—"}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           );

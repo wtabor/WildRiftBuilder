@@ -240,5 +240,6125 @@
       }
     ],
     "icon": "Darius"
+  },
+  {
+    "id": "aatrox",
+    "name": "Aatrox",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 5.5
+      },
+      "attackSpeed": {
+        "base": 0.664,
+        "perLevel": 0.012
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 40.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 136.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 1.0
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Aatrox"
+  },
+  {
+    "id": "akali",
+    "name": "Akali",
+    "title": "",
+    "roles": [],
+    "resourceType": "energy",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 5.5
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 140.0
+      },
+      "healthRegen": {
+        "base": 10.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Akali"
+  },
+  {
+    "id": "akshan",
+    "name": "Akshan",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 5.5
+      },
+      "attackSpeed": {
+        "base": 0.5,
+        "perLevel": 0.007
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Akshan"
+  },
+  {
+    "id": "alistar",
+    "name": "Alistar",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 52.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 720.0,
+        "perLevel": 144.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Alistar"
+  },
+  {
+    "id": "ambessa",
+    "name": "Ambessa",
+    "title": "",
+    "roles": [],
+    "resourceType": "energy",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 43.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Ambessa"
+  },
+  {
+    "id": "amumu",
+    "name": "Amumu",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 104.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 65.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Amumu"
+  },
+  {
+    "id": "aurora",
+    "name": "Aurora",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 420.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 14.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Aurora"
+  },
+  {
+    "id": "blitzcrank",
+    "name": "Blitzcrank",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 2.0
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 49.0,
+        "perLevel": 5.1
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 300.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Blitzcrank"
+  },
+  {
+    "id": "brand",
+    "name": "Brand",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Brand"
+  },
+  {
+    "id": "braum",
+    "name": "Braum",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 52.0,
+        "perLevel": 5.1
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 1.07
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Braum"
+  },
+  {
+    "id": "caitlyn",
+    "name": "Caitlyn",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 4.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Caitlyn"
+  },
+  {
+    "id": "camille",
+    "name": "Camille",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 10.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 33.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Camille"
+  },
+  {
+    "id": "corki",
+    "name": "Corki",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 9.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Corki"
+  },
+  {
+    "id": "diana",
+    "name": "Diana",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 140.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Diana"
+  },
+  {
+    "id": "dr-mundo",
+    "name": "Dr. Mundo",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 3.9
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 720.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "DrMundo"
+  },
+  {
+    "id": "draven",
+    "name": "Draven",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 66.0,
+        "perLevel": 4.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 480.0,
+        "perLevel": 65.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Draven"
+  },
+  {
+    "id": "ekko",
+    "name": "Ekko",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Ekko"
+  },
+  {
+    "id": "evelynn",
+    "name": "Evelynn",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 45.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 10.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Evelynn"
+  },
+  {
+    "id": "ezreal",
+    "name": "Ezreal",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 9.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Ezreal"
+  },
+  {
+    "id": "fiddlesticks",
+    "name": "Fiddlesticks",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 2.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 420.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 14.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Fiddlesticks"
+  },
+  {
+    "id": "fiora",
+    "name": "Fiora",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 70.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 650.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 300.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 9.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Fiora"
+  },
+  {
+    "id": "fizz",
+    "name": "Fizz",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 30.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 140.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 18.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Fizz"
+  },
+  {
+    "id": "galio",
+    "name": "Galio",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 44.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 144.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 33.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Galio"
+  },
+  {
+    "id": "garen",
+    "name": "Garen",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 5.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 52.0,
+        "perLevel": 5.8
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.6
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Garen"
+  },
+  {
+    "id": "gnar",
+    "name": "Gnar",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 43.0,
+        "perLevel": 3.5
+      },
+      "magicResist": {
+        "base": 32.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 88.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 1.0
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Gnar"
+  },
+  {
+    "id": "gragas",
+    "name": "Gragas",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 70.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 720.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Gragas"
+  },
+  {
+    "id": "graves",
+    "name": "Graves",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 66.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 1.0,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 40.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 10.5,
+        "perLevel": 0.94
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Graves"
+  },
+  {
+    "id": "gwen",
+    "name": "Gwen",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 52.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 10.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Gwen"
+  },
+  {
+    "id": "hecarim",
+    "name": "Hecarim",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 4.0
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.025
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Hecarim"
+  },
+  {
+    "id": "heimerdinger",
+    "name": "Heimerdinger",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 40.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 420.0,
+        "perLevel": 60.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.2
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Heimerdinger"
+  },
+  {
+    "id": "irelia",
+    "name": "Irelia",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.94
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 33.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Irelia"
+  },
+  {
+    "id": "janna",
+    "name": "Janna",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 45.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 104.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 21.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Janna"
+  },
+  {
+    "id": "jarvan-iv",
+    "name": "Jarvan IV",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 5.0
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 12.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "JarvanIV"
+  },
+  {
+    "id": "jax",
+    "name": "Jax",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 12.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Jax"
+  },
+  {
+    "id": "jayce",
+    "name": "Jayce",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 650.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 10.0,
+        "perLevel": 0.94
+      },
+      "mana": {
+        "base": 420.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Jayce"
+  },
+  {
+    "id": "jhin",
+    "name": "Jhin",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.0,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 9.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.5
+    },
+    "abilities": [],
+    "icon": "Jhin"
+  },
+  {
+    "id": "jinx",
+    "name": "Jinx",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 4.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.3
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Jinx"
+  },
+  {
+    "id": "kaisa",
+    "name": "Kai'Sa",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Kaisa"
+  },
+  {
+    "id": "kalista",
+    "name": "Kalista",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 4.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 1.4
+      },
+      "magicResist": {
+        "base": 32.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 340.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 10.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Kalista"
+  },
+  {
+    "id": "karma",
+    "name": "Karma",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 37.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 21.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Karma"
+  },
+  {
+    "id": "kassadin",
+    "name": "Kassadin",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 30.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 480.0,
+        "perLevel": 65.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 1.3
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Kassadin"
+  },
+  {
+    "id": "katarina",
+    "name": "Katarina",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 136.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Katarina"
+  },
+  {
+    "id": "kayle",
+    "name": "Kayle",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 37.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 16.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Kayle"
+  },
+  {
+    "id": "kayn",
+    "name": "Kayn",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 70.0,
+        "perLevel": 4.0
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 420.0,
+        "perLevel": 60.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Kayn"
+  },
+  {
+    "id": "kennen",
+    "name": "Kennen",
+    "title": "",
+    "roles": [],
+    "resourceType": "energy",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Kennen"
+  },
+  {
+    "id": "khazix",
+    "name": "Kha'Zix",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Khazix"
+  },
+  {
+    "id": "kindred",
+    "name": "Kindred",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 37.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 32.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 14.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 340.0,
+        "perLevel": 40.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.4
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Kindred"
+  },
+  {
+    "id": "kogmaw",
+    "name": "Kog'Maw",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 32.0,
+        "perLevel": 1.5
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.58
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 14.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "KogMaw"
+  },
+  {
+    "id": "ksante",
+    "name": "K'Sante",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 4.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 40.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.86
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.86
+      },
+      "moveSpeed": 358.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "KSante"
+  },
+  {
+    "id": "lee-sin",
+    "name": "Lee Sin",
+    "title": "",
+    "roles": [],
+    "resourceType": "energy",
+    "stats": {
+      "attackDamage": {
+        "base": 66.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 10.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "LeeSin"
+  },
+  {
+    "id": "leona",
+    "name": "Leona",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.012
+      },
+      "armor": {
+        "base": 55.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 750.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 1.07
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Leona"
+  },
+  {
+    "id": "lillia",
+    "name": "Lillia",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 2.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 32.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 420.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 14.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Lillia"
+  },
+  {
+    "id": "lissandra",
+    "name": "Lissandra",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 460.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 10.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Lissandra"
+  },
+  {
+    "id": "lucian",
+    "name": "Lucian",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.5
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Lucian"
+  },
+  {
+    "id": "lulu",
+    "name": "Lulu",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 46.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 104.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 480.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 21.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Lulu"
+  },
+  {
+    "id": "lux",
+    "name": "Lux",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 480.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 9.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Lux"
+  },
+  {
+    "id": "malphite",
+    "name": "Malphite",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 49.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Malphite"
+  },
+  {
+    "id": "maokai",
+    "name": "Maokai",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 66.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 49.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 10.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 60.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Maokai"
+  },
+  {
+    "id": "master-yi",
+    "name": "Master Yi",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "MasterYi"
+  },
+  {
+    "id": "mel",
+    "name": "Mel",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 3.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 30.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.22
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.58
+      },
+      "mana": {
+        "base": 480.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 9.0,
+        "perLevel": 1.15
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Mel"
+  },
+  {
+    "id": "milio",
+    "name": "Milio",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 50.0,
+        "perLevel": 2.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 28.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 105.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 420.0,
+        "perLevel": 60.0
+      },
+      "manaRegen": {
+        "base": 20.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Milio"
+  },
+  {
+    "id": "miss-fortune",
+    "name": "Miss Fortune",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 420.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "MissFortune"
+  },
+  {
+    "id": "mordekaiser",
+    "name": "Mordekaiser",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.012
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 40.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 1.0
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Mordekaiser"
+  },
+  {
+    "id": "morgana",
+    "name": "Morgana",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 37.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Morgana"
+  },
+  {
+    "id": "nami",
+    "name": "Nami",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 104.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 18.0,
+        "perLevel": 0.5
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Nami"
+  },
+  {
+    "id": "nasus",
+    "name": "Nasus",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 5.0
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 32.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 650.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 14.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Nasus"
+  },
+  {
+    "id": "nautilus",
+    "name": "Nautilus",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.012
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 720.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Nautilus"
+  },
+  {
+    "id": "nidalee",
+    "name": "Nidalee",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0001
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 5.5
+      },
+      "magicResist": {
+        "base": 40.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.65
+      },
+      "mana": {
+        "base": 420.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 34.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Nidalee"
+  },
+  {
+    "id": "nilah",
+    "name": "Nilah",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 37.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 32.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 10.0,
+        "perLevel": 0.4
+      },
+      "mana": {
+        "base": 340.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 10.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Nilah"
+  },
+  {
+    "id": "nocturne",
+    "name": "Nocturne",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 5.0
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 43.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 40.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 10.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Nocturne"
+  },
+  {
+    "id": "norra",
+    "name": "Norra",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 10.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 460.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 14.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Norra"
+  },
+  {
+    "id": "nunu-amp-willump",
+    "name": "Nunu & Willump",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 3.9
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Nunu"
+  },
+  {
+    "id": "olaf",
+    "name": "Olaf",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 3.9
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 12.0,
+        "perLevel": 0.94
+      },
+      "mana": {
+        "base": 340.0,
+        "perLevel": 33.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Olaf"
+  },
+  {
+    "id": "orianna",
+    "name": "Orianna",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 46.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 28.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Orianna"
+  },
+  {
+    "id": "ornn",
+    "name": "Ornn",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 4.0
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.012
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 40.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 720.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 12.0,
+        "perLevel": 1.2
+      },
+      "mana": {
+        "base": 38.0,
+        "perLevel": 6.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Ornn"
+  },
+  {
+    "id": "pantheon",
+    "name": "Pantheon",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 52.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 40.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 420.0,
+        "perLevel": 33.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Pantheon"
+  },
+  {
+    "id": "poppy",
+    "name": "Poppy",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 4.0
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 40.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Poppy"
+  },
+  {
+    "id": "pyke",
+    "name": "Pyke",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.017
+      },
+      "armor": {
+        "base": 50.0,
+        "perLevel": 5.5
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 3.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 136.0
+      },
+      "healthRegen": {
+        "base": 10.5,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.3
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Pyke"
+  },
+  {
+    "id": "rakan",
+    "name": "Rakan",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 49.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 34.0,
+        "perLevel": 1.6
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Rakan"
+  },
+  {
+    "id": "rammus",
+    "name": "Rammus",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 49.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Rammus"
+  },
+  {
+    "id": "rell",
+    "name": "Rell",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0001
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.86
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 40.0
+      },
+      "manaRegen": {
+        "base": 10.0,
+        "perLevel": 0.65
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Rell"
+  },
+  {
+    "id": "renekton",
+    "name": "Renekton",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 66.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Renekton"
+  },
+  {
+    "id": "rengar",
+    "name": "Rengar",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Rengar"
+  },
+  {
+    "id": "riven",
+    "name": "Riven",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 12.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Riven"
+  },
+  {
+    "id": "rumble",
+    "name": "Rumble",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 43.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Rumble"
+  },
+  {
+    "id": "ryze",
+    "name": "Ryze",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 40.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 136.0
+      },
+      "healthRegen": {
+        "base": 12.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 340.0,
+        "perLevel": 60.0
+      },
+      "manaRegen": {
+        "base": 10.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Ryze"
+  },
+  {
+    "id": "samira",
+    "name": "Samira",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 4.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.5
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Samira"
+  },
+  {
+    "id": "seraphine",
+    "name": "Seraphine",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 16.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Seraphine"
+  },
+  {
+    "id": "sett",
+    "name": "Sett",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.012
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 10.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Sett"
+  },
+  {
+    "id": "shen",
+    "name": "Shen",
+    "title": "",
+    "roles": [],
+    "resourceType": "energy",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 3.9
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Shen"
+  },
+  {
+    "id": "shyvana",
+    "name": "Shyvana",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Shyvana"
+  },
+  {
+    "id": "singed",
+    "name": "Singed",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 32.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 12.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Singed"
+  },
+  {
+    "id": "sion",
+    "name": "Sion",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.012
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 3.5
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 104.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.94
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 9.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Sion"
+  },
+  {
+    "id": "sivir",
+    "name": "Sivir",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 28.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 340.0,
+        "perLevel": 60.0
+      },
+      "manaRegen": {
+        "base": 10.0,
+        "perLevel": 1.2
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Sivir"
+  },
+  {
+    "id": "skarner",
+    "name": "Skarner",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 18.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Skarner"
+  },
+  {
+    "id": "smolder",
+    "name": "Smolder",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 14.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Smolder"
+  },
+  {
+    "id": "sona",
+    "name": "Sona",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 46.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 3.9
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 104.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 4.9
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Sona"
+  },
+  {
+    "id": "soraka",
+    "name": "Soraka",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 1.7
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 37.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 65.0
+      },
+      "manaRegen": {
+        "base": 18.0,
+        "perLevel": 0.5
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Soraka"
+  },
+  {
+    "id": "swain",
+    "name": "Swain",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 460.0,
+        "perLevel": 40.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Swain"
+  },
+  {
+    "id": "syndra",
+    "name": "Syndra",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 10.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Syndra"
+  },
+  {
+    "id": "taliyah",
+    "name": "Taliyah",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 18.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Taliyah"
+  },
+  {
+    "id": "talon",
+    "name": "Talon",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 66.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 460.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Talon"
+  },
+  {
+    "id": "teemo",
+    "name": "Teemo",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 18.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Teemo"
+  },
+  {
+    "id": "tristana",
+    "name": "Tristana",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 6.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 300.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Tristana"
+  },
+  {
+    "id": "tryndamere",
+    "name": "Tryndamere",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 5.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 3.9
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Tryndamere"
+  },
+  {
+    "id": "twisted-fate",
+    "name": "Twisted Fate",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 9.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "TwistedFate"
+  },
+  {
+    "id": "twitch",
+    "name": "Twitch",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 4.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 32.0,
+        "perLevel": 1.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 340.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 14.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Twitch"
+  },
+  {
+    "id": "urgot",
+    "name": "Urgot",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 40.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 136.0
+      },
+      "healthRegen": {
+        "base": 10.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Urgot"
+  },
+  {
+    "id": "varus",
+    "name": "Varus",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 570.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 33.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.5
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Varus"
+  },
+  {
+    "id": "vayne",
+    "name": "Vayne",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.027
+      },
+      "armor": {
+        "base": 31.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 570.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 300.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 9.0,
+        "perLevel": 0.5
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Vayne"
+  },
+  {
+    "id": "veigar",
+    "name": "Veigar",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 37.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 480.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 16.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Veigar"
+  },
+  {
+    "id": "velkoz",
+    "name": "Vel'Koz",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 37.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 120.0
+      },
+      "mana": {
+        "base": 480.0,
+        "perLevel": 40.0
+      },
+      "manaRegen": {
+        "base": 10.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Velkoz"
+  },
+  {
+    "id": "vex",
+    "name": "Vex",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 480.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Vex"
+  },
+  {
+    "id": "vi",
+    "name": "Vi",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 5.1
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 10.5,
+        "perLevel": 0.94
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Vi"
+  },
+  {
+    "id": "viego",
+    "name": "Viego",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 4.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.027
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Viego"
+  },
+  {
+    "id": "viktor",
+    "name": "Viktor",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.8
+      },
+      "mana": {
+        "base": 460.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 10.0,
+        "perLevel": 1.0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Viktor"
+  },
+  {
+    "id": "vladimir",
+    "name": "Vladimir",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 37.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Vladimir"
+  },
+  {
+    "id": "volibear",
+    "name": "Volibear",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 4.0
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.017
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.7
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 390.0,
+        "perLevel": 65.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Volibear"
+  },
+  {
+    "id": "warwick",
+    "name": "Warwick",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 112.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 340.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 16.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Warwick"
+  },
+  {
+    "id": "wukong",
+    "name": "Wukong",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 12.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 350.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "MonkeyKing"
+  },
+  {
+    "id": "xayah",
+    "name": "Xayah",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 5.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Xayah"
+  },
+  {
+    "id": "xin-zhao",
+    "name": "Xin Zhao",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 62.0,
+        "perLevel": 4.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 46.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.7
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "XinZhao"
+  },
+  {
+    "id": "yasuo",
+    "name": "Yasuo",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.5
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 12.0,
+        "perLevel": 0.94
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Yasuo"
+  },
+  {
+    "id": "yone",
+    "name": "Yone",
+    "title": "",
+    "roles": [],
+    "resourceType": "none",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 4.0
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.032
+      },
+      "armor": {
+        "base": 43.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 38.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 650.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.94
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Yone"
+  },
+  {
+    "id": "yuumi",
+    "name": "Yuumi",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 50.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.007
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 3.9
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 570.0,
+        "perLevel": 104.0
+      },
+      "healthRegen": {
+        "base": 10.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 49.0
+      },
+      "manaRegen": {
+        "base": 15.0,
+        "perLevel": 1.3
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Yuumi"
+  },
+  {
+    "id": "zed",
+    "name": "Zed",
+    "title": "",
+    "roles": [],
+    "resourceType": "energy",
+    "stats": {
+      "attackDamage": {
+        "base": 64.0,
+        "perLevel": 4.55
+      },
+      "attackSpeed": {
+        "base": 0.667,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 40.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 690.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 9.0,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "manaRegen": {
+        "base": 0,
+        "perLevel": 0
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Zed"
+  },
+  {
+    "id": "zeri",
+    "name": "Zeri",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 4.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.027
+      },
+      "armor": {
+        "base": 31.0,
+        "perLevel": 5.0
+      },
+      "magicResist": {
+        "base": 32.0,
+        "perLevel": 2.0
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 10.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 335.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Zeri"
+  },
+  {
+    "id": "ziggs",
+    "name": "Ziggs",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 3.6
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.0
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 460.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 16.0,
+        "perLevel": 0.9
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Ziggs"
+  },
+  {
+    "id": "zilean",
+    "name": "Zilean",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 45.0,
+        "perLevel": 4.3
+      },
+      "magicResist": {
+        "base": 28.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 460.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Zilean"
+  },
+  {
+    "id": "zoe",
+    "name": "Zoe",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 420.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Zoe"
+  },
+  {
+    "id": "zyra",
+    "name": "Zyra",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.5
+      },
+      "attackSpeed": {
+        "base": 0.804,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 37.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.5
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 420.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 14.0,
+        "perLevel": 0.8
+      },
+      "moveSpeed": 360.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Zyra"
+  },
+  {
+    "id": "senna",
+    "name": "Senna",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 50.0,
+        "perLevel": 0.0
+      },
+      "attackSpeed": {
+        "base": 0.2,
+        "perLevel": 0.012
+      },
+      "armor": {
+        "base": 35.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.4
+      },
+      "maxHealth": {
+        "base": 570.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 6.0,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 345.0,
+        "perLevel": 65.0
+      },
+      "manaRegen": {
+        "base": 21.0,
+        "perLevel": 0.5
+      },
+      "moveSpeed": 340.0,
+      "critDamageBase": 0.5
+    },
+    "abilities": [],
+    "icon": "Senna"
+  },
+  {
+    "id": "thresh",
+    "name": "Thresh",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 0.0
+      },
+      "magicResist": {
+        "base": 30.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 10.5,
+        "perLevel": 0.81
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 41.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.3
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Thresh"
+  },
+  {
+    "id": "annie",
+    "name": "Annie",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 600.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.55
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 12.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Annie"
+  },
+  {
+    "id": "aurelion-sol",
+    "name": "Aurelion Sol",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 52.0,
+        "perLevel": 2.65
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.0
+      },
+      "armor": {
+        "base": 34.0,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.2
+      },
+      "maxHealth": {
+        "base": 630.0,
+        "perLevel": 128.0
+      },
+      "healthRegen": {
+        "base": 7.5,
+        "perLevel": 0.68
+      },
+      "mana": {
+        "base": 435.0,
+        "perLevel": 57.0
+      },
+      "manaRegen": {
+        "base": 9.0,
+        "perLevel": 1.1
+      },
+      "moveSpeed": 345.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "AurelionSol"
+  },
+  {
+    "id": "bard",
+    "name": "Bard",
+    "title": "",
+    "roles": [],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 54.0,
+        "perLevel": 3.0
+      },
+      "attackSpeed": {
+        "base": 0.625,
+        "perLevel": 0.022
+      },
+      "armor": {
+        "base": 40.0,
+        "perLevel": 5.5
+      },
+      "magicResist": {
+        "base": 36.0,
+        "perLevel": 1.5
+      },
+      "maxHealth": {
+        "base": 660.0,
+        "perLevel": 120.0
+      },
+      "healthRegen": {
+        "base": 8.0,
+        "perLevel": 0.6
+      },
+      "mana": {
+        "base": 380.0,
+        "perLevel": 50.0
+      },
+      "manaRegen": {
+        "base": 10.0,
+        "perLevel": 0.6
+      },
+      "moveSpeed": 355.0,
+      "critDamageBase": 0.75
+    },
+    "abilities": [],
+    "icon": "Bard"
   }
 ]
