@@ -1,0 +1,112 @@
+name: Data Accuracy Verify (daily)
+
+# Workflow 1 — Scheduled daily loop.
+#
+# Reviews every champion and item already in the app and verifies the stats we
+# ship match the verified sources (official Wild Rift patch notes, the in-game
+# values, riftgg / wildriftfire). When it finds a discrepancy it corrects the
+# JSON on a branch and opens a PR; when everything checks out it records that in
+# the run summary and does nothing else.
+#
+# This is the "accuracy is the moat" guardrail from PLAN.md §7 turned into a
+# routine that runs without anyone having to remember to do it.
+
+on:
+  schedule:
+    # 07:00 UTC every day. Cron is UTC-only; adjust if you want a local time.
+    - cron: "0 7 * * *"
+  workflow_dispatch: # also runnable on demand from the Actions tab
+    inputs:
+      patch:
+        description: "Patch dir under data/patches to audit (blank = newest)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write # commit corrections to a branch
+  pull-requests: write # open the discrepancy PR
+  issues: write # or file an issue if a source can't be reached
+
+concurrency:
+  # Never run two audits at once; a new schedule tick cancels a stuck one.
+  group: data-verify
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - run: npm ci
+
+      # Sanity gate before we let the agent touch anything: today's committed
+      # data must already be schema-valid, so any failure the agent sees later
+      # is its own doing, not pre-existing rot.
+      - name: Validate committed data
+        run: npm run validate-data
+
+      - name: Audit data accuracy with Claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Tools the audit needs: read/grep/glob to inspect data, web search +
+          # fetch to reach verified sources, bash to re-run the validators, and
+          # edit/write to apply corrections.
+          claude_args: >-
+            --allowedTools "Read,Grep,Glob,Edit,Write,WebSearch,WebFetch,Bash(npm run validate-data),Bash(npm run typecheck),Bash(npm test),Bash(git checkout:*),Bash(git switch:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(gh pr create:*),Bash(gh issue create:*)"
+          prompt: |
+            You are the Wild Rift Builder data-accuracy auditor. Read DESIGN_WORKFLOW.md
+            and PLAN.md (§3, §7) first to understand the data model and the trust
+            requirements.
+
+            GOAL: verify that the champion and item stats we ship are accurate
+            against VERIFIED sources, and fix any that are wrong.
+
+            Scope:
+              - Audit the patch under data/patches/. Use the `patch` workflow input
+                if provided ("${{ github.event.inputs.patch }}"), otherwise the newest
+                patch directory.
+              - Every champion in champions.json and every item in items.json.
+
+            Verified sources, in priority order:
+              1. Official Riot Wild Rift patch notes (wildrift.leagueoflegends.com /
+                 the official patch-notes pages).
+              2. In-game / data-backed community references: riftgg.app/items,
+                 wildriftfire.com.
+            Cross-check at least two sources per value when possible. NEVER copy a
+            number from PC League (Data Dragon) — Wild Rift values differ (PLAN.md §3).
+
+            For each champion/item, check base stats, per-level growth, item stats,
+            costs, and ability base damage/scalings/cooldowns where sourced. Record
+            which source confirmed each value.
+
+            Procedure:
+              1. Inspect the data with Read/Grep. For each entity, look up the verified
+                 value(s) with WebSearch/WebFetch.
+              2. If you find a discrepancy, correct the JSON with Edit/Write, keeping it
+                 schema-valid. Update meta.json `sources` with the URLs you verified
+                 against, and set `verified: true` ONLY if you fully verified the whole
+                 file against a primary source.
+              3. After edits, run `npm run validate-data` and `npm run typecheck`; they
+                 MUST pass. If they fail, fix until green.
+              4. If you made corrections: create a branch
+                 `claude/data-verify-<run_id>`, commit with a message summarizing what
+                 changed and the source for each fix, push, and open a PR titled
+                 "Data accuracy: corrections for patch <patch>". The PR body must list
+                 every change as `field: old -> new (source URL)`.
+              5. If a required source is unreachable from the runner (network policy),
+                 do NOT guess — open an issue titled "Data verify: source unreachable"
+                 listing what you could not verify, and skip those values.
+              6. If everything is already accurate, make no commit and just print a
+                 clear "All audited values match verified sources" summary.
+
+            Be conservative: only change a value when a verified source clearly
+            contradicts ours. Cite the source for every change.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
