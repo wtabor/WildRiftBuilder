@@ -17,7 +17,9 @@ const base: BuildState = {
   championId: "ashe",
   level: 1,
   itemIds: [],
+  bootsId: null,
   itemIdsB: [],
+  bootsIdB: null,
   compare: false,
   active: "A",
 };
@@ -46,7 +48,7 @@ describe("encode/decode round-trip", () => {
   it("preserves a build through the URL", () => {
     const b: BuildState = {
       championId: "ashe", level: 7, itemIds: ["infinity-edge"],
-      itemIdsB: [], compare: false, active: "A",
+      bootsId: null, itemIdsB: [], bootsIdB: null, compare: false, active: "A",
     };
     expect(decodeBuild(encodeBuild(b))).toEqual(b);
   });
@@ -54,7 +56,19 @@ describe("encode/decode round-trip", () => {
   it("preserves a two-build comparison through the URL", () => {
     const b: BuildState = {
       championId: "ashe", level: 9, itemIds: ["infinity-edge"],
-      itemIdsB: ["bloodthirster", "phantom-dancer"], compare: true, active: "B",
+      bootsId: null,
+      itemIdsB: ["bloodthirster", "phantom-dancer"], bootsIdB: null,
+      compare: true, active: "B",
+    };
+    expect(decodeBuild(encodeBuild(b))).toEqual(b);
+  });
+
+  it("preserves boots in both builds through the URL", () => {
+    const b: BuildState = {
+      championId: "ashe", level: 12, itemIds: ["infinity-edge"],
+      bootsId: "berserkers-greaves",
+      itemIdsB: ["bloodthirster"], bootsIdB: "plated-steelcaps",
+      compare: true, active: "A",
     };
     expect(decodeBuild(encodeBuild(b))).toEqual(b);
   });

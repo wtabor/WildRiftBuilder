@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { champions, getChampion, getItems, items, patchMeta } from "@/lib/data";
+import { champions, getChampion, getItem, getItems, items, patchMeta } from "@/lib/data";
 import { computeBuild, goldEfficiency, type BuildTotals } from "@/lib/stats/engine";
 import { encodeBuild, useBuildState } from "@/state/buildState";
 import { STAT_META, type Ability, type Champion, type Item, type StatBlock, type StatKey } from "@/lib/schema";
@@ -19,6 +19,7 @@ import {
   StatIcon,
   GoldIcon,
   SwordIcon,
+  BootIcon,
   ChevronRightIcon,
 } from "@/lib/icons";
 
@@ -51,7 +52,7 @@ const SLOT_LABEL: Record<Ability["slot"], string> = {
 export default function MetaDesign() {
   const {
     build, patch, setChampion, setLevel, addItem, removeItemAt, clearItems,
-    setActive, toggleCompare, maxItems,
+    setBoots, removeBoots, setActive, toggleCompare, maxItems,
   } = useBuildState();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [champQuery, setChampQuery] = useState("");
@@ -63,18 +64,41 @@ export default function MetaDesign() {
   const champion = build.championId ? getChampion(build.championId) : undefined;
   const buildItems = useMemo(() => getItems(build.itemIds), [build.itemIds]);
   const buildItemsB = useMemo(() => getItems(build.itemIdsB), [build.itemIdsB]);
+  const boots = build.bootsId ? getItem(build.bootsId) : undefined;
+  const bootsB = build.bootsIdB ? getItem(build.bootsIdB) : undefined;
+  // Boots are a stat source like any item — fold them into the totals.
+  const allItems = useMemo(
+    () => (boots ? [...buildItems, boots] : buildItems),
+    [buildItems, boots],
+  );
+  const allItemsB = useMemo(
+    () => (bootsB ? [...buildItemsB, bootsB] : buildItemsB),
+    [buildItemsB, bootsB],
+  );
   const totals = useMemo(
-    () => (champion ? computeBuild(champion, build.level, buildItems) : null),
-    [champion, build.level, buildItems],
+    () => (champion ? computeBuild(champion, build.level, allItems) : null),
+    [champion, build.level, allItems],
   );
   const totalsB = useMemo(
-    () => (champion && build.compare ? computeBuild(champion, build.level, buildItemsB) : null),
-    [champion, build.level, buildItemsB, build.compare],
+    () => (champion && build.compare ? computeBuild(champion, build.level, allItemsB) : null),
+    [champion, build.level, allItemsB, build.compare],
   );
   const query = encodeBuild(build);
   const activeList = build.active === "B" ? build.itemIdsB : build.itemIds;
+  const activeBoots = build.active === "B" ? build.bootsIdB : build.bootsId;
   const full = activeList.length >= maxItems;
   const showPicker = !champion || pickerOpen;
+
+  /** Route a shop selection to its slot: boots → boots slot, else item slots. */
+  function handleAdd(id: string) {
+    if (getItem(id)?.slot === "boots") setBoots(id);
+    else addItem(id);
+  }
+  // Shop "owned" markers + the boots id so the active build's boots reads as owned.
+  const ownedIds = useMemo(
+    () => (activeBoots ? [...activeList, activeBoots] : activeList),
+    [activeList, activeBoots],
+  );
 
   function pick(id: string) {
     setChampion(id);
@@ -130,9 +154,11 @@ export default function MetaDesign() {
                       <BuildPath
                         label={build.compare ? "Build A" : "Your Build"}
                         items={buildItems}
+                        boots={boots ?? null}
                         maxItems={maxItems}
                         goldCost={totals.goldCost}
                         onRemove={(i) => removeItemAt("A", i)}
+                        onRemoveBoots={() => removeBoots("A")}
                         onClear={() => clearItems("A")}
                         active={build.compare && build.active === "A"}
                         onFocus={build.compare ? () => setActive("A") : undefined}
@@ -143,9 +169,11 @@ export default function MetaDesign() {
                         <BuildPath
                           label="Build B"
                           items={buildItemsB}
+                          boots={bootsB ?? null}
                           maxItems={maxItems}
                           goldCost={totalsB.goldCost}
                           onRemove={(i) => removeItemAt("B", i)}
+                          onRemoveBoots={() => removeBoots("B")}
                           onClear={() => clearItems("B")}
                           active={build.active === "B"}
                           onFocus={() => setActive("B")}
@@ -153,9 +181,9 @@ export default function MetaDesign() {
                         />
                       )}
                       <Shop
-                        onAdd={addItem}
+                        onAdd={handleAdd}
                         full={full}
-                        ownedIds={activeList}
+                        ownedIds={ownedIds}
                         addingTo={build.compare ? build.active : undefined}
                       />
                     </div>
@@ -543,9 +571,11 @@ function StatStrip({ totals }: { totals: ReturnType<typeof computeBuild> }) {
 function BuildPath({
   label = "Your Build",
   items: buildItems,
+  boots = null,
   maxItems,
   goldCost,
   onRemove,
+  onRemoveBoots,
   onClear,
   active = false,
   onFocus,
@@ -554,9 +584,11 @@ function BuildPath({
 }: {
   label?: string;
   items: Item[];
+  boots?: Item | null;
   maxItems: number;
   goldCost: number;
   onRemove: (i: number) => void;
+  onRemoveBoots?: () => void;
   onClear: () => void;
   active?: boolean;
   onFocus?: () => void;
@@ -573,7 +605,7 @@ function BuildPath({
     >
       <SectionTitle
         title={label}
-        sub={`${buildItems.length}/${maxItems} items`}
+        sub={`${buildItems.length}/${maxItems} items${boots ? " + boots" : ""}`}
         right={
           <div className="flex items-center gap-3">
             {active && (
@@ -614,6 +646,37 @@ function BuildPath({
         }
       />
       <div className="mt-3 flex flex-wrap items-start gap-1.5">
+        <div className="flex items-center gap-1.5">
+          {boots ? (
+            <button
+              onClick={onRemoveBoots}
+              title={`Remove ${boots.name}`}
+              className="group flex w-16 flex-col items-center gap-1"
+            >
+              <span className="relative">
+                <Portrait
+                  name={boots.name}
+                  seed={boots.id}
+                  src={boots.icon ? itemIconUrl(boots.icon) : undefined}
+                  color={ITEM_CLASS_COLOR[itemClass(boots)]}
+                  size={48}
+                />
+                <span className="absolute inset-0 grid place-items-center rounded-xl bg-meta-bg2/85 opacity-0 transition group-hover:opacity-100">
+                  <XIcon width={16} height={16} className="text-meta-coral" />
+                </span>
+              </span>
+              <span className="line-clamp-1 text-center text-[10px] text-meta-mute">{boots.name}</span>
+            </button>
+          ) : (
+            <div className="flex w-16 flex-col items-center gap-1">
+              <span className="grid h-12 w-12 place-items-center rounded-xl border border-dashed border-meta-gold/40 text-meta-gold/60">
+                <BootIcon width={18} height={18} />
+              </span>
+              <span className="text-[10px] text-meta-gold/70">boots</span>
+            </div>
+          )}
+          <span className="mb-4 h-8 w-px shrink-0 self-center bg-meta-border" />
+        </div>
         {slots.map((it, i) => (
           <div key={i} className="flex items-center gap-1.5">
             {it ? (
@@ -740,12 +803,14 @@ function Shop({
       <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-3">
         {filtered.map((it) => {
           const isOwned = owned.has(it.id);
+          // Boots occupy their own slot, so a full 6-item build never blocks them.
+          const disabled = isOwned || (full && it.slot !== "boots");
           return (
             <ItemCard
               key={it.id}
               item={it}
               onAdd={onAdd}
-              disabled={full || isOwned}
+              disabled={disabled}
               owned={isOwned}
             />
           );

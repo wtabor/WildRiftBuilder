@@ -8,8 +8,10 @@ export type BuildKey = "A" | "B";
 export interface BuildState {
   championId: string | null;
   level: number;
-  itemIds: string[]; // build A — includes boots; engine treats all as stat sources
+  itemIds: string[]; // build A — the 6 regular item slots
+  bootsId: string | null; // build A — the dedicated boots slot (1 of 7 boots)
   itemIdsB: string[]; // build B — the optional comparison build
+  bootsIdB: string | null; // build B — its boots slot
   compare: boolean; // whether the comparison build is shown
   active: BuildKey; // which build the shop adds items to
 }
@@ -18,7 +20,9 @@ const DEFAULT: BuildState = {
   championId: null,
   level: 1,
   itemIds: [],
+  bootsId: null,
   itemIdsB: [],
+  bootsIdB: null,
   compare: false,
   active: "A",
 };
@@ -30,8 +34,10 @@ export function encodeBuild(b: BuildState): string {
   if (b.championId) params.set("c", b.championId);
   params.set("lvl", String(b.level));
   if (b.itemIds.length) params.set("i", b.itemIds.join(","));
+  if (b.bootsId) params.set("b", b.bootsId);
   if (b.compare) params.set("cmp", "1");
   if (b.itemIdsB.length) params.set("i2", b.itemIdsB.join(","));
+  if (b.bootsIdB) params.set("b2", b.bootsIdB);
   if (b.active === "B") params.set("a", "B");
   return params.toString();
 }
@@ -42,12 +48,16 @@ export function decodeBuild(search: string): BuildState {
   const lvl = Number(params.get("lvl"));
   const items = params.get("i");
   const itemsB = params.get("i2");
+  const boots = params.get("b");
+  const bootsB = params.get("b2");
   return {
     championId: champ || null,
     level: Number.isFinite(lvl) && lvl >= 1 ? Math.min(lvl, 15) : 1,
     itemIds: items ? items.split(",").filter(Boolean).slice(0, MAX_ITEMS) : [],
+    bootsId: boots || null,
     itemIdsB: itemsB ? itemsB.split(",").filter(Boolean).slice(0, MAX_ITEMS) : [],
-    compare: params.get("cmp") === "1" || Boolean(itemsB),
+    bootsIdB: bootsB || null,
+    compare: params.get("cmp") === "1" || Boolean(itemsB) || Boolean(bootsB),
     active: params.get("a") === "B" ? "B" : "A",
   };
 }
@@ -97,8 +107,27 @@ export function useBuildState() {
     });
   }, []);
 
+  /**
+   * Set (or, when re-selecting the same boots, clear) the active build's
+   * dedicated boots slot. Boots live outside the 6 item slots.
+   */
+  const setBoots = useCallback((bootsId: string) => {
+    setBuild((b) => {
+      const field = b.active === "B" ? "bootsIdB" : "bootsId";
+      return { ...b, [field]: b[field] === bootsId ? null : bootsId };
+    });
+  }, []);
+
+  const removeBoots = useCallback((key: BuildKey) => {
+    setBuild((b) => ({ ...b, [key === "B" ? "bootsIdB" : "bootsId"]: null }));
+  }, []);
+
   const clearItems = useCallback((key: BuildKey) => {
-    setBuild((b) => ({ ...b, [key === "B" ? "itemIdsB" : "itemIds"]: [] }));
+    setBuild((b) =>
+      key === "B"
+        ? { ...b, itemIdsB: [], bootsIdB: null }
+        : { ...b, itemIds: [], bootsId: null },
+    );
   }, []);
 
   const setActive = useCallback((active: BuildKey) => {
@@ -120,6 +149,8 @@ export function useBuildState() {
     setLevel,
     addItem,
     removeItemAt,
+    setBoots,
+    removeBoots,
     clearItems,
     setActive,
     toggleCompare,
