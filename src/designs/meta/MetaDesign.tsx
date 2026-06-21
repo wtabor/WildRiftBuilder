@@ -202,9 +202,9 @@ export default function MetaDesign() {
                     </div>
                     <aside className="space-y-3">
                       {build.compare && totalsB ? (
-                        <CompareStatPanel a={totals} b={totalsB} />
+                        <CompareStatPanel a={totals} b={totalsB} itemsA={allItems} itemsB={allItemsB} />
                       ) : (
-                        <StatPanel stats={totals.stats} attackSpeed={totals.attackSpeed} />
+                        <StatPanel stats={totals.stats} attackSpeed={totals.attackSpeed} items={allItems} />
                       )}
                     </aside>
                   </div>
@@ -955,7 +955,7 @@ function ItemCard({
 
 /* ── Stat panel (aside) ───────────────────────────────────────────────── */
 
-function StatPanel({ stats, attackSpeed }: { stats: StatBlock; attackSpeed: number }) {
+function StatPanel({ stats, attackSpeed, items }: { stats: StatBlock; attackSpeed: number; items: Item[] }) {
   const rows = statRows(stats, attackSpeed);
   const groups: StatGroup[] = ["offense", "defense", "utility"];
   return (
@@ -989,13 +989,83 @@ function StatPanel({ stats, attackSpeed }: { stats: StatBlock; attackSpeed: numb
           );
         })}
       </div>
+      <CombatEffects items={items} />
     </Panel>
+  );
+}
+
+/* ── Combat effects (passives/actives the stat sheet can't capture) ────── */
+
+type BuildEffect = { itemId: string; itemName: string; name: string; kind: "passive" | "active"; description: string };
+
+/** Flatten a build's item effects into a flat, render-ready list. */
+function collectEffects(items: Item[]): BuildEffect[] {
+  const out: BuildEffect[] = [];
+  for (const it of items) {
+    for (const e of it.effects) {
+      out.push({ itemId: it.id, itemName: it.name, name: e.name, kind: e.kind, description: e.description });
+    }
+  }
+  return out;
+}
+
+function EffectRow({ e }: { e: BuildEffect }) {
+  return (
+    <li className="leading-snug">
+      <span className="inline-flex items-center gap-1">
+        <span
+          className={`rounded px-1 py-px text-[8px] font-bold uppercase ${
+            e.kind === "active" ? "bg-meta-coral/15 text-meta-coral" : "bg-meta-blue/15 text-meta-blue"
+          }`}
+        >
+          {e.kind === "active" ? "Act" : "Pas"}
+        </span>
+        <span className="font-semibold text-meta-text/90">{e.name}</span>
+        <span className="text-[9px] text-meta-dim">· {e.itemName}</span>
+      </span>
+      <span className="block text-[10px] text-meta-mute">{e.description}</span>
+    </li>
+  );
+}
+
+/**
+ * Lists each item's passives/actives — the on-hit, stacking, and active effects
+ * (Terminus stacks, Kraken's third-hit true damage, BotRK %HP, …) that the raw
+ * stat totals above deliberately do NOT account for. Until the Phase-3 damage
+ * engine quantifies them, surfacing them keeps an on-hit build from *looking*
+ * strictly worse than a crit build that wins only the static stat sheet.
+ */
+function CombatEffects({ items }: { items: Item[] }) {
+  const effects = useMemo(() => collectEffects(items), [items]);
+  if (effects.length === 0) return null;
+  return (
+    <div className="mt-4 border-t border-meta-border pt-3">
+      <h3 className="text-[11px] font-bold uppercase tracking-wider text-meta-orange">
+        Combat Effects
+      </h3>
+      <p className="mb-2 text-[10px] text-meta-dim">Not counted in the stats above.</p>
+      <ul className="space-y-1.5">
+        {effects.map((e) => (
+          <EffectRow key={`${e.itemId}-${e.name}`} e={e} />
+        ))}
+      </ul>
+    </div>
   );
 }
 
 /* ── Comparison stat panel (A vs B) ───────────────────────────────────── */
 
-function CompareStatPanel({ a, b }: { a: BuildTotals; b: BuildTotals }) {
+function CompareStatPanel({
+  a,
+  b,
+  itemsA,
+  itemsB,
+}: {
+  a: BuildTotals;
+  b: BuildTotals;
+  itemsA: Item[];
+  itemsB: Item[];
+}) {
   const rowsA = statRows(a.stats, a.attackSpeed);
   const rowsB = statRows(b.stats, b.attackSpeed);
   type Cell = { label: string; group: StatGroup; aDisp?: string; bDisp?: string; aVal: number; bVal: number };
@@ -1072,7 +1142,47 @@ function CompareStatPanel({ a, b }: { a: BuildTotals; b: BuildTotals }) {
           );
         })}
       </div>
+      <CompareCombatEffects itemsA={itemsA} itemsB={itemsB} />
     </Panel>
+  );
+}
+
+/**
+ * Side-by-side combat effects for the A vs B compare. This is the qualitative
+ * counterpart to the stat table: the on-hit/stacking/active effects (Terminus
+ * stacks, Kraken third-hit, BotRK %HP, …) that the static stat columns above
+ * can't represent — so a comparison isn't read as "B has less AD, therefore B
+ * is worse" when B's value is in effects the sheet never counted.
+ */
+function CompareCombatEffects({ itemsA, itemsB }: { itemsA: Item[]; itemsB: Item[] }) {
+  const a = useMemo(() => collectEffects(itemsA), [itemsA]);
+  const b = useMemo(() => collectEffects(itemsB), [itemsB]);
+  if (a.length === 0 && b.length === 0) return null;
+  const Column = ({ label, accent, effects }: { label: string; accent: string; effects: BuildEffect[] }) => (
+    <div className="min-w-0">
+      <h4 className={`mb-1.5 text-[11px] font-bold ${accent}`}>{label}</h4>
+      {effects.length === 0 ? (
+        <p className="text-[10px] text-meta-dim">No combat effects.</p>
+      ) : (
+        <ul className="space-y-1.5">
+          {effects.map((e) => (
+            <EffectRow key={`${e.itemId}-${e.name}`} e={e} />
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+  return (
+    <div className="mt-4 border-t border-meta-border pt-3">
+      <h3 className="text-[11px] font-bold uppercase tracking-wider text-meta-orange">Combat Effects</h3>
+      <p className="mb-2 text-[10px] text-meta-dim">
+        Not counted in the stats above — on-hit, stacking & active effects.
+      </p>
+      <div className="grid grid-cols-2 gap-3">
+        <Column label="Build A" accent="text-meta-blue" effects={a} />
+        <Column label="Build B" accent="text-meta-purple" effects={b} />
+      </div>
+    </div>
   );
 }
 
