@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { champions, getChampion, getItem, getItems, items, patchMeta } from "@/lib/data";
 import { computeBuild, goldEfficiency, type BuildTotals } from "@/lib/stats/engine";
-import { encodeBuild, useBuildState } from "@/state/buildState";
+import { autoAttackDps, type AutoAttackDps } from "@/lib/damage/engine";
+import { encodeBuild, useBuildState, type TargetStats } from "@/state/buildState";
 import { STAT_META, type Ability, type Champion, type Item, type StatBlock, type StatKey } from "@/lib/schema";
 import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/statDisplay";
 import { formatStat, formatGold } from "@/lib/format";
@@ -52,7 +53,7 @@ const SLOT_LABEL: Record<Ability["slot"], string> = {
 export default function MetaDesign() {
   const {
     build, patch, setChampion, setLevel, addItem, removeItemAt, clearItems,
-    setBoots, removeBoots, setEnchant, removeEnchant, setActive, toggleCompare, maxItems,
+    setBoots, removeBoots, setEnchant, removeEnchant, setActive, setTarget, toggleCompare, maxItems,
   } = useBuildState();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [champQuery, setChampQuery] = useState("");
@@ -84,6 +85,20 @@ export default function MetaDesign() {
   const totalsB = useMemo(
     () => (champion && build.compare ? computeBuild(champion, build.level, allItemsB) : null),
     [champion, build.level, allItemsB, build.compare],
+  );
+  const dps = useMemo(
+    () =>
+      totals
+        ? autoAttackDps({ stats: totals.stats, attackSpeed: totals.attackSpeed, level: build.level, items: allItems }, build.target)
+        : null,
+    [totals, build.level, allItems, build.target],
+  );
+  const dpsB = useMemo(
+    () =>
+      totalsB
+        ? autoAttackDps({ stats: totalsB.stats, attackSpeed: totalsB.attackSpeed, level: build.level, items: allItemsB }, build.target)
+        : null,
+    [totalsB, build.level, allItemsB, build.target],
   );
   const query = encodeBuild(build);
   const activeList = build.active === "B" ? build.itemIdsB : build.itemIds;
@@ -155,7 +170,7 @@ export default function MetaDesign() {
                   />
                   <Tabs />
                   <LevelBar level={build.level} onChange={setLevel} />
-                  <StatStrip totals={totals} />
+                  <StatStrip totals={totals} dps={dps} />
 
                   <div className="mt-3 grid gap-3 lg:grid-cols-[minmax(0,1fr)_22rem]">
                     <div className="min-w-0 space-y-3">
@@ -201,10 +216,25 @@ export default function MetaDesign() {
                       />
                     </div>
                     <aside className="space-y-3">
-                      {build.compare && totalsB ? (
-                        <CompareStatPanel a={totals} b={totalsB} itemsA={allItems} itemsB={allItemsB} />
+                      <TargetDummy target={build.target} onChange={setTarget} />
+                      {build.compare && totalsB && dps && dpsB ? (
+                        <CompareStatPanel
+                          a={totals}
+                          b={totalsB}
+                          itemsA={allItems}
+                          itemsB={allItemsB}
+                          dpsA={dps}
+                          dpsB={dpsB}
+                        />
                       ) : (
-                        <StatPanel stats={totals.stats} attackSpeed={totals.attackSpeed} items={allItems} />
+                        dps && (
+                          <StatPanel
+                            stats={totals.stats}
+                            attackSpeed={totals.attackSpeed}
+                            items={allItems}
+                            dps={dps}
+                          />
+                        )
                       )}
                     </aside>
                   </div>
@@ -547,7 +577,7 @@ function LevelBar({ level, onChange }: { level: number; onChange: (n: number) =>
 
 /* ── Stat strip (headline totals) ─────────────────────────────────────── */
 
-function StatStrip({ totals }: { totals: ReturnType<typeof computeBuild> }) {
+function StatStrip({ totals, dps }: { totals: ReturnType<typeof computeBuild>; dps: AutoAttackDps | null }) {
   const s = totals.stats;
   const cells: { label: string; value: string; accent?: string }[] = [
     { label: "Gold", value: formatGold(totals.goldCost), accent: "text-meta-gold" },
@@ -557,9 +587,10 @@ function StatStrip({ totals }: { totals: ReturnType<typeof computeBuild> }) {
     { label: "Armor", value: formatStat("armor", s.armor ?? 0) },
     { label: "Magic Resist", value: formatStat("magicResist", s.magicResist ?? 0) },
     { label: "Atk Speed", value: totals.attackSpeed.toFixed(2) },
+    { label: "Auto DPS", value: dps ? Math.round(dps.dps).toLocaleString("en-US") : "—", accent: "text-meta-orange" },
   ];
   return (
-    <div className="mt-3 grid grid-cols-3 overflow-hidden rounded-2xl border border-meta-border bg-meta-panel shadow-soft sm:grid-cols-4 lg:grid-cols-7">
+    <div className="mt-3 grid grid-cols-3 overflow-hidden rounded-2xl border border-meta-border bg-meta-panel shadow-soft sm:grid-cols-4 lg:grid-cols-8">
       {cells.map((c, i) => (
         <div
           key={c.label}
@@ -955,7 +986,92 @@ function ItemCard({
 
 /* ── Stat panel (aside) ───────────────────────────────────────────────── */
 
-function StatPanel({ stats, attackSpeed, items }: { stats: StatBlock; attackSpeed: number; items: Item[] }) {
+/* ── Target dummy (the enemy DPS is computed against) ─────────────────── */
+
+function TargetDummy({
+  target,
+  onChange,
+}: {
+  target: TargetStats;
+  onChange: (patch: Partial<TargetStats>) => void;
+}) {
+  const fields: { key: keyof TargetStats; label: string; icon: StatKey }[] = [
+    { key: "armor", label: "Armor", icon: "armor" },
+    { key: "magicResist", label: "Magic Resist", icon: "magicResist" },
+    { key: "maxHealth", label: "Health", icon: "maxHealth" },
+  ];
+  return (
+    <Panel className="p-4">
+      <SectionTitle title="Target Dummy" sub="enemy to hit" />
+      <div className="mt-3 grid grid-cols-3 gap-2">
+        {fields.map((f) => (
+          <label key={f.key} className="flex flex-col gap-1">
+            <span className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-meta-mute">
+              <StatIcon statKey={f.icon} width={11} height={11} />
+              {f.label}
+            </span>
+            <input
+              type="number"
+              min={0}
+              value={target[f.key]}
+              onChange={(e) => onChange({ [f.key]: Number(e.target.value) } as Partial<TargetStats>)}
+              className="tabular w-full rounded-lg border border-meta-border bg-meta-panel2 px-2 py-1 text-sm font-semibold outline-none focus:border-meta-blue"
+            />
+          </label>
+        ))}
+      </div>
+    </Panel>
+  );
+}
+
+/* ── Damage breakdown (shared by single + compare panels) ─────────────── */
+
+function DamageReadout({ dps }: { dps: AutoAttackDps }) {
+  const { physical, magic, trueDamage } = dps.breakdown;
+  const parts = [
+    { label: "Physical", value: physical, accent: "text-meta-orange" },
+    { label: "Magic", value: magic, accent: "text-meta-blue" },
+    { label: "True", value: trueDamage, accent: "text-meta-text" },
+  ].filter((p) => p.value > 0.5);
+  return (
+    <div className="mt-4 border-t border-meta-border pt-3">
+      <h3 className="text-[11px] font-bold uppercase tracking-wider text-meta-orange">Auto-Attack Damage</h3>
+      <p className="mb-2 text-[10px] text-meta-dim">
+        Sustained, incl. crit & on-hit effects, vs the target dummy.
+      </p>
+      <div className="flex items-baseline justify-between">
+        <span className="text-sm text-meta-text/80">DPS</span>
+        <span className="tabular text-2xl font-bold text-meta-orange">
+          {Math.round(dps.dps).toLocaleString("en-US")}
+        </span>
+      </div>
+      <div className="mt-1 flex items-center justify-between text-[11px] text-meta-mute">
+        <span>{dps.perHit.toFixed(0)} per hit</span>
+        <span>{dps.attacksPerSecond.toFixed(2)} atk/s</span>
+      </div>
+      <ul className="mt-2 space-y-0.5">
+        {parts.map((p) => (
+          <li key={p.label} className="flex items-center justify-between text-[11px]">
+            <span className="text-meta-mute">{p.label} / hit</span>
+            <span className={`tabular font-semibold ${p.accent}`}>{p.value.toFixed(0)}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function StatPanel({
+  stats,
+  attackSpeed,
+  items,
+  dps,
+}: {
+  stats: StatBlock;
+  attackSpeed: number;
+  items: Item[];
+  dps: AutoAttackDps;
+}) {
   const rows = statRows(stats, attackSpeed);
   const groups: StatGroup[] = ["offense", "defense", "utility"];
   return (
@@ -989,6 +1105,7 @@ function StatPanel({ stats, attackSpeed, items }: { stats: StatBlock; attackSpee
           );
         })}
       </div>
+      <DamageReadout dps={dps} />
       <CombatEffects items={items} />
     </Panel>
   );
@@ -1060,11 +1177,15 @@ function CompareStatPanel({
   b,
   itemsA,
   itemsB,
+  dpsA,
+  dpsB,
 }: {
   a: BuildTotals;
   b: BuildTotals;
   itemsA: Item[];
   itemsB: Item[];
+  dpsA: AutoAttackDps;
+  dpsB: AutoAttackDps;
 }) {
   const rowsA = statRows(a.stats, a.attackSpeed);
   const rowsB = statRows(b.stats, b.attackSpeed);
@@ -1111,6 +1232,31 @@ function CompareStatPanel({
           </span>
         </div>
       </div>
+
+      {/* Headline payoff: effective auto-attack DPS, where an on-hit build can
+          beat a crit build that only wins the static stat sheet above. */}
+      <div className="mt-3 rounded-xl border border-meta-border bg-meta-panel2 p-2.5">
+        <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-meta-orange">
+          <span className="flex-1">Auto DPS</span>
+          <span className="w-14 text-right text-meta-blue">A</span>
+          <span className="w-14 text-right text-meta-purple">B</span>
+        </div>
+        <div className="mt-1 flex items-center justify-between gap-2">
+          <span className="flex-1 text-[10px] text-meta-dim">vs target dummy</span>
+          <span className="tabular w-14 text-right text-lg font-bold text-meta-text">
+            {Math.round(dpsA.dps).toLocaleString("en-US")}
+          </span>
+          <span
+            className={`tabular w-14 text-right text-lg font-bold ${
+              dpsB.dps > dpsA.dps ? "text-meta-green" : dpsB.dps < dpsA.dps ? "text-meta-coral" : "text-meta-text"
+            }`}
+            title={`${dpsB.dps > dpsA.dps ? "+" : ""}${Math.round(dpsB.dps - dpsA.dps)} DPS vs A`}
+          >
+            {Math.round(dpsB.dps).toLocaleString("en-US")}
+          </span>
+        </div>
+      </div>
+
       <div className="mt-3 space-y-4">
         {groups.map((g) => {
           const gr = cells.filter(([, c]) => c.group === g);

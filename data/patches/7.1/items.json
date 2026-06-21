@@ -16,12 +16,20 @@
       {
         "name": "Infinity",
         "kind": "passive",
-        "description": "Critical Strikes deal 205% damage instead of 175%."
+        "description": "Critical Strikes deal 205% damage instead of 175%.",
+        "mechanic": {
+          "kind": "crit",
+          "critDamageBonus": 0.3
+        }
       },
       {
         "name": "Limit Break",
         "kind": "passive",
-        "description": "Every 1% Critical Rate exceeding 100% is converted into 0.6% bonus Critical Strike Damage."
+        "description": "Every 1% Critical Rate exceeding 100% is converted into 0.6% bonus Critical Strike Damage.",
+        "mechanic": {
+          "kind": "crit",
+          "limitBreak": true
+        }
       }
     ],
     "icon": "3031"
@@ -47,7 +55,7 @@
       {
         "name": "Bloody",
         "kind": "passive",
-        "description": "Unique \u2013 Bloody: +8% Physical Vamp. Critical strikes gain an additional 4% Physical Vamp."
+        "description": "Unique – Bloody: +8% Physical Vamp. Critical strikes gain an additional 4% Physical Vamp."
       }
     ],
     "icon": "3072"
@@ -72,7 +80,7 @@
       {
         "name": "Shadowwalk",
         "kind": "passive",
-        "description": "Unique \u2013 Shadowwalk: +5% Movement Speed."
+        "description": "Unique – Shadowwalk: +5% Movement Speed."
       },
       {
         "name": "Spectral Waltz",
@@ -175,12 +183,12 @@
       {
         "name": "Immolate",
         "kind": "passive",
-        "description": "Unique \u2013 Immolate: While in combat, deal 16 - 25 (based on level) (+0.8% bonus health) magic damage per second to nearby enemies (325 range), increased to 130% against monsters and 175% - 250% (based on level) against minions. Damaging champions or epic monsters with Immolate increases the damage by 11% for 5 seconds, stacking up to 4 times for 44%."
+        "description": "Unique – Immolate: While in combat, deal 16 - 25 (based on level) (+0.8% bonus health) magic damage per second to nearby enemies (325 range), increased to 130% against monsters and 175% - 250% (based on level) against minions. Damaging champions or epic monsters with Immolate increases the damage by 11% for 5 seconds, stacking up to 4 times for 44%."
       },
       {
         "name": "Flametouch",
         "kind": "passive",
-        "description": "Unique \u2013 Flametouch: At maximum Immolate stacks, your basic attacks burn nearby enemies for 50% of Immolate's damage over 3 seconds."
+        "description": "Unique – Flametouch: At maximum Immolate stacks, your basic attacks burn nearby enemies for 50% of Immolate's damage over 3 seconds."
       }
     ],
     "icon": "3068"
@@ -433,7 +441,11 @@
       {
         "name": "Sunder",
         "kind": "passive",
-        "description": "Dealing physical damage to an enemy champion inflicts 6% armor reduction for 6 seconds, refreshing on subsequent hits and stacking up to 5 times for 30% reduction."
+        "description": "Dealing physical damage to an enemy champion inflicts 6% armor reduction for 6 seconds, refreshing on subsequent hits and stacking up to 5 times for 30% reduction.",
+        "mechanic": {
+          "kind": "shred",
+          "armorPercent": 0.3
+        }
       },
       {
         "name": "Chase",
@@ -464,7 +476,13 @@
       {
         "name": "Ruined Strikes",
         "kind": "passive",
-        "description": "Basic attacks deal bonus physical damage on-hit equal to (Melee 10% / Ranged 8.5%) of the target's current health, with a minimum of 15 against all units, and a maximum of 60 against monsters."
+        "description": "Basic attacks deal bonus physical damage on-hit equal to (Melee 10% / Ranged 8.5%) of the target's current health, with a minimum of 15 against all units, and a maximum of 60 against monsters.",
+        "mechanic": {
+          "kind": "onHit",
+          "damageType": "physical",
+          "currentHealthPct": 0.1,
+          "min": 15
+        }
       },
       {
         "name": "Drain",
@@ -1244,7 +1262,16 @@
       {
         "name": "Bring it Down",
         "kind": "passive",
-        "description": "Basic attacks on-hit grant a stack for 3 seconds, stacking up to 3 times upon which they are consumed to deal (Melee 120 - 160 / Ranged 110 - 150) (based on level) bonus physical damage on-hit, increased by 0% - 70% (based on target's missing health), for up to (Melee 204 - 272 / Ranged 187 - 255) (based on level) bonus physical damage."
+        "description": "Basic attacks on-hit grant a stack for 3 seconds, stacking up to 3 times upon which they are consumed to deal (Melee 120 - 160 / Ranged 110 - 150) (based on level) bonus physical damage on-hit, increased by 0% - 70% (based on target's missing health), for up to (Melee 204 - 272 / Ranged 187 - 255) (based on level) bonus physical damage.",
+        "mechanic": {
+          "kind": "onHit",
+          "damageType": "physical",
+          "everyNth": 3,
+          "flatByLevel": [
+            120,
+            160
+          ]
+        }
       }
     ]
   },
@@ -1830,7 +1857,12 @@
       {
         "name": "Wind Blade",
         "kind": "passive",
-        "description": "Basic attacks deal 15 bonus physical damage on-hit."
+        "description": "Basic attacks deal 15 bonus physical damage on-hit.",
+        "mechanic": {
+          "kind": "onHit",
+          "damageType": "physical",
+          "flat": 15
+        }
       }
     ]
   },
@@ -2064,12 +2096,22 @@
       {
         "name": "Shadow",
         "kind": "passive",
-        "description": "Basic attacks deal 35 bonus magic damage on-hit."
+        "description": "Basic attacks deal 35 bonus magic damage on-hit.",
+        "mechanic": {
+          "kind": "onHit",
+          "damageType": "magic",
+          "flat": 35
+        }
       },
       {
         "name": "Juxtaposition",
         "kind": "passive",
-        "description": "Basic attacks on-hit against champions alternate between Light and Dark hits, each granting a bonus for 5 seconds that stacks up to 3 times. Light hits grant 5 - 8 (based on level) bonus armor and bonus magic resist while Dark hits grant 11% armor penetration and magic penetration, for a total of 15 - 24 (based on level) bonus resistances and 33% penetration at maximum stacks of each."
+        "description": "Basic attacks on-hit against champions alternate between Light and Dark hits, each granting a bonus for 5 seconds that stacks up to 3 times. Light hits grant 5 - 8 (based on level) bonus armor and bonus magic resist while Dark hits grant 11% armor penetration and magic penetration, for a total of 15 - 24 (based on level) bonus resistances and 33% penetration at maximum stacks of each.",
+        "mechanic": {
+          "kind": "pen",
+          "armorPenPercent": 0.33,
+          "magicPenPercent": 0.33
+        }
       }
     ]
   },
@@ -2091,7 +2133,11 @@
       {
         "name": "Killer",
         "kind": "passive",
-        "description": "+10 armor penetration."
+        "description": "+10 armor penetration.",
+        "mechanic": {
+          "kind": "pen",
+          "lethality": 10
+        }
       },
       {
         "name": "Death and Taxes",
@@ -2251,7 +2297,15 @@
       {
         "name": "At Wit's End",
         "kind": "passive",
-        "description": "Your basic attacks deal 10 - 55 (based on level) bonus magic damage on-hit. While below 50% health, you heal for (Melee 100% / Ranged 66%) of the damage that enemy champions take from this effect."
+        "description": "Your basic attacks deal 10 - 55 (based on level) bonus magic damage on-hit. While below 50% health, you heal for (Melee 100% / Ranged 66%) of the damage that enemy champions take from this effect.",
+        "mechanic": {
+          "kind": "onHit",
+          "damageType": "magic",
+          "flatByLevel": [
+            10,
+            55
+          ]
+        }
       }
     ]
   },
@@ -2274,7 +2328,7 @@
       {
         "name": "Catcher",
         "kind": "passive",
-        "description": "Upon hitting an enemy champion with your displacement abilities, you gain 30% bonus move speed for 3 seconds and mark the target for 5 seconds, reducing their Armor and Magic Resist by 5 \u2013 12 (based on level). If the marked target dies, you and nearby allies gain a split of 200 \u2013 300 (based on level) bonus gold. The gold can be earned once every 10 seconds."
+        "description": "Upon hitting an enemy champion with your displacement abilities, you gain 30% bonus move speed for 3 seconds and mark the target for 5 seconds, reducing their Armor and Magic Resist by 5 – 12 (based on level). If the marked target dies, you and nearby allies gain a split of 200 – 300 (based on level) bonus gold. The gold can be earned once every 10 seconds."
       }
     ]
   },
@@ -2331,7 +2385,7 @@
       {
         "name": "Harbinger",
         "kind": "passive",
-        "description": "Casting your ultimate ability will create a blizzard aura that damages nearby enemies, dealing 320 \u2013 600 (based on level) magic damage total, dealing 16 \u2013 30 (based on level) magic damage every 0.5 seconds over 10 seconds and slowing them by 25% for 1 second. You also leave behind a brief path that grants 40 bonus move speed to allied champions (30 second cooldown, on-cast)."
+        "description": "Casting your ultimate ability will create a blizzard aura that damages nearby enemies, dealing 320 – 600 (based on level) magic damage total, dealing 16 – 30 (based on level) magic damage every 0.5 seconds over 10 seconds and slowing them by 25% for 1 second. You also leave behind a brief path that grants 40 bonus move speed to allied champions (30 second cooldown, on-cast)."
       }
     ]
   },
@@ -2353,7 +2407,7 @@
       {
         "name": "Giant Slayer",
         "kind": "passive",
-        "description": "Deal 0% \u2013 12% (based on target's bonus health) increased damage against enemy champions."
+        "description": "Deal 0% – 12% (based on target's bonus health) increased damage against enemy champions."
       }
     ]
   },
@@ -2377,7 +2431,7 @@
       {
         "name": "Rapids",
         "kind": "passive",
-        "description": "Healing or shielding another allied champion grants both of you 10 ability haste and 20 \u2013 40 (based on target's level) ability power for 6 seconds."
+        "description": "Healing or shielding another allied champion grants both of you 10 ability haste and 20 – 40 (based on target's level) ability power for 6 seconds."
       }
     ]
   },
@@ -2428,7 +2482,7 @@
       {
         "name": "Cloudburst",
         "kind": "active",
-        "description": "Dash in the target direction (325-range), firing three missiles to the most wounded enemy, prioritizing enemy champions (600-range) (50-second cooldown). Each missile deals 17 \u2013 50 (based on level)(+ 45% bonus AD) physical damage, for a total of 50 \u2013 150 (based on level)(+ 45% bonus AD)."
+        "description": "Dash in the target direction (325-range), firing three missiles to the most wounded enemy, prioritizing enemy champions (600-range) (50-second cooldown). Each missile deals 17 – 50 (based on level)(+ 45% bonus AD) physical damage, for a total of 50 – 150 (based on level)(+ 45% bonus AD)."
       }
     ]
   },
@@ -2445,7 +2499,7 @@
       {
         "name": "Dream Maker",
         "kind": "passive",
-        "description": "You gain the _Dream Bubbles_ buff every 8 seconds. Granting an active heal or shield to another allied champion will send _Dream Bubbles_ to them for 3 seconds, which grants 15% \u2013 30% (based on level) bonus move speed and enhances their next 2 basic attacks to deal 20 \u2013 90 (based on your level) bonus magic damage on-hit. Limitations Limited to 1 Boots enchantment. Recipe Cost 500 Sell 350 ID Builds into Berserker's Greaves Boots of Dynamism Boots of Mana Gluttonous Greaves Ionian Boots of Lucidity Mercury's Treads Plated Steelcaps Menu - Boots Dream Maker is an enchantment in Wild Rift."
+        "description": "You gain the _Dream Bubbles_ buff every 8 seconds. Granting an active heal or shield to another allied champion will send _Dream Bubbles_ to them for 3 seconds, which grants 15% – 30% (based on level) bonus move speed and enhances their next 2 basic attacks to deal 20 – 90 (based on your level) bonus magic damage on-hit. Limitations Limited to 1 Boots enchantment. Recipe Cost 500 Sell 350 ID Builds into Berserker's Greaves Boots of Dynamism Boots of Mana Gluttonous Greaves Ionian Boots of Lucidity Mercury's Treads Plated Steelcaps Menu - Boots Dream Maker is an enchantment in Wild Rift."
       }
     ]
   },
@@ -2462,7 +2516,7 @@
       {
         "name": "Protobelt",
         "kind": "active",
-        "description": "Dash forward and unleash a cone of missiles that deal 75 \u2013 145 (based on level)magic damage. If champions or monsters are hit by more than one missile, the additional missiles deal only 10% damage (60 second cooldown). - Limited to 1 Boots enchantment."
+        "description": "Dash forward and unleash a cone of missiles that deal 75 – 145 (based on level)magic damage. If champions or monsters are hit by more than one missile, the additional missiles deal only 10% damage (60 second cooldown). - Limited to 1 Boots enchantment."
       }
     ]
   },

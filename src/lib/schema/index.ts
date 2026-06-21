@@ -12,16 +12,73 @@ export * from "./stats";
  * The Phase-1 stat calculator does not yet *evaluate* them, but capturing them
  * in the schema now means Phase 3 (damage modeling) is additive, not a rewrite.
  */
+/**
+ * Phase-3 combat mechanics: a small, typed vocabulary describing the
+ * auto-attack-relevant part of an item passive that the raw stat sheet can't
+ * represent. Deliberately narrow — it models sustained DPS contributions
+ * (on-hit damage, crit modifiers, penetration, resist shred), not full
+ * ability combos. Anything an effect can't express here simply stays
+ * descriptive text and is ignored by the engine.
+ */
+export const OnHitMechanicSchema = z.object({
+  kind: z.literal("onHit"),
+  damageType: z.enum(["physical", "magic", "true"]),
+  /** Flat bonus damage every basic attack. */
+  flat: z.number().optional(),
+  /** Flat bonus that scales linearly from level 1 → 15: [atL1, atL15]. */
+  flatByLevel: z.tuple([z.number(), z.number()]).optional(),
+  /** Fraction of the target's (assumed-full) health dealt on-hit. */
+  currentHealthPct: z.number().optional(),
+  /** Floor for a percent-health hit. */
+  min: z.number().optional(),
+  /**
+   * Periodic on-hit: the payload triggers once every `everyNth` attacks. The
+   * engine amortizes it across hits for a sustained-DPS figure.
+   */
+  everyNth: z.number().int().positive().optional(),
+});
+
+export const CritMechanicSchema = z.object({
+  kind: z.literal("crit"),
+  /** Added to the crit multiplier bonus (IE: 205% vs 175% ⇒ +0.30). */
+  critDamageBonus: z.number().optional(),
+  /** IE "Limit Break": crit chance above 100% converts to crit damage. */
+  limitBreak: z.boolean().optional(),
+});
+
+export const PenMechanicSchema = z.object({
+  kind: z.literal("pen"),
+  lethality: z.number().optional(),
+  armorPenPercent: z.number().optional(),
+  magicPenPercent: z.number().optional(),
+});
+
+/** Sustained armor reduction the attacker applies to the target (Black Cleaver). */
+export const ShredMechanicSchema = z.object({
+  kind: z.literal("shred"),
+  armorPercent: z.number().optional(),
+});
+
+export const CombatMechanicSchema = z.discriminatedUnion("kind", [
+  OnHitMechanicSchema,
+  CritMechanicSchema,
+  PenMechanicSchema,
+  ShredMechanicSchema,
+]);
+
+export type CombatMechanic = z.infer<typeof CombatMechanicSchema>;
+
 export const ItemEffectSchema = z.object({
   name: z.string(),
   kind: z.enum(["passive", "active"]),
   /** Free-text description shown in tooltips today. */
   description: z.string(),
   /**
-   * Optional machine-readable hook for the future damage engine. Left loose on
-   * purpose until Phase 3 pins down the effect DSL.
+   * Optional machine-readable hook for the damage engine. When present and
+   * recognized, the Phase-3 auto-attack model evaluates it; otherwise the
+   * effect remains purely descriptive.
    */
-  mechanic: z.record(z.string(), z.unknown()).optional(),
+  mechanic: CombatMechanicSchema.optional(),
 });
 
 /**

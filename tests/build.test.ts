@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { decodeBuild, encodeBuild, type BuildState } from "../src/state/buildState";
+import { decodeBuild, encodeBuild, DEFAULT_TARGET, type BuildState } from "../src/state/buildState";
 import { items } from "../src/lib/data";
 
 /**
@@ -24,6 +24,7 @@ const base: BuildState = {
   enchantIdB: null,
   compare: false,
   active: "A",
+  target: DEFAULT_TARGET,
 };
 
 describe("addItem dedup rule", () => {
@@ -51,7 +52,7 @@ describe("encode/decode round-trip", () => {
     const b: BuildState = {
       championId: "ashe", level: 7, itemIds: ["infinity-edge"],
       bootsId: null, enchantId: null, itemIdsB: [], bootsIdB: null,
-      enchantIdB: null, compare: false, active: "A",
+      enchantIdB: null, compare: false, active: "A", target: DEFAULT_TARGET,
     };
     expect(decodeBuild(encodeBuild(b))).toEqual(b);
   });
@@ -61,17 +62,18 @@ describe("encode/decode round-trip", () => {
       championId: "ashe", level: 9, itemIds: ["infinity-edge"],
       bootsId: null, enchantId: null,
       itemIdsB: ["bloodthirster", "phantom-dancer"], bootsIdB: null, enchantIdB: null,
-      compare: true, active: "B",
+      compare: true, active: "B", target: DEFAULT_TARGET,
     };
     expect(decodeBuild(encodeBuild(b))).toEqual(b);
   });
 
-  it("preserves boots + enchant in both builds through the URL", () => {
+  it("preserves boots + enchant + a custom target through the URL", () => {
     const b: BuildState = {
       championId: "ashe", level: 12, itemIds: ["infinity-edge"],
       bootsId: "berserkers-greaves", enchantId: "stasis",
       itemIdsB: ["bloodthirster"], bootsIdB: "plated-steelcaps", enchantIdB: "gargoyle",
       compare: true, active: "A",
+      target: { armor: 150, magicResist: 80, maxHealth: 2500 },
     };
     expect(decodeBuild(encodeBuild(b))).toEqual(b);
   });
