@@ -9,6 +9,7 @@ import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/stat
 import { formatStat, formatGold } from "@/lib/format";
 import { initials, hashHue, itemClass, ITEM_CLASS_COLOR, championIconUrl, itemIconUrl } from "@/lib/visual";
 import { useShare } from "@/lib/useShare";
+import { ProvenanceTooltip } from "./ProvenanceTooltip";
 import {
   SearchIcon,
   ShareIcon,
@@ -788,7 +789,9 @@ function ItemCard({
           <div className="truncate text-sm font-semibold text-meta-text">{item.name}</div>
           <div className="flex items-center gap-1 text-xs font-medium text-meta-gold">
             <GoldIcon width={12} height={12} />
-            {formatGold(item.cost)}
+            <ProvenanceTooltip provenance={item.provenance} valueKey="cost">
+              {formatGold(item.cost)}
+            </ProvenanceTooltip>
           </div>
         </div>
         {owned ? (
@@ -805,7 +808,9 @@ function ItemCard({
         {lines.map((l) => (
           <li key={l.key} className="flex items-center gap-1.5 text-[11px] text-meta-text/80">
             <StatIcon statKey={l.key} width={12} height={12} className="text-meta-mute" />
-            <span className="tabular font-medium">+{l.display}</span>
+            <ProvenanceTooltip provenance={item.provenance} valueKey={l.key}>
+              <span className="tabular font-medium">+{l.display}</span>
+            </ProvenanceTooltip>
             <span className="text-meta-mute">{l.label}</span>
           </li>
         ))}

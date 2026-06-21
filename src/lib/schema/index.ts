@@ -24,6 +24,16 @@ export const ItemEffectSchema = z.object({
   mechanic: z.record(z.string(), z.unknown()).optional(),
 });
 
+/**
+ * Per-value provenance: a sparse map from a displayed value's key (a StatKey,
+ * `"cost"`, or a champion ability/stat key) to the patch version in which that
+ * value last changed. Sparse on purpose — anything absent defaults to the
+ * dataset's baseline patch, so a new patch only stamps the values it touched.
+ */
+export const ProvenanceSchema = z.record(z.string(), z.string());
+
+export type Provenance = z.infer<typeof ProvenanceSchema>;
+
 export const ItemSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -36,6 +46,8 @@ export const ItemSchema = z.object({
   stats: StatBlockSchema.default({}),
   effects: z.array(ItemEffectSchema).default([]),
   icon: z.string().optional(),
+  /** Sparse "value key → patch it last changed in" map; see ProvenanceSchema. */
+  provenance: ProvenanceSchema.optional(),
 });
 
 export type Item = z.infer<typeof ItemSchema>;
@@ -101,6 +113,8 @@ export const ChampionSchema = z.object({
   }),
   abilities: z.array(AbilitySchema).default([]),
   icon: z.string().optional(),
+  /** Sparse "value key → patch it last changed in" map; see ProvenanceSchema. */
+  provenance: ProvenanceSchema.optional(),
 });
 
 export type Champion = z.infer<typeof ChampionSchema>;

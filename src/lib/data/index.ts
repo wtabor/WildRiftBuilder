@@ -5,11 +5,13 @@ import {
   type Champion,
   type Item,
   type PatchMeta,
+  type Provenance,
 } from "@/lib/schema";
 
 import championsRaw from "@data/patches/7.1/champions.json";
 import itemsRaw from "@data/patches/7.1/items.json";
 import metaRaw from "@data/patches/7.1/meta.json";
+import registryRaw from "@data/patches/registry.json";
 
 /**
  * The currently shipped patch. When a new patch is hand-verified, add its
@@ -36,4 +38,34 @@ export function getItem(id: string): Item | undefined {
 
 export function getItems(ids: string[]): Item[] {
   return ids.map((id) => itemById.get(id)).filter((i): i is Item => Boolean(i));
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Provenance — "which patch did this value last change in?"                  */
+/* -------------------------------------------------------------------------- */
+
+export interface PatchInfo {
+  /** ISO date the patch released. */
+  date: string;
+  /** Link to the patch notes, if known. */
+  url?: string;
+}
+
+const patchRegistry = registryRaw as Record<string, PatchInfo>;
+
+/** Look up release date + notes URL for a patch version, if registered. */
+export function getPatchInfo(version: string | undefined): PatchInfo | undefined {
+  return version ? patchRegistry[version] : undefined;
+}
+
+/**
+ * Resolve the patch a single displayed value last changed in. Falls back to the
+ * dataset baseline (CURRENT_PATCH) when an entity carries no explicit stamp for
+ * that key — so an unstamped dataset still reads as "verified against current".
+ */
+export function provenanceFor(
+  provenance: Provenance | undefined,
+  key: string,
+): string {
+  return provenance?.[key] ?? CURRENT_PATCH;
 }
