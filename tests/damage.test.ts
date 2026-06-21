@@ -93,4 +93,23 @@ describe("autoAttackDps", () => {
     // IE's +0.30 crit damage makes guaranteed crits hit harder.
     expect(withIE.breakdown.physical).toBeGreaterThan(without.breakdown.physical);
   });
+
+  it("applies always-on item penetration carried in stats", () => {
+    // Serylda's Grudge: +33% armor pen now lives in item stats.
+    const withSerylda = autoAttackDps(
+      baseInput({ stats: { attackDamage: 100, critChance: 0, critDamage: 0.75, armorPenPercent: 0.33 } }),
+      TARGET,
+    );
+    // 100 armor × (1 − 0.33) = 67 effective armor.
+    expect(withSerylda.effective.armor).toBeCloseTo(67);
+  });
+
+  it("caps stacked percent armor pen at 40%", () => {
+    // Serylda's 33% + Terminus' Dark 33% would be 66%, but item %pen caps at 40%.
+    const r = autoAttackDps(
+      baseInput({ stats: { attackDamage: 100, armorPenPercent: 0.33 }, items: [item("terminus")] }),
+      TARGET,
+    );
+    expect(r.effective.armor).toBeCloseTo(100 * (1 - PERCENT_PEN_CAP));
+  });
 });
