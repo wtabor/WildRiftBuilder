@@ -14,3 +14,17 @@ export function formatStat(key: StatKey, value: number): string {
 export function formatGold(value: number): string {
   return value.toLocaleString("en-US");
 }
+
+/** "2026-06-01" → "Jun 1, 2026". Returns "" for missing/unparseable input. */
+export function formatPatchDate(iso: string | undefined): string {
+  if (!iso) return "";
+  // Parse as UTC noon to avoid timezone-induced off-by-one day shifts.
+  const d = new Date(`${iso}T12:00:00Z`);
+  if (Number.isNaN(d.getTime())) return "";
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
