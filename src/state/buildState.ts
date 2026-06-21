@@ -5,6 +5,16 @@ import { CURRENT_PATCH } from "@/lib/data";
 
 export type BuildKey = "A" | "B";
 
+/** The enemy the damage engine computes against. Shared by both builds. */
+export interface TargetStats {
+  armor: number;
+  magicResist: number;
+  maxHealth: number;
+}
+
+/** A mid-game reference enemy, used until the user dials in their own. */
+export const DEFAULT_TARGET: TargetStats = { armor: 100, magicResist: 50, maxHealth: 2000 };
+
 export interface BuildState {
   championId: string | null;
   level: number;
@@ -16,6 +26,7 @@ export interface BuildState {
   enchantIdB: string | null; // build B — its boots enchant
   compare: boolean; // whether the comparison build is shown
   active: BuildKey; // which build the shop adds items to
+  target: TargetStats; // the enemy the damage engine computes against
 }
 
 const DEFAULT: BuildState = {
@@ -29,6 +40,7 @@ const DEFAULT: BuildState = {
   enchantIdB: null,
   compare: false,
   active: "A",
+  target: DEFAULT_TARGET,
 };
 const MAX_ITEMS = 6;
 
@@ -45,6 +57,10 @@ export function encodeBuild(b: BuildState): string {
   if (b.bootsIdB) params.set("b2", b.bootsIdB);
   if (b.enchantIdB) params.set("e2", b.enchantIdB);
   if (b.active === "B") params.set("a", "B");
+  const { armor, magicResist, maxHealth } = b.target;
+  if (armor !== DEFAULT_TARGET.armor || magicResist !== DEFAULT_TARGET.magicResist || maxHealth !== DEFAULT_TARGET.maxHealth) {
+    params.set("t", `${armor},${magicResist},${maxHealth}`);
+  }
   return params.toString();
 }
 
@@ -59,6 +75,7 @@ export function decodeBuild(search: string): BuildState {
   // An enchant only exists while it has boots to ride on; drop a stray stamp.
   const enchant = boots ? params.get("e") : null;
   const enchantB = bootsB ? params.get("e2") : null;
+  const target = parseTarget(params.get("t"));
   return {
     championId: champ || null,
     level: Number.isFinite(lvl) && lvl >= 1 ? Math.min(lvl, 15) : 1,
@@ -70,6 +87,18 @@ export function decodeBuild(search: string): BuildState {
     enchantIdB: enchantB || null,
     compare: params.get("cmp") === "1" || Boolean(itemsB) || Boolean(bootsB),
     active: params.get("a") === "B" ? "B" : "A",
+    target,
+  };
+}
+
+/** Parse a "armor,mr,hp" target string, falling back to the default per field. */
+function parseTarget(raw: string | null): TargetStats {
+  if (!raw) return DEFAULT_TARGET;
+  const [a, m, h] = raw.split(",").map(Number);
+  return {
+    armor: Number.isFinite(a) && a >= 0 ? a : DEFAULT_TARGET.armor,
+    magicResist: Number.isFinite(m) && m >= 0 ? m : DEFAULT_TARGET.magicResist,
+    maxHealth: Number.isFinite(h) && h > 0 ? h : DEFAULT_TARGET.maxHealth,
   };
 }
 
@@ -176,6 +205,18 @@ export function useBuildState() {
     setBuild((b) => ({ ...b, active }));
   }, []);
 
+  /** Update one field of the shared damage target (clamped to sane bounds). */
+  const setTarget = useCallback((patch: Partial<TargetStats>) => {
+    setBuild((b) => ({
+      ...b,
+      target: {
+        armor: clampNum(patch.armor ?? b.target.armor, 0, 500),
+        magicResist: clampNum(patch.magicResist ?? b.target.magicResist, 0, 500),
+        maxHealth: clampNum(patch.maxHealth ?? b.target.maxHealth, 1, 20000),
+      },
+    }));
+  }, []);
+
   const toggleCompare = useCallback(() => {
     setBuild((b) =>
       b.compare
@@ -197,7 +238,13 @@ export function useBuildState() {
     removeEnchant,
     clearItems,
     setActive,
+    setTarget,
     toggleCompare,
     maxItems: MAX_ITEMS,
   };
+}
+
+function clampNum(n: number, lo: number, hi: number): number {
+  if (!Number.isFinite(n)) return lo;
+  return Math.max(lo, Math.min(hi, Math.round(n)));
 }
