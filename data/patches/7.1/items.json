@@ -357,7 +357,8 @@
       "abilityPower": 65,
       "abilityHaste": 20,
       "magicPenPercent": 0.07,
-      "maxHealth": 150
+      "maxHealth": 150,
+      "magicPenFlat": 15
     },
     "effects": [
       {
@@ -502,7 +503,8 @@
     "slot": "boots",
     "stats": {
       "attackDamage": 10,
-      "moveSpeedFlat": 45
+      "moveSpeedFlat": 45,
+      "lethality": 8
     },
     "effects": [
       {
@@ -524,7 +526,8 @@
     "slot": "boots",
     "stats": {
       "abilityPower": 15,
-      "moveSpeedFlat": 45
+      "moveSpeedFlat": 45,
+      "magicPenFlat": 8
     },
     "effects": [
       {
@@ -793,7 +796,8 @@
     "slot": "item",
     "stats": {
       "attackDamage": 50,
-      "maxHealth": 250
+      "maxHealth": 250,
+      "lethality": 8
     },
     "effects": [
       {
@@ -1142,7 +1146,8 @@
     "slot": "item",
     "stats": {
       "abilityPower": 85,
-      "magicPenPercent": 0.07
+      "magicPenPercent": 0.07,
+      "magicPenFlat": 15
     },
     "effects": [
       {
@@ -1527,7 +1532,8 @@
     "stats": {
       "attackDamage": 25,
       "attackSpeed": 0.15,
-      "critChance": 0.25
+      "critChance": 0.25,
+      "armorPenPercent": 0.3
     },
     "effects": [
       {
@@ -1922,7 +1928,8 @@
     "slot": "item",
     "stats": {
       "attackDamage": 50,
-      "abilityHaste": 10
+      "abilityHaste": 10,
+      "lethality": 15
     },
     "effects": [
       {
@@ -1949,7 +1956,8 @@
     "slot": "item",
     "stats": {
       "attackDamage": 40,
-      "abilityHaste": 15
+      "abilityHaste": 15,
+      "armorPenPercent": 0.33
     },
     "effects": [
       {
@@ -2127,17 +2135,14 @@
     "slot": "item",
     "stats": {
       "attackDamage": 45,
-      "critChance": 0.25
+      "critChance": 0.25,
+      "lethality": 10
     },
     "effects": [
       {
         "name": "Killer",
         "kind": "passive",
-        "description": "+10 armor penetration.",
-        "mechanic": {
-          "kind": "pen",
-          "lethality": 10
-        }
+        "description": "+10 armor penetration."
       },
       {
         "name": "Death and Taxes",
@@ -2344,7 +2349,8 @@
     "slot": "item",
     "stats": {
       "attackDamage": 55,
-      "abilityHaste": 15
+      "abilityHaste": 15,
+      "lethality": 15
     },
     "effects": [
       {
