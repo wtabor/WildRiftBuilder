@@ -1,0 +1,62 @@
+# Wild Rift Builder — agent guide
+
+An accurate, current, interactive **stat & build calculator for League of Legends: Wild Rift**
+(Next.js App Router · TypeScript · Tailwind · Zod · Vitest, deploys on Vercel).
+
+The entire value proposition is **accurate + current data**. Correctness is the moat — treat
+data accuracy and engine math as the highest-priority invariants.
+
+## Commands
+
+```bash
+npm run dev           # http://localhost:3000 (bound to 0.0.0.0 for the Preview pane)
+npm run typecheck     # tsc --noEmit
+npm test              # vitest — the pure engines (correctness = the moat)
+npm run validate-data # schema-check every patch under data/patches/
+npm run build         # production build
+npm run smoke         # fetch routes, assert 200 (needs `npm run dev` running)
+```
+
+Before committing, the gate is: `typecheck` + `test` + `validate-data` + `build` (this is also CI,
+`.github/workflows/ci.yml`).
+
+## Data accuracy rules (non-negotiable)
+
+- **Wild Rift values ≠ PC League values.** NEVER copy a number from PC League / Data Dragon —
+  WR base stats, growth, item stats, costs, and ability values differ. Data Dragon is used *only*
+  for champion portrait art (the rosters match character-for-character), never for stats.
+- **Source priority** when verifying/adding data:
+  1. Official Riot Wild Rift patch notes (`wildrift.leagueoflegends.com`) — primary.
+  2. In-game / community references: `riftgg.app/items`, `wildriftfire.com`.
+  Cross-check ≥2 sources per value when possible.
+- All patch data must stay **schema-valid** (`src/lib/schema/`). A PostToolUse hook auto-runs
+  `validate-data` whenever you edit a `data/patches/**/*.json` file — fix any failure before moving on.
+- When you change data, update `meta.json` `sources` with the URLs you verified against, and set
+  `verified: true` **only** if the whole file was verified against a primary source.
+
+## Architecture
+
+- `src/lib/schema/` — Zod schemas + types, the single source of truth (already models abilities &
+  item effects for the Phase-3 damage engine).
+- `data/patches/<patch>/` — versioned static JSON: `champions.json`, `items.json`, `meta.json`.
+  Registry of patches in `data/patches/registry.json`. Current patch: `7.1` (7.1g).
+- `src/lib/stats/` — pure stat engine (champion + items → totals). `src/lib/damage/` — pure damage engine.
+- `src/lib/data/` — typed loaders/selectors over the JSON.
+- `src/designs/meta/MetaDesign.tsx` — the one shipped UI (presentation only).
+
+**Separation rule:** *what a number is* lives in `src/lib/` and is shared; *how it looks* lives in
+`src/designs/meta/`. Stat values come from `statDisplay`, gold from `formatGold` — never re-implement
+formatting in a component. See `DESIGN_WORKFLOW.md` for UI iteration + the polish checklist.
+
+## Conventions
+
+- Adding/updating champions or items: use the `/add-entity` skill — it bundles the schema shape,
+  source-priority rule, and the validate gate.
+- Roster is already complete (139 champions / 100 items); new work is patch updates and corrections,
+  not initial fill. Roster progress tracked in `ROSTER.md`.
+- Two Claude-driven GitHub Actions keep data honest: `data-verify.yml` (daily audit → corrections PR)
+  and `data-backfill.yml` (batched roster fill). Keep their behavior in mind before duplicating work.
+- Don't commit, push, or open PRs unless asked. Branch off `main` for changes; the data workflows use
+  `claude/data-verify-<run_id>`-style branches and list every change as `field: old -> new (source URL)`.
+
+See `PLAN.md` for the full data strategy and roadmap, `README.md` for the product overview.
