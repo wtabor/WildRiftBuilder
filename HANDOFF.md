@@ -88,6 +88,17 @@ Item combat mechanic (optional, on an item effect):
 2. Official wiki infoboxes — https://wiki.leagueoflegends.com/en-us/WR:Items and per-champion WR pages
 3. https://www.wildriftfire.com/ and/or https://riftgg.app/ for per-patch stat tables
 
+### Supplementary (reachable even on a GitHub-only policy — verified during scan)
+- `ry2x/WildRift-Champs` — sourced from the **Tencent CN Wild Rift API**, daily-updated.
+  - Per-champion JSON: https://ry2x.github.io/WildRift-Champs/hero.json (branch `gh-pages`;
+    raw: `https://raw.githubusercontent.com/ry2x/WildRift-Champs/gh-pages/hero.json`)
+  - English merged data: `ry2x/WildRift-Merged-Champion-Data` → `data_en.json`.
+  - Authoritative for: **roles** (class booleans `is_fighter`…`is_tank`), lane tags
+    (`is_top/is_mid/is_jg/is_sup/is_ad`), WR availability (`is_wr`), `hero_id`, name/title.
+  - **Does NOT contain** base stats, per-level growth, or ability numbers — get those
+    from sources 1–3 above. Use ry2x to fill `roles`/`resourceType` and to build the
+    authoritative champion list, then layer the verified numeric stats on top.
+
 Cross-check stat tables against at least two sources where possible. Record any
 value that changed this patch in the entity's optional `provenance` map
 (`"<key>": "7.1g"`).
