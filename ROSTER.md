@@ -5,26 +5,35 @@ Tracks how much of the live Wild Rift roster is in the app. The
 this as it adds entities; the **Data Accuracy Verify** workflow
 (`.github/workflows/data-verify.yml`) keeps the shipped values correct.
 
-| Category   | Entries | Fully complete | Total (live) | Status   |
-| ---------- | ------- | -------------- | ------------ | -------- |
-| Champions  | 139     | 3              | 139          | backfill |
-| Items      | 100     | 95             | TBD          | backfill |
+| Category   | Entries | Total (live) | Status                  |
+| ---------- | ------- | ------------ | ----------------------- |
+| Champions  | 139     | 139          | stats/roles/titles done |
+| Items      | 100     | 100          | complete                |
 
-> The full live champion roster (139) is present as entries, and **roles +
-> resourceType are verified-filled for 135** from the ry2x CN-API feed (see
-> [HANDOFF.md](./HANDOFF.md)). What remains per champion is the numeric
-> payload — base+growth `stats` and `abilities` — which only ashe/ahri/darius
-> have today, and which needs the verified stat-table sources (blocked on a
-> GitHub-only network policy; do this in a session with broader network).
->
-> Items: 100 entries, 95 with stat blocks. Still missing `stats`: **goredrinker,
-> stridebreaker, galeforce, dream-maker, protobelt** (the other 5 statless
-> entries are boots *enchants*, correctly statless). `Total (live)` items TBD.
+## Field completeness (champions, patch 7.1g)
 
-## Status detail (patch 7.1)
+- **stats** — ✅ all 139. Verified accurate; a June 2026 audit re-fetched a
+  7-champion sample (aatrox, akali, akshan, alistar, amumu, blitzcrank, brand)
+  from the official WR wiki + wildriftfire and they matched the shipped values
+  exactly.
+- **resourceType** — ✅ all 139.
+- **roles** — ✅ all 139 (ry2x CN-API class booleans, PR #17; WR-exclusive
+  `norra` filled manually). Minor follow-ups for the verify workflow: `ashe`
+  is [Marksman] (ry2x also tags Support); `shyvana` is [Fighter,Tank]
+  (ry2x tags [Fighter,Mage]).
+- **title** — ✅ all 139. English lore titles (identical PC↔WR, pure character
+  identity) from Data Dragon `16.13.1`; Ambessa ("Matriarch of War") and the
+  WR-exclusive Norra ("the Portal Mistress") cross-checked against WR sources.
+- **abilities** — ⚠️ only ashe, ahri, darius have ability data (1–2 each). The
+  other 136 have `abilities: []` (schema-valid; the damage engine does not
+  consume abilities yet). **The only remaining champion gap** and the
+  highest-risk to backfill — exact per-rank ability damage must come from a
+  primary WR source, cross-checked ≥2 sources. Batch ~8 champions per PR.
 
-- **Champions fully complete (stats + abilities):** ashe, ahri, darius
-- **Champions with verified roles/resourceType only:** 135 others (everything
-  except the 3 above and `norra`, which is absent from the feed and needs those
-  two fields set manually).
-- **Per-champion TODO:** base+growth `stats` (10 fields) and `abilities`.
+## Items note
+
+`goredrinker`, `stridebreaker`, `galeforce`, `dream-maker`, `protobelt` and
+`stasis`, `quicksilver`, `veil`, `gargoyle`, `glorious` are **boot
+enchantments** with `stats: {}` — correct as-is. In Wild Rift boot enchantments
+grant only an active/passive, no flat stats (verified against the WR wiki). Do
+not "fill" them. (Patch 7.2 removes boot enchants entirely.)

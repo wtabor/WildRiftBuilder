@@ -244,7 +244,7 @@
   {
     "id": "aatrox",
     "name": "Aatrox",
-    "title": "",
+    "title": "the Darkin Blade",
     "roles": [
       "Fighter"
     ],
@@ -291,7 +291,7 @@
   {
     "id": "akali",
     "name": "Akali",
-    "title": "",
+    "title": "the Rogue Assassin",
     "roles": [
       "Assassin"
     ],
@@ -338,7 +338,7 @@
   {
     "id": "akshan",
     "name": "Akshan",
-    "title": "",
+    "title": "the Rogue Sentinel",
     "roles": [
       "Marksman",
       "Assassin"
@@ -386,7 +386,7 @@
   {
     "id": "alistar",
     "name": "Alistar",
-    "title": "",
+    "title": "the Minotaur",
     "roles": [
       "Tank",
       "Support"
@@ -434,7 +434,7 @@
   {
     "id": "ambessa",
     "name": "Ambessa",
-    "title": "",
+    "title": "Matriarch of War",
     "roles": [
       "Fighter",
       "Assassin"
@@ -482,7 +482,7 @@
   {
     "id": "amumu",
     "name": "Amumu",
-    "title": "",
+    "title": "the Sad Mummy",
     "roles": [
       "Tank",
       "Support"
@@ -530,7 +530,7 @@
   {
     "id": "aurora",
     "name": "Aurora",
-    "title": "",
+    "title": "the Witch Between Worlds",
     "roles": [
       "Mage",
       "Assassin"
@@ -578,7 +578,7 @@
   {
     "id": "blitzcrank",
     "name": "Blitzcrank",
-    "title": "",
+    "title": "the Great Steam Golem",
     "roles": [
       "Tank",
       "Support"
@@ -626,7 +626,7 @@
   {
     "id": "brand",
     "name": "Brand",
-    "title": "",
+    "title": "the Burning Vengeance",
     "roles": [
       "Mage",
       "Support"
@@ -674,7 +674,7 @@
   {
     "id": "braum",
     "name": "Braum",
-    "title": "",
+    "title": "the Heart of the Freljord",
     "roles": [
       "Tank",
       "Support"
@@ -722,7 +722,7 @@
   {
     "id": "caitlyn",
     "name": "Caitlyn",
-    "title": "",
+    "title": "the Sheriff of Piltover",
     "roles": [
       "Marksman"
     ],
@@ -769,7 +769,7 @@
   {
     "id": "camille",
     "name": "Camille",
-    "title": "",
+    "title": "the Steel Shadow",
     "roles": [
       "Fighter",
       "Assassin"
@@ -817,7 +817,7 @@
   {
     "id": "corki",
     "name": "Corki",
-    "title": "",
+    "title": "the Daring Bombardier",
     "roles": [
       "Marksman",
       "Mage"
@@ -865,7 +865,7 @@
   {
     "id": "diana",
     "name": "Diana",
-    "title": "",
+    "title": "Scorn of the Moon",
     "roles": [
       "Fighter",
       "Assassin"
@@ -913,7 +913,7 @@
   {
     "id": "dr-mundo",
     "name": "Dr. Mundo",
-    "title": "",
+    "title": "the Madman of Zaun",
     "roles": [
       "Tank",
       "Fighter"
@@ -961,7 +961,7 @@
   {
     "id": "draven",
     "name": "Draven",
-    "title": "",
+    "title": "the Glorious Executioner",
     "roles": [
       "Marksman"
     ],
@@ -1008,7 +1008,7 @@
   {
     "id": "ekko",
     "name": "Ekko",
-    "title": "",
+    "title": "the Boy Who Shattered Time",
     "roles": [
       "Assassin",
       "Mage"
@@ -1056,7 +1056,7 @@
   {
     "id": "evelynn",
     "name": "Evelynn",
-    "title": "",
+    "title": "Agony's Embrace",
     "roles": [
       "Assassin",
       "Mage"
@@ -1104,7 +1104,7 @@
   {
     "id": "ezreal",
     "name": "Ezreal",
-    "title": "",
+    "title": "the Prodigal Explorer",
     "roles": [
       "Marksman",
       "Mage"
@@ -1152,7 +1152,7 @@
   {
     "id": "fiddlesticks",
     "name": "Fiddlesticks",
-    "title": "",
+    "title": "the Ancient Fear",
     "roles": [
       "Mage",
       "Support"
@@ -1200,7 +1200,7 @@
   {
     "id": "fiora",
     "name": "Fiora",
-    "title": "",
+    "title": "the Grand Duelist",
     "roles": [
       "Fighter",
       "Assassin"
@@ -1248,7 +1248,7 @@
   {
     "id": "fizz",
     "name": "Fizz",
-    "title": "",
+    "title": "the Tidal Trickster",
     "roles": [
       "Assassin",
       "Fighter"
@@ -1296,7 +1296,7 @@
   {
     "id": "galio",
     "name": "Galio",
-    "title": "",
+    "title": "the Colossus",
     "roles": [
       "Tank",
       "Mage"
@@ -1344,7 +1344,7 @@
   {
     "id": "garen",
     "name": "Garen",
-    "title": "",
+    "title": "The Might of Demacia",
     "roles": [
       "Fighter",
       "Tank"
@@ -1392,7 +1392,7 @@
   {
     "id": "gnar",
     "name": "Gnar",
-    "title": "",
+    "title": "the Missing Link",
     "roles": [
       "Fighter",
       "Tank"
@@ -1440,7 +1440,7 @@
   {
     "id": "gragas",
     "name": "Gragas",
-    "title": "",
+    "title": "the Rabble Rouser",
     "roles": [
       "Fighter",
       "Mage"
@@ -1488,7 +1488,7 @@
   {
     "id": "graves",
     "name": "Graves",
-    "title": "",
+    "title": "the Outlaw",
     "roles": [
       "Marksman"
     ],
@@ -1535,7 +1535,7 @@
   {
     "id": "gwen",
     "name": "Gwen",
-    "title": "",
+    "title": "The Hallowed Seamstress",
     "roles": [
       "Fighter"
     ],
@@ -1582,7 +1582,7 @@
   {
     "id": "hecarim",
     "name": "Hecarim",
-    "title": "",
+    "title": "the Shadow of War",
     "roles": [
       "Fighter",
       "Tank"
@@ -1630,7 +1630,7 @@
   {
     "id": "heimerdinger",
     "name": "Heimerdinger",
-    "title": "",
+    "title": "the Revered Inventor",
     "roles": [
       "Mage",
       "Support"
@@ -1678,7 +1678,7 @@
   {
     "id": "irelia",
     "name": "Irelia",
-    "title": "",
+    "title": "the Blade Dancer",
     "roles": [
       "Fighter",
       "Assassin"
@@ -1726,7 +1726,7 @@
   {
     "id": "janna",
     "name": "Janna",
-    "title": "",
+    "title": "the Storm's Fury",
     "roles": [
       "Support",
       "Mage"
@@ -1774,7 +1774,7 @@
   {
     "id": "jarvan-iv",
     "name": "Jarvan IV",
-    "title": "",
+    "title": "the Exemplar of Demacia",
     "roles": [
       "Fighter",
       "Tank"
@@ -1822,7 +1822,7 @@
   {
     "id": "jax",
     "name": "Jax",
-    "title": "",
+    "title": "Grandmaster at Arms",
     "roles": [
       "Fighter"
     ],
@@ -1869,7 +1869,7 @@
   {
     "id": "jayce",
     "name": "Jayce",
-    "title": "",
+    "title": "the Defender of Tomorrow",
     "roles": [
       "Fighter",
       "Marksman"
@@ -1917,7 +1917,7 @@
   {
     "id": "jhin",
     "name": "Jhin",
-    "title": "",
+    "title": "the Virtuoso",
     "roles": [
       "Marksman",
       "Mage"
@@ -1965,7 +1965,7 @@
   {
     "id": "jinx",
     "name": "Jinx",
-    "title": "",
+    "title": "the Loose Cannon",
     "roles": [
       "Marksman"
     ],
@@ -2012,7 +2012,7 @@
   {
     "id": "kaisa",
     "name": "Kai'Sa",
-    "title": "",
+    "title": "Daughter of the Void",
     "roles": [
       "Marksman",
       "Mage"
@@ -2060,7 +2060,7 @@
   {
     "id": "kalista",
     "name": "Kalista",
-    "title": "",
+    "title": "the Spear of Vengeance",
     "roles": [
       "Marksman"
     ],
@@ -2107,7 +2107,7 @@
   {
     "id": "karma",
     "name": "Karma",
-    "title": "",
+    "title": "the Enlightened One",
     "roles": [
       "Mage",
       "Support"
@@ -2155,7 +2155,7 @@
   {
     "id": "kassadin",
     "name": "Kassadin",
-    "title": "",
+    "title": "the Void Walker",
     "roles": [
       "Assassin",
       "Mage"
@@ -2203,7 +2203,7 @@
   {
     "id": "katarina",
     "name": "Katarina",
-    "title": "",
+    "title": "the Sinister Blade",
     "roles": [
       "Assassin",
       "Mage"
@@ -2251,7 +2251,7 @@
   {
     "id": "kayle",
     "name": "Kayle",
-    "title": "",
+    "title": "the Righteous",
     "roles": [
       "Mage",
       "Marksman"
@@ -2299,7 +2299,7 @@
   {
     "id": "kayn",
     "name": "Kayn",
-    "title": "",
+    "title": "the Shadow Reaper",
     "roles": [
       "Fighter",
       "Assassin"
@@ -2347,7 +2347,7 @@
   {
     "id": "kennen",
     "name": "Kennen",
-    "title": "",
+    "title": "the Heart of the Tempest",
     "roles": [
       "Mage"
     ],
@@ -2394,7 +2394,7 @@
   {
     "id": "khazix",
     "name": "Kha'Zix",
-    "title": "",
+    "title": "the Voidreaver",
     "roles": [
       "Assassin"
     ],
@@ -2441,7 +2441,7 @@
   {
     "id": "kindred",
     "name": "Kindred",
-    "title": "",
+    "title": "The Eternal Hunters",
     "roles": [
       "Marksman"
     ],
@@ -2488,7 +2488,7 @@
   {
     "id": "kogmaw",
     "name": "Kog'Maw",
-    "title": "",
+    "title": "the Mouth of the Abyss",
     "roles": [
       "Marksman",
       "Mage"
@@ -2536,7 +2536,7 @@
   {
     "id": "ksante",
     "name": "K'Sante",
-    "title": "",
+    "title": "the Pride of Nazumah",
     "roles": [
       "Tank",
       "Fighter"
@@ -2584,7 +2584,7 @@
   {
     "id": "lee-sin",
     "name": "Lee Sin",
-    "title": "",
+    "title": "the Blind Monk",
     "roles": [
       "Fighter",
       "Assassin"
@@ -2632,7 +2632,7 @@
   {
     "id": "leona",
     "name": "Leona",
-    "title": "",
+    "title": "the Radiant Dawn",
     "roles": [
       "Tank",
       "Support"
@@ -2680,7 +2680,7 @@
   {
     "id": "lillia",
     "name": "Lillia",
-    "title": "",
+    "title": "the Bashful Bloom",
     "roles": [
       "Fighter",
       "Mage"
@@ -2728,7 +2728,7 @@
   {
     "id": "lissandra",
     "name": "Lissandra",
-    "title": "",
+    "title": "the Ice Witch",
     "roles": [
       "Mage"
     ],
@@ -2775,7 +2775,7 @@
   {
     "id": "lucian",
     "name": "Lucian",
-    "title": "",
+    "title": "the Purifier",
     "roles": [
       "Marksman",
       "Assassin"
@@ -2823,7 +2823,7 @@
   {
     "id": "lulu",
     "name": "Lulu",
-    "title": "",
+    "title": "the Fae Sorceress",
     "roles": [
       "Support",
       "Mage"
@@ -2871,7 +2871,7 @@
   {
     "id": "lux",
     "name": "Lux",
-    "title": "",
+    "title": "the Lady of Luminosity",
     "roles": [
       "Mage",
       "Support"
@@ -2919,7 +2919,7 @@
   {
     "id": "malphite",
     "name": "Malphite",
-    "title": "",
+    "title": "Shard of the Monolith",
     "roles": [
       "Tank",
       "Mage"
@@ -2967,7 +2967,7 @@
   {
     "id": "maokai",
     "name": "Maokai",
-    "title": "",
+    "title": "the Twisted Treant",
     "roles": [
       "Tank",
       "Support"
@@ -3015,7 +3015,7 @@
   {
     "id": "master-yi",
     "name": "Master Yi",
-    "title": "",
+    "title": "the Wuju Bladesman",
     "roles": [
       "Fighter",
       "Assassin"
@@ -3063,7 +3063,7 @@
   {
     "id": "mel",
     "name": "Mel",
-    "title": "",
+    "title": "the Soul's Reflection",
     "roles": [
       "Mage",
       "Support"
@@ -3111,7 +3111,7 @@
   {
     "id": "milio",
     "name": "Milio",
-    "title": "",
+    "title": "The Gentle Flame",
     "roles": [
       "Support",
       "Mage"
@@ -3159,7 +3159,7 @@
   {
     "id": "miss-fortune",
     "name": "Miss Fortune",
-    "title": "",
+    "title": "the Bounty Hunter",
     "roles": [
       "Marksman",
       "Mage"
@@ -3207,7 +3207,7 @@
   {
     "id": "mordekaiser",
     "name": "Mordekaiser",
-    "title": "",
+    "title": "the Iron Revenant",
     "roles": [
       "Fighter",
       "Mage"
@@ -3255,7 +3255,7 @@
   {
     "id": "morgana",
     "name": "Morgana",
-    "title": "",
+    "title": "the Fallen",
     "roles": [
       "Support",
       "Mage"
@@ -3303,7 +3303,7 @@
   {
     "id": "nami",
     "name": "Nami",
-    "title": "",
+    "title": "the Tidecaller",
     "roles": [
       "Support",
       "Mage"
@@ -3351,7 +3351,7 @@
   {
     "id": "nasus",
     "name": "Nasus",
-    "title": "",
+    "title": "the Curator of the Sands",
     "roles": [
       "Fighter",
       "Tank"
@@ -3399,7 +3399,7 @@
   {
     "id": "nautilus",
     "name": "Nautilus",
-    "title": "",
+    "title": "the Titan of the Depths",
     "roles": [
       "Tank",
       "Support"
@@ -3447,7 +3447,7 @@
   {
     "id": "nidalee",
     "name": "Nidalee",
-    "title": "",
+    "title": "the Bestial Huntress",
     "roles": [
       "Assassin",
       "Mage"
@@ -3495,7 +3495,7 @@
   {
     "id": "nilah",
     "name": "Nilah",
-    "title": "",
+    "title": "the Joy Unbound",
     "roles": [
       "Fighter",
       "Assassin"
@@ -3543,7 +3543,7 @@
   {
     "id": "nocturne",
     "name": "Nocturne",
-    "title": "",
+    "title": "the Eternal Nightmare",
     "roles": [
       "Fighter",
       "Assassin"
@@ -3591,8 +3591,10 @@
   {
     "id": "norra",
     "name": "Norra",
-    "title": "",
-    "roles": [],
+    "title": "the Portal Mistress",
+    "roles": [
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3636,7 +3638,7 @@
   {
     "id": "nunu-amp-willump",
     "name": "Nunu & Willump",
-    "title": "",
+    "title": "the Boy and His Yeti",
     "roles": [
       "Tank",
       "Mage"
@@ -3684,7 +3686,7 @@
   {
     "id": "olaf",
     "name": "Olaf",
-    "title": "",
+    "title": "the Berserker",
     "roles": [
       "Fighter",
       "Tank"
@@ -3732,7 +3734,7 @@
   {
     "id": "orianna",
     "name": "Orianna",
-    "title": "",
+    "title": "the Lady of Clockwork",
     "roles": [
       "Mage",
       "Support"
@@ -3780,7 +3782,7 @@
   {
     "id": "ornn",
     "name": "Ornn",
-    "title": "",
+    "title": "The Fire below the Mountain",
     "roles": [
       "Tank"
     ],
@@ -3827,7 +3829,7 @@
   {
     "id": "pantheon",
     "name": "Pantheon",
-    "title": "",
+    "title": "the Unbreakable Spear",
     "roles": [
       "Fighter",
       "Assassin"
@@ -3875,7 +3877,7 @@
   {
     "id": "poppy",
     "name": "Poppy",
-    "title": "",
+    "title": "Keeper of the Hammer",
     "roles": [
       "Tank",
       "Fighter"
@@ -3923,7 +3925,7 @@
   {
     "id": "pyke",
     "name": "Pyke",
-    "title": "",
+    "title": "the Bloodharbor Ripper",
     "roles": [
       "Support",
       "Assassin"
@@ -3971,7 +3973,7 @@
   {
     "id": "rakan",
     "name": "Rakan",
-    "title": "",
+    "title": "The Charmer",
     "roles": [
       "Support"
     ],
@@ -4018,7 +4020,7 @@
   {
     "id": "rammus",
     "name": "Rammus",
-    "title": "",
+    "title": "the Armordillo",
     "roles": [
       "Tank"
     ],
@@ -4065,7 +4067,7 @@
   {
     "id": "rell",
     "name": "Rell",
-    "title": "",
+    "title": "the Iron Maiden",
     "roles": [
       "Tank",
       "Support"
@@ -4113,7 +4115,7 @@
   {
     "id": "renekton",
     "name": "Renekton",
-    "title": "",
+    "title": "the Butcher of the Sands",
     "roles": [
       "Fighter",
       "Tank"
@@ -4161,7 +4163,7 @@
   {
     "id": "rengar",
     "name": "Rengar",
-    "title": "",
+    "title": "the Pridestalker",
     "roles": [
       "Assassin",
       "Fighter"
@@ -4209,7 +4211,7 @@
   {
     "id": "riven",
     "name": "Riven",
-    "title": "",
+    "title": "the Exile",
     "roles": [
       "Fighter",
       "Assassin"
@@ -4257,7 +4259,7 @@
   {
     "id": "rumble",
     "name": "Rumble",
-    "title": "",
+    "title": "the Mechanized Menace",
     "roles": [
       "Fighter",
       "Mage"
@@ -4305,7 +4307,7 @@
   {
     "id": "ryze",
     "name": "Ryze",
-    "title": "",
+    "title": "the Rune Mage",
     "roles": [
       "Mage"
     ],
@@ -4352,7 +4354,7 @@
   {
     "id": "samira",
     "name": "Samira",
-    "title": "",
+    "title": "the Desert Rose",
     "roles": [
       "Marksman",
       "Assassin"
@@ -4400,7 +4402,7 @@
   {
     "id": "seraphine",
     "name": "Seraphine",
-    "title": "",
+    "title": "the Starry-Eyed Songstress",
     "roles": [
       "Support",
       "Mage"
@@ -4448,7 +4450,7 @@
   {
     "id": "sett",
     "name": "Sett",
-    "title": "",
+    "title": "the Boss",
     "roles": [
       "Fighter",
       "Tank"
@@ -4496,7 +4498,7 @@
   {
     "id": "shen",
     "name": "Shen",
-    "title": "",
+    "title": "the Eye of Twilight",
     "roles": [
       "Tank"
     ],
@@ -4543,7 +4545,7 @@
   {
     "id": "shyvana",
     "name": "Shyvana",
-    "title": "",
+    "title": "the Half-Dragon",
     "roles": [
       "Fighter",
       "Tank"
@@ -4591,7 +4593,7 @@
   {
     "id": "singed",
     "name": "Singed",
-    "title": "",
+    "title": "the Mad Chemist",
     "roles": [
       "Tank",
       "Mage"
@@ -4639,7 +4641,7 @@
   {
     "id": "sion",
     "name": "Sion",
-    "title": "",
+    "title": "The Undead Juggernaut",
     "roles": [
       "Tank",
       "Fighter"
@@ -4687,7 +4689,7 @@
   {
     "id": "sivir",
     "name": "Sivir",
-    "title": "",
+    "title": "the Battle Mistress",
     "roles": [
       "Marksman"
     ],
@@ -4734,7 +4736,7 @@
   {
     "id": "skarner",
     "name": "Skarner",
-    "title": "",
+    "title": "the Primordial Sovereign",
     "roles": [
       "Tank",
       "Fighter"
@@ -4782,7 +4784,7 @@
   {
     "id": "smolder",
     "name": "Smolder",
-    "title": "",
+    "title": "the Fiery Fledgling",
     "roles": [
       "Marksman",
       "Mage"
@@ -4830,7 +4832,7 @@
   {
     "id": "sona",
     "name": "Sona",
-    "title": "",
+    "title": "Maven of the Strings",
     "roles": [
       "Support",
       "Mage"
@@ -4878,7 +4880,7 @@
   {
     "id": "soraka",
     "name": "Soraka",
-    "title": "",
+    "title": "the Starchild",
     "roles": [
       "Support",
       "Mage"
@@ -4926,7 +4928,7 @@
   {
     "id": "swain",
     "name": "Swain",
-    "title": "",
+    "title": "the Noxian Grand General",
     "roles": [
       "Mage",
       "Support"
@@ -4974,7 +4976,7 @@
   {
     "id": "syndra",
     "name": "Syndra",
-    "title": "",
+    "title": "the Dark Sovereign",
     "roles": [
       "Mage"
     ],
@@ -5021,7 +5023,7 @@
   {
     "id": "taliyah",
     "name": "Taliyah",
-    "title": "",
+    "title": "the Stoneweaver",
     "roles": [
       "Mage",
       "Support"
@@ -5069,7 +5071,7 @@
   {
     "id": "talon",
     "name": "Talon",
-    "title": "",
+    "title": "the Blade's Shadow",
     "roles": [
       "Assassin"
     ],
@@ -5116,7 +5118,7 @@
   {
     "id": "teemo",
     "name": "Teemo",
-    "title": "",
+    "title": "the Swift Scout",
     "roles": [
       "Marksman",
       "Mage"
@@ -5164,7 +5166,7 @@
   {
     "id": "tristana",
     "name": "Tristana",
-    "title": "",
+    "title": "the Yordle Gunner",
     "roles": [
       "Marksman",
       "Assassin"
@@ -5212,7 +5214,7 @@
   {
     "id": "tryndamere",
     "name": "Tryndamere",
-    "title": "",
+    "title": "the Barbarian King",
     "roles": [
       "Fighter",
       "Assassin"
@@ -5260,7 +5262,7 @@
   {
     "id": "twisted-fate",
     "name": "Twisted Fate",
-    "title": "",
+    "title": "the Card Master",
     "roles": [
       "Mage",
       "Marksman"
@@ -5308,7 +5310,7 @@
   {
     "id": "twitch",
     "name": "Twitch",
-    "title": "",
+    "title": "the Plague Rat",
     "roles": [
       "Marksman",
       "Assassin"
@@ -5356,7 +5358,7 @@
   {
     "id": "urgot",
     "name": "Urgot",
-    "title": "",
+    "title": "the Dreadnought",
     "roles": [
       "Fighter",
       "Tank"
@@ -5404,7 +5406,7 @@
   {
     "id": "varus",
     "name": "Varus",
-    "title": "",
+    "title": "the Arrow of Retribution",
     "roles": [
       "Marksman",
       "Mage"
@@ -5452,7 +5454,7 @@
   {
     "id": "vayne",
     "name": "Vayne",
-    "title": "",
+    "title": "the Night Hunter",
     "roles": [
       "Marksman",
       "Assassin"
@@ -5500,7 +5502,7 @@
   {
     "id": "veigar",
     "name": "Veigar",
-    "title": "",
+    "title": "the Tiny Master of Evil",
     "roles": [
       "Mage"
     ],
@@ -5547,7 +5549,7 @@
   {
     "id": "velkoz",
     "name": "Vel'Koz",
-    "title": "",
+    "title": "the Eye of the Void",
     "roles": [
       "Mage",
       "Support"
@@ -5595,7 +5597,7 @@
   {
     "id": "vex",
     "name": "Vex",
-    "title": "",
+    "title": "the Gloomist",
     "roles": [
       "Mage"
     ],
@@ -5642,7 +5644,7 @@
   {
     "id": "vi",
     "name": "Vi",
-    "title": "",
+    "title": "the Piltover Enforcer",
     "roles": [
       "Fighter",
       "Assassin"
@@ -5690,7 +5692,7 @@
   {
     "id": "viego",
     "name": "Viego",
-    "title": "",
+    "title": "The Ruined King",
     "roles": [
       "Fighter",
       "Assassin"
@@ -5738,7 +5740,7 @@
   {
     "id": "viktor",
     "name": "Viktor",
-    "title": "",
+    "title": "the Herald of the Arcane",
     "roles": [
       "Mage"
     ],
@@ -5785,7 +5787,7 @@
   {
     "id": "vladimir",
     "name": "Vladimir",
-    "title": "",
+    "title": "the Crimson Reaper",
     "roles": [
       "Mage",
       "Fighter"
@@ -5833,7 +5835,7 @@
   {
     "id": "volibear",
     "name": "Volibear",
-    "title": "",
+    "title": "the Relentless Storm",
     "roles": [
       "Fighter",
       "Tank"
@@ -5881,7 +5883,7 @@
   {
     "id": "warwick",
     "name": "Warwick",
-    "title": "",
+    "title": "the Uncaged Wrath of Zaun",
     "roles": [
       "Fighter",
       "Tank"
@@ -5929,7 +5931,7 @@
   {
     "id": "wukong",
     "name": "Wukong",
-    "title": "",
+    "title": "the Monkey King",
     "roles": [
       "Fighter",
       "Tank"
@@ -5977,7 +5979,7 @@
   {
     "id": "xayah",
     "name": "Xayah",
-    "title": "",
+    "title": "the Rebel",
     "roles": [
       "Marksman"
     ],
@@ -6024,7 +6026,7 @@
   {
     "id": "xin-zhao",
     "name": "Xin Zhao",
-    "title": "",
+    "title": "the Seneschal of Demacia",
     "roles": [
       "Fighter",
       "Tank"
@@ -6072,7 +6074,7 @@
   {
     "id": "yasuo",
     "name": "Yasuo",
-    "title": "",
+    "title": "the Unforgiven",
     "roles": [
       "Fighter",
       "Assassin"
@@ -6120,7 +6122,7 @@
   {
     "id": "yone",
     "name": "Yone",
-    "title": "",
+    "title": "the Unforgotten",
     "roles": [
       "Fighter",
       "Assassin"
@@ -6168,7 +6170,7 @@
   {
     "id": "yuumi",
     "name": "Yuumi",
-    "title": "",
+    "title": "the Magical Cat",
     "roles": [
       "Support",
       "Mage"
@@ -6216,7 +6218,7 @@
   {
     "id": "zed",
     "name": "Zed",
-    "title": "",
+    "title": "the Master of Shadows",
     "roles": [
       "Assassin"
     ],
@@ -6263,7 +6265,7 @@
   {
     "id": "zeri",
     "name": "Zeri",
-    "title": "",
+    "title": "The Spark of Zaun",
     "roles": [
       "Marksman"
     ],
@@ -6310,7 +6312,7 @@
   {
     "id": "ziggs",
     "name": "Ziggs",
-    "title": "",
+    "title": "the Hexplosives Expert",
     "roles": [
       "Mage"
     ],
@@ -6357,7 +6359,7 @@
   {
     "id": "zilean",
     "name": "Zilean",
-    "title": "",
+    "title": "the Chronokeeper",
     "roles": [
       "Support",
       "Mage"
@@ -6405,7 +6407,7 @@
   {
     "id": "zoe",
     "name": "Zoe",
-    "title": "",
+    "title": "the Aspect of Twilight",
     "roles": [
       "Mage"
     ],
@@ -6452,7 +6454,7 @@
   {
     "id": "zyra",
     "name": "Zyra",
-    "title": "",
+    "title": "Rise of the Thorns",
     "roles": [
       "Mage",
       "Support"
@@ -6500,7 +6502,7 @@
   {
     "id": "senna",
     "name": "Senna",
-    "title": "",
+    "title": "the Redeemer",
     "roles": [
       "Support",
       "Marksman"
@@ -6548,7 +6550,7 @@
   {
     "id": "thresh",
     "name": "Thresh",
-    "title": "",
+    "title": "the Chain Warden",
     "roles": [
       "Support",
       "Tank"
@@ -6596,7 +6598,7 @@
   {
     "id": "annie",
     "name": "Annie",
-    "title": "",
+    "title": "the Dark Child",
     "roles": [
       "Mage",
       "Support"
@@ -6644,7 +6646,7 @@
   {
     "id": "aurelion-sol",
     "name": "Aurelion Sol",
-    "title": "",
+    "title": "The Star Forger",
     "roles": [
       "Mage"
     ],
@@ -6691,7 +6693,7 @@
   {
     "id": "bard",
     "name": "Bard",
-    "title": "",
+    "title": "the Wandering Caretaker",
     "roles": [
       "Support",
       "Mage"

@@ -9,8 +9,9 @@ which is the only thing the remote session was missing.
 ## Goal
 
 Finish the dataset under `data/patches/7.1/` so the app ships the **full live
-Wild Rift roster (patch 7.1g)** with **verified, schema-valid** data. Today
-only 3 champions and the item set are populated; the rest are empty stubs.
+Wild Rift roster (patch 7.1g)** with **verified, schema-valid** data. As of
+June 2026 the only remaining gap is champion **abilities** (see below) — stats,
+roles, titles, resourceType and the item set are all complete.
 
 **Accuracy is the product's whole differentiator. Do NOT fabricate stats.**
 Every number must come from a verified source (below). If a value can't be
@@ -24,28 +25,33 @@ confirmed, leave the entity out of the batch rather than guess.
 - Stat engine, gold efficiency, build state, URL sharing, compare UI, target
   dummy — complete.
 
-## Already scaffolded (don't redo)
+## Already done (don't redo)
 
-`roles` + `resourceType` are **verified-filled for 135 champions** from the
-ry2x CN-API feed (`data_en_US.json`). So per champion you only need the numeric
-payload below. Exceptions: ashe/ahri/darius were already complete; **`norra`**
-is absent from the feed — set its `roles`/`resourceType` manually.
+- **stats** — all 139 champions have full base+growth stats, verified accurate
+  (a June 2026 audit re-fetched a 7-champion sample from the WR wiki +
+  wildriftfire and they matched exactly). PR #17 + earlier backfills.
+- **roles + resourceType** — all 139 filled (ry2x CN-API; PR #17). The
+  WR-exclusive **norra** was filled manually (Mage / mana).
+- **title** — all 139 filled with English lore titles (Data Dragon; this PR).
+- **items** — all 100 complete. The 10 boot **enchants** (`goredrinker,
+  stridebreaker, galeforce, dream-maker, protobelt, stasis, quicksilver, veil,
+  gargoyle, glorious`) are correctly `stats: {}`: in Wild Rift boot enchants
+  grant only an active/passive, no flat stats (verified on the WR wiki).
+  Do NOT "fill" them — that would be fabrication. (Patch 7.2 removes boot
+  enchants entirely, so the 7.2 update deletes these 10 rather than editing.)
 
 ## What's missing (the entire remaining task)
 
-### A. Champions — 136 of 139 are stubs
-Complete today: **ashe, ahri, darius** only. Use these three as the reference
-for shape/quality. Every other champion in `champions.json` has `id`/`name`/
-`icon` but needs: `roles`, `resourceType`, full `stats` (base+growth for all
-fields), and `abilities`.
+### Champion abilities — 136 of 139 empty
+Only **ashe, ahri, darius** have ability data (1–2 abilities each — use them as
+the shape reference). Every other champion has `abilities: []`. This is the
+**only** remaining champion gap.
 
-### B. Items — 5 real items missing `stats`
-`goredrinker`, `stridebreaker`, `galeforce`, `dream-maker`, `protobelt`.
-(The statless boots **enchants** — `stasis, quicksilver, veil, gargoyle,
-glorious` — are correct as-is; leave them.)
-While adding stats, also add combat `mechanic` data to any new item with an
-on-hit / crit / pen / armor-shred passive (see schema below), matching the
-patterns already in the file (Terminus, Kraken, IE, etc.).
+⚠️ Highest-risk backfill: exact per-rank `baseDamage`, `scalings`, and
+`cooldown` must come from a primary WR source and be cross-checked ≥2 sources —
+a page-summarizer fetch demonstrably misreads exact ability numbers. The damage
+engine does not consume `abilities` yet, so this is lower-urgency than its size
+suggests. Batch ~8 champions per PR.
 
 ## Schemas (authoritative: `src/lib/schema/index.ts`)
 
