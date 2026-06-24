@@ -24,6 +24,13 @@ confirmed, leave the entity out of the batch rather than guess.
 - Stat engine, gold efficiency, build state, URL sharing, compare UI, target
   dummy — complete.
 
+## Already scaffolded (don't redo)
+
+`roles` + `resourceType` are **verified-filled for 135 champions** from the
+ry2x CN-API feed (`data_en_US.json`). So per champion you only need the numeric
+payload below. Exceptions: ashe/ahri/darius were already complete; **`norra`**
+is absent from the feed — set its `roles`/`resourceType` manually.
+
 ## What's missing (the entire remaining task)
 
 ### A. Champions — 136 of 139 are stubs

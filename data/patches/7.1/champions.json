@@ -245,7 +245,9 @@
     "id": "aatrox",
     "name": "Aatrox",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -290,7 +292,9 @@
     "id": "akali",
     "name": "Akali",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Assassin"
+    ],
     "resourceType": "energy",
     "stats": {
       "attackDamage": {
@@ -335,7 +339,10 @@
     "id": "akshan",
     "name": "Akshan",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -380,7 +387,10 @@
     "id": "alistar",
     "name": "Alistar",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -425,7 +435,10 @@
     "id": "ambessa",
     "name": "Ambessa",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "energy",
     "stats": {
       "attackDamage": {
@@ -470,7 +483,10 @@
     "id": "amumu",
     "name": "Amumu",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -515,7 +531,10 @@
     "id": "aurora",
     "name": "Aurora",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -560,7 +579,10 @@
     "id": "blitzcrank",
     "name": "Blitzcrank",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -605,7 +627,10 @@
     "id": "brand",
     "name": "Brand",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -650,7 +675,10 @@
     "id": "braum",
     "name": "Braum",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -695,7 +723,9 @@
     "id": "caitlyn",
     "name": "Caitlyn",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -740,7 +770,10 @@
     "id": "camille",
     "name": "Camille",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -785,7 +818,10 @@
     "id": "corki",
     "name": "Corki",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -830,7 +866,10 @@
     "id": "diana",
     "name": "Diana",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -875,7 +914,10 @@
     "id": "dr-mundo",
     "name": "Dr. Mundo",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Fighter"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -920,7 +962,9 @@
     "id": "draven",
     "name": "Draven",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -965,7 +1009,10 @@
     "id": "ekko",
     "name": "Ekko",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Assassin",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1010,7 +1057,10 @@
     "id": "evelynn",
     "name": "Evelynn",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Assassin",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1055,7 +1105,10 @@
     "id": "ezreal",
     "name": "Ezreal",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1100,7 +1153,10 @@
     "id": "fiddlesticks",
     "name": "Fiddlesticks",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1145,7 +1201,10 @@
     "id": "fiora",
     "name": "Fiora",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1190,7 +1249,10 @@
     "id": "fizz",
     "name": "Fizz",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Assassin",
+      "Fighter"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1235,7 +1297,10 @@
     "id": "galio",
     "name": "Galio",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1280,7 +1345,10 @@
     "id": "garen",
     "name": "Garen",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -1325,7 +1393,10 @@
     "id": "gnar",
     "name": "Gnar",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -1370,7 +1441,10 @@
     "id": "gragas",
     "name": "Gragas",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1415,7 +1489,9 @@
     "id": "graves",
     "name": "Graves",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1460,7 +1536,9 @@
     "id": "gwen",
     "name": "Gwen",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1505,7 +1583,10 @@
     "id": "hecarim",
     "name": "Hecarim",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1550,7 +1631,10 @@
     "id": "heimerdinger",
     "name": "Heimerdinger",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1595,7 +1679,10 @@
     "id": "irelia",
     "name": "Irelia",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1640,7 +1727,10 @@
     "id": "janna",
     "name": "Janna",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1685,7 +1775,10 @@
     "id": "jarvan-iv",
     "name": "Jarvan IV",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1730,7 +1823,9 @@
     "id": "jax",
     "name": "Jax",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1775,7 +1870,10 @@
     "id": "jayce",
     "name": "Jayce",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1820,7 +1918,10 @@
     "id": "jhin",
     "name": "Jhin",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1865,7 +1966,9 @@
     "id": "jinx",
     "name": "Jinx",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1910,7 +2013,10 @@
     "id": "kaisa",
     "name": "Kai'Sa",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -1955,7 +2061,9 @@
     "id": "kalista",
     "name": "Kalista",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2000,7 +2108,10 @@
     "id": "karma",
     "name": "Karma",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2045,7 +2156,10 @@
     "id": "kassadin",
     "name": "Kassadin",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Assassin",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2090,7 +2204,10 @@
     "id": "katarina",
     "name": "Katarina",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Assassin",
+      "Mage"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -2135,7 +2252,10 @@
     "id": "kayle",
     "name": "Kayle",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2180,7 +2300,10 @@
     "id": "kayn",
     "name": "Kayn",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2225,7 +2348,9 @@
     "id": "kennen",
     "name": "Kennen",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage"
+    ],
     "resourceType": "energy",
     "stats": {
       "attackDamage": {
@@ -2270,7 +2395,9 @@
     "id": "khazix",
     "name": "Kha'Zix",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2315,7 +2442,9 @@
     "id": "kindred",
     "name": "Kindred",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2360,7 +2489,10 @@
     "id": "kogmaw",
     "name": "Kog'Maw",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2405,7 +2537,10 @@
     "id": "ksante",
     "name": "K'Sante",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Fighter"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2450,7 +2585,10 @@
     "id": "lee-sin",
     "name": "Lee Sin",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "energy",
     "stats": {
       "attackDamage": {
@@ -2495,7 +2633,10 @@
     "id": "leona",
     "name": "Leona",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2540,7 +2681,10 @@
     "id": "lillia",
     "name": "Lillia",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2585,7 +2729,9 @@
     "id": "lissandra",
     "name": "Lissandra",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2630,7 +2776,10 @@
     "id": "lucian",
     "name": "Lucian",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2675,7 +2824,10 @@
     "id": "lulu",
     "name": "Lulu",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2720,7 +2872,10 @@
     "id": "lux",
     "name": "Lux",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2765,7 +2920,10 @@
     "id": "malphite",
     "name": "Malphite",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2810,7 +2968,10 @@
     "id": "maokai",
     "name": "Maokai",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2855,7 +3016,10 @@
     "id": "master-yi",
     "name": "Master Yi",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2900,7 +3064,10 @@
     "id": "mel",
     "name": "Mel",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2945,7 +3112,10 @@
     "id": "milio",
     "name": "Milio",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -2990,7 +3160,10 @@
     "id": "miss-fortune",
     "name": "Miss Fortune",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3035,7 +3208,10 @@
     "id": "mordekaiser",
     "name": "Mordekaiser",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Mage"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -3080,7 +3256,10 @@
     "id": "morgana",
     "name": "Morgana",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3125,7 +3304,10 @@
     "id": "nami",
     "name": "Nami",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3170,7 +3352,10 @@
     "id": "nasus",
     "name": "Nasus",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3215,7 +3400,10 @@
     "id": "nautilus",
     "name": "Nautilus",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3260,7 +3448,10 @@
     "id": "nidalee",
     "name": "Nidalee",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Assassin",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3305,7 +3496,10 @@
     "id": "nilah",
     "name": "Nilah",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3350,7 +3544,10 @@
     "id": "nocturne",
     "name": "Nocturne",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3440,7 +3637,10 @@
     "id": "nunu-amp-willump",
     "name": "Nunu & Willump",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3485,7 +3685,10 @@
     "id": "olaf",
     "name": "Olaf",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3530,7 +3733,10 @@
     "id": "orianna",
     "name": "Orianna",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3575,7 +3781,9 @@
     "id": "ornn",
     "name": "Ornn",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3620,7 +3828,10 @@
     "id": "pantheon",
     "name": "Pantheon",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3665,7 +3876,10 @@
     "id": "poppy",
     "name": "Poppy",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Fighter"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3710,7 +3924,10 @@
     "id": "pyke",
     "name": "Pyke",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3755,7 +3972,9 @@
     "id": "rakan",
     "name": "Rakan",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3800,7 +4019,9 @@
     "id": "rammus",
     "name": "Rammus",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3845,7 +4066,10 @@
     "id": "rell",
     "name": "Rell",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -3890,7 +4114,10 @@
     "id": "renekton",
     "name": "Renekton",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -3935,7 +4162,10 @@
     "id": "rengar",
     "name": "Rengar",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Assassin",
+      "Fighter"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -3980,7 +4210,10 @@
     "id": "riven",
     "name": "Riven",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -4025,7 +4258,10 @@
     "id": "rumble",
     "name": "Rumble",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Mage"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -4070,7 +4306,9 @@
     "id": "ryze",
     "name": "Ryze",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4115,7 +4353,10 @@
     "id": "samira",
     "name": "Samira",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4160,7 +4401,10 @@
     "id": "seraphine",
     "name": "Seraphine",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4205,7 +4449,10 @@
     "id": "sett",
     "name": "Sett",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -4250,7 +4497,9 @@
     "id": "shen",
     "name": "Shen",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank"
+    ],
     "resourceType": "energy",
     "stats": {
       "attackDamage": {
@@ -4295,7 +4544,10 @@
     "id": "shyvana",
     "name": "Shyvana",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -4340,7 +4592,10 @@
     "id": "singed",
     "name": "Singed",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4385,7 +4640,10 @@
     "id": "sion",
     "name": "Sion",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Fighter"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4430,7 +4688,9 @@
     "id": "sivir",
     "name": "Sivir",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4475,7 +4735,10 @@
     "id": "skarner",
     "name": "Skarner",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Tank",
+      "Fighter"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4520,7 +4783,10 @@
     "id": "smolder",
     "name": "Smolder",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4565,7 +4831,10 @@
     "id": "sona",
     "name": "Sona",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4610,7 +4879,10 @@
     "id": "soraka",
     "name": "Soraka",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4655,7 +4927,10 @@
     "id": "swain",
     "name": "Swain",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4700,7 +4975,9 @@
     "id": "syndra",
     "name": "Syndra",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4745,7 +5022,10 @@
     "id": "taliyah",
     "name": "Taliyah",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4790,7 +5070,9 @@
     "id": "talon",
     "name": "Talon",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4835,7 +5117,10 @@
     "id": "teemo",
     "name": "Teemo",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4880,7 +5165,10 @@
     "id": "tristana",
     "name": "Tristana",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -4925,7 +5213,10 @@
     "id": "tryndamere",
     "name": "Tryndamere",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -4970,7 +5261,10 @@
     "id": "twisted-fate",
     "name": "Twisted Fate",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5015,7 +5309,10 @@
     "id": "twitch",
     "name": "Twitch",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5060,7 +5357,10 @@
     "id": "urgot",
     "name": "Urgot",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5105,7 +5405,10 @@
     "id": "varus",
     "name": "Varus",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5150,7 +5453,10 @@
     "id": "vayne",
     "name": "Vayne",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5195,7 +5501,9 @@
     "id": "veigar",
     "name": "Veigar",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5240,7 +5548,10 @@
     "id": "velkoz",
     "name": "Vel'Koz",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5285,7 +5596,9 @@
     "id": "vex",
     "name": "Vex",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5330,7 +5643,10 @@
     "id": "vi",
     "name": "Vi",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5375,7 +5691,10 @@
     "id": "viego",
     "name": "Viego",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -5420,7 +5739,9 @@
     "id": "viktor",
     "name": "Viktor",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5465,7 +5786,10 @@
     "id": "vladimir",
     "name": "Vladimir",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Fighter"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -5510,7 +5834,10 @@
     "id": "volibear",
     "name": "Volibear",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5555,7 +5882,10 @@
     "id": "warwick",
     "name": "Warwick",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5600,7 +5930,10 @@
     "id": "wukong",
     "name": "Wukong",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5645,7 +5978,9 @@
     "id": "xayah",
     "name": "Xayah",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5690,7 +6025,10 @@
     "id": "xin-zhao",
     "name": "Xin Zhao",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5735,7 +6073,10 @@
     "id": "yasuo",
     "name": "Yasuo",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -5780,7 +6121,10 @@
     "id": "yone",
     "name": "Yone",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
     "resourceType": "none",
     "stats": {
       "attackDamage": {
@@ -5825,7 +6169,10 @@
     "id": "yuumi",
     "name": "Yuumi",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5870,7 +6217,9 @@
     "id": "zed",
     "name": "Zed",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Assassin"
+    ],
     "resourceType": "energy",
     "stats": {
       "attackDamage": {
@@ -5915,7 +6264,9 @@
     "id": "zeri",
     "name": "Zeri",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -5960,7 +6311,9 @@
     "id": "ziggs",
     "name": "Ziggs",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -6005,7 +6358,10 @@
     "id": "zilean",
     "name": "Zilean",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -6050,7 +6406,9 @@
     "id": "zoe",
     "name": "Zoe",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -6095,7 +6453,10 @@
     "id": "zyra",
     "name": "Zyra",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -6140,7 +6501,10 @@
     "id": "senna",
     "name": "Senna",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Marksman"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -6185,7 +6549,10 @@
     "id": "thresh",
     "name": "Thresh",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Tank"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -6230,7 +6597,10 @@
     "id": "annie",
     "name": "Annie",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage",
+      "Support"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -6275,7 +6645,9 @@
     "id": "aurelion-sol",
     "name": "Aurelion Sol",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
@@ -6320,7 +6692,10 @@
     "id": "bard",
     "name": "Bard",
     "title": "",
-    "roles": [],
+    "roles": [
+      "Support",
+      "Mage"
+    ],
     "resourceType": "mana",
     "stats": {
       "attackDamage": {
