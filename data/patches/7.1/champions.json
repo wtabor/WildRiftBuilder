@@ -4167,7 +4167,91 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Martial Cadence",
+        "description": "Jarvan IV's basic attacks are empowered to deal bonus physical damage equal to 8% of the target's current health.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Dragon Strike",
+        "description": "Jarvan IV extends his lance in the target direction, dealing physical damage to enemies hit and inflicting them with armor reduction for 3 seconds.",
+        "baseDamage": [
+          80,
+          140,
+          200,
+          260
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Golden Aegis",
+        "description": "Jarvan IV slows all nearby enemies for 2 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Demacian Standard",
+        "description": "Jarvan IV throws a Demacian flag to the target location, dealing magic damage to enemies within the area.",
+        "baseDamage": [
+          85,
+          140,
+          195,
+          250
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          11,
+          10.5,
+          10,
+          9.5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Cataclysm",
+        "description": "Jarvan IV leaps with displacement immunity to the target enemy champion's location over 0.35 seconds, dealing physical damage to all nearby enemies upon arrival.",
+        "baseDamage": [
+          200,
+          350,
+          500
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "JarvanIV"
   },
   {
@@ -4214,7 +4298,96 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Relentless Assault",
+        "description": "Jax's basic attacks on-attack against non-monsters generate a stack for 3 seconds, refreshing on subsequent attacks and stacking up to 5 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Leap Strike",
+        "description": "Jax dashes to the location of the target unit or ward.",
+        "baseDamage": [
+          70,
+          125,
+          180,
+          235
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          7.5,
+          7,
+          6.5,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Empower",
+        "description": "Jax empowers his next basic attack or _Leap Strike_ against an enemy within 10 seconds to deal bonus magic damage.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          6,
+          5,
+          4,
+          3
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Counter Strike",
+        "description": "Jax enters _Evasion_ for 2 seconds: a defensive stance where he dodges all incoming non- turret basic attacks and abilities that apply on-hit effects, and also takes 25% reduced damage from champions.",
+        "baseDamage": [
+          35,
+          75,
+          115,
+          155
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          12.5,
+          11,
+          9.5,
+          8
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Grandmaster-at-Arms",
+        "description": "Jax swings his lantern, dealing magic damage to nearby enemies.",
+        "baseDamage": [
+          100,
+          200,
+          300
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          55,
+          55,
+          55
+        ]
+      }
+    ],
     "icon": "Jax"
   },
   {
@@ -4310,7 +4483,119 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.5
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Whisper",
+        "description": "Jhin's basic attacks consume ammunition, up to 4 rounds, and fires at a fixed rate.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Dancing Grenade",
+        "description": "Jhin throws a grenade at the target enemy that deals physical damage and can bounce to up to three additional nearby enemies, prioritizing the closest enemy that has not been hit.",
+        "baseDamage": [
+          45,
+          80,
+          115,
+          150
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.35
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          6.5,
+          6,
+          5.5,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Deadly Flourish",
+        "description": "Jhin fires a shot in the target direction that deals physical damage to enemies hit, reduced to 75% against minions and monsters, and stops upon hitting an enemy champion.",
+        "baseDamage": [
+          60,
+          100,
+          140,
+          180
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Captive Audience",
+        "description": "Jhin places a _Lotus Trap_ at the target location which, upon landing, becomes stealthed after arming over 1 second, lasting for up to 90 seconds and granting sight within its radius.",
+        "baseDamage": [
+          20,
+          100,
+          180,
+          260
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.2
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          20,
+          18,
+          16,
+          14
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Curtain Call",
+        "description": "Jhin channels for up to 10 seconds, transforming his weapon into a cannon and gaining the ability to recast _Curtain Call_ 4 times within the duration.",
+        "baseDamage": [
+          75,
+          150,
+          225
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.25
+          }
+        ],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Jhin"
   },
   {
@@ -4357,7 +4642,92 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Get Excited!",
+        "description": "Whenever Jinx scores a takedown against an enemy champion, epic monster, or turret within 3 seconds of damaging them, she restores 10% missing mana and gains 140% bonus movement speed decaying over 6 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Switcheroo!",
+        "description": "Jinx can switch between using her minigun _Pow-Pow_ and her rocket launcher _Fishbones_.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          0.9,
+          0.9,
+          0.9,
+          0.9
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Zap!",
+        "description": "Jinx fires a bolt in the target direction that deals physical damage to the first enemy hit, revealing and slowing them for 2 seconds.",
+        "baseDamage": [
+          10,
+          80,
+          150,
+          220
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.6
+          }
+        ],
+        "cooldown": [
+          8,
+          7,
+          6,
+          5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Flame Chompers!",
+        "description": "Jinx tosses out 3 traps centered at the target location that arm after 0.75 seconds, then explode after 5 seconds to deal magic damage to nearby enemies.",
+        "baseDamage": [
+          70,
+          140,
+          210,
+          280
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          15,
+          13,
+          11,
+          9
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Super Mega Death Rocket!",
+        "description": "Jinx fires a massive rocket in the target direction, briefly granting sight of its surroundings and exploding upon the first enemy champion hit.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          50,
+          45,
+          40
+        ]
+      }
+    ],
     "icon": "Jinx"
   },
   {
@@ -4405,7 +4775,91 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Second Skin",
+        "description": "Innate - Living Weapon: Kai'Sa can evolve each of her basic abilities by obtaining an upgraded item. Evolving an ability causes her to enter a 2-second cast time. The upgrade is lost if the item is sold.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Icathian Rain",
+        "description": "Kai'Sa shoots a swarm of 6 missiles that evenly distributes among nearby visible enemies, each one hitting their target after 0.4 seconds to deal physical damage.",
+        "baseDamage": [
+          40,
+          60,
+          80,
+          100
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Void Seeker",
+        "description": "Kai'Sa shoots a void bolt in the target direction that deals magic damage to the first enemy hit, inflicts 2 Plasma, and reveals them for 4 seconds.",
+        "baseDamage": [
+          30,
+          60,
+          90,
+          120
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.1
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          20,
+          18,
+          16,
+          14
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Supercharge",
+        "description": "Kai'Sa charges up over the cast time, during which she is still allowed to move and gains bonus movement speed, increased by 0% - 80% (based on bonus attack speed).",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          16,
+          14,
+          12,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Killer Instinct",
+        "description": "Kai'Sa shields herself for 2 seconds and dashes to a target location near a visible enemy champion that was affected by Plasma within the last 4 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Kaisa"
   },
   {
@@ -4452,7 +4906,92 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Martial Poise",
+        "description": "Whenever Kalista inputs a movement command during her basic attack windup or the cast time of _Pierce_, she will dash a short distance in the direction of the inputted location.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Pierce",
+        "description": "Kalista launches a spear in the target direction that deals physical damage to the first enemy hit.",
+        "baseDamage": [
+          70,
+          135,
+          200,
+          265
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.1
+          }
+        ],
+        "cooldown": [
+          8,
+          7.5,
+          7,
+          6.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Sentinel",
+        "description": "Kalista summons a _Sentinel_ that patrols back and forth on a path along the target direction, granting sight of its surroundings as it travels.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          45,
+          40,
+          35,
+          30
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Rend",
+        "description": "Kalista rips all lodged spears from nearby enemies, consuming all of their stacks to deal them physical damage and slow them for 2 seconds.",
+        "baseDamage": [
+          30,
+          45,
+          60,
+          75
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Fate's Call",
+        "description": "Kalista invokes her tether to retrieve and hold her _Oathsworn_ for 4 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          60,
+          55,
+          50
+        ]
+      }
+    ],
     "icon": "Kalista"
   },
   {
@@ -4500,7 +5039,101 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Mantra",
+        "description": "Ability casts generate a stack.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Inner Flame",
+        "description": "Karma shoots a bolt in the target direction that explodes upon the first enemy hit, dealing magic damage to enemies hit and slowing them by 35% for 1.5 seconds.",
+        "baseDamage": [
+          60,
+          100,
+          140,
+          180
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Focused Resolve",
+        "description": "Karma deals magic damage to the two nearest enemy champions and forms a tether to them for 1.75 seconds, during which they are revealed.",
+        "baseDamage": [
+          35,
+          60,
+          85,
+          110
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Inspire",
+        "description": "Karma shields herself or the target allied champion for 3 seconds as well as granting 30% bonus movement speed for 1.5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Transcendent Embrace",
+        "description": "Karma forms a ring of spirit energy at the target location that detonates after 1 second, dealing magic damage to enemies hit and slowing them by 35% for 1 second.",
+        "baseDamage": [
+          170,
+          280,
+          390
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Karma"
   },
   {
@@ -4548,7 +5181,101 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Void Stone",
+        "description": "Periodically after casting an ability, Kassadin gains a shield lasting 1.5 seconds for 50 - 190 (based on level)(+ 30% AP).",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Null Sphere",
+        "description": "Kassadin fires an orb of void energy in the target direction that deals magic damage and silences the first enemy hit for 1 second.",
+        "baseDamage": [
+          80,
+          145,
+          210,
+          275
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Nether Blade",
+        "description": "Kassadin empowers his next basic attack within 4 seconds to have an uncancellable windup, gain 250 bonus range, deal bonus magic damage, and restore (5% / 15%) missing mana.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Force Pulse",
+        "description": "Kassadin emits a pulse of void energy in a cone in the target direction that deals magic damage to enemies hit and slows them by 30% for 1 second.",
+        "baseDamage": [
+          60,
+          100,
+          140,
+          180
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          12,
+          10,
+          8,
+          6
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Riftwalk",
+        "description": "Kassadin blinks to the target location, dealing magic damage to nearby enemies upon arrival.",
+        "baseDamage": [
+          80,
+          100,
+          120
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          5,
+          3.5,
+          2
+        ]
+      }
+    ],
     "icon": "Kassadin"
   },
   {
@@ -4596,7 +5323,109 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Voracity",
+        "description": "Scoring a champion takedown within 3 seconds of damaging them will reduce the current cooldowns of Katarina's abilities by 15 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Bouncing Blade",
+        "description": "Katarina throws a Dagger at the target enemy that deals magic damage and can bounce to up to two additional nearby enemies.",
+        "baseDamage": [
+          75,
+          115,
+          155,
+          195
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Preparation",
+        "description": "Katarina tosses a Dagger into the air above her current location and gains bonus movement speed until it lands after 1.25 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          14,
+          13,
+          12,
+          11
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Shunpo",
+        "description": "Katarina blinks to a target location near the unit or Dagger, dealing magic damage to the nearest enemy in range.",
+        "baseDamage": [
+          20,
+          50,
+          80,
+          110
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.5
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          11,
+          10,
+          9,
+          8
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Death Lotus",
+        "description": "Katarina channels for up to 2.6 seconds, rapidly throwing a dagger every 0.13 seconds to up to 3 of the closest nearby enemy champions, revealing herself in the process.",
+        "baseDamage": [
+          20,
+          30,
+          40
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.13
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.145
+          }
+        ],
+        "cooldown": [
+          60,
+          50,
+          40
+        ]
+      }
+    ],
     "icon": "Katarina"
   },
   {
