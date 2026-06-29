@@ -9609,7 +9609,101 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Mortal Will",
+        "description": "After 5 basic attacks or abilities, Pantheon's next basic ability is enhanced.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Comet Spear",
+        "description": "Active - Tap Cast: Pantheon stabs forward, dealing physical damage and refunds 60% of _Comet Spear's_ cooldown.",
+        "baseDamage": [
+          80,
+          120,
+          160,
+          200
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          8.5,
+          8,
+          7.5,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Shield Vault",
+        "description": "Pantheon dashes to an enemy, stunning for 1 second and dealing physical damage.",
+        "baseDamage": [
+          70,
+          120,
+          170,
+          220
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Aegis Assault",
+        "description": "Pantheon blocks all non-turret damage from a direction for 1.5 seconds and deal 100% ADphysical damage to nearby enemies.",
+        "baseDamage": [
+          60,
+          120,
+          180,
+          240
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          15,
+          14,
+          13,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Grand Starfall",
+        "description": "Pantheon gathers strength to leap high into the air.",
+        "baseDamage": [
+          300,
+          500,
+          700
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          90,
+          80,
+          70
+        ]
+      }
+    ],
     "icon": "Pantheon"
   },
   {
@@ -15561,7 +15655,113 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Short Fuse",
+        "description": "Ziggs' abilities deal 24% damage against enemy turrets.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          24
+        ]
+      },
+      {
+        "slot": "Q",
+        "name": "Bouncing Bomb",
+        "description": "Ziggs tosses a bomb to the target location that bounces forward up to two times, the distance traveled each time being based on how far it was originally thrown.",
+        "baseDamage": [
+          70,
+          135,
+          200,
+          265
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.65
+          }
+        ],
+        "cooldown": [
+          5,
+          5,
+          4,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Satchel Charge",
+        "description": "Ziggs hurls a charge to the target location that remains for 4 seconds, granting sight of the area.",
+        "baseDamage": [
+          70,
+          115,
+          160,
+          205
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Hexplosive Minefield",
+        "description": "Ziggs scatters a cluster of 11 proximity mines over the target location that grant sight of the area for 2 seconds, arming after 0.5 seconds and lasting for up to 5 seconds.",
+        "baseDamage": [
+          50,
+          105,
+          160,
+          215
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.35
+          }
+        ],
+        "cooldown": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Mega Inferno Bomb",
+        "description": "Ziggs catapults the _Mega Inferno Bomb_ to the target location, granting sight within a 600 radius around its destination for 4 seconds.",
+        "baseDamage": [
+          270,
+          375,
+          480
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.85
+          }
+        ],
+        "cooldown": [
+          85,
+          75,
+          65
+        ]
+      }
+    ],
     "icon": "Ziggs"
   },
   {
@@ -15609,7 +15809,84 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Time in a Bottle",
+        "description": "Zilean generates a reserve of \"Experience (champion)\")20 / 50 / 80 (based on level) experience every 5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          90
+        ]
+      },
+      {
+        "slot": "Q",
+        "name": "Time Bomb",
+        "description": "Zilean throws a ticking time bomb to the target location that grants sight of its surroundings.",
+        "baseDamage": [
+          70,
+          140,
+          210,
+          280
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.75
+          }
+        ],
+        "cooldown": [
+          13,
+          12,
+          11,
+          10
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Twisted Timeflow",
+        "description": "Zilean grants a shield and _Fleeting Time_ to himself and the nearest allied champion for 3 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          14.5,
+          13.5,
+          12.5,
+          11.5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Temporal Mirage",
+        "description": "Zilean expands a time-bending force field beneath for 2.5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          25,
+          25,
+          25,
+          25
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Chronoshift",
+        "description": "Zilean places a protective time rune on the target allied champion or himself for 5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          100,
+          85,
+          70
+        ]
+      }
+    ],
     "icon": "Zilean"
   },
   {
@@ -16310,7 +16587,82 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Traveler's Call",
+        "description": "50 • 8 - 4 (based on number of Chimes)",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Cosmic Binding",
+        "description": "Bard fires an energy bolt in the target direction that deals magic damage to the first enemy hit and slows them by 60% for a duration.",
+        "baseDamage": [
+          80,
+          130,
+          180,
+          230
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Caretaker's Shrine",
+        "description": "Bard conjures a shrine at the target location that grants sight of its surroundings for 1 second and gathers power over 5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          18,
+          18,
+          18,
+          18
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Magical Journey",
+        "description": "Bard opens a one-way magical corridor through a piece of terrain in the target direction for 10 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          19,
+          17,
+          16,
+          14
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Tempered Fate",
+        "description": "Bard sends magical energy arcing to the target location, granting sight of the area during travel.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          75,
+          65,
+          55
+        ]
+      }
+    ],
     "icon": "Bard"
   }
 ]
