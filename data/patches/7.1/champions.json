@@ -285,7 +285,92 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Deathbringer Stance",
+        "description": "Periodically, Aatrox's next basic attack gains 50 bonus range and deals bonus physical damage equal to 4% - 13% (based on level) of the target's maximum health, capped at 50 against monsters.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "The Darkin Blade",
+        "description": "Aatrox strikes with his blade in the target direction, dealing physical damage to enemies hit.",
+        "baseDamage": [
+          15,
+          45,
+          75,
+          105
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.75
+          }
+        ],
+        "cooldown": [
+          12,
+          10,
+          8,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Infernal Chains",
+        "description": "Aatrox sends a chain in the target direction that deals physical damage to the first enemy hit, doubled against minions, and slowing them by 25% for 1.5 seconds.",
+        "baseDamage": [
+          25,
+          40,
+          55,
+          70
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          15,
+          14,
+          13,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Umbral Dash",
+        "description": "Aatrox dashes in the target direction.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          8,
+          7,
+          6,
+          5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "World Ender",
+        "description": "Aatrox unleashes his true form for 10 seconds, fearing nearby enemy minions and monsters for 3 seconds, during which they are gradually slowed by up to 99% over the duration.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          75,
+          65,
+          55
+        ]
+      }
+    ],
     "icon": "Aatrox"
   },
   {
@@ -332,7 +417,104 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Assassin's Mark",
+        "description": "Akali's damaging abilities against a champion create a ring around them for 4 seconds, refreshing on subsequent hits.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Five Point Strike",
+        "description": "Akali fans out kunais in a cone in the target direction, dealing magic damage to enemies hit.",
+        "baseDamage": [
+          35,
+          70,
+          105,
+          140
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.65
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          1.5,
+          1.5,
+          1.5,
+          1.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Twilight Shroud",
+        "description": "Akali restores 100 energy and detonates a smoke bomb a fixed distance away in the target direction, creating a circular shroud that expands over the next 5 seconds into a ring.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          18,
+          17,
+          16,
+          15
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Shuriken Flip",
+        "description": "Akali flips backward and, after the cast time, throws a shuriken in the target direction that deals magic damage to the first enemy hit.",
+        "baseDamage": [
+          30,
+          60,
+          90,
+          120
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.25
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          15,
+          13,
+          11,
+          9
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Perfect Execution",
+        "description": "Akali dashes a set distance in the direction of the target enemy champion, dealing magic damage to enemies she passes through.",
+        "baseDamage": [
+          80,
+          200,
+          320
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          85,
+          65,
+          45
+        ]
+      }
+    ],
     "icon": "Akali"
   },
   {
@@ -380,7 +562,96 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Dirty Fighting",
+        "description": "Akshan's basic attack fires an additional shot after a delay that deals (50% / 100%) ADphysical damage.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Avengerang",
+        "description": "Akshan throws a boomerang in the target direction that deals physical damage to enemies hit, revealing them for 1 second and extending its range each time it hits a target.",
+        "baseDamage": [
+          10,
+          40,
+          70,
+          100
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.85
+          }
+        ],
+        "cooldown": [
+          8,
+          7,
+          6,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Going Rogue",
+        "description": "Akshan enters camouflage, which lasts indefinitely while he is near terrain or inside brush, and for 1.75 seconds otherwise.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          14,
+          10,
+          6,
+          2
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Heroic Swing",
+        "description": "Akshan can activate _Heroic Swing_ three times before the ability goes on cooldown, and can use the third cast only after 0.5 seconds of the second cast.",
+        "baseDamage": [
+          30,
+          70,
+          110,
+          150
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Comeuppance",
+        "description": "Akshan locks onto the target enemy champion and begins channeling for 3 seconds, revealing them as well as himself.",
+        "baseDamage": [
+          20,
+          30,
+          40
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.1
+          }
+        ],
+        "cooldown": [
+          65,
+          60,
+          55
+        ]
+      }
+    ],
     "icon": "Akshan"
   },
   {
@@ -428,7 +699,104 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Triumphant Roar",
+        "description": "Periodically while Alistar or nearby allied champions are wounded, he heals himself for 27 - 160 (based on level) and nearby allied champions for 54 - 320 (based on level).",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          40
+        ]
+      },
+      {
+        "slot": "Q",
+        "name": "Pulverize",
+        "description": "Alistar smashes the ground, dealing magic damage to nearby enemies and stunning and knocking them up simultaneously for 1 second.",
+        "baseDamage": [
+          60,
+          110,
+          160,
+          210
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          13.5,
+          12,
+          10.5,
+          9
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Headbutt",
+        "description": "Alistar dashes to the target enemy's location.",
+        "baseDamage": [
+          50,
+          120,
+          190,
+          260
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          13.5,
+          12,
+          10.5,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Trample",
+        "description": "Alistar tramples the ground for 5 seconds, dealing magic damage to nearby enemies every 0.5 seconds.",
+        "baseDamage": [
+          10,
+          15,
+          20,
+          25
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.04
+          }
+        ],
+        "cooldown": [
+          11.5,
+          11,
+          10.5,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Unbreakable Will",
+        "description": "Alistar cleanses himself of all crowd control and gains incoming damage reduction for 7 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          75,
+          65,
+          55
+        ]
+      }
+    ],
     "icon": "Alistar"
   },
   {
@@ -524,7 +892,106 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Cursed Touch",
+        "description": "Amumu's basic attacks and _Curse of the Sad Mummy_ are empowered to mark enemies with _Curse_ for 3 seconds, refreshing on subsequent applications and _Despair's_ per-tick damage.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Bandage Toss",
+        "description": "Amumu throws a bandage in the target direction that deals magic damage to the first enemy hit, stunning them for 1 second and pulling him to them, during which they are revealed.",
+        "baseDamage": [
+          60,
+          95,
+          130,
+          165
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          13,
+          12.5,
+          12,
+          11.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Despair",
+        "description": "Amumu cries a continuous pool of tears, dealing magic damage every 0.5 seconds to nearby enemies.",
+        "baseDamage": [
+          12.5,
+          15,
+          17.5,
+          20
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Tantrum",
+        "description": "Amumu releases his anger, dealing magic damage to nearby enemies and slowing them by 10% for 0.5 seconds.",
+        "baseDamage": [
+          90,
+          120,
+          150,
+          180
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Curse of the Sad Mummy",
+        "description": "Amumu entangles nearby enemies in bandages, dealing magic damage as well as knocking down and stunning them for 1.5 seconds.",
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          105,
+          95,
+          85
+        ]
+      }
+    ],
     "icon": "Amumu"
   },
   {
@@ -572,7 +1039,101 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Spirit Abjuration",
+        "description": "Aurora's damaging basic attacks and abilities apply a stack of _Spirit Abjuration_ to enemies for 4 seconds, refreshing on subsequent applications and stacking up to 3 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Twofold Hex",
+        "description": "Aurora fires a bolt of energy in the target direction that deals magic damage to enemies hit and marks them with a curse for 3.5 seconds.",
+        "baseDamage": [
+          35,
+          65,
+          95,
+          125
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          8,
+          7.5,
+          7,
+          6.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Across the Veil",
+        "description": "Aurora hops in the target direction inside a portal to the Spirit Realm.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          21,
+          20,
+          19,
+          18
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "The Weirding",
+        "description": "Aurora blasts energy in a line in the target direction and recoils in the opposite direction.",
+        "baseDamage": [
+          75,
+          125,
+          175,
+          225
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.65
+          }
+        ],
+        "cooldown": [
+          13,
+          12,
+          11,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Between Worlds",
+        "description": "Aurora leaps in the target direction with displacement immunity over 0.4 seconds.",
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          100,
+          90,
+          80
+        ]
+      }
+    ],
     "icon": "Aurora"
   },
   {
@@ -620,7 +1181,98 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Mana Barrier",
+        "description": "Periodically, when damaged to 35% maximum health, Blitzcrank first generates a shield equal to 30% of maximum mana, lasting for 10 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          50
+        ]
+      },
+      {
+        "slot": "Q",
+        "name": "Rocket Grab",
+        "description": "Blitzcrank fires their right hand in the target direction that catches the first enemy hit, dealing magic damage, stunning for 0.65 seconds, and pulling them towards Blitzcrank, during which they are revealed.",
+        "baseDamage": [
+          110,
+          175,
+          240,
+          305
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          18,
+          17,
+          16,
+          15
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Overdrive",
+        "description": "Blitzcrank gains bonus movement speed for 2.5 seconds, decaying to 10% over 1.5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Power Fist",
+        "description": "Blitzcrank empowers their next basic attack within 5 seconds to have an uncancellable windup, gain 50 bonus attack range and critically strike, knocking up the target for 1 second.",
+        "baseDamage": [
+          180,
+          200,
+          220,
+          240
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          8,
+          7,
+          6,
+          5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Static Field",
+        "description": "Blitzcrank detonates a static field that deals magic damage and silences nearby enemies for 0.5 seconds.",
+        "baseDamage": [
+          40,
+          80,
+          120
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.15
+          }
+        ],
+        "cooldown": [
+          55,
+          35,
+          15
+        ]
+      }
+    ],
     "icon": "Blitzcrank"
   },
   {
@@ -668,7 +1320,111 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Blaze",
+        "description": "Brand's abilities apply a stack of _Ablaze_ to enemies hit for 4 seconds, stacking up to 3 times and refreshing the duration of all stacks with each application.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Sear",
+        "description": "Brand launches a fireball in the target direction that deals magic damage to the first enemy hit.",
+        "baseDamage": [
+          80,
+          120,
+          160,
+          200
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.55
+          }
+        ],
+        "cooldown": [
+          7.5,
+          7,
+          6.5,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Pillar of Flame",
+        "description": "After a 0.5 second delay, Brand erupts a pillar of flame at the target location that deals magic damage to enemies hit.",
+        "baseDamage": [
+          70,
+          120,
+          170,
+          220
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.55
+          }
+        ],
+        "cooldown": [
+          9.5,
+          9,
+          8.5,
+          8
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Conflagration",
+        "description": "Brand ignites the target enemy, creating a blast that deals magic damage to them and causes the flame to spread from the target to nearby enemies and deal the same damage.",
+        "baseDamage": [
+          60,
+          90,
+          120,
+          150
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.45
+          }
+        ],
+        "cooldown": [
+          11,
+          10,
+          9,
+          8
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Pyroclasm",
+        "description": "Brand launches a fireball at the target enemy that bounces between nearby enemies and Brand up to four times, dealing magic damage to enemies each time.",
+        "baseDamage": [
+          100,
+          200,
+          300
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Brand"
   },
   {
@@ -6640,7 +7396,101 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Pyromania",
+        "description": "Innate - Pyromania: Annie generates a stack of _Pyromania_ whenever she casts an ability, stacking up to 4 times, at which she gains _Energized_.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Disintegrate",
+        "description": "Annie hurls a fireball in the target direction that deals magic damage to the first enemy hit and all nearby enemies.",
+        "baseDamage": [
+          80,
+          130,
+          180,
+          230
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.85
+          }
+        ],
+        "cooldown": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Incinerate",
+        "description": "Annie releases fire in a cone in the target direction, dealing magic damage to enemies hit.",
+        "baseDamage": [
+          70,
+          130,
+          190,
+          250
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          7,
+          7,
+          7,
+          7
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Molten Shield",
+        "description": "Annie grants herself and Tibbers a shield for 3 seconds and bonus movement speed that decays over 3 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          14,
+          14,
+          14,
+          14
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Summon: Tibbers",
+        "description": "Annie summons Tibbers to the target location in a burst of flame, dealing magic damage to enemies near him.",
+        "baseDamage": [
+          130,
+          230,
+          330
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Annie"
   },
   {
