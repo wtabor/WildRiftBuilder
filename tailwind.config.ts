@@ -10,24 +10,27 @@ const config: Config = {
         sans: ['var(--font-geist-sans)', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       },
       colors: {
-        // ── Meta palette: U.GG-style structure on a trajectory.ai light surface ──
+        // ── Meta palette: dark hextech surface, gold + blue accents ──
+        // Wild Rift's brand (and every competitor: op.gg, u.gg, mobalytics) is
+        // dark and high-contrast. Deep ink-navy surfaces, layered elevation,
+        // brightened accents tuned to read on a dark field.
         meta: {
-          bg: "#faf9f6",
-          bg2: "#ffffff",
-          panel: "#ffffff",
-          panel2: "#f3f1ec",
-          raised: "#ece9e2",
-          border: "#e6e3db",
-          text: "#1a1a1a",
-          mute: "#6f6f78",
-          dim: "#a1a1aa",
-          blue: "#3b6ef5",
-          blue2: "#4f46e5",
-          purple: "#6b4be0",
-          orange: "#f3683c",
-          coral: "#ef4444",
-          gold: "#b4831e",
-          green: "#16a34a",
+          bg: "#0a0d16",      // app base — deep ink-navy
+          bg2: "#0f1320",     // rail / top bar
+          panel: "#141926",   // card surface
+          panel2: "#1b2130",  // raised inputs / chips
+          raised: "#232b3c",  // hover / raised affordances
+          border: "#283042",  // hairline border
+          text: "#eef1f7",    // primary text
+          mute: "#8b94a8",    // secondary text
+          dim: "#5a6378",     // tertiary text
+          blue: "#4d86f7",    // primary accent
+          blue2: "#7c8cff",   // lighter indigo (links, "B" side)
+          purple: "#a07cf0",
+          orange: "#fb8a4c",
+          coral: "#f4606b",
+          gold: "#e0b24d",    // hextech gold
+          green: "#34d399",
         },
       },
     },

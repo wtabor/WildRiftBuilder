@@ -130,7 +130,7 @@ export default function MetaDesign() {
   }
 
   return (
-    <div className="min-h-screen bg-meta-bg font-sans text-meta-text" style={{ colorScheme: "light" }}>
+    <div className="min-h-screen bg-meta-bg font-sans text-meta-text" style={{ colorScheme: "dark" }}>
       <div className="flex">
         <Rail
           onChampions={() => setPickerOpen(true)}
@@ -444,9 +444,9 @@ function ChampionHeader({
       <div className="relative">
         <div
           aria-hidden
-          className="absolute inset-0 opacity-60"
+          className="absolute inset-0"
           style={{
-            background: `radial-gradient(420px 160px at 8% 0%, ${ITEM_CLASS_COLOR.ap}1f, transparent 70%)`,
+            background: `radial-gradient(520px 200px at 6% -10%, ${ITEM_CLASS_COLOR.ap}33, transparent 70%), radial-gradient(420px 220px at 100% 120%, ${ITEM_CLASS_COLOR.ad}22, transparent 70%)`,
           }}
         />
         <div className="relative flex flex-wrap items-center gap-4 p-4">
@@ -542,34 +542,40 @@ function LevelBar({ level, onChange }: { level: number; onChange: (n: number) =>
   return (
     <div className="mt-3 flex flex-wrap items-center gap-3 rounded-2xl border border-meta-border bg-meta-panel px-3 py-2.5 shadow-soft">
       <span className="text-xs font-semibold uppercase tracking-wide text-meta-mute">Level</span>
-      <div className="flex items-center overflow-hidden rounded-xl border border-meta-border">
-        <button
-          onClick={() => onChange(level - 1)}
-          className="px-2.5 py-1 text-meta-mute transition hover:bg-meta-panel2 hover:text-meta-text"
-          aria-label="Decrease level"
-        >
-          −
-        </button>
-        <span className="tabular w-8 bg-meta-panel2 py-1 text-center text-sm font-bold text-meta-text">
-          {level}
-        </span>
-        <button
-          onClick={() => onChange(level + 1)}
-          className="px-2.5 py-1 text-meta-mute transition hover:bg-meta-panel2 hover:text-meta-text"
-          aria-label="Increase level"
-        >
-          +
-        </button>
-      </div>
+      <button
+        onClick={() => onChange(1)}
+        aria-label="Set level 1"
+        aria-pressed={level === 1}
+        className={`rounded-lg border px-2.5 py-1 text-sm font-bold transition ${
+          level === 1
+            ? "border-meta-purple bg-meta-purple/15 text-meta-purple"
+            : "border-meta-border text-meta-mute hover:bg-meta-panel2 hover:text-meta-text"
+        }`}
+      >
+        1
+      </button>
       <input
         type="range"
         min={1}
         max={15}
         value={level}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="meta-range h-1.5 max-w-xs flex-1"
+        className="meta-range h-1.5 max-w-[12rem] flex-1"
         aria-label="Champion level"
       />
+      <button
+        onClick={() => onChange(15)}
+        aria-label="Set max level"
+        aria-pressed={level === 15}
+        className={`rounded-lg border px-2.5 py-1 text-sm font-bold transition ${
+          level === 15
+            ? "border-meta-purple bg-meta-purple/15 text-meta-purple"
+            : "border-meta-border text-meta-mute hover:bg-meta-panel2 hover:text-meta-text"
+        }`}
+      >
+        Max
+      </button>
+      <span className="tabular w-7 text-center text-sm font-bold text-meta-text">{level}</span>
       <span className="text-xs text-meta-dim">Stats shown at level {level} of 15</span>
     </div>
   );
