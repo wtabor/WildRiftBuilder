@@ -45,48 +45,80 @@
     },
     "abilities": [
       {
+        "slot": "passive",
+        "name": "Frost Shot",
+        "description": "Attacks and abilities slow; attacks deal bonus damage scaling with crit damage.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
         "slot": "Q",
         "name": "Ranger's Focus",
-        "description": "Consume Focus to fire a flurry of arrows.",
+        "description": "Builds Focus from attacks; consume it to gain attack speed and fire a damaging flurry.",
+        "baseDamage": [],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "W",
+        "name": "Volley",
+        "description": "Fires a cone of arrows dealing physical damage and applying Frost Shot.",
         "baseDamage": [
-          0,
-          0,
-          0,
-          0
+          20,
+          35,
+          50,
+          65
         ],
         "damageType": "physical",
         "scalings": [
           {
             "stat": "attackDamage",
-            "ratio": 1
+            "ratio": 1.15
           }
         ],
         "cooldown": [
-          6,
-          6,
-          6,
-          6
+          16,
+          14,
+          11,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Hawkshot",
+        "description": "Sends a hawk to scout; recast detonates it for area vision.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          45,
+          40,
+          35,
+          30
         ]
       },
       {
         "slot": "R",
         "name": "Enchanted Crystal Arrow",
-        "description": "Fire a global arrow that stuns the first champion hit.",
+        "description": "Fires a global arrow that stuns the first champion hit (longer by distance) and damages nearby enemies.",
         "baseDamage": [
           200,
-          400,
-          600
+          350,
+          500
         ],
         "damageType": "magic",
         "scalings": [
           {
             "stat": "abilityPower",
-            "ratio": 1
+            "ratio": 0.4
           }
         ],
         "cooldown": [
-          100,
           80,
+          70,
           60
         ]
       }
@@ -144,20 +176,29 @@
     },
     "abilities": [
       {
+        "slot": "passive",
+        "name": "Essence Theft",
+        "description": "Ability hits grant stacks; at 3 her next hit heals her.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
         "slot": "Q",
         "name": "Orb of Deception",
-        "description": "Send and return an orb, dealing magic then true damage.",
+        "description": "Sends and pulls back an orb, dealing magic damage out and true damage back.",
         "baseDamage": [
           40,
-          65,
-          90,
-          115
+          75,
+          110,
+          145
         ],
         "damageType": "magic",
         "scalings": [
           {
             "stat": "abilityPower",
-            "ratio": 0.4
+            "ratio": 0.45
           }
         ],
         "cooldown": [
@@ -165,6 +206,76 @@
           7,
           7,
           7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Fox-Fire",
+        "description": "Releases three fox-fires that lock onto and damage nearby enemies.",
+        "baseDamage": [
+          45,
+          80,
+          115,
+          150
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.35
+          }
+        ],
+        "cooldown": [
+          8,
+          7,
+          6,
+          5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Charm",
+        "description": "Blows a kiss that charms and damages the first enemy hit.",
+        "baseDamage": [
+          60,
+          100,
+          140,
+          180
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Spirit Rush",
+        "description": "Dashes and fires essence bolts (up to three casts), dealing magic damage.",
+        "baseDamage": [
+          60,
+          90,
+          120
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.35
+          }
+        ],
+        "cooldown": [
+          75,
+          65,
+          55
         ]
       }
     ],
@@ -217,13 +328,79 @@
     },
     "abilities": [
       {
+        "slot": "passive",
+        "name": "Hemorrhage",
+        "description": "Attacks and abilities apply a bleed; at 5 stacks Darius gains Noxian Might.",
+        "baseDamage": [],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "bonusAttackDamage",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Decimate",
+        "description": "Swings his axe; the blade edge deals greatly increased physical damage and heals.",
+        "baseDamage": [
+          50,
+          90,
+          130,
+          170
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.0
+          }
+        ],
+        "cooldown": [
+          9,
+          8,
+          6,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Crippling Strike",
+        "description": "Empowers his next attack for bonus physical damage and a heavy slow.",
+        "baseDamage": [],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          6,
+          6,
+          6,
+          6
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Apprehend",
+        "description": "Passively grants armor penetration; active pulls in and slows enemies.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
         "slot": "R",
         "name": "Noxian Guillotine",
-        "description": "Execute an enemy champion, dealing true damage that scales with bleed stacks.",
+        "description": "Leaps to execute a champion for true damage, increased per Hemorrhage stack.",
         "baseDamage": [
-          150,
+          125,
           250,
-          350
+          375
         ],
         "damageType": "true",
         "scalings": [
@@ -233,9 +410,9 @@
           }
         ],
         "cooldown": [
-          100,
-          90,
-          80
+          70,
+          65,
+          60
         ]
       }
     ],
