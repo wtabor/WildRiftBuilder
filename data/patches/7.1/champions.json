@@ -13304,7 +13304,96 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Living Vengeance",
+        "description": "Varus becomes elated for 5 / 7 / 9 / 11 (based on level) seconds upon killing an enemy, gaining 20% / 25% / 30% (based on level) bonus attack speed as well as bonus attack damage and ability power equal to 10% of his bonus attack speed.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Piercing Arrow",
+        "description": "Varus charges while being #Slow \"An icon representing the keyword Wr slow\") slowed by 20% for up to 4 seconds to increase _Piercing Arrow's_ range and damage over the first 1.5 seconds of the channel.",
+        "baseDamage": [
+          80,
+          140,
+          200,
+          260
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.1
+          }
+        ],
+        "cooldown": [
+          15,
+          14,
+          13,
+          12
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Blighted Quiver",
+        "description": "Varus doubles _Blighted Quiver's_ passive on-hit damage for 6 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          25,
+          25,
+          25,
+          25
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Hail of Arrows",
+        "description": "Varus fires a hail of arrows at the target location that land after 0.5 seconds, dealing physical damage to enemies hit.",
+        "baseDamage": [
+          70,
+          115,
+          160,
+          205
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          13,
+          12,
+          11,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Chain of Corruption",
+        "description": "Varus unleashes a tendril of corruption in the target direction that infects the first enemy champion hit, dealing magic damage, #Root \"An icon representing the keyword Wr root\") rooting them for 2 seconds, and revealing them for 4 seconds.",
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          75,
+          65,
+          55
+        ]
+      }
+    ],
     "icon": "Varus"
   },
   {
@@ -13352,7 +13441,77 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Night Hunter",
+        "description": "Vayne gains 10 / 15 / 20 (based on level) bonus movement speed while facing a nearby visible enemy champion, increased to 70 while under the effects of _Final Hour_.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Tumble",
+        "description": "Vayne dashes a fixed distance in the target direction, though not through terrain, and empowers her next basic attack within 4 seconds to deal bonus physical damage.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          5,
+          4,
+          3,
+          2
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Silver Bolts",
+        "description": "Vayne gains bonus attack speed and 10% omnivamp for 5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          18,
+          17,
+          16,
+          15
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Condemn",
+        "description": "Vayne fires a heavy bolt at the target enemy that deals physical damage and knocks them back, though not through terrain.",
+        "baseDamage": [
+          50,
+          80,
+          110,
+          140
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          21,
+          18,
+          15,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Final Hour",
+        "description": "Vayne equips her crossbow, gaining bonus attack damage for a duration.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Vayne"
   },
   {
@@ -13399,7 +13558,96 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Phenomenal Evil Power",
+        "description": "Veigar generates 1 stack of _Phenomenal Evil_ for each enemy champion hit by his abilities and for each minion or monster he kills with an ability.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Baleful Strike",
+        "description": "Veigar blasts a bolt of dark energy in the target direction that deals magic damage to the first two enemies hit.",
+        "baseDamage": [
+          65,
+          125,
+          185,
+          245
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.55
+          }
+        ],
+        "cooldown": [
+          5.5,
+          5,
+          4.5,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Dark Matter",
+        "description": "Veigar casts down a mass of dark matter that strikes the target location after a 1.2 second delay, dealing magic damage to enemies hit.",
+        "baseDamage": [
+          100,
+          160,
+          220,
+          280
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.95
+          }
+        ],
+        "cooldown": []
+      },
+      {
+        "slot": "E",
+        "name": "Event Horizon",
+        "description": "Veigar forms a cage at the target location that erects after a 0.5 second delay, remaining there for 3 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          18,
+          17,
+          16,
+          15
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Primordial Burst",
+        "description": "Veigar sends a primordial burst at the target enemy champion that deals magic damage, increased by 0% - 100% (based on target's missing health).",
+        "baseDamage": [
+          185,
+          250,
+          315
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.75
+          }
+        ],
+        "cooldown": [
+          60,
+          55,
+          50
+        ]
+      }
+    ],
     "icon": "Veigar"
   },
   {
@@ -13494,7 +13742,111 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Doom 'n Gloom",
+        "description": "22 / 19 / 16 / 13 (based on level)",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Mistral Bolt",
+        "description": "Vex launches a wave of mist in the target direction that deals magic damage to enemies hit.",
+        "baseDamage": [
+          60,
+          120,
+          180,
+          240
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.65
+          }
+        ],
+        "cooldown": [
+          7,
+          6,
+          5,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Personal Space",
+        "description": "Vex emits a shockwave around her before the cast time, dealing magic damage to nearby enemies and shielding herself for 2.5 seconds.",
+        "baseDamage": [
+          65,
+          120,
+          175,
+          230
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Looming Darkness",
+        "description": "Vex tosses her _Shadow_ to explode at the target location, dealing magic damage to enemies hit and slowing them for 2 seconds.",
+        "baseDamage": [
+          50,
+          80,
+          110,
+          140
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          13,
+          13,
+          13,
+          13
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Shadow Surge",
+        "description": "Vex sends her _Shadow_ in the target direction that deals magic damage to enemies hit.",
+        "baseDamage": [
+          75,
+          125,
+          175
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Vex"
   },
   {
@@ -13542,7 +13894,95 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Denting Blows",
+        "description": "Vi's basic attacks on-hit and _Vault Breaker_ will inflict a stack of _Denting Blows_ to enemies hit for 4 seconds, refreshing on subsequent hits and stacking up to 3 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Vault Breaker",
+        "description": "Vi charges while being slowed by 15% for up to 4 seconds to increase _Vault Breaker's_ range, speed, and damage over the first 1.25 seconds of the channel.",
+        "baseDamage": [
+          60,
+          95,
+          130,
+          165
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Blast Shield",
+        "description": "Vi gains a shield lasting 3 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Relentless Force",
+        "description": "Vi empowers her next basic attack within 8 seconds to have an uncancellable windup, gain 75 bonus range and trigger a blast in the target's direction that deals bonus physical damage to enemies hit in a cone.",
+        "baseDamage": [
+          20,
+          45,
+          70,
+          95
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.15
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          11,
+          10,
+          9,
+          8
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Cease and Desist",
+        "description": "Vi singles out the target enemy champion and dashes with displacement immunity towards them, during which they are revealed.",
+        "baseDamage": [
+          150,
+          300,
+          450
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          60,
+          55,
+          50
+        ]
+      }
+    ],
     "icon": "Vi"
   },
   {
@@ -13590,7 +14030,96 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Sovereign's Domination",
+        "description": "Whenever Viego scores an enemy champion takedown while alive and within 3 seconds of damaging them, a _Mist Wraith_ spawns from that champion's corpse for 8 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Blade of the Ruined King",
+        "description": "Viego stabs in a line in the target direction that deals physical damage to enemies hit.",
+        "baseDamage": [
+          20,
+          40,
+          60,
+          80
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          4.5,
+          4,
+          3.5,
+          3
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Spectral Maw",
+        "description": "Viego charges while being slowed by 10% for up to 3 seconds to increase _Spectral Maw's_ missile range and stun duration over the first second of the channel.",
+        "baseDamage": [
+          80,
+          150,
+          220,
+          290
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.9
+          }
+        ],
+        "cooldown": [
+          7,
+          7,
+          7,
+          7
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Harrowed Path",
+        "description": "Viego sends a specter in the target direction that creates a trail of mist in its wake which lasts 8 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          12,
+          10,
+          8,
+          6
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Heartbreaker",
+        "description": "Viego gains displacement immunity over the cast time, then blinks to the target location.",
+        "baseDamage": [
+          14,
+          17,
+          20
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          90,
+          75,
+          60
+        ]
+      }
+    ],
     "icon": "Viego"
   },
   {
@@ -13637,7 +14166,101 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Glorious Evolution",
+        "description": "Viktor can upgrade each of his abilities at the cost of 100 _Hex Fragments_, which he gains from killing enemies:",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Siphon Power",
+        "description": "Viktor throws a draining device at the target enemy that deals magic damage.",
+        "baseDamage": [
+          45,
+          60,
+          75,
+          90
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          8,
+          7,
+          6,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Gravity Field",
+        "description": "Viktor deploys a gravity field at the target location for 4 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          13,
+          12,
+          11,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Hextech Ray",
+        "description": "Viktor fires an energy beam along the target path that deals magic damage to enemies hit and briefly grants sight of the area.",
+        "baseDamage": [
+          75,
+          120,
+          165,
+          210
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Arcane Storm",
+        "description": "Viktor conjures an arcane singularity at the target location, dealing magic damage to enemies within the area and disrupting their channeled abilities.",
+        "baseDamage": [
+          100,
+          175,
+          250
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          75,
+          65,
+          55
+        ]
+      }
+    ],
     "icon": "Viktor"
   },
   {
@@ -13685,7 +14308,106 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Crimson Pact",
+        "description": "Vladimir gains ability power equal to 4.5% bonus health and bonus health equal to 140% AP.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Transfusion",
+        "description": "Vladimir drains blood from the target enemy, dealing magic damage and healing himself.",
+        "baseDamage": [
+          70,
+          100,
+          130,
+          160
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          9,
+          7.5,
+          6,
+          4.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Sanguine Pool",
+        "description": "Vladimir sinks into a pool of blood, becoming untargetable for 2 seconds.",
+        "baseDamage": [
+          20,
+          40,
+          60,
+          80
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          25,
+          22,
+          19,
+          16
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Tides of Blood",
+        "description": "Vladimir charges for up to 1.5 seconds, during which he increases _Tides of Blood's_ damage over the first second of the channel, and becomes slowed by 20% afterwards for the remaining duration.",
+        "baseDamage": [
+          20,
+          40,
+          60,
+          80
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.35
+          }
+        ],
+        "cooldown": [
+          12.5,
+          10,
+          7.5,
+          5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Hemoplague",
+        "description": "Vladimir spreads a virulent plague at the target location that infects enemies hit for 4 seconds, causing them to take 10% bonus magic damage from all incoming damage.",
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          90,
+          90,
+          90
+        ]
+      }
+    ],
     "icon": "Vladimir"
   },
   {
@@ -13733,7 +14455,96 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "The Relentless Storm",
+        "description": "Whenever Volibear damages at least one enemy with a basic attack or ability, he generates a stack of _The Relentless Storm_ for 6 seconds, refreshing on subsequent damage and stacking up to 5 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Thundering Smash",
+        "description": "Volibear drops on all fours, gaining bonus movement speed for 4 seconds, doubled while facing a visible enemy champion.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          13,
+          12,
+          11,
+          10
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Frenzied Maul",
+        "description": "Volibear slashes the target enemy with his claws to deal physical damage, and apply on-hit and on-attack effects.",
+        "baseDamage": [
+          5,
+          30,
+          55,
+          80
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Sky Splitter",
+        "description": "Volibear summons a lightning bolt to strike at the target location after a 2-second delay, granting sight of the area for 2.5 seconds.",
+        "baseDamage": [
+          80,
+          110,
+          140,
+          170
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          13,
+          13,
+          13,
+          13
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Stormbringer",
+        "description": "Volibear gains _Stormbringer_ for 12 seconds and leaps to the target location with displacement immunity, granting sight of the area during the travel.",
+        "baseDamage": [
+          300,
+          500,
+          700
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          90,
+          80,
+          70
+        ]
+      }
+    ],
     "icon": "Volibear"
   },
   {
