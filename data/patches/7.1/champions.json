@@ -12206,7 +12206,111 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Transcendent",
+        "description": "Syndra collects Splinters of Wrath, stacking up to 120 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Dark Sphere",
+        "description": "Syndra conjures a _Dark Sphere_ at the target location that appears after a 0.6-second delay, dealing magic damage to nearby enemies.",
+        "baseDamage": [
+          70,
+          115,
+          160,
+          205
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.65
+          }
+        ],
+        "cooldown": [
+          7,
+          6.5,
+          6,
+          5.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Force of Will",
+        "description": "Syndra grabs the nearest _Dark Sphere_ and hurls it at the target location, dealing magic damage to nearby enemies, and slowing and revealing them for 1.5 seconds.",
+        "baseDamage": [
+          60,
+          100,
+          140,
+          180
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.45
+          }
+        ],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Scatter the Weak",
+        "description": "Syndra propels a wave of force in a cone in the target direction that deals magic damage to enemies hit and knocks them back, though not through terrain.",
+        "baseDamage": [
+          70,
+          110,
+          150,
+          190
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.35
+          }
+        ],
+        "cooldown": [
+          17,
+          17,
+          17,
+          17
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Unleashed Power",
+        "description": "Syndra enters a 0.25 cast time, creating _3 Dark Spheres_ and grabbing up to 4 nearby _Dark Spheres_ that were last spawned.",
+        "baseDamage": [
+          60,
+          110,
+          160
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.15
+          }
+        ],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Syndra"
   },
   {
@@ -12301,7 +12405,86 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Blade's End",
+        "description": "Talon's ability hits against enemy champions and large monsters will apply a stack of _Wound_ lasting 6 seconds, refreshing on basic attacks and subsequent hits and stacking up to 3 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Noxian Diplomacy",
+        "description": "Talon dashes toward the target enemy, dealing physical damage upon arrival.",
+        "baseDamage": [
+          75,
+          100,
+          125,
+          150
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          7,
+          6.5,
+          6,
+          5.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Rake",
+        "description": "Talon throws a fan of daggers in a cone in the target direction that deals physical damage to enemies hit.",
+        "baseDamage": [
+          40,
+          50,
+          60,
+          70
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          8,
+          7.5,
+          7,
+          6.5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Assassin's Path",
+        "description": "Talon dashes up to 800 units over the target area of terrain, during which he gains unobstructed vision.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Shadow Assault",
+        "description": "Talon disperses a ring of blades around him that deals physical damage to enemies hit and lingers at maximum range for up to 2.5 seconds, during which he gains invisibility and bonus movement speed.",
+        "baseDamage": [
+          90,
+          135,
+          180
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          65,
+          55,
+          45
+        ]
+      }
+    ],
     "icon": "Talon"
   },
   {
@@ -12349,7 +12532,82 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Toxic Shot",
+        "description": "Teemo's basic attacks deal 8 - 36 (based on level)(+ 20% AP) bonus magic damage on-hit and inflict poison.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Blinding Dart",
+        "description": "Teemo shoots a dart at the target enemy that deals magic damage and blinds them for a duration.",
+        "baseDamage": [
+          50,
+          95,
+          140,
+          185
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Move Quick",
+        "description": "Teemo dashes in the target direction and doubles the bonus movement speed for 3 seconds, preventing it from being removed for the duration.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          17,
+          16,
+          15,
+          14
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Guerrilla Warfare",
+        "description": "Teemo enters camouflage, which lasts indefinitely while he is idle or inside brush, and for a total set duration otherwise.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          25,
+          23,
+          21,
+          19
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Noxious Trap",
+        "description": "Teemo tosses a poisonous mushroom to the target location that becomes stealthed after arming over 1 second, lasting for up to 2 minutes and granting sight of its surroundings.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          30,
+          25,
+          20
+        ]
+      }
+    ],
     "icon": "Teemo"
   },
   {
@@ -12397,7 +12655,101 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Draw a Bead",
+        "description": "Tristana's basic attacks, _Explosive Charge_, and _Buster Shot_ gain 10 - 150 (based on level) bonus range, for a total of 545 - 685 (based on level).",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Rapid Fire",
+        "description": "Tristana empowers her cannon, gaining bonus attack speed for 7 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          17,
+          16,
+          15,
+          14
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Rocket Jump",
+        "description": "Tristana jumps to the target location.",
+        "baseDamage": [
+          85,
+          155,
+          225,
+          295
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          22,
+          19,
+          16,
+          13
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Explosive Charge",
+        "description": "Tristana tosses an explosive charge onto the target enemy for 4 seconds, which then detonates to deal physical damage to nearby enemies.",
+        "baseDamage": [
+          65,
+          100,
+          135,
+          170
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.25
+          }
+        ],
+        "cooldown": [
+          15,
+          14,
+          13,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Buster Shot",
+        "description": "Tristana fires a massive cannonball at the target enemy champion that deals magic damage.",
+        "baseDamage": [
+          350,
+          450,
+          550
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Tristana"
   },
   {
@@ -12445,7 +12797,79 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Battle Fury",
+        "description": "Tryndamere's basic attacks against enemy champions grant 30% / 45% / 60% / 75% (based on Undying Rage's Rank) bonus attack speed for 5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          6
+        ]
+      },
+      {
+        "slot": "Q",
+        "name": "Bloodlust",
+        "description": "Tryndamere consumes all of his Fury to heal himself, increased for every point of Fury consumed.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Mocking Shout",
+        "description": "Tryndamere reduces the attack damage of nearby enemy champions by 40% for 3 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Spinning Slash",
+        "description": "Tryndamere dashes to the target location, dealing physical damage to enemies hit and generating 2 Fury per enemy hit.",
+        "baseDamage": [
+          80,
+          120,
+          160,
+          200
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          11,
+          10,
+          9,
+          8
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Undying Rage",
+        "description": "Tryndamere becomes enraged, instantly gaining Fury and a minimum health threshold for 5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          90,
+          80,
+          70
+        ]
+      }
+    ],
     "icon": "Tryndamere"
   },
   {
@@ -12493,7 +12917,96 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Loaded Dice",
+        "description": "Whenever Twisted Fate kills an enemy, he generates 1 - 9 (based on chance).",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Wild Cards",
+        "description": "Twisted Fate throws a fan of three cards in a cone in the target direction that each deal magic damage to enemies hit.",
+        "baseDamage": [
+          60,
+          120,
+          180,
+          240
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          6,
+          6,
+          6,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Pick a Card",
+        "description": "Twisted Fate cycles through three cards for 7.2 seconds, hovering each for 0.6 seconds at a time.",
+        "baseDamage": [
+          40,
+          65,
+          90,
+          115
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.75
+          }
+        ],
+        "cooldown": [
+          7,
+          6.5,
+          6,
+          5.5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Stacked Deck",
+        "description": "Twisted Fate gains additional bonus attack speed for 3 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          17,
+          16,
+          15,
+          14
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Destiny",
+        "description": "Twisted Fate marks all targetable enemy champions, revealing them for a duration.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          100,
+          90,
+          80
+        ]
+      }
+    ],
     "icon": "TwistedFate"
   },
   {
@@ -12541,7 +13054,77 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Deadly Venom",
+        "description": "Twitch's basic attacks on-hit apply a stack of _Deadly Venom_ for 5 seconds, refreshing on subsequent applications and stacking up to 5 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Ambush",
+        "description": "After a 1-second delay, Twitch becomes camouflaged for a duration.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Venom Cask",
+        "description": "Twitch hurls a cask of venom that explodes at the target location, applying _Deadly Venom_ to enemies hit and slowing them for 3 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Contaminate",
+        "description": "Twitch sends out a lethal toxin to each enemy afflicted by _Deadly Venom_, dealing them physical damage.",
+        "baseDamage": [
+          25,
+          35,
+          45,
+          55
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          16,
+          15,
+          14,
+          13
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Spray and Pray",
+        "description": "Twitch gains bonus attack damage and 225 bonus attack range for 6 seconds, during which his basic attacks are replaced by _bolts_ that travel slightly further than his attack range in a straight line, dealing damage to every enemy unit hit.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Twitch"
   },
   {
@@ -12589,7 +13172,91 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Echoing Flames",
+        "description": "Urgot's six legs each conceal a shotgun that covers an arc in a fixed direction, together forming a full circle of cover around him.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Corrosive Charge",
+        "description": "Urgot launches a canister at the target location that explodes after 0.3 seconds, dealing physical damage to enemies hit and slowing them for 1.25 seconds.",
+        "baseDamage": [
+          40,
+          95,
+          150,
+          205
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          9.5,
+          9,
+          8.5,
+          8
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Purge",
+        "description": "Urgot auto-attacks the nearest enemy「 up to a total 13 times 」「 at a fixed3.0 attack speed 」over 4 seconds, prioritizing _marked_ enemy champions and refreshing the _mark_ with every attack.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          12,
+          8,
+          4,
+          0.5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Disdain",
+        "description": "Before the cast time, Urgot gains a shield lasting 4 seconds.",
+        "baseDamage": [
+          90,
+          130,
+          170,
+          210
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          14,
+          13,
+          12,
+          11
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Fear Beyond Death",
+        "description": "Urgot fires a chem-drill in the target direction that impales the first enemy champion hit, dealing physical damage and leashing the target for 4 seconds, during which they are revealed and slowed by 0% - 75% (based on target's missing heal",
+        "baseDamage": [
+          100,
+          225,
+          350
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          60,
+          55,
+          50
+        ]
+      }
+    ],
     "icon": "Urgot"
   },
   {
@@ -13781,7 +14448,101 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Damnation",
+        "description": "Thresh's armor does not increase through growth (per level).",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Death Sentence",
+        "description": "Thresh throws out his scythe in the target direction, becoming unable to move or attack while it is in flight.",
+        "baseDamage": [
+          80,
+          130,
+          180,
+          230
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          17,
+          15,
+          13,
+          11
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Dark Passage",
+        "description": "Thresh throws his lantern to the target location over 0.5 seconds, lasting for 6 seconds while he remains nearby and granting sight of its surroundings.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          22,
+          20,
+          18,
+          16
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Flay",
+        "description": "Thresh sweeps his chain across the ground in a broad line and a radius around him, starting behind him and towards the target direction.",
+        "baseDamage": [
+          65,
+          105,
+          145,
+          185
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "The Box",
+        "description": "Thresh erects a pentagon of spectral walls around him that each last for 4 seconds.",
+        "baseDamage": [
+          250,
+          400,
+          550
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          85,
+          80,
+          75
+        ]
+      }
+    ],
     "icon": "Thresh"
   },
   {
