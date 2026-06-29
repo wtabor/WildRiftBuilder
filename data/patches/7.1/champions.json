@@ -2510,7 +2510,106 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Z-Drive Resonance",
+        "description": "Every third hit on a target deals bonus magic damage and grants move speed.",
+        "baseDamage": [],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Timewinder",
+        "description": "Throws a device that expands on the way back, dealing magic damage and slowing.",
+        "baseDamage": [
+          90,
+          110,
+          130,
+          150
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          8,
+          7,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Parallel Convergence",
+        "description": "Active casts a chronosphere that slows, then stuns enemies caught inside.",
+        "baseDamage": [
+          70,
+          100,
+          130,
+          160
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          20,
+          18,
+          16,
+          14
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Phase Dive",
+        "description": "Dashes, then blinks to the next attack target for bonus magic damage.",
+        "baseDamage": [
+          60,
+          90,
+          120,
+          150
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          9,
+          8,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Chronobreak",
+        "description": "Rewinds to his position seconds ago, healing and dealing magic damage in an area.",
+        "baseDamage": [
+          200,
+          350,
+          500
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 1.5
+          }
+        ],
+        "cooldown": [
+          80,
+          60,
+          40
+        ]
+      }
+    ],
     "icon": "Ekko"
   },
   {
@@ -6355,7 +6454,88 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Icathian Surprise",
+        "description": "On death, moves for a few seconds then detonates for true damage.",
+        "baseDamage": [],
+        "damageType": "true",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Caustic Spittle",
+        "description": "Fires a projectile dealing magic damage and shredding resistances.",
+        "baseDamage": [
+          90,
+          150,
+          210,
+          270
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.65
+          }
+        ],
+        "cooldown": [
+          6,
+          6,
+          6,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Bio-Arcane Barrage",
+        "description": "Gains attack range and on-hit % max-health magic damage for a duration.",
+        "baseDamage": [],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          16,
+          16,
+          16,
+          16
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Void Ooze",
+        "description": "Launches bile dealing magic damage and leaving a slowing trail.",
+        "baseDamage": [
+          80,
+          130,
+          180,
+          230
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.55
+          }
+        ],
+        "cooldown": [
+          11,
+          11,
+          11,
+          11
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Living Artillery",
+        "description": "Repeatedly fires long-range artillery dealing magic damage (per-rank base unconfirmed).",
+        "baseDamage": [],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": []
+      }
+    ],
     "icon": "KogMaw"
   },
   {
@@ -6403,7 +6583,86 @@
       "moveSpeed": 358.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Dauntless Instinct",
+        "description": "Damaging abilities mark enemies; attacking a marked target deals % max-health physical damage.",
+        "baseDamage": [],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Ntofo Strikes",
+        "description": "Slams for physical damage (scaling with bonus armor and MR) and slows; third hit knocks up.",
+        "baseDamage": [
+          80,
+          120,
+          160,
+          200
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          3,
+          3,
+          3,
+          3
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Path Maker",
+        "description": "Charges (unstoppable, damage reduction) then dashes, dealing % max-health physical damage.",
+        "baseDamage": [
+          180,
+          280,
+          380,
+          480
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          13,
+          12,
+          11,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Footwork",
+        "description": "Dashes and gains a shield; can dash to an allied champion.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          11,
+          10,
+          9,
+          8
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "All Out",
+        "description": "Knocks a champion back and goes All Out, gaining stats and a reformed kit.",
+        "baseDamage": [
+          80,
+          115,
+          150
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "KSante"
   },
   {
@@ -13161,7 +13420,92 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Rock Surfing",
+        "description": "Gains move speed when out of combat near walls.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Threaded Volley",
+        "description": "Hurls five rocks dealing magic damage; creates Worked Ground.",
+        "baseDamage": [
+          40,
+          60,
+          80,
+          100
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          6,
+          5,
+          4,
+          3
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Seismic Shove",
+        "description": "Erupts a target area, knocking enemies in a chosen direction.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          13,
+          11,
+          9,
+          7
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Unraveled Earth",
+        "description": "Scatters stones dealing magic damage and slowing; detonate on dash/knockback.",
+        "baseDamage": [
+          65,
+          120,
+          175,
+          230
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.55
+          }
+        ],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Weaver's Wall",
+        "description": "Raises a massive ridable wall that knocks enemies back as it forms.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          94,
+          85,
+          75
+        ]
+      }
+    ],
     "icon": "Taliyah"
   },
   {
@@ -14498,7 +14842,111 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Organic Deconstruction",
+        "description": "Ability hits stack Deconstruction; at 3 stacks enemies take true damage.",
+        "baseDamage": [],
+        "damageType": "true",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Plasma Fission",
+        "description": "Fires a bolt that can split, dealing magic damage and slowing.",
+        "baseDamage": [
+          80,
+          135,
+          190,
+          245
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.75
+          }
+        ],
+        "cooldown": [
+          7,
+          7,
+          7,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Void Rift",
+        "description": "Opens a rift that deals magic damage on contact and again when it erupts.",
+        "baseDamage": [
+          30,
+          60,
+          90,
+          120
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Tectonic Disruption",
+        "description": "Erupts a target area, dealing magic damage and knocking up.",
+        "baseDamage": [
+          70,
+          110,
+          150,
+          190
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          13,
+          12,
+          11,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Life Form Disintegration Ray",
+        "description": "Channels a steerable ray dealing heavy magic damage over its duration.",
+        "baseDamage": [
+          450,
+          625,
+          800
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 1.25
+          }
+        ],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Velkoz"
   },
   {
@@ -16148,7 +16596,88 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Feline Friendship",
+        "description": "While _attached_ to an ally, Yuumi grants them 2 permanent _Friendship_ stacks for killing enemy champions and minions.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Prowling Projectile",
+        "description": "Active - Hold: Yuumi conjures an errant missile in front of her that flies in the target direction for 2.25 seconds, dealing magic damage to the first enemy hit. While the missile is in-flight, she can steer it while still able to move, as",
+        "baseDamage": [
+          60,
+          100,
+          140,
+          180,
+          220
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "You and Me!",
+        "description": "Yuumi channels for 0.25 seconds, then dashes to the target allied champion and attaches to them upon arrival.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "E",
+        "name": "Zoomies",
+        "description": "Yuumi gains a shield and bonus attack speed.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Final Chapter",
+        "description": "Yuumi and Book channel for up to 3.5 seconds to launch 7 magical waves in the target direction.",
+        "baseDamage": [
+          80,
+          100,
+          120
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.15
+          }
+        ],
+        "cooldown": [
+          85,
+          75,
+          65
+        ]
+      }
+    ],
     "icon": "Yuumi"
   },
   {
