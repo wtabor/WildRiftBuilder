@@ -6,7 +6,8 @@
     "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-1g/",
     "https://wiki.leagueoflegends.com/en-us/WR:Items",
     "https://www.wildriftfire.com/",
-    "Champion English titles (lore identity, identical PC/WR) from Data Dragon 16.13.1; WR-exclusive Norra title verified at https://wiki.leagueoflegends.com/en-us/WR:Norra (June 2026)"
+    "Champion English titles (lore identity, identical PC/WR) from Data Dragon 16.13.1; WR-exclusive Norra title verified at https://wiki.leagueoflegends.com/en-us/WR:Norra (June 2026)",
+    "Champion abilities (all 139, June 2026): extracted verbatim from the official WR wiki per-champion pages (https://wiki.leagueoflegends.com/en-us/WR:<Champion>) and cross-checked against wildriftfire guides (https://www.wildriftfire.com/guide/<champion>). ~14 wiki pages carried PC-League data (5-rank arrays); those abilities use the WR-native wildriftfire values. See tools/data-fill/. Full base-stat re-audit in the same pass: 0 corrections."
   ],
   "verified": true
 }
