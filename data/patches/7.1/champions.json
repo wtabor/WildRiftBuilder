@@ -2769,7 +2769,92 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Duelist's Dance",
+        "description": "Fiora identifies the Vitals of nearby visible enemy champions, marked as an arc around them in North-, East-, South- or Westward direction.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Lunge",
+        "description": "Fiora dashes in the target direction then stabs a nearby enemy, dealing physical damage and applying on-hit effects.",
+        "baseDamage": [
+          75,
+          85,
+          95,
+          105
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          12,
+          10,
+          8,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Riposte",
+        "description": "Fiora enters a defensive stance for 0.75 seconds, becoming unable to act, preventing all incoming non- turret damage, and gaining debuff immunity and crowd control immunity.",
+        "baseDamage": [
+          120,
+          170,
+          220,
+          270
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Bladework",
+        "description": "Fiora empowers her next two basic attacks on-attack within 4 seconds to gain 25 bonus range and 60% bonus attack speed.",
+        "baseDamage": [
+          170,
+          180,
+          190,
+          200
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          11,
+          9,
+          7,
+          5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Grand Challenge",
+        "description": "Fiora challenges the target enemy champion for 8 seconds, highlighting all four of their Vitals.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          70,
+          60,
+          50
+        ]
+      }
+    ],
     "icon": "Fiora"
   },
   {
@@ -2865,7 +2950,113 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Colossal Smash",
+        "description": "Periodically, Galio's next basic attack is empowered gain 40% bonus attack speed, have an uncancellable windup, and deal 15 - 155 (based on level)(+ 100% AD)(+ 45% AP)(+ 60% bonus magic resistance)modified magic damage to the target and all",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          5
+        ]
+      },
+      {
+        "slot": "Q",
+        "name": "Winds of War",
+        "description": "Galio creates two windblasts at either side of him that arc out before converging to the target location, dealing magic damage to all enemies they pass through.",
+        "baseDamage": [
+          70,
+          115,
+          160,
+          205
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.75
+          }
+        ],
+        "cooldown": [
+          11.5,
+          10,
+          8.5,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Shield of Durand",
+        "description": "Galio charges for up to 2 seconds, slowing himself by 15%, and gaining magic damage reduction and half of that amount as physical damage reduction; charging increases _Shield of Durand's_ radius and taunt duration over the first 1.25 second",
+        "baseDamage": [
+          40,
+          80,
+          120,
+          160
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.55
+          }
+        ],
+        "cooldown": [
+          18,
+          17,
+          16,
+          15
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Justice Punch",
+        "description": "Galio steps backwards in the opposite direction over the cast time, then dashes in the target direction until he hits an enemy champion or terrain.",
+        "baseDamage": [
+          90,
+          140,
+          190,
+          240
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Hero's Entrance",
+        "description": "Galio prepares to make an entrance, channeling for 2.75 seconds and designating the target allied champion's location at the time of cast as his landing spot.",
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          90,
+          80,
+          70
+        ]
+      }
+    ],
     "icon": "Galio"
   },
   {
@@ -2913,7 +3104,86 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Perseverance",
+        "description": "Garenregenerates1.2% - 4% (based on level) missing health every second.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Decisive Strike",
+        "description": "Garen cleanses from all slows and gains 35% bonus movement speed for 3 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          9,
+          8.5,
+          8,
+          7.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Courage",
+        "description": "Garen gains 30% incoming damage reduction for 4 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Judgment",
+        "description": "Garen rapidly spins his sword around, dealing physical damage to nearby enemies every 0.375 / 0.341 / 0.307 / 0.273 (based on level) seconds over 3 seconds, and becoming unable to basic attack.",
+        "baseDamage": [
+          13,
+          17,
+          21,
+          25
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.25
+          }
+        ],
+        "cooldown": [
+          9,
+          9,
+          9,
+          9
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Demacian Justice",
+        "description": "Garen calls upon the might of DEMACIA onto the target enemy champion, dealing true damage as well as revealing them for 1 second at the start of the cast time.",
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
+        "damageType": "true",
+        "scalings": [],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Garen"
   },
   {
@@ -3009,7 +3279,101 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Happy Hour",
+        "description": "Periodically, after casting an ability, Gragas heals himself for 8.5% of his maximum health.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Barrel Roll",
+        "description": "Gragas rolls a cask to the target location, remaining there for 3 seconds and granting sight of the area.",
+        "baseDamage": [
+          65,
+          120,
+          175,
+          230
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Drunken Rage",
+        "description": "Gragas channels for 0.75 seconds, drinking out of his brew, and gains damage reduction for 2.5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Body Slam",
+        "description": "Gragas charges in the target direction and stops upon colliding with an enemy, dealing magic damage to all nearby enemies, knocking them back, though not through terrain, and stunning them for 1 second.",
+        "baseDamage": [
+          70,
+          135,
+          200,
+          265
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          15,
+          14,
+          13,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Explosive Cask",
+        "description": "Gragas hurls a cask that travels to the target location over 0.5 seconds, exploding on impact to deal magic damage to all enemies within the area and knock them back, though not through terrain, from the epicenter of the explosion, as well",
+        "baseDamage": [
+          200,
+          300,
+          400
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          85,
+          70,
+          55
+        ]
+      }
+    ],
     "icon": "Gragas"
   },
   {
@@ -3056,7 +3420,91 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "New Destiny",
+        "description": "Innate - Double Barrel: Graves' basic attacks consume ammunition within 2 rounds, he will briefly reload immediately after expending all rounds or withholding leftover rounds for a while. The reload time is reduced by Graves' level and bonu",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "End of the Line",
+        "description": "Graves fires a shell in the target direction that deals physical damage to enemies it passes through and leaves behind a powder trail.",
+        "baseDamage": [
+          70,
+          90,
+          110,
+          130
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Smoke Screen",
+        "description": "Graves fires a canister at the target location that deals magic damage to enemies within the area and slows them by 50% for 0.5 seconds.",
+        "baseDamage": [
+          60,
+          125,
+          190,
+          255
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          20,
+          18,
+          16,
+          14
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Quickdraw",
+        "description": "Graves dashes to the target location, reloading 1 round and generating a stack of _True Grit_ for 4 seconds, stacking up to 6 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          13,
+          13,
+          13,
+          13
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Collateral Damage",
+        "description": "Graves fires an explosive shot in the target direction that deals physical damage to enemies hit and makes him recoil 300 units backward.",
+        "baseDamage": [
+          300,
+          450,
+          600
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          75,
+          60,
+          45
+        ]
+      }
+    ],
     "icon": "Graves"
   },
   {
@@ -3103,7 +3551,91 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "A Thousand Cuts",
+        "description": "Gwen's basic attacks on-hit, the center of _Snip Snip!_, and _Needlework_ all deal bonus magic damage equal to 1% (+ 0.5% per 100 AP) of the target's maximum health.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Snip Snip!",
+        "description": "Gwen snips at least twice with her scissors in a cone in the target direction over the cast time, each time dealing magic damage to all enemies within the area, with the final snip dealing increased damage.",
+        "baseDamage": [
+          14,
+          18,
+          22,
+          26
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.07
+          }
+        ],
+        "cooldown": [
+          6.5,
+          5.5,
+          4.5,
+          3.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Hallowed Mist",
+        "description": "Gwen summons the Hallowed Mist upon her current location, lasting for 4 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          17,
+          16,
+          15,
+          14
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Skip 'n Slash",
+        "description": "Gwen dashes to the target location, then empowers her basic attacks within the next 4 seconds to deal 10 magic damage(+ 18% AP) on-hit and gain attack speed and 100 Range.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          13.5,
+          12,
+          10.5,
+          9
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Needlework",
+        "description": "First Cast: Gwen launches a needle in the target direction that deals magic damage to enemies hit and slows them for 1.5 seconds.",
+        "baseDamage": [
+          35,
+          50,
+          65
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.1
+          }
+        ],
+        "cooldown": [
+          75,
+          65,
+          55
+        ]
+      }
+    ],
     "icon": "Gwen"
   },
   {
@@ -3151,7 +3683,106 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Warpath",
+        "description": "Hecarim gains bonus attack damage equal to 12% / 16% / 20% / 24% (based on level) of his bonus move speed.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Rampage",
+        "description": "Hecarim charges his halberd for 0.75 seconds, after which he deals physical damage to nearby enemies, reduced to 60% against minions.",
+        "baseDamage": [
+          5,
+          15,
+          25,
+          35
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.1
+          }
+        ],
+        "cooldown": [
+          4.5,
+          4,
+          3.5,
+          3
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Spirit of Dread",
+        "description": "Hecarim surrounds himself with the Spirit of Dread for 4 seconds, dealing magic damage every 0.5 seconds to nearby enemies.",
+        "baseDamage": [
+          12,
+          18,
+          24,
+          30
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": [
+          16,
+          15,
+          14,
+          13
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Devastating Charge",
+        "description": "Hecarim gains 25% - 55% (based on time active) bonus movement speed for 4 seconds.",
+        "baseDamage": [
+          5,
+          10,
+          15,
+          20
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          18,
+          17,
+          16,
+          15
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Onslaught of Shadows",
+        "description": "Hecarim dashes with displacement immunity to the target location and summons 5 spectral riders in an arrow formation that charge alongside him in the target direction, dealing magic damage to all enemies in their path and revealing them for",
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          100,
+          85,
+          70
+        ]
+      }
+    ],
     "icon": "Hecarim"
   },
   {
@@ -3247,7 +3878,115 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Ionian Fervor",
+        "description": "Irelia generates a stack of _Ionian Fervor_ for each enemy champion hit by her abilities, or if she hits at least one non-champion.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Bladesurge",
+        "description": "Irelia dashes 100 units through the target enemy's location, and upon collision or arrival, she deals physical damage, applies on-hit effects, and heals herself.",
+        "baseDamage": [
+          10,
+          40,
+          70,
+          100
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.65
+          }
+        ],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Defiant Dance",
+        "description": "Active - Hold: Irelia charges for up to 1.5 seconds, reducing incoming damage by 60% (+ 7% per 100 AP). The charge cannot be interrupted.",
+        "baseDamage": [
+          20,
+          35,
+          50,
+          65
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.5
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          14,
+          13,
+          12,
+          11
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Flawless Duet",
+        "description": "Irelia sends a blade to the target location for 3 seconds.",
+        "baseDamage": [
+          80,
+          130,
+          180,
+          230
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Vanguard's Edge",
+        "description": "Irelia launches a barrage of blades in the target direction that deals magic damage to enemies hit and revealing them for 1 second.",
+        "baseDamage": [
+          125,
+          250,
+          375
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Irelia"
   },
   {
@@ -3295,7 +4034,92 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Tailwind",
+        "description": "Janna gains 5% bonus movement speed and grants the same amount to nearby allied champions.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Howling Gale",
+        "description": "Janna summons a whirlwind at her current location that charges up over 0.75 seconds, then flies in the target direction over 0.5 seconds, dealing magic damage and knocking up enemies hit for 0.5 seconds.",
+        "baseDamage": [
+          50,
+          90,
+          130,
+          170
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          14,
+          14,
+          14,
+          14
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Zephyr",
+        "description": "Janna gains bonus movement speed and sends air elementals to the 3 nearest champions.",
+        "baseDamage": [
+          50,
+          90,
+          130,
+          170
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          9,
+          8.5,
+          8,
+          7.5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Eye of the Storm",
+        "description": "Janna shields herself, the nearest turret, and the most wounded nearest allied champion for 3 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          16,
+          14,
+          12,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Monsoon",
+        "description": "Janna unleashes a blast that knocks back nearby enemies to up to 875 units over 0.5 seconds, though not through terrain.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          80,
+          75,
+          70
+        ]
+      }
+    ],
     "icon": "Janna"
   },
   {
