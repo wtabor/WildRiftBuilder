@@ -8170,7 +8170,101 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Surging Tides",
+        "description": "Allied champions hit by Nami's abilities will gain 65(+ 20% AP)bonus movement speed decaying over 1.5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Aqua Prison",
+        "description": "Nami launches a bubble at the target location that lands after 0.726 seconds, dealing magic damage to enemies hit and suspending them for 1.5 seconds, during which they are revealed.",
+        "baseDamage": [
+          75,
+          145,
+          215,
+          285
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Ebb and Flow",
+        "description": "Nami sends a stream of water onto the target champion or herself, which then bounces to nearby unaffected champions up to twice, alternating between enemies and allies and Nami.",
+        "baseDamage": [
+          65,
+          120,
+          175,
+          230
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Tidecaller's Blessing",
+        "description": "Nami blesses herself or an allied champion for 6 seconds, empowering their next 3 basic attacks to each deal bonus magic damage and slow enemies for 1 second.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          11,
+          11,
+          11,
+          11
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Tidal Wave",
+        "description": "Nami surges a tidal wave in the target direction, granting sight around its trajectory as it travels, dealing magic damage to enemies hit, knocking them up for 0.5 seconds, and slowing them for 2 - 4 (based on distance traveled) seconds.",
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          75,
+          70,
+          65
+        ]
+      }
+    ],
     "icon": "Nami"
   },
   {
@@ -8218,7 +8312,86 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Soul Eater",
+        "description": "Nasus gains 6% / 12% / 18% / 24% (based on level) physical vamp.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Siphoning Strike",
+        "description": "Nasus empowers his next basic attack within 10 seconds to have an uncancellable windup, gain 50 bonus range, and deal bonus physical damage.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          7,
+          6,
+          5,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Wither",
+        "description": "Nasus ages the target enemy champion for 5 seconds, slowing them by 35% and crippling them by an amount.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          14,
+          13,
+          12,
+          11
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Spirit Fire",
+        "description": "Nasus ignites a field at the target location, granting sight of the area for 2.5 seconds and, after a 0.25-second delay, dealing magic damage to enemies within.",
+        "baseDamage": [
+          55,
+          110,
+          165,
+          220
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Fury of the Sands",
+        "description": "Nasus empowers himself for 15 seconds, gaining bonus health, bonus armor, bonus magic resistance, increased size, and 50 bonus attack range for the duration.",
+        "baseDamage": [
+          1.5,
+          2,
+          2.5
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          75,
+          70,
+          65
+        ]
+      }
+    ],
     "icon": "Nasus"
   },
   {
@@ -8266,7 +8439,101 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Staggering Blow",
+        "description": "Nautilus basic attacks against enemies deal 13 - 125 (based on level)bonus physical damage and root the target for 1 - 1.75 (based on level) seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Dredge Line",
+        "description": "Nautilus hurls his anchor in the target direction that stops on the first enemy or terrain hit.",
+        "baseDamage": [
+          90,
+          150,
+          210,
+          270
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.75
+          }
+        ],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Titan's Wrath",
+        "description": "Nautilus shields himself for 6 seconds and while it holds, his basic attacks are empowered to deal bonus magic damage to the target and surrounding enemies.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          11,
+          11,
+          11,
+          11
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Riptide",
+        "description": "Nautilus sends three waves of explosions that emanate from him over 0.561 seconds.",
+        "baseDamage": [
+          70,
+          110,
+          150,
+          190
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          6.5,
+          6,
+          5.5,
+          5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Depth Charge",
+        "description": "Nautilus sends out a _Depth Charge_ that chases the target enemy champion, accelerating over time and creating eruptions every 0.25 seconds in its wake that also briefly grant sight of the area.",
+        "baseDamage": [
+          125,
+          175,
+          225
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          70,
+          60,
+          50
+        ]
+      }
+    ],
     "icon": "Nautilus"
   },
   {
@@ -8362,7 +8629,96 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Joy Unending",
+        "description": "Nilah heals for 20% of the damage that enemies take from her critical strikes, with each excess healing converted into a shield lasting 6 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Formless Blade",
+        "description": "Nilah cracks her whip-blade in a line in the target direction that deals physical damage to enemies hit, increased by 0% - 100% (based on critical rate).",
+        "baseDamage": [
+          10,
+          15,
+          20,
+          25
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.9
+          }
+        ],
+        "cooldown": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Jubilant Veil",
+        "description": "Nilah envelops herself in mist for 1.75 seconds, during which she gains bonus movement speed, reduces incoming magic damage taken by 25%, and dodges non- turret basic attacks.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          21,
+          20,
+          19,
+          18
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Slipstream",
+        "description": "Nilah dashes in the target direction, dealing physical damage to enemies she passes through.",
+        "baseDamage": [
+          70,
+          100,
+          130,
+          160
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Apotheosis",
+        "description": "Nilah whirls her whip-blade over 1 second, dealing physical damage to nearby enemies every 0.25 seconds.",
+        "baseDamage": [
+          15,
+          30,
+          45
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Nilah"
   },
   {
@@ -8410,7 +8766,83 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Umbra Blades",
+        "description": "Periodically, Nocturne empowers his next basic attack to slash in a circle, dealing 120% ADphysical damage to the target and nearby enemies and healing himself for 16 - 30 (based on level)(+ 30% AP) per enemy hit.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          12
+        ]
+      },
+      {
+        "slot": "Q",
+        "name": "Duskbringer",
+        "description": "Nocturne casts out a shadow blade in the target direction that leaves a _Dusk Trail_ in its wake, dealing physical damage to enemies hit.",
+        "baseDamage": [
+          70,
+          125,
+          180,
+          235
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          7,
+          7,
+          7,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Shroud of Darkness",
+        "description": "Nocturne gains a spell shield for 1.5 seconds that blocks the next enemy ability.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Unspeakable Horror",
+        "description": "Nocturne torments the target, forming a tether between himself and the target for 2 seconds, during which the target takes magic damage every 0.5 seconds over the duration.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          14,
+          13,
+          12,
+          11
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Paranoia",
+        "description": "Nocturne terrorizes all enemy champions, nearsighting them for 6 seconds.",
+        "baseDamage": [
+          150,
+          275,
+          400
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          110,
+          90,
+          70
+        ]
+      }
+    ],
     "icon": "Nocturne"
   },
   {
@@ -8457,7 +8889,111 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Beloved Trinkets",
+        "description": "Periodically, Norra's next ability upon impact will scatter 2 / 3 / 4 (based on level) _Trinkets_ for 4 seconds, each granting sight.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Memory Surge",
+        "description": "Norra charges for 2.5 seconds, being slowed by 20% to increase _Memory Surge's_ range and damage over the first 1.5 seconds, afterwards being slowed by 30%.",
+        "baseDamage": [
+          55,
+          110,
+          165,
+          220
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          7.5,
+          6.5,
+          5.5,
+          4.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Journey to Nowhere",
+        "description": "Norra tosses a portal to the target location, dealing magic damage to enemies hit and banishing them to the _Spirit Realm_ for 2.25 seconds.",
+        "baseDamage": [
+          65,
+          105,
+          145,
+          185
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          23,
+          22,
+          21,
+          20
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Threads of Homecoming",
+        "description": "Norra opens two portals centered at the target location.",
+        "baseDamage": [
+          70,
+          120,
+          170,
+          220
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          12,
+          10.5,
+          9,
+          7.5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Portalpalooza!",
+        "description": "Norra channels a circular rift at the target location for 10 seconds.",
+        "baseDamage": [
+          100,
+          140,
+          180
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.55
+          }
+        ],
+        "cooldown": [
+          105,
+          95,
+          85
+        ]
+      }
+    ],
     "icon": "Norra"
   },
   {
@@ -8505,7 +9041,111 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Call of the Freljord",
+        "description": "Nunu & Willump gain 40% bonus attack speed and 15% bonus movement speed for 4 seconds upon damaging an enemy champion, large monster or structure.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Consume",
+        "description": "Willump takes a bite out of the target enemy, dealing magic damage and healing himself.",
+        "baseDamage": [
+          55,
+          110,
+          165,
+          220
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.65
+          }
+        ],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Biggest Snowball Ever!",
+        "description": "Willump cleanses himself from all slows and channels for up to 12 seconds, becoming slow-immune and creating a rolling snowball.",
+        "baseDamage": [
+          35,
+          48,
+          61,
+          74
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Snowball Barrage",
+        "description": "Nunu channels for up to 2.5 seconds, hurling 17 snowballs that deal magic damage and slow by 20% for 0.5 seconds.",
+        "baseDamage": [
+          10,
+          14,
+          18,
+          22
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.05
+          }
+        ],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Absolute Zero",
+        "description": "Nunu & Willump gain a shield and begins channeling for up to 3 seconds.",
+        "baseDamage": [
+          180,
+          240,
+          300
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Nunu"
   },
   {
@@ -8553,7 +9193,87 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Berserker Rage",
+        "description": "Olaf gains bonus attack speed and physical vamp based on his missing health, up to 70% - 110% (based on level) bonus attack speed and 15% - 30% (based on level) physical vamp at 70% missing health.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Undertow",
+        "description": "Olaf throws an axe to the target location that deals physical damage to enemies it passes through and slows them by 35% for 2 seconds.",
+        "baseDamage": [
+          50,
+          115,
+          180,
+          245
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          7,
+          7,
+          7,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Vicious Strikes",
+        "description": "Olaf gains bonus attack speed for 4 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          15,
+          14,
+          13,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Reckless Swing",
+        "description": "Olaf dashes to the target enemy and strikes thunder at their location, dealing true damage to the target and all nearby enemies.",
+        "baseDamage": [
+          45,
+          95,
+          145,
+          195
+        ],
+        "damageType": "true",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.55
+          }
+        ],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Ragnarok",
+        "description": "Olaf becomes enraged for 4 seconds, cleansing himself of all crowd control and becoming immune to them, as well as gaining bonus attack damage and 10% increased size.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          60,
+          55,
+          50
+        ]
+      }
+    ],
     "icon": "Olaf"
   },
   {
@@ -8601,7 +9321,111 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Clockwork Windup",
+        "description": "Orianna's basic attacks on-attack generate a stack of _Clockwork Winding_ for 4 seconds, refreshing on subsequent attacks, expiring upon attacking a new enemy, and stacking up to 2 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Command: Attack",
+        "description": "Orianna commands _The Ball_ to fly to the target location and remain there, dealing magic damage to enemies it passes through and nearby enemies upon arrival, reduced to 90% - 50% (based on enemies hit).",
+        "baseDamage": [
+          60,
+          105,
+          150,
+          195
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.45
+          }
+        ],
+        "cooldown": [
+          7.5,
+          6,
+          4.5,
+          3
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Command: Dissonance",
+        "description": "Orianna commands _The Ball_ to emit an electric pulse that deals magic damage to nearby enemies.",
+        "baseDamage": [
+          60,
+          110,
+          160,
+          210
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          7,
+          7,
+          7,
+          7
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Command: Protect",
+        "description": "Orianna commands _The Ball_ to fly to herself or the target allied champion and attach to the target, dealing magic damage to enemies it passes through and shielding the target for 2.5 seconds upon arrival.",
+        "baseDamage": [
+          50,
+          90,
+          130,
+          170
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          9,
+          9,
+          9,
+          9
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Command: Shockwave",
+        "description": "Orianna commands _The Ball_ to unleash a shockwave that deals magic damage to nearby enemies, stuns them for 0.75 seconds, and pulls them over 325-range.",
+        "baseDamage": [
+          250,
+          350,
+          450
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.85
+          }
+        ],
+        "cooldown": [
+          75,
+          65,
+          55
+        ]
+      }
+    ],
     "icon": "Orianna"
   },
   {
