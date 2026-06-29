@@ -10819,7 +10819,92 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Daredevil Impulse",
+        "description": "Samira's basic attack against an immobilized target will have an uncancellable windup and instead shoot a flurry of 6 strikes in 0.5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Flair",
+        "description": "Samira fires a shot in the target direction that deals physical damage to the first enemy hit.",
+        "baseDamage": [
+          15,
+          20,
+          25,
+          30
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1
+          }
+        ],
+        "cooldown": [
+          6.5,
+          5,
+          3.5,
+          2
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Blade Whirl",
+        "description": "Samira fluorishes her blade once, then again after 0.75 seconds, each dealing physical damage to nearby enemies.",
+        "baseDamage": [
+          20,
+          40,
+          60,
+          80
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          22,
+          20,
+          18,
+          16
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Wild Rush",
+        "description": "Samira dashes in the direction of the target enemy or enemy structure, dealing magic damage to enemies she passes through.",
+        "baseDamage": [
+          45,
+          60,
+          75,
+          90
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          20,
+          17,
+          14,
+          11
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Inferno Trigger",
+        "description": "Samira unleashes a torrent of shots for 2.23 seconds, reducing her movement speed by 30% and rapidly shooting at nearby enemies over 2 seconds at sporadic times in 0.2-second intervals each, dealing physical damage with each shot, reduced t",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          8,
+          8,
+          8
+        ]
+      }
+    ],
     "icon": "Samira"
   },
   {
@@ -10867,7 +10952,101 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Stage Presence",
+        "description": "Innate - Echo: Seraphine's basic ability casts each generate a stack of _Echo_, stacking up to 2 times. At 2 stacks, Seraphine's next basic ability casts an additional time after a 0.01 second delay, consuming all _Echo_ stacks after the ca",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "High Note",
+        "description": "Seraphine hurls a soundwave to the target location that quickly expands in a radius upon arrival, dealing magic damage to enemies within the area.",
+        "baseDamage": [
+          60,
+          75,
+          90,
+          105
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.45
+          }
+        ],
+        "cooldown": [
+          11,
+          9,
+          7,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Surround Sound",
+        "description": "Seraphine grants a shield and bonus movement speed to herself and nearby allied champions for 2.5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          23,
+          22,
+          21,
+          20
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Beat Drop",
+        "description": "Seraphine fires a heavy soundwave in the target direction that deals magic damage to enemies hit and slows them by 99% for 1 second.",
+        "baseDamage": [
+          60,
+          95,
+          130,
+          165
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Encore",
+        "description": "Seraphine projects a captivating force in the target direction that deals magic damage to enemies hit, charms them, during which they are revealed, and slows them by 40% for a duration.",
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          105,
+          90,
+          75
+        ]
+      }
+    ],
     "icon": "Seraphine"
   },
   {
@@ -10915,7 +11094,91 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Pit Grit",
+        "description": "Sett's basic attacks alternate between a Left Punch and a Right Punchon-attack.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Knuckle Down",
+        "description": "Sett empowers his next two basic attacks within 5 seconds to deal bonus physical damage, capped at 100 damage against monsters.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          9.5,
+          8,
+          6.5,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Haymaker",
+        "description": "Sett immediately gains a shield equal to his expended _Grit_ for 3 seconds, decaying after 0.75 seconds, and charges up a strike over the cast time.",
+        "baseDamage": [
+          80,
+          105,
+          130,
+          155
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          16,
+          14.5,
+          13,
+          11.5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Facebreaker",
+        "description": "Sett pulls in enemies at his front and back in the target direction, dealing them physical damage and slowing them by 50% for 0.5 seconds.",
+        "baseDamage": [
+          50,
+          75,
+          100,
+          125
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          14,
+          12.5,
+          11,
+          9.5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "The Show Stopper",
+        "description": "Sett suppresses and reveals the target enemy champion and dashes with displacement immunity to their location, attaching them to himself on arrival and carrying them another 600 units in the same direction.",
+        "baseDamage": [
+          200,
+          300,
+          400
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Sett"
   },
   {
@@ -10962,7 +11225,79 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Ki Barrier",
+        "description": "After completing an ability's effects, Shen gains a shield lasting 2.5 seconds for 51 - 100 (based on level)(+ 14% bonus health).",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          10
+        ]
+      },
+      {
+        "slot": "Q",
+        "name": "Twilight Assault",
+        "description": "Shen pulls the Spirit Blade to his location.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          8,
+          7,
+          6,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Spirit's Refuge",
+        "description": "Shen sends the Spirit Blade to the target allied champion or himself, creating a protective zone for 1.75 seconds that blocks all non- turret basic attacks that hit allied champions in the area.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Shadow Dash",
+        "description": "Shen dashes in the target direction, dealing physical damage to enemy champions and monsters he passes through and taunting them for 1.5 seconds.",
+        "baseDamage": [
+          60,
+          90,
+          120,
+          150
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          16,
+          14,
+          12,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Stand United",
+        "description": "Shen focuses his will, channeling for 3 seconds and granting the target allied champion a shield lasting 5 seconds at the time of cast, increased by 0% - 60% (based on target's missing health).",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          110,
+          100,
+          90
+        ]
+      }
+    ],
     "icon": "Shen"
   },
   {
@@ -11058,7 +11393,87 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Noxious Slipstream",
+        "description": "Whenever Singed moves near a champion, he gains 20% bonus movement speed for 2 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Poison Trail",
+        "description": "Singed continually creates a toxic cloud in his wake that lingers for 3.25 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Mega Adhesive",
+        "description": "Singed spills a potent adhesive at the target location, dealing magic damage to enemies hit.",
+        "baseDamage": [
+          50,
+          70,
+          90,
+          110
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.25
+          }
+        ],
+        "cooldown": [
+          11,
+          11,
+          11,
+          11
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Fling",
+        "description": "Singed dashes to the target enemy, knocking aside enemies he passes through.",
+        "baseDamage": [
+          40,
+          60,
+          80,
+          100
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Insanity Potion",
+        "description": "Singed empowers himself for 20 seconds with ability power, bonus armor, bonus magic resistance and bonus movement speed.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Singed"
   },
   {
@@ -11153,7 +11568,100 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Fleet of Foot",
+        "description": "Sivir's basic attacks and ability hits against enemy champions grant her 31 - 45 (based on level) bonus movement speed for 1.5 seconds, refreshing on subsequent hits.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Boomerang Blade",
+        "description": "Sivir hurls her crossblade in the target direction, dealing physical damage to enemies hit, increased by 0% - 50% (based on critical rate).",
+        "baseDamage": [
+          10,
+          30,
+          50,
+          70
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.75
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          9.5,
+          9,
+          8.5,
+          8
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Ricochet",
+        "description": "Sivir gains bonus attack speed for 4 seconds, during which her basic attacks bounce to surrounding enemies to deal physical damage.",
+        "baseDamage": [
+          4,
+          6,
+          8,
+          10
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.15
+          }
+        ],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Spell Shield",
+        "description": "Sivir gains a spell shield for 2 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          22,
+          20,
+          18,
+          16
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "On the Hunt",
+        "description": "Sivir makes a rally cry, granting herself and nearby allied champions 15% bonus movement speed for a set duration.",
+        "baseDamage": [
+          2,
+          3,
+          4
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Sivir"
   },
   {
@@ -11249,7 +11757,96 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Dragon Practice",
+        "description": "Smolder generates a permanent stack each time he hits an enemy champion with an ability, or whenever _Super Scorcher Breath_ kills a minion or monster.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Super Scorcher Breath",
+        "description": "Smolder spits a fireball at the target enemy that deals physical damage (increased by 0% - 45%(+ 0% - 13.5%)(based on critical strike chance)), applies on-hit effects and triggers on-attack effects.",
+        "baseDamage": [
+          45,
+          80,
+          115,
+          150
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          5.5,
+          5,
+          4.5,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Achooo!",
+        "description": "Smolder sneezes a fiery glob in the target direction that deals physical damage to enemies hit and slows them by 35% for 1.5 seconds, slowing down in missile speed after travelling 800-range.",
+        "baseDamage": [
+          65,
+          85,
+          105,
+          125
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Flap, Flap, Flap",
+        "description": "Smolder takes flight for 1.25 seconds, gaining 75% bonus movement speed, unobstructed vision, and the ability to cross terrain.",
+        "baseDamage": [
+          15,
+          20,
+          25,
+          30
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "MMOOOMMMM!",
+        "description": "Smolder shouts for his mother to cast a wave of fire from behind him and towards the target direction, granting sight of its surroundings as it travels.",
+        "baseDamage": [
+          200,
+          300,
+          400
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Smolder"
   },
   {
@@ -11297,7 +11894,91 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Power Chord",
+        "description": "Sona's basic ability cooldowns are reduced by 2% - 20% (based on level).",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Hymn of Valor",
+        "description": "Sona sends out bolts of sound to the two nearest visible enemies, prioritizing champions.",
+        "baseDamage": [
+          40,
+          80,
+          120,
+          160
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Aria of Perseverance",
+        "description": "Sona heals herself and projects a bolt to heal the most wounded allied champion nearby.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Song of Celerity",
+        "description": "Sona gains bonus movement speed for 5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          14,
+          14,
+          14,
+          14
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Crescendo",
+        "description": "Sona strikes an irresistible chord that lasts for 3.75 seconds as it travels to the target location.",
+        "baseDamage": [
+          35,
+          60,
+          85
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.15
+          }
+        ],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Sona"
   },
   {
@@ -11345,7 +12026,92 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Salvation",
+        "description": "Soraka gains 100% bonus movement speed while facing nearby allied champions that are below 35% maximum health.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Starcall",
+        "description": "Soraka calls down a star from above to strike the target location, granting sight of the area, dealing magic damage to enemies hit and slowing them by 30% for 2 seconds.",
+        "baseDamage": [
+          60,
+          110,
+          160,
+          210
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          7,
+          6,
+          5,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Astral Infusion",
+        "description": "Soraka heals the target allied champion.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          7,
+          6,
+          5,
+          4
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Equinox",
+        "description": "Soraka plants a celestial zone at the target location that deals magic damage to enemy champions within.",
+        "baseDamage": [
+          70,
+          120,
+          170,
+          220
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          20,
+          18,
+          16,
+          14
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Wish",
+        "description": "Soraka calls upon the stars, healing herself and all allied champions, increased to 150% on targets below 35% maximum health.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          85,
+          80,
+          75
+        ]
+      }
+    ],
     "icon": "Soraka"
   },
   {
