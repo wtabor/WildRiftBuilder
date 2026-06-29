@@ -9472,7 +9472,96 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Living Forge",
+        "description": "Ornn gains 7% / 12% / 17% / 22% (based on level)bonus health, bonus armor, and bonus magic resist from all sources.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Volcanic Rupture",
+        "description": "Ornn sends a fissure in the target direction that deals physical damage to enemies hit and slows them by 55% for 2 seconds.",
+        "baseDamage": [
+          25,
+          60,
+          95,
+          130
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.1
+          }
+        ],
+        "cooldown": [
+          9,
+          8.5,
+          8,
+          7.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Bellows Breath",
+        "description": "Ornn marches forward in the target direction over 1 second, gaining displacement immunity and becoming unable to act for the duration.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          11.5,
+          11,
+          10.5,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Searing Charge",
+        "description": "Ornn charges in the target direction, dealing physical damage to enemies he passes through and stopping upon colliding with terrain.",
+        "baseDamage": [
+          80,
+          140,
+          200,
+          260
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          13,
+          12,
+          11,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Call of the Forge God",
+        "description": "Ornn sounds his horn, summoning a lava elemental at maximum range from the target direction that stampedes towards his casting position at increasing speed.",
+        "baseDamage": [
+          125,
+          175,
+          225
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": [
+          90,
+          80,
+          70
+        ]
+      }
+    ],
     "icon": "Ornn"
   },
   {
@@ -9568,7 +9657,96 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Iron Ambassador",
+        "description": "Periodically, Poppy's next basic attack is empowered to throw her buckler, gaining 350 bonus range and dealing 20 - 180 (based on level)bonus magic damage.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Hammer Shock",
+        "description": "Poppy smashes the ground in the target direction, dealing physical damage to enemies hit.",
+        "baseDamage": [
+          50,
+          70,
+          90,
+          110
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          7,
+          6,
+          5,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Steadfast Presence",
+        "description": "Poppy gains 40% bonus movement speed and creates an aura around herself for 2 seconds, causing all enemies who attempt to dash into or within it to be dealt magic damage and become knocked up for 0.5 seconds.",
+        "baseDamage": [
+          95,
+          140,
+          185,
+          230
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          19,
+          16.5,
+          14,
+          11.5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Heroic Charge",
+        "description": "Poppy dashes to the target enemy's location.",
+        "baseDamage": [
+          75,
+          100,
+          125,
+          150
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          13,
+          12,
+          11,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Keeper's Verdict",
+        "description": "Poppy charges while being slowed by 15% for up to 4 seconds to increase _Keeper's Verdict's_ range and knock back distance over 0.5 seconds after the first 0.5 seconds of the channel.",
+        "baseDamage": [
+          100,
+          150,
+          200
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          90,
+          80,
+          70
+        ]
+      }
+    ],
     "icon": "Poppy"
   },
   {
@@ -9616,7 +9794,82 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Gift of the Drowned Ones",
+        "description": "Pyke'smaximum health cannot increase except through growth (per level), instead he gains「 1 bonus attack damageper 14 bonus health.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Bone Skewer",
+        "description": "Pyke charges while being slowed by 15% for up to 3 seconds to increase _Bone Skewer's_ range over the first second of the channel.",
+        "baseDamage": [
+          130,
+          195,
+          260,
+          325
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Ghostwater Dive",
+        "description": "Pyke submerges into water for 5 seconds, entering camouflage and gaining 40%(+ 2% per 1 Armor Pen)bonus movement speed that decays over the duration.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          10.5,
+          10,
+          9.5,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Phantom Undertow",
+        "description": "Pyke dashes in the target direction, leaving behind a _Phantom_.",
+        "baseDamage": [
+          120,
+          175,
+          230,
+          285
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          11,
+          10.5,
+          10,
+          9.5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Death from Below",
+        "description": "Pyke marks the target location with the shape of an X before striking it, executing enemy champions within the area that are below a certain health threshold.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Pyke"
   },
   {
@@ -9663,7 +9916,101 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Fey Feathers",
+        "description": "Periodically, Rakan gains a shield for 31 - 255 (based on level)(+ 80% AP) that lasts until broken.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Gleaming Quill",
+        "description": "Rakan flings a feather in the target direction that deals magic damage to the first enemy hit.",
+        "baseDamage": [
+          90,
+          150,
+          210,
+          270
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Grand Entrance",
+        "description": "Rakan dashes to the target location.",
+        "baseDamage": [
+          70,
+          135,
+          200,
+          265
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.45
+          }
+        ],
+        "cooldown": [
+          16,
+          14,
+          12,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Battle Dance",
+        "description": "Rakan grants a shield to the target allied champion for 3 seconds and then dashes to and around them.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "The Quickness",
+        "description": "Rakan breaks into a captivating sprint, gaining 60% bonus movement speed for 4 seconds.",
+        "baseDamage": [
+          100,
+          200,
+          300
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Rakan"
   },
   {
@@ -9710,7 +10057,81 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Rolling Armordillo",
+        "description": "After 5 seconds without taking damage or using abilities, Rammus gains 32 - 60 (based on level) bonus movement speed, increased to 61 - 75 (based on level) during Powerball.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Powerball",
+        "description": "Rammus channels for up to 6 seconds to roll into a ball, gaining 20% - 31.67% (based on level)bonus total movement speed per second over the duration, up to a maximum of 120% - 190% (based on level).",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          12,
+          10,
+          8,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Defensive Ball Curl",
+        "description": "Rammus enters a defensive stance for 6 seconds, gaining bonus armor and bonus magic resistance.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          7,
+          7,
+          7,
+          7
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Frenzying Taunt",
+        "description": "Rammus taunts the target enemy champion or monster for a set duration, and gains bonus attack speed that decays over 5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          13.5,
+          13,
+          12.5,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Soaring Slam",
+        "description": "Rammus leaps to the target location with crowd control immunity.",
+        "baseDamage": [
+          75,
+          150,
+          225
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          70,
+          60,
+          50
+        ]
+      }
+    ],
     "icon": "Rammus"
   },
   {
@@ -9806,7 +10227,101 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Reign of Anger",
+        "description": "Renekton's basic attacks generate 5 Fury.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Cull the Meek",
+        "description": "Renekton cleaves around himself, dealing physical damage to nearby enemies.",
+        "baseDamage": [
+          80,
+          130,
+          180,
+          230
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          7,
+          7,
+          7,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Ruthless Predator",
+        "description": "Renekton empowers his next basic attack within 7 seconds to gain 50 bonus range and strike twice within 0.25 seconds, dealing modified physical damage and stunning for 0.75 seconds.",
+        "baseDamage": [
+          36,
+          72,
+          108,
+          144
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 2.25
+          }
+        ],
+        "cooldown": [
+          14,
+          12,
+          10,
+          8
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Slice and Dice",
+        "description": "Renekton dashes in the target direction, dealing physical damage to enemies he passes through and generating (5 10) Fury per hit, up to a maximum of 30 Fury.",
+        "baseDamage": [
+          40,
+          80,
+          120,
+          160
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          14.5,
+          13.5,
+          12.5,
+          11.5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Dominus",
+        "description": "Renekton embiggens for 12 seconds, gaining bonus health, 20% increased size, 50 bonus attack range, 20 Fury, as well as enhancing _Cull the Meek_.",
+        "baseDamage": [
+          35,
+          60,
+          85
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.1
+          }
+        ],
+        "cooldown": [
+          75,
+          70,
+          65
+        ]
+      }
+    ],
     "icon": "Renekton"
   },
   {
@@ -9854,7 +10369,87 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Unseen Predator",
+        "description": "If Rengar is in brush or camouflaged, he will leap to the target with his next attack.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Savagery",
+        "description": "Rengar's next 2 basic attacks within 3 seconds gain 50% bonus attack speed.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          5.5,
+          5,
+          4.5,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Battle Roar",
+        "description": "Rengar roars, dealing magic damage and healing for 50% of damage taken in the last 2 seconds.",
+        "baseDamage": [
+          50,
+          90,
+          130,
+          170
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          16,
+          14,
+          12,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Bola Strike",
+        "description": "Rengar throws a bola that deals physical damage and slows for 1.75 seconds.",
+        "baseDamage": [
+          60,
+          120,
+          180,
+          240
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Thrill of the Hunt",
+        "description": "Rengar gains 30% bonus movement speed and reveals the nearest enemy champion for a few seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          100,
+          80,
+          60
+        ]
+      }
+    ],
     "icon": "Rengar"
   },
   {
@@ -9950,7 +10545,91 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Junkyard Titan",
+        "description": "Rumble's basic ability casts generate Heat, which decays by 10 Heat per second after not using any basic ability within 5 seconds or _The Equalizer_ within 2 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Flamespitter",
+        "description": "Rumble generates 20 Heat to activate his flamethrower for 3 seconds, dealing magic damage every 0.25 seconds to enemies hit in a frontal cone, increased to 105% against minions.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          8,
+          7,
+          6,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Scrap Shield",
+        "description": "Rumble generates 20 Heat to grant himself a shield for 1.5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Electro Harpoon",
+        "description": "Rumble generates 20 Heat to shoot a harpoon in the target direction that deals magic damage to the first enemy hit, inflicting them with magic resistance reduction for 4 seconds and slowing them for 1.5 seconds.",
+        "baseDamage": [
+          60,
+          90,
+          120,
+          150
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "The Equalizer",
+        "description": "Rumble deploys a barrage of rockets along the target path that land in a line over 1 second, creating a field of fire for 4.5 seconds after the last rocket lands.",
+        "baseDamage": [
+          70,
+          105,
+          140
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Rumble"
   },
   {
@@ -9997,7 +10676,102 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Arcane Mastery",
+        "description": "Overload, Rune Prison, and Spell Flux all deal additional damage based on Ryze'sbonus mana.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Overload",
+        "description": "Rune Prison and Spell Flux casts reset _Overload's_ cooldown and charge a _Rune_ stack for 4 seconds, refreshing on subsequent casts and stacking up to 2 times.",
+        "baseDamage": [
+          70,
+          95,
+          120,
+          145
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.45
+          }
+        ],
+        "cooldown": [
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Rune Prison",
+        "description": "Ryze seizes the target enemy, dealing magic damage and slowing them by 50% for 1.5 seconds.",
+        "baseDamage": [
+          70,
+          110,
+          150,
+          190
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.65
+          }
+        ],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Spell Flux",
+        "description": "Ryze projects an orb upon the target enemy that deals magic damage.",
+        "baseDamage": [
+          80,
+          110,
+          140,
+          170
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          3.25,
+          3,
+          2.75,
+          2.5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Realm Warp",
+        "description": "Ryze channels for 2 seconds to open a portal beneath him, marking the target location as its destination and granting sight of its area.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          110,
+          95,
+          80
+        ]
+      }
+    ],
     "icon": "Ryze"
   },
   {
