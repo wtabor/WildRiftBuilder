@@ -3633,7 +3633,106 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Rage Gene",
+        "description": "Builds Rage in combat; at full Rage his next ability transforms him into Mega Gnar.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Boomerang Throw / Boulder Toss",
+        "description": "Throws a boomerang (Mini) or boulder (Mega) dealing physical damage.",
+        "baseDamage": [
+          5,
+          55,
+          105,
+          155
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.25
+          }
+        ],
+        "cooldown": [
+          16,
+          14,
+          12,
+          10
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Hyper / Wallop",
+        "description": "Third attack deals bonus magic damage (Mini); Mega stuns in a line.",
+        "baseDamage": [
+          10,
+          20,
+          30,
+          40
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          20,
+          19,
+          18,
+          17
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Hop / Crunch",
+        "description": "Leaps off enemies dealing physical damage based on max health.",
+        "baseDamage": [
+          50,
+          95,
+          140,
+          185
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "maxHealth",
+            "ratio": 0.06
+          }
+        ],
+        "cooldown": [
+          21,
+          18,
+          15,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "GNAR!",
+        "description": "As Mega Gnar, knocks enemies back, dealing physical damage and stunning against walls.",
+        "baseDamage": [
+          200,
+          300,
+          400
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "bonusAttackDamage",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          60,
+          45,
+          30
+        ]
+      }
+    ],
     "icon": "Gnar"
   },
   {
@@ -4232,7 +4331,92 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Hextech Affinity",
+        "description": "Gains move speed near allied turrets and his own deployables.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "H-28G Evolution Turret",
+        "description": "Deploys a turret that fires beams at enemies; stores charges over time.",
+        "baseDamage": [],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Hextech Micro-Rockets",
+        "description": "Fires a spread of rockets that converge, dealing magic damage.",
+        "baseDamage": [
+          60,
+          85,
+          110,
+          135
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "CH-2 Electron Storm Grenade",
+        "description": "Throws a grenade dealing magic damage, stunning the center and slowing.",
+        "baseDamage": [
+          70,
+          120,
+          170,
+          220
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          11,
+          11,
+          11,
+          11
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "UPGRADE!!!",
+        "description": "Empowers his next basic ability with a stronger special version.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Heimerdinger"
   },
   {
@@ -4837,7 +5021,93 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Hextech Capacitor",
+        "description": "Transforming grants a burst of move speed and can pass through units.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "To the Skies! / Shock Blast",
+        "description": "Leaps to an enemy (Hammer) or fires an orb (Cannon) for physical damage.",
+        "baseDamage": [
+          70,
+          120,
+          170,
+          220
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "bonusAttackDamage",
+            "ratio": 1.4
+          }
+        ],
+        "cooldown": [
+          14,
+          12,
+          10,
+          8
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Lightning Field / Hyper Charge",
+        "description": "Aura of magic damage (Hammer) or an attack-speed burst (Cannon).",
+        "baseDamage": [
+          40,
+          57.5,
+          75,
+          92.5
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.25
+          }
+        ],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Thundering Blow / Acceleration Gate",
+        "description": "Knocks an enemy back for % max-health magic damage (Hammer) or a speed gate (Cannon).",
+        "baseDamage": [],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Mercury Cannon / Mercury Hammer",
+        "description": "Transforms between ranged and melee stances, empowering the next ability.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          5,
+          5,
+          5,
+          5
+        ]
+      }
+    ],
     "icon": "Jayce"
   },
   {
@@ -6279,7 +6549,102 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Unseen Threat",
+        "description": "While unseen by enemies, his next attack deals bonus magic damage and slows.",
+        "baseDamage": [],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Taste Their Fear",
+        "description": "Strikes a target for physical damage, increased against Isolated targets.",
+        "baseDamage": [
+          75,
+          110,
+          145,
+          180
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "bonusAttackDamage",
+            "ratio": 1.3
+          }
+        ],
+        "cooldown": [
+          5,
+          4.5,
+          4,
+          3.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Void Spike",
+        "description": "Fires spikes that deal physical damage and heal him if Isolated.",
+        "baseDamage": [
+          70,
+          110,
+          150,
+          190
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "bonusAttackDamage",
+            "ratio": 1.0
+          }
+        ],
+        "cooldown": [
+          9,
+          9,
+          9,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Leap",
+        "description": "Leaps to an area, dealing physical damage on landing.",
+        "baseDamage": [
+          65,
+          110,
+          155,
+          200
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "bonusAttackDamage",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Void Assault",
+        "description": "Enters stealth and gains bonus damage; recastable, and evolves his abilities.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          75,
+          65,
+          55
+        ]
+      }
+    ],
     "icon": "Khazix"
   },
   {
@@ -6710,7 +7075,101 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Flurry",
+        "description": "After casting an ability, his next two attacks gain attack speed and restore energy.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Sonic Wave / Resonating Strike",
+        "description": "Fires a wave for physical damage, then can dash to the marked target for more.",
+        "baseDamage": [
+          55,
+          90,
+          125,
+          160
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "bonusAttackDamage",
+            "ratio": 1.0
+          }
+        ],
+        "cooldown": [
+          8,
+          7,
+          6,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Safeguard / Iron Will",
+        "description": "Dashes to a target and shields; recast grants lifesteal and spell vamp.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          15,
+          14,
+          14,
+          13
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Tempest / Cripple",
+        "description": "Smashes the ground for magic damage and reveal; recast slows enemies hit.",
+        "baseDamage": [
+          90,
+          140,
+          190,
+          240
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.25
+          }
+        ],
+        "cooldown": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Dragon's Rage",
+        "description": "Roundhouse kicks a champion, knocking them back into other enemies.",
+        "baseDamage": [
+          100,
+          250,
+          400
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "bonusAttackDamage",
+            "ratio": 1.8
+          }
+        ],
+        "cooldown": [
+          70,
+          60,
+          50
+        ]
+      }
+    ],
     "icon": "LeeSin"
   },
   {
@@ -9143,7 +9602,92 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Prowl",
+        "description": "Gains move speed in brush; marks low-health enemies (Hunted) for bonus effects.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Javelin Toss / Takedown",
+        "description": "Throws a javelin dealing more magic damage the farther it travels (Human form).",
+        "baseDamage": [
+          90,
+          120,
+          150,
+          180
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Bushwhack / Pounce",
+        "description": "Lays a trap that damages and reveals (Human); Cougar form pounces.",
+        "baseDamage": [
+          10,
+          20,
+          30,
+          40
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Primal Surge / Swipe",
+        "description": "Heals an ally and grants attack speed (Human); Cougar form claws in a cone.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Aspect of the Cougar",
+        "description": "Transforms into a cougar, swapping to her Takedown/Pounce/Swipe abilities.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          3,
+          3,
+          3
+        ]
+      }
+    ],
     "icon": "Nidalee"
   },
   {
@@ -10835,7 +11379,96 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Break the Mold",
+        "description": "Attacks and abilities steal armor and magic resist from enemies hit.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Shattering Strike",
+        "description": "Thrusts her lance, dealing magic damage in a line and breaking shields.",
+        "baseDamage": [
+          70,
+          130,
+          190,
+          250
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          11,
+          10,
+          9,
+          8
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Ferromancy: Crash Down / Mount Up",
+        "description": "Dismounts to slam down (dealing magic damage, knock up) or mounts up for speed.",
+        "baseDamage": [
+          70,
+          100,
+          130,
+          160
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          9,
+          9,
+          9,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Full Tilt",
+        "description": "Builds move speed for herself and a tethered ally; the tether can stun.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          13,
+          13,
+          13,
+          13
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Magnet Storm",
+        "description": "Pulls nearby enemies toward her repeatedly, dealing magic damage.",
+        "baseDamage": [
+          120,
+          200,
+          280
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          75,
+          70,
+          65
+        ]
+      }
+    ],
     "icon": "Rell"
   },
   {
@@ -12095,7 +12728,106 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Fury of the Dragonborn",
+        "description": "Gains stats per dragon slain and builds Fury to transform with her ultimate.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Twin Bite",
+        "description": "Strikes twice; the second hit applies on-hit effects (cleaves in dragon form).",
+        "baseDamage": [],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": [
+          8.5,
+          7.5,
+          6.5,
+          5.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Burnout",
+        "description": "Surrounds herself with fire dealing magic damage per second and gaining move speed.",
+        "baseDamage": [
+          35,
+          50,
+          65,
+          80
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "bonusAttackDamage",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          13,
+          12,
+          11,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Flame Breath",
+        "description": "Launches a fireball that deals magic damage and leaves a debuff.",
+        "baseDamage": [
+          60,
+          110,
+          160,
+          210
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.3
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          11,
+          10,
+          9,
+          8
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Dragon's Descent",
+        "description": "Transforms into a dragon, flying to a location and dealing magic damage.",
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": []
+      }
+    ],
     "icon": "Shyvana"
   },
   {
@@ -16846,7 +17578,113 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Living Battery",
+        "description": "Moving and shielding charges her; the charge empowers her next Burst Fire.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Burst Fire",
+        "description": "Fires a burst of shots (a charged shot when empowered) dealing magic damage.",
+        "baseDamage": [
+          35,
+          60,
+          85,
+          110
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.55
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          7.5,
+          6,
+          4.5,
+          3
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Ultrashock Laser",
+        "description": "Fires a long-range laser that damages and slows the first enemy hit.",
+        "baseDamage": [
+          30,
+          70,
+          110,
+          150
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.8
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Spark Surge",
+        "description": "Dashes and vaults small walls; empowers her next few attacks.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          22,
+          19.5,
+          17,
+          14.5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Lightning Crash",
+        "description": "Discharges an AoE burst and overcharges, ramping damage with takedowns.",
+        "baseDamage": [
+          150,
+          200,
+          250
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "bonusAttackDamage",
+            "ratio": 0.7
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Zeri"
   },
   {
@@ -17875,7 +18713,101 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Cosmic Creator",
+        "description": "Stardust from abilities permanently increases his ability damage and stats.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Breath of Light",
+        "description": "Channels a sustained beam dealing magic damage per second to enemies.",
+        "baseDamage": [
+          55,
+          65,
+          75,
+          85
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.35
+          }
+        ],
+        "cooldown": [
+          3,
+          3,
+          3,
+          3
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Astral Flight",
+        "description": "Flies in a direction, able to keep casting Breath of Light.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          18,
+          17,
+          16,
+          15
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Singularity",
+        "description": "Forms a black hole that pulls and deals magic damage per tick.",
+        "baseDamage": [
+          4,
+          5.5,
+          7,
+          8.5
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.03
+          }
+        ],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Falling Star / The Skies Descend",
+        "description": "Drops a star that stuns and deals magic damage; empowered at max Stardust.",
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.65
+          }
+        ],
+        "cooldown": [
+          85,
+          80,
+          75
+        ]
+      }
+    ],
     "icon": "AurelionSol"
   },
   {
