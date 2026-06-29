@@ -1472,7 +1472,86 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Concussive Blows",
+        "description": "Braum's basic attacks and _Winter's Bite_ each inflict a stack to their target for 4 seconds, refreshing on subsequent hits and stacking up to 4 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Winter's Bite",
+        "description": "Braum throws ice in the target direction that deals magic damage to the first enemy hit and slows them by 70% decaying over 2 seconds.",
+        "baseDamage": [
+          60,
+          120,
+          180,
+          240
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Stand Behind Me",
+        "description": "Braum dashes to the target ally, and upon arrival they both gain bonus armor and bonus magic resist for 3 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          11,
+          10,
+          9,
+          8
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Unbreakable",
+        "description": "Braum sets his shield in the target direction for a duration, raising a barrier in front of him that intercepts all incoming hostile projectiles and reduces the damage Braum takes through it.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          16,
+          14,
+          12,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Glacial Fissure",
+        "description": "Braum leaps into the air and slams down his shield, creating a fissure from the impact that travels forth in the target direction, dealing magic damage to enemies hit as well as those around Braum.",
+        "baseDamage": [
+          150,
+          250,
+          350
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          75,
+          70,
+          65
+        ]
+      }
+    ],
     "icon": "Braum"
   },
   {
@@ -1519,7 +1598,96 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Headshot",
+        "description": "Caitlyn's basic attacks generate a stack on-attack, doubled if she is within brush.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Piltover Peacemaker",
+        "description": "Caitlyn fires a shot in the target direction that deals physical damage to enemies hit.",
+        "baseDamage": [
+          60,
+          110,
+          160,
+          210
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.25
+          }
+        ],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Yordle Snap Trap",
+        "description": "Caitlyn sets a trap at the target location that remains for 30 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          27,
+          22,
+          17,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "90 Caliber Net",
+        "description": "Caitlyn fires a net in the target direction and recoils 390 units backwards.",
+        "baseDamage": [
+          70,
+          120,
+          170,
+          220
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          16,
+          14,
+          12,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Ace in the Hole",
+        "description": "Caitlyn locks onto the target enemy champion and channels for 1.5 seconds, revealing them both.",
+        "baseDamage": [
+          200,
+          375,
+          550
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          65,
+          55,
+          45
+        ]
+      }
+    ],
     "icon": "Caitlyn"
   },
   {
@@ -1615,7 +1783,91 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Hextech Munitions",
+        "description": "Corki's basic attacks and spellblade deal bonus true damage equal to 16% AD.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Phosphorus Bomb",
+        "description": "Corki launches a bomb at the target location that explodes upon impact, dealing magic damage to enemies hit.",
+        "baseDamage": [
+          65,
+          125,
+          185,
+          245
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Valkyrie",
+        "description": "Corki dashes to the target location and drops bombs that leave up to 3 blazing patches along his path, depending on the distance traveled.",
+        "baseDamage": [
+          30,
+          50,
+          70,
+          90
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Gatling Gun",
+        "description": "Corki sprays bullets in a cone toward his facing direction for 4 seconds, dealing physical damage every 0.25 seconds to enemies hit.",
+        "baseDamage": [
+          6.25,
+          9.58,
+          12.92,
+          16.25
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Missile Barrage",
+        "description": "Corki fires a missile in the target direction that explodes upon the first enemy hit, dealing physical damage to enemies in an area.",
+        "baseDamage": [
+          70,
+          140,
+          210
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          2,
+          2,
+          2
+        ]
+      }
+    ],
     "icon": "Corki"
   },
   {
@@ -1663,7 +1915,111 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Moonsilver Blade",
+        "description": "After casting an ability, Diana gains 30% - 100% (based on level) bonus attack speed for 4 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Crescent Strike",
+        "description": "Diana unleashes a bolt of energy that travels in a counter-clockwise arc before exploding at the target location, granting sight of the area for 0.5 seconds and dealing magic damage to enemies hit along the way and within the detonation.",
+        "baseDamage": [
+          60,
+          105,
+          150,
+          195
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          8,
+          7,
+          6,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Pale Cascade",
+        "description": "Diana grants herself a shield for up to 5 seconds and creates three spheres that orbit her counterclockwise for the same duration, detonating upon contact with an enemy to deal magic damage to nearby enemies.",
+        "baseDamage": [
+          20,
+          35,
+          50,
+          65
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": [
+          13,
+          11.5,
+          10,
+          8.5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Lunar Rush",
+        "description": "Diana dashes to a location near the target enemy, dealing magic damage to nearby enemies upon arrival and consuming their Moonlight.",
+        "baseDamage": [
+          40,
+          80,
+          120,
+          160
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Moonfall",
+        "description": "Diana charges for up to 1 second, marking an area around herself that expands its radius over the duration.",
+        "baseDamage": [
+          100,
+          160,
+          220
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Diana"
   },
   {
@@ -1711,7 +2067,82 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Goes Where He Pleases",
+        "description": "Periodically, Dr.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Infected Bonesaw",
+        "description": "Dr.",
+        "baseDamage": [
+          20,
+          23,
+          26,
+          29
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Heart Zapper",
+        "description": "Dr.",
+        "baseDamage": [
+          5,
+          10,
+          15,
+          20
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          13,
+          12,
+          11,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Blunt Force Trauma",
+        "description": "Dr.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          8,
+          7.5,
+          7,
+          6.5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Maximum Dosage",
+        "description": "Dr.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "DrMundo"
   },
   {
@@ -1758,7 +2189,81 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "League of Draven",
+        "description": "Whenever Draven catches a _Spinning Axe_, kills a non-champion, or destroys a turret, he generates a stack of _Adoration_.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Spinning Axe",
+        "description": "Draven readies an axe, causing his next basic attack within 6 seconds to deal bonus physical damage.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Blood Rush",
+        "description": "Draven gains bonus attack speed for 3 seconds as well as decaying bonus movement speed for 1.5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Stand Aside",
+        "description": "Draven throws a fan of axes in the target direction that deals physical damage to enemies hit, knocking them aside, though not through terrain, and slowing them for 2 seconds.",
+        "baseDamage": [
+          75,
+          120,
+          165,
+          210
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          15,
+          14,
+          13,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Whirling Death",
+        "description": "Draven hurls two massive axes in the target direction that deal physical damage to enemies hit.",
+        "baseDamage": [
+          200,
+          300,
+          400
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Draven"
   },
   {
@@ -1854,7 +2359,96 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Demon Shade",
+        "description": "Evelynn shrouds herself in _Demon Shade_ after 4 seconds without breaking stealth.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Hate Spike",
+        "description": "Evelynn barrages 2 lines of deadly spikes over 0.4 seconds in the target direction that each deal magic damage to enemies hit.",
+        "baseDamage": [
+          40,
+          47.5,
+          55,
+          62.5
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Allure",
+        "description": "Evelynn marks the target enemy champion or medium or large monster for 5 seconds, causing her next basic attack or ability against them to consume the mark and slow by 65% for a set duration.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          14,
+          13,
+          12,
+          11
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Whiplash",
+        "description": "Evelynn whips the target enemy with her lashers, dealing magic damage and applying on-hit effects.",
+        "baseDamage": [
+          55,
+          75,
+          95,
+          115
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Last Caress",
+        "description": "Evelynn reveals her true form, becoming untargetable at the start of the cast time and then unleashing her lashers in a cone in the target direction, dealing magic damage to enemies hit.",
+        "baseDamage": [
+          150,
+          260,
+          370
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.75
+          }
+        ],
+        "cooldown": [
+          90,
+          75,
+          60
+        ]
+      }
+    ],
     "icon": "Evelynn"
   },
   {
@@ -1902,7 +2496,95 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Rising Spell Force",
+        "description": "Ezreal's ability hits generate a stack lasting 6 seconds, refreshing on subsequent hits and stacking up to 4 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Mystic Shot",
+        "description": "Ezreal shoots an energy bolt in the target direction that deals physical damage to the first enemy hit.",
+        "baseDamage": [
+          50,
+          85,
+          120,
+          155
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.35
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.3
+          }
+        ],
+        "cooldown": [
+          4.5,
+          4,
+          3.5,
+          3
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Essence Flux",
+        "description": "Ezreal flings an orb in the target direction that marks the first enemy champion, epic monster, or turret hit for 4 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Arcane Shift",
+        "description": "Ezreal blinks to the target location, then shoots a bolt that deals magic damage to the nearest enemy and reveals them for 1 second.",
+        "baseDamage": [
+          80,
+          145,
+          210,
+          275
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          24,
+          20.5,
+          17,
+          13.5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Trueshot Barrage",
+        "description": "Ezreal fires an arc of energy in the target direction that deals magic damage to enemies hit, reduced to 50% against minions and non-epic monsters.",
+        "baseDamage": [
+          350,
+          500,
+          650
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "Ezreal"
   },
   {
@@ -1950,7 +2632,96 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "A Harmless Scarecrow",
+        "description": "Innate Whenever a nearby enemy champion or epic monster dies, Fiddlesticks spawns a _Scarecrow Effigy_ from their corpse.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Terrify",
+        "description": "Fiddlesticks throws a crow to the target enemy that deals magic damage, which has a minimum damage threshold and is capped at 400 against monsters.",
+        "baseDamage": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          13.5,
+          13,
+          12.5,
+          12
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Bountiful Harvest",
+        "description": "Fiddlesticks forms a tether between itself and each nearby enemy over the cast time, then channels for up to 2 seconds to reveal them.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          11,
+          10,
+          9,
+          8
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Reap",
+        "description": "Fiddlesticks slashes the target location, dealing magic damage to enemies within and slowing them for 1.25 seconds.",
+        "baseDamage": [
+          70,
+          120,
+          170,
+          220
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Crowstorm",
+        "description": "Fiddlesticks channels for 1.5 seconds and slowly moves forward.",
+        "baseDamage": [
+          30,
+          50,
+          70
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.1
+          }
+        ],
+        "cooldown": [
+          100,
+          80,
+          60
+        ]
+      }
+    ],
     "icon": "Fiddlesticks"
   },
   {
