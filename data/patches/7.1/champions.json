@@ -14592,7 +14592,77 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Eternal Hunger",
+        "description": "Warwick deals 12 - 46 (based on level)(+ 20% bonus AD)(+ 10% AP)bonus magic damage on-hit.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Jaws of the Beast",
+        "description": "Active - Tap: Warwick lunges at the target enemy to bite them, dealing magic damage, applying on-hit and on-attack effects, and healing for a portion of the post-mitigation damage dealt.",
+        "baseDamage": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          6,
+          6,
+          6,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Blood Hunt",
+        "description": "Warwick senses the nearest enemy champion at the start of the cast time, marking them with _Blood Hunt_ for 8 seconds, gaining both passive bonuses against them regardless of their current health.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          70,
+          60,
+          50,
+          40
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Primal Howl",
+        "description": "Warwick gains incoming damage reduction for 2.5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          14,
+          13,
+          12,
+          11
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Infinite Duress",
+        "description": "Warwick leaps to the target location with crowd control immunity.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Warwick"
   },
   {
@@ -14640,7 +14710,86 @@
       "moveSpeed": 350.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Stone Skin",
+        "description": "Whenever Wukong damages an enemy champion, he generates a stack of _Stone Skin_ lasting 5 seconds, refreshing on subsequent hits and stacking up to 3 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Golden Staff",
+        "description": "Wukong empowers his next basic attack within 5 seconds to have an uncancellable windup, gain 175 bonus range, and deal bonus physical damage.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          8,
+          7.5,
+          7,
+          6.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Warrior Trickster",
+        "description": "Wukong turns invisible for 1 second and dashes to the target location, leaving behind a clone of himself at his casting position.",
+        "baseDamage": [
+          20,
+          30,
+          40,
+          50
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          14,
+          13.5,
+          13,
+          12.5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Nimbus Strike",
+        "description": "Wukong dashes to the target enemy's location, dealing physical damage and gaining bonus attack speed for 4 seconds.",
+        "baseDamage": [
+          70,
+          110,
+          150,
+          190
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Cyclone",
+        "description": "Wukong spins his staff around for up to 2 seconds, gaining 20% bonus movement speed and becoming unable to basic attack.",
+        "baseDamage": [
+          1.25,
+          1.75,
+          2.25
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "MonkeyKing"
   },
   {
@@ -14687,7 +14836,86 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Clean Cuts",
+        "description": "Feathers shot by Xayah will linger and be planted in the ground at maximum range for 6 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Double Daggers",
+        "description": "Xayah throws two Feathers in the target direction that each deal physical damage to enemies hit.",
+        "baseDamage": [
+          50,
+          75,
+          100,
+          125
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Deadly Plumage",
+        "description": "Xayah enters a frenzy for 4 seconds, gaining bonus attack speed and empowering her basic attacks to fire an additional smaller feather at the target on-hit that deals 20% damage of the triggering attack's damage.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          17,
+          16,
+          15,
+          14
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Bladecaller",
+        "description": "Xayah recalls all planted Feathers to shoot back to her, each dealing physical damage to enemies hit in their path.",
+        "baseDamage": [
+          60,
+          70,
+          80,
+          90
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          11,
+          10,
+          9,
+          8
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Featherstorm",
+        "description": "Xayah leaps into the air, becoming untargetable for 1.5 seconds.",
+        "baseDamage": [
+          125,
+          250,
+          375
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Xayah"
   },
   {
@@ -14735,7 +14963,96 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Determination",
+        "description": "Xin Zhao's basic attacks on-hit generate a stack of _Determination_, stacking up to 3 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Three Talon Strike",
+        "description": "Xin Zhao empowers his next three basic attacks on-attack within 5 seconds to each have an uncancellable windup, deal bonus physical damage and reduce his other abilities' current cooldowns by 1 second.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Wind Becomes Lightning",
+        "description": "Xin Zhao slashes in an arc and, after the cast time, thrusts his spear in a line in the target direction.",
+        "baseDamage": [
+          40,
+          50,
+          60,
+          70
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          11,
+          9.5,
+          8,
+          6.5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Audacious Charge",
+        "description": "Xin Zhao dashes to the target enemy's location, dealing magic damage to enemies near them and slowing them by 30% for 0.5 seconds.",
+        "baseDamage": [
+          55,
+          90,
+          125,
+          160
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          11,
+          11,
+          11,
+          11
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Crescent Guard",
+        "description": "Xin Zhao sweeps his spear around him, dealing physical damage to nearby enemies, capped at 600 against monsters, and knocking back all non- _Challenged_ targets hit over 0.5 seconds, as well as stunning them for the same duration.",
+        "baseDamage": [
+          75,
+          150,
+          225
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "XinZhao"
   },
   {
@@ -14783,7 +15100,86 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Way of the Wanderer",
+        "description": "Innate - Intent: Yasuo'stotal critical rate is doubled from all other sources. Additionally,「 every 1% critical rate in excess of 100% is converted into 0.6 bonus attack damage. 」「 every 50% critical rate in excess of 100% is converted into",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Steel Tempest",
+        "description": "Yasuo stabs in a line in the target direction that deals physical damage to enemies hit, applies on-hit effects to the first enemy hit, and triggers on-attack effects once.",
+        "baseDamage": [
+          20,
+          50,
+          80,
+          110
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.05
+          }
+        ],
+        "cooldown": []
+      },
+      {
+        "slot": "W",
+        "name": "Wind Wall",
+        "description": "Yasuo raises a wall of wind that travels in the target direction over 0.25 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          18,
+          18,
+          18,
+          18
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Sweeping Blade",
+        "description": "Yasuo dashes a fixed distance in the direction of the target enemy.",
+        "baseDamage": [
+          70,
+          80,
+          90,
+          100
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          0.4,
+          0.3,
+          0.2,
+          0.1
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Last Breath",
+        "description": "Yasuo blinks to the other side of a visible airborne enemy champion, instantly generating maximum Flow while resetting _Gathering Storm_ stacks.",
+        "baseDamage": [
+          250,
+          400,
+          550
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          50,
+          40,
+          30
+        ]
+      }
+    ],
     "icon": "Yasuo"
   },
   {
@@ -14831,7 +15227,77 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Way of the Hunter",
+        "description": "Innate - Intent: Yone'stotal critical rate is doubled from all other sources. Additionally,「 every 1% critical rate in excess of 100% is converted into 0.6 bonus attack damage. 」「 every 25% critical rate in excess of 100% is converted into",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Mortal Steel",
+        "description": "Yone stabs in a line in the target direction that deals physical damage to enemies hit, applies on-hit effects to the first enemy hit, and triggers on-attack effects once.",
+        "baseDamage": [
+          30,
+          50,
+          70,
+          90
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1
+          }
+        ],
+        "cooldown": []
+      },
+      {
+        "slot": "W",
+        "name": "Spirit Cleave",
+        "description": "Yone cleaves a cone in the target direction, dealing equal parts physical and magic damage to enemies hit.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "E",
+        "name": "Soul Unbound",
+        "description": "Yone dashes a fixed distance in the target direction and enters _Spirit Form_ for 5 seconds.",
+        "baseDamage": [
+          24,
+          28,
+          32,
+          36
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          20,
+          17,
+          14,
+          11
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Fate Sealed",
+        "description": "Yone prepares a strike over the cast time, then _marks_ all enemies within an area in the target direction, knocking them down and stunning them for 1 second.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Yone"
   },
   {
@@ -14926,7 +15392,82 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Contempt for the Weak",
+        "description": "Zed's basic attacks against targets below 50% maximum health are empowered to deal 7% / 8% / 9% / 10% / 11% (based on level) of the target's maximum health as bonus magic damage.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Razor Shuriken",
+        "description": "Zed throws a shuriken in the target direction that deals physical damage to enemies hit, reduced to 70% against targets beyond the first.",
+        "baseDamage": [
+          70,
+          120,
+          170,
+          220
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          6,
+          6,
+          6,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Living Shadow",
+        "description": "Zed creates a _Shadow_ that dashes to the target location and remains there for 4.5 seconds, being able to mimic _Razor Shuriken_ and _Shadow Slash_ regardless of range.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          17,
+          16,
+          15,
+          14
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Shadow Slash",
+        "description": "Zed slashes around himself to deal physical damage to nearby enemies, reduced to 60% against monsters, and slow targets hit for 1.5 seconds.",
+        "baseDamage": [
+          65,
+          95,
+          125,
+          155
+        ],
+        "damageType": "physical",
+        "scalings": [],
+        "cooldown": [
+          5,
+          4.5,
+          4,
+          3.5
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Death Mark",
+        "description": "Zed becomes untargetable and, after a 0.6-second delay, he dashes beyond the target enemy champion from his position at the end of the delay over 0.35 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          85,
+          65,
+          45
+        ]
+      }
+    ],
     "icon": "Zed"
   },
   {
@@ -15115,7 +15656,92 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "More Sparkles!",
+        "description": "After using an ability, Zoe's next basic attack or _Spell Thief_ bolt within 5 seconds becomes non-projectile and deals an additional 9 - 128 (based on level)(+ 20% AP)bonus magic damage.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Paddle Star!",
+        "description": "Zoe shoots a star in the target direction that explodes upon hitting an enemy, dealing magic damage to the primary target and 80% of that damage to enemies near them.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          8,
+          7.5,
+          7,
+          6.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Spell Thief",
+        "description": "Zoe casts the ability from a _Spell Shard_ that she has picked up.",
+        "baseDamage": [
+          25,
+          35,
+          45,
+          55
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.15
+          }
+        ],
+        "cooldown": [
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Sleepy Trouble Bubble",
+        "description": "Zoe dropkicks a bubble in the target direction that bursts upon the first enemy hit, otherwise lingering at maximum range over 1 second, then becoming a trap for 5 seconds that bursts upon contact with an enemy.",
+        "baseDamage": [
+          40,
+          90,
+          140,
+          190
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          15,
+          14,
+          13,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Portal Jump",
+        "description": "After a 0.15-second delay, Zoe blinks in the target direction and remains there for 1 second.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          11,
+          8,
+          5
+        ]
+      }
+    ],
     "icon": "Zoe"
   },
   {
@@ -15163,7 +15789,101 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Garden of Thorns",
+        "description": "Zyra's abilities spawn _Thorn Spitters_ upon hitting certain targets.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Deadly Spines",
+        "description": "Zyra sprouts thorny spines at the target location that burst after a 0.625-seconds delay, dealing magic damage to enemies hit.",
+        "baseDamage": [
+          60,
+          115,
+          170,
+          225
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          8,
+          7.5,
+          7,
+          6.5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Rampant Growth",
+        "description": "Nearby _Thorn Spitters_ become enraged: restoring their current health by a set amount, increasing their maximum health by the same amount, gaining 25% increased size and refreshing their duration.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          18,
+          16,
+          14,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Grasping Roots",
+        "description": "Zyra shoots a surge of vines in the target direction that deals magic damage to enemies hit and roots them for a duration.",
+        "baseDamage": [
+          60,
+          100,
+          140,
+          180
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.4
+          }
+        ],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Stranglethorns",
+        "description": "Zyra summons a monstrous thicket at the target location that deals magic damage to enemies hit as it expands.",
+        "baseDamage": [
+          150,
+          225,
+          300
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          80,
+          70,
+          60
+        ]
+      }
+    ],
     "icon": "Zyra"
   },
   {
