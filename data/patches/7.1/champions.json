@@ -6925,7 +6925,101 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Illumination",
+        "description": "Lux's abilities inflict a mark to enemies hit for 6 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Light Binding",
+        "description": "Lux shoots a ball of light in the target direction that deals magic damage to enemies hit.",
+        "baseDamage": [
+          60,
+          120,
+          180,
+          240
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          9,
+          9,
+          9,
+          9
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Prismatic Barrier",
+        "description": "Lux throws her wand in the target direction, granting allied champions hit a shield lasting 3 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Lucent Singularity",
+        "description": "Lux sends a lucent singularity to the target location that remains for 5 seconds.",
+        "baseDamage": [
+          65,
+          130,
+          195,
+          260
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.55
+          }
+        ],
+        "cooldown": [
+          9.5,
+          9,
+          8.5,
+          8
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Final Spark",
+        "description": "Lux fires a massive laser in the target direction that deals magic damage to enemies hit and reveals them for 1.5 seconds, as well as granting sight of the surrounding area.",
+        "baseDamage": [
+          300,
+          400,
+          500
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.75
+          }
+        ],
+        "cooldown": [
+          55,
+          45,
+          40
+        ]
+      }
+    ],
     "icon": "Lux"
   },
   {
@@ -6973,7 +7067,111 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Granite Shield",
+        "description": "Malphite gains a shield equal to 11% maximum health that lasts until broken.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Seismic Shard",
+        "description": "Malphite sends a shard to the target enemy that deals magic damage and slows them for 3 seconds.",
+        "baseDamage": [
+          70,
+          130,
+          190,
+          250
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.45
+          }
+        ],
+        "cooldown": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Thunderclap",
+        "description": "Malphite's basic attacks on-hit are empowered for 5 seconds, causing him to emit a cone that deals physical damage to enemies hit.",
+        "baseDamage": [
+          10,
+          20,
+          30,
+          40
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": [
+          10,
+          9,
+          8,
+          7
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Ground Slam",
+        "description": "Malphite slams the ground beneath him, dealing magic damage to nearby enemies and crippling them for 3 seconds.",
+        "baseDamage": [
+          60,
+          80,
+          100,
+          120
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.45
+          }
+        ],
+        "cooldown": [
+          7,
+          7,
+          7,
+          7
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Unstoppable Force",
+        "description": "Malphite dashes with displacement immunity to the target location.",
+        "baseDamage": [
+          200,
+          300,
+          400
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.9
+          }
+        ],
+        "cooldown": [
+          75,
+          70,
+          65
+        ]
+      }
+    ],
     "icon": "Malphite"
   },
   {
@@ -7021,7 +7219,106 @@
       "moveSpeed": 345.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Sap Magic",
+        "description": "Periodically, Maokai's next basic attack will have an uncancellable windup and heal him for 4% - 10% (based on level) maximum health.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Bramble Smash",
+        "description": "Maokai sends a shockwave in the target direction that deals magic damage to enemies hit and slows them by 99% for 0.25 seconds.",
+        "baseDamage": [
+          60,
+          115,
+          170,
+          225
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          8,
+          7,
+          6,
+          5
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Twisted Advance",
+        "description": "Maokai dashes to the target enemy while being untargetable.",
+        "baseDamage": [
+          60,
+          95,
+          130,
+          165
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          14,
+          13,
+          12,
+          11
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Sapling Toss",
+        "description": "Maokai flings a _Sapling_ to the target location, which grants sight of the area as it lingers for 20 seconds.",
+        "baseDamage": [
+          60,
+          90,
+          120,
+          150
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.25
+          }
+        ],
+        "cooldown": [
+          14,
+          14,
+          14,
+          14
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Nature's Grasp",
+        "description": "Maokai summons a colossal wave of five thorny brambles that slowly advances in the target direction.",
+        "baseDamage": [
+          175,
+          250,
+          325
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.65
+          }
+        ],
+        "cooldown": [
+          80,
+          75,
+          70
+        ]
+      }
+    ],
     "icon": "Maokai"
   },
   {
@@ -7069,7 +7366,82 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Double Strike",
+        "description": "Master Yi's basic attacks on-hit generate a stack of _Double Strike_ for 4 seconds, refreshing on subsequent hits and stacking up to 3 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Alpha Strike",
+        "description": "Master Yi vanishes and becomes unable to act.",
+        "baseDamage": [
+          20,
+          60,
+          100,
+          140
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 0.6
+          }
+        ],
+        "cooldown": [
+          17,
+          16,
+          15,
+          14
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Meditate",
+        "description": "Master Yi channels for up to 4 seconds, healing himself every 0.5 seconds, increased by 0% - 100% (based on missing health).",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          25,
+          25,
+          25,
+          25
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Wuju Style",
+        "description": "Master Yi empowers his basic attacks within the next 5 seconds to deal bonus true damage on-hit.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          17,
+          16,
+          15,
+          14
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Highlander",
+        "description": "Master Yi cleanses himself from all slows and cripples.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "MasterYi"
   },
   {
@@ -7117,7 +7489,110 @@
       "moveSpeed": 355.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Searing Brilliance",
+        "description": "Mel's basic attacks and abilities apply a stack of _Overwhelm_ for each instance of damage they deal to enemies for 5 seconds, refreshing on subsequent times and stacking infinitely.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Radiant Volley",
+        "description": "Mel concentrates a bombardment of luminous bolts at the target location over 0.5 seconds, each dealing magic damage to nearby enemies.",
+        "baseDamage": [
+          13,
+          16,
+          19,
+          22
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.07
+          }
+        ],
+        "cooldown": [
+          9,
+          8,
+          7,
+          6
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Rebuttal",
+        "description": "Mel forms a protective barrier around herself for 0.75 seconds, becoming invulnerable to non- turret damage and and gaining 40% bonus movement speed decaying over 1 second.",
+        "baseDamage": [
+          40,
+          45,
+          50,
+          55
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          32,
+          29,
+          26,
+          23
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Solar Snare",
+        "description": "Mel fires an orb in the target direction that grants sight of its surroundings every 0.25 seconds as it travels.",
+        "baseDamage": [
+          60,
+          120,
+          180,
+          240
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.05
+          }
+        ],
+        "cooldown": [
+          11.5,
+          11,
+          10.5,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Golden Eclipse",
+        "description": "Mel unleashes a radiant blast on all enemies affected by _Overwhelm_, dealing magic damage to each of them.",
+        "baseDamage": [
+          100,
+          150,
+          200
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.25
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.03
+          }
+        ],
+        "cooldown": [
+          95,
+          80,
+          65
+        ]
+      }
+    ],
     "icon": "Mel"
   },
   {
@@ -7165,7 +7640,82 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Fired Up!",
+        "description": "Milio's ability hits on himself and allied champions grant an enchantment for 4 seconds, which causes their next basic attack or ability hit against enemies to deal 10% of enchanted target's ADbonus magic damage and burn them for「 15 - 43 (",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Ultra Mega Fire Kick",
+        "description": "Milio kicks a fireball in the target direction that knocks back and stuns the first enemy hit for 1 second.",
+        "baseDamage": [
+          80,
+          160,
+          240,
+          320
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.8
+          }
+        ],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Cozy Campfire",
+        "description": "Milio ignites a soothing fire for himself or the target allied champion for 6 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          22,
+          20.5,
+          19,
+          17.5
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Warm Hugs",
+        "description": "Milio wraps himself or the target allied champion in protective flames, granting shield and bonus movement speed for 2.5 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          16,
+          15,
+          14,
+          13
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Breath of Life",
+        "description": "Milio explodes in soothing flames, healing and cleansing himself and nearby allied champions of non- airborne crowd control, and granting them 65% tenacity for 3 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          100,
+          90,
+          80
+        ]
+      }
+    ],
     "icon": "Milio"
   },
   {
@@ -7213,7 +7763,96 @@
       "moveSpeed": 335.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Love Tap",
+        "description": "Miss Fortune's basic attacks and abilities against enemy champions and epic monsters inflict a stack of _Love Tap_ for 5 seconds, refreshing on subsequent hits and stacking up to 3 times.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Double Up",
+        "description": "Miss Fortune fires a shot in the target direction that deals physical damage to the first enemy hit, then bounces behind them to hit another enemy and critically strike for (20% + 6%) bonus physical damage.",
+        "baseDamage": [
+          60,
+          90,
+          120,
+          150
+        ],
+        "damageType": "physical",
+        "scalings": [
+          {
+            "stat": "attackDamage",
+            "ratio": 1.12
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.35
+          }
+        ],
+        "cooldown": [
+          6,
+          5,
+          4,
+          3
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Strut",
+        "description": "Miss Fortune gains bonus attack speed for 4 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Make It Rain",
+        "description": "Miss Fortune casts a hail of bullets at the target location for 2 seconds.",
+        "baseDamage": [
+          15,
+          20,
+          25,
+          30
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.1
+          }
+        ],
+        "cooldown": [
+          14.5,
+          13,
+          11.5,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Bullet Time",
+        "description": "Miss Fortune channels for up to 3 seconds, firing a number of waves of bullets in the target direction.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          70,
+          65,
+          60
+        ]
+      }
+    ],
     "icon": "MissFortune"
   },
   {
@@ -7261,7 +7900,87 @@
       "moveSpeed": 340.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Darkness Rise",
+        "description": "Mordekaiser gains 1% / 3% / 5% / 7% (based on level) magic penetration and deals 30% AP bonus magic damage on-hit.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Obliterate",
+        "description": "Mordekaiser strikes upon an area in the target direction, dealing magic damage to enemies hit, increased if only one enemy is hit.",
+        "baseDamage": [
+          45,
+          50,
+          55,
+          60
+        ],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": [
+          7,
+          6,
+          5,
+          4
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Indestructible",
+        "description": "Mordekaiser consumes his _Potential Shield_ to gain an equal amount as a shield lasting 4 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          12,
+          11,
+          10,
+          9
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Death's Grasp",
+        "description": "Mordekaiser summons a claw in the target direction that grants sight of the area.",
+        "baseDamage": [
+          60,
+          80,
+          100,
+          120
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.55
+          }
+        ],
+        "cooldown": [
+          17.5,
+          15,
+          12.5,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Realm of Death",
+        "description": "Mordekaiser aims his mace towards the target enemy champion, slowing them by 75% and revealing them over the cast time, and then banishing them with him to the _Death Realm_ for 7 seconds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          105,
+          90,
+          75
+        ]
+      }
+    ],
     "icon": "Mordekaiser"
   },
   {
@@ -7309,7 +8028,101 @@
       "moveSpeed": 360.0,
       "critDamageBase": 0.75
     },
-    "abilities": [],
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Soul Siphon",
+        "description": "Morganaheals herself for 20% of the post-mitigation damage dealt by her abilities against champions, large minions, and medium and large monsters.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Dark Binding",
+        "description": "Morgana throws an energy bolt in the target direction that deals magic damage to the first enemy hit and roots them for a duration.",
+        "baseDamage": [
+          80,
+          160,
+          240,
+          320
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.9
+          }
+        ],
+        "cooldown": [
+          9,
+          9,
+          9,
+          9
+        ]
+      },
+      {
+        "slot": "W",
+        "name": "Tormented Shadow",
+        "description": "Morgana desecrates the target location for 5 seconds.",
+        "baseDamage": [
+          7,
+          12,
+          17,
+          22
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.07
+          }
+        ],
+        "cooldown": [
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Black Shield",
+        "description": "Morgana grants a shield to the target allied champion or herself for 5 seconds, which absorbs incoming magic damage and grants crowd control immunity while it holds.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          13,
+          12,
+          11,
+          10
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Soul Shackles",
+        "description": "Morgana shackles to nearby enemy champions over the cast time, dealing magic damage and tethering to each of them for 3 seconds, during which she gains bonus movement speed while the targets are revealed and slowed by 15%.",
+        "baseDamage": [
+          150,
+          225,
+          300
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.7
+          }
+        ],
+        "cooldown": [
+          75,
+          65,
+          55
+        ]
+      }
+    ],
     "icon": "Morgana"
   },
   {
