@@ -1,0 +1,411 @@
+/* =================================================================
+   AERSTRIKE variant — scoped design language for Wild Rift Builder
+   Extracted from the AerStrike Technologies design system
+   (aerstrike.com). Dark, monospaced, terminal-flavored: warm
+   near-black surfaces, single warm off-white text, sharp orange
+   accent (Sunset Ember) + teal sidekick (Ocean Breeze), 56px grid
+   + top glow, square corners, 1px borders, no drop shadows.
+
+   Everything is namespaced under `.ae-root` so it never touches the
+   shipped MetaDesign.
+   ================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap");
+
+.ae-root {
+  /* surfaces */
+  --ae-bg: #0b0a09;
+  --ae-bg-elev: #121110;
+  --ae-surface: color-mix(in srgb, #fff8f0 4%, transparent);
+  --ae-surface-2: color-mix(in srgb, #fff8f0 9%, transparent);
+
+  /* foreground ramp */
+  --ae-fg: #fff8f0;
+  --ae-fg-body: #ede8e0;
+  --ae-fg-soft: #dcd6ce;
+  --ae-fg-dimmed: #c9c3ba;
+  --ae-fg-dim: #b5aea4;
+  --ae-fg-muted: #a8a095;
+  --ae-fg-subtle: #7a736a;
+
+  /* borders + scrims */
+  --ae-border: color-mix(in srgb, #fff8f0 9%, transparent);
+  --ae-border-strong: color-mix(in srgb, #9dd9d2 32%, transparent);
+  --ae-nav-scrim: color-mix(in srgb, #0b0a09 82%, transparent);
+  --ae-grid-line: color-mix(in srgb, #fff8f0 4%, transparent);
+  --ae-scrollbar-thumb: #3d3833;
+
+  /* accents */
+  --ae-accent: #ff8811;
+  --ae-accent-secondary: #9dd9d2;
+  --ae-accent-tertiary: #f4d06f;
+  --ae-on-accent: #1a1208;
+
+  /* atmosphere */
+  --ae-glow: radial-gradient(
+    ellipse 70% 55% at 50% 0%,
+    color-mix(in srgb, #9dd9d2 14%, transparent),
+    transparent 70%
+  );
+
+  --ae-font-mono: "Geist Mono", ui-monospace, "SF Mono", "Menlo", monospace;
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  background: var(--ae-bg);
+  color: var(--ae-fg);
+  color-scheme: dark;
+  font-family: var(--ae-font-mono);
+  font-feature-settings: "ss01", "ss02", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Faint grid — the defining texture. Absolutely positioned over the full
+   document (not position:fixed): a fixed + mask-image layer over a long
+   scrolled page triggers a Chromium blank-paint bug. A gentle top-down fade
+   keeps the atmospheric look without that cost. */
+.ae-root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, var(--ae-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ae-grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: linear-gradient(to bottom, black, black 60%, transparent);
+  mask-image: linear-gradient(to bottom, black, black 60%, transparent);
+}
+
+/* Top-of-page glow */
+.ae-root::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  background: var(--ae-glow);
+}
+
+.ae-root ::selection {
+  background: var(--ae-accent);
+  color: var(--ae-on-accent);
+}
+
+.ae-root ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.ae-root ::-webkit-scrollbar-thumb {
+  background: var(--ae-scrollbar-thumb);
+}
+.ae-root ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ── Type helpers ──────────────────────────────────────────────── */
+.ae-dot { color: var(--ae-accent); }
+.ae-num { font-feature-settings: "ss01", "ss02", "cv11"; }
+
+.ae-eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ae-fg-muted);
+}
+.ae-eyebrow-accent {
+  color: var(--ae-accent);
+  letter-spacing: 0.3em;
+}
+.ae-scheme {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--ae-accent);
+}
+.ae-meta {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ae-fg-muted);
+}
+.ae-tick {
+  height: 1px;
+  width: 40px;
+  background: var(--ae-border-strong);
+}
+.ae-hairline {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--ae-border-strong), transparent);
+}
+
+/* ── Pulse dot ─────────────────────────────────────────────────── */
+.ae-pulse {
+  position: relative;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+}
+.ae-pulse::before,
+.ae-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--ae-accent);
+}
+.ae-pulse::before { animation: ae-pulse 1.8s ease-in-out infinite; }
+@keyframes ae-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* ── Nav ───────────────────────────────────────────────────────── */
+.ae-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--ae-nav-scrim);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ae-border);
+}
+
+/* ── Panels ────────────────────────────────────────────────────── */
+.ae-panel {
+  position: relative;
+  /* Opaque-ish elevation tint. Intentionally NOT backdrop-filter: many blurred
+     panels over the fixed grid/glow trigger a Chromium blank-paint bug on long
+     scrolled pages, so depth here is border + surface tint only. */
+  background: color-mix(in srgb, var(--ae-bg-elev) 92%, var(--ae-bg));
+  border: 1px solid var(--ae-border);
+}
+.ae-panel--accent { border-color: var(--ae-border-strong); }
+.ae-panel--corner::before,
+.ae-panel--corner::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--ae-accent);
+  pointer-events: none;
+}
+.ae-panel--corner::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.ae-panel--corner::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+/* ── Buttons ───────────────────────────────────────────────────── */
+.ae-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 9px 16px;
+  border: 1px solid var(--ae-border-strong);
+  background: transparent;
+  color: var(--ae-fg-dimmed);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  white-space: nowrap;
+}
+.ae-btn:hover {
+  border-color: var(--ae-accent-secondary);
+  color: var(--ae-accent-secondary);
+}
+.ae-btn--primary {
+  border-color: var(--ae-accent);
+  color: var(--ae-accent);
+  background: color-mix(in srgb, var(--ae-accent) 5%, transparent);
+}
+.ae-btn--primary:hover {
+  background: var(--ae-accent);
+  color: var(--ae-on-accent);
+}
+.ae-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.ae-arrow { display: inline-block; transition: transform 0.25s; }
+.ae-btn:hover .ae-arrow { transform: translateX(3px); }
+
+/* ── Chips / tags ──────────────────────────────────────────────── */
+.ae-chip {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid var(--ae-border);
+  color: var(--ae-fg-muted);
+  white-space: nowrap;
+}
+.ae-chip--accent {
+  color: var(--ae-accent);
+  border-color: color-mix(in srgb, var(--ae-accent) 40%, transparent);
+}
+.ae-chip--teal {
+  color: var(--ae-accent-secondary);
+  border-color: var(--ae-border-strong);
+}
+.ae-tag {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  color: var(--ae-fg-muted);
+  border: 1px solid var(--ae-border);
+}
+
+/* ── Inputs ────────────────────────────────────────────────────── */
+.ae-input {
+  width: 100%;
+  background: var(--ae-surface);
+  border: 1px solid var(--ae-border);
+  color: var(--ae-fg);
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  padding: 9px 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.ae-input:focus { border-color: var(--ae-accent-secondary); }
+.ae-input::placeholder {
+  color: var(--ae-fg-subtle);
+  letter-spacing: 0.05em;
+}
+
+/* ── Level selector ────────────────────────────────────────────── */
+.ae-lvl {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ae-border);
+  background: transparent;
+  color: var(--ae-fg-muted);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.ae-lvl:hover { border-color: var(--ae-border-strong); color: var(--ae-fg); }
+.ae-lvl--on {
+  background: var(--ae-accent);
+  border-color: var(--ae-accent);
+  color: var(--ae-on-accent);
+}
+.ae-lvl--wide {
+  width: auto;
+  padding: 0 12px;
+  letter-spacing: 0.12em;
+}
+
+/* Range slider — native track/thumb tinted to the accent */
+.ae-range {
+  height: 4px;
+  cursor: pointer;
+  background: transparent;
+  accent-color: var(--ae-accent);
+}
+
+/* ── Portrait (square monogram box, optional CDN art) ──────────── */
+.ae-portrait {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--ae-border);
+  background: var(--ae-surface);
+  color: var(--ae-accent);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+/* ── Stat strip ────────────────────────────────────────────────── */
+.ae-statcell { padding: 14px 16px; }
+.ae-statcell__k {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ae-fg-subtle);
+}
+.ae-statcell__v {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 4px;
+  color: var(--ae-fg);
+  font-feature-settings: "ss01", "ss02", "cv11";
+}
+
+/* ── Item card ─────────────────────────────────────────────────── */
+.ae-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: var(--ae-surface);
+  border: 1px solid var(--ae-border);
+  color: var(--ae-fg);
+  font-family: inherit;
+  padding: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.ae-item:hover {
+  border-color: color-mix(in srgb, var(--ae-accent) 55%, transparent);
+  transform: translateY(-2px);
+}
+.ae-item:disabled { cursor: not-allowed; opacity: 0.4; transform: none; }
+
+/* ── Empty slot ────────────────────────────────────────────────── */
+.ae-slot {
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--ae-border);
+  color: var(--ae-fg-subtle);
+}
+
+/* ── Ticker ────────────────────────────────────────────────────── */
+.ae-ticker {
+  overflow: hidden;
+  width: 100%;
+  border-top: 1px solid var(--ae-border);
+  border-bottom: 1px solid var(--ae-border);
+  padding: 10px 0;
+  mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+}
+.ae-ticker__track {
+  display: flex;
+  gap: 36px;
+  white-space: nowrap;
+  width: max-content;
+  animation: ae-ticker 45s linear infinite;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.ae-ticker__item { color: var(--ae-fg-muted); }
+.ae-ticker__k { color: var(--ae-fg-subtle); }
+.ae-ticker__item b { color: var(--ae-accent-secondary); font-weight: 400; }
+@keyframes ae-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── Entrance ──────────────────────────────────────────────────── */
+.ae-in { animation: ae-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes ae-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ae-in,
+  .ae-ticker__track,
+  .ae-pulse::before { animation: none; }
+}
