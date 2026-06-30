@@ -9,6 +9,7 @@ import {
   ChampionsFileSchema,
   ItemsFileSchema,
   PatchMetaSchema,
+  BuildsFileSchema,
 } from "../src/lib/schema/index";
 
 const PATCHES_DIR = join(process.cwd(), "data", "patches");
@@ -47,6 +48,42 @@ for (const dir of patches) {
     ChampionsFileSchema.parse(loadJson(join(base, "champions.json"))),
   );
   check("items.json", () => ItemsFileSchema.parse(loadJson(join(base, "items.json"))));
+
+  // builds.json is optional per patch. When present, validate the schema AND
+  // that every reference resolves to a real, correctly-slotted entity — a
+  // standing build must never point at a missing or mis-slotted item.
+  const buildsPath = join(base, "builds.json");
+  if (existsSync(buildsPath)) {
+    check("builds.json", () => {
+      const builds = BuildsFileSchema.parse(loadJson(buildsPath));
+      const champions = ChampionsFileSchema.parse(loadJson(join(base, "champions.json")));
+      const items = ItemsFileSchema.parse(loadJson(join(base, "items.json")));
+      const champIds = new Set(champions.map((c) => c.id));
+      const slotById = new Map(items.map((i) => [i.id, i.slot]));
+      const errors: string[] = [];
+
+      const seenIds = new Set<string>();
+      for (const b of builds) {
+        if (seenIds.has(b.id)) errors.push(`duplicate preset id "${b.id}"`);
+        seenIds.add(b.id);
+        if (!champIds.has(b.championId)) errors.push(`${b.id}: unknown champion "${b.championId}"`);
+        if (new Set(b.items).size !== b.items.length) errors.push(`${b.id}: duplicate items`);
+        for (const it of b.items) {
+          const slot = slotById.get(it);
+          if (!slot) errors.push(`${b.id}: unknown item "${it}"`);
+          else if (slot !== "item") errors.push(`${b.id}: "${it}" is a ${slot}, not an item slot`);
+        }
+        if (b.boots && slotById.get(b.boots) !== "boots") {
+          errors.push(`${b.id}: "${b.boots}" is not a boots`);
+        }
+        if (b.enchant) {
+          if (!b.boots) errors.push(`${b.id}: enchant "${b.enchant}" needs boots`);
+          if (slotById.get(b.enchant) !== "enchant") errors.push(`${b.id}: "${b.enchant}" is not an enchant`);
+        }
+      }
+      if (errors.length) throw new Error(errors.join("\n    "));
+    });
+  }
 }
 
 if (failures > 0) {

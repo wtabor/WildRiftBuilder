@@ -50,6 +50,11 @@ const SLOT_LABEL: Record<Ability["slot"], string> = {
   R: "R",
 };
 
+/**
+ * @deprecated The default Wild Rift Builder UI is now the AerStrike design
+ * (`src/designs/aerstrike/AerstrikeDesign.tsx`, served at `/`). This design is
+ * kept reachable at `/meta` for reference/comparison only.
+ */
 export default function MetaDesign() {
   const {
     build, patch, setChampion, setLevel, addItem, removeItemAt, clearItems,
@@ -59,7 +64,7 @@ export default function MetaDesign() {
   const [champQuery, setChampQuery] = useState("");
 
   useEffect(() => {
-    document.title = "Meta · Wild Rift Builder";
+    document.title = "Meta (deprecated) · Wild Rift Builder";
   }, []);
 
   const champion = build.championId ? getChampion(build.championId) : undefined;

@@ -130,6 +130,39 @@ export function useBuildState() {
     setBuild((b) => ({ ...b, level: Math.max(1, Math.min(15, level)) }));
   }, []);
 
+  /**
+   * Load a curated preset (a "standing build") into whichever build is
+   * currently active — A normally, or B while comparing and B is focused.
+   * Mirrors how the shop/item actions already target `b.active`, so loading a
+   * preset while comparing fills the focused build instead of blowing away
+   * the comparison. Champion and level are shared across A/B by design.
+   */
+  const loadBuild = useCallback(
+    (preset: {
+      championId: string;
+      items: string[];
+      boots?: string;
+      enchant?: string;
+      level?: number;
+    }) => {
+      setBuild((b) => {
+        const isB = b.active === "B";
+        const itemsField = isB ? "itemIdsB" : "itemIds";
+        const bootsField = isB ? "bootsIdB" : "bootsId";
+        const enchantField = isB ? "enchantIdB" : "enchantId";
+        return {
+          ...b,
+          championId: preset.championId,
+          level: preset.level ? Math.max(1, Math.min(15, preset.level)) : b.level,
+          [itemsField]: preset.items.slice(0, MAX_ITEMS),
+          [bootsField]: preset.boots ?? null,
+          [enchantField]: preset.boots ? preset.enchant ?? null : null,
+        };
+      });
+    },
+    [],
+  );
+
   /** Add to whichever build is active. Max 6, and never two of the same item. */
   const addItem = useCallback((itemId: string) => {
     setBuild((b) => {
@@ -230,6 +263,7 @@ export function useBuildState() {
     patch: CURRENT_PATCH,
     setChampion,
     setLevel,
+    loadBuild,
     addItem,
     removeItemAt,
     setBoots,
