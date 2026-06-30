@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { champions, getBuilds, getChampion, getItem, getItems, items, patchMeta } from "@/lib/data";
 import { computeBuild, goldEfficiency, type BuildTotals } from "@/lib/stats/engine";
 import { autoAttackDps, type AutoAttackDps } from "@/lib/damage/engine";
-import { encodeBuild, useBuildState, type TargetStats } from "@/state/buildState";
+import { encodeBuild, useBuildState, type BuildKey, type TargetStats } from "@/state/buildState";
 import { type Ability, type BuildPreset, type Champion, type Item, type StatBlock, type StatKey } from "@/lib/schema";
 import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/statDisplay";
 import { formatStat, formatGold } from "@/lib/format";
@@ -141,8 +141,12 @@ export default function AerstrikeDesign() {
 
               {presets.length > 0 && (
                 <section>
-                  <Eyebrow n="01" label="Standing builds" />
-                  <StandingBuilds presets={presets} onLoad={loadBuild} />
+                  <Eyebrow
+                    n="01"
+                    label="Standing builds"
+                    right={build.compare ? <span className="ae-chip ae-chip--teal">→ Build {build.active}</span> : undefined}
+                  />
+                  <StandingBuilds presets={presets} onLoad={loadBuild} targetKey={build.compare ? build.active : undefined} />
                 </section>
               )}
 
@@ -264,17 +268,34 @@ function Eyebrow({ n, label, right }: { n: string; label: string; right?: React.
 
 /* ── Standing builds (curated presets) ────────────────────────────────── */
 
-function StandingBuilds({ presets, onLoad }: { presets: BuildPreset[]; onLoad: (p: BuildPreset) => void }) {
+function StandingBuilds({
+  presets,
+  onLoad,
+  targetKey,
+}: {
+  presets: BuildPreset[];
+  onLoad: (p: BuildPreset) => void;
+  /** Which build ("A"/"B") a load will fill; undefined when not comparing. */
+  targetKey?: BuildKey;
+}) {
   return (
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {presets.map((p) => (
-        <PresetCard key={p.id} preset={p} onLoad={onLoad} />
+        <PresetCard key={p.id} preset={p} onLoad={onLoad} targetKey={targetKey} />
       ))}
     </div>
   );
 }
 
-function PresetCard({ preset, onLoad }: { preset: BuildPreset; onLoad: (p: BuildPreset) => void }) {
+function PresetCard({
+  preset,
+  onLoad,
+  targetKey,
+}: {
+  preset: BuildPreset;
+  onLoad: (p: BuildPreset) => void;
+  targetKey?: BuildKey;
+}) {
   const boots = preset.boots ? getItem(preset.boots) : undefined;
   const coreItems = getItems(preset.items);
   return (
@@ -297,7 +318,7 @@ function PresetCard({ preset, onLoad }: { preset: BuildPreset; onLoad: (p: Build
         ))}
       </div>
       <span className="mt-3 inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-[var(--ae-accent)]">
-        Load build <span className="ae-arrow">→</span>
+        {targetKey ? `Load into build ${targetKey}` : "Load build"} <span className="ae-arrow">→</span>
       </span>
     </button>
   );

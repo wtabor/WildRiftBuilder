@@ -131,10 +131,11 @@ export function useBuildState() {
   }, []);
 
   /**
-   * Replace build A wholesale from a curated preset (a "standing build"):
-   * champion, level, the 6 items, and boots + enchant. Comparison build B is
-   * cleared so the loaded build is what's shown; the user's damage target is
-   * preserved. An enchant only sticks if the preset also brings boots.
+   * Load a curated preset (a "standing build") into whichever build is
+   * currently active — A normally, or B while comparing and B is focused.
+   * Mirrors how the shop/item actions already target `b.active`, so loading a
+   * preset while comparing fills the focused build instead of blowing away
+   * the comparison. Champion and level are shared across A/B by design.
    */
   const loadBuild = useCallback(
     (preset: {
@@ -144,15 +145,20 @@ export function useBuildState() {
       enchant?: string;
       level?: number;
     }) => {
-      setBuild((b) => ({
-        ...DEFAULT,
-        target: b.target,
-        championId: preset.championId,
-        level: preset.level ? Math.max(1, Math.min(15, preset.level)) : b.level,
-        itemIds: preset.items.slice(0, MAX_ITEMS),
-        bootsId: preset.boots ?? null,
-        enchantId: preset.boots ? preset.enchant ?? null : null,
-      }));
+      setBuild((b) => {
+        const isB = b.active === "B";
+        const itemsField = isB ? "itemIdsB" : "itemIds";
+        const bootsField = isB ? "bootsIdB" : "bootsId";
+        const enchantField = isB ? "enchantIdB" : "enchantId";
+        return {
+          ...b,
+          championId: preset.championId,
+          level: preset.level ? Math.max(1, Math.min(15, preset.level)) : b.level,
+          [itemsField]: preset.items.slice(0, MAX_ITEMS),
+          [bootsField]: preset.boots ?? null,
+          [enchantField]: preset.boots ? preset.enchant ?? null : null,
+        };
+      });
     },
     [],
   );
