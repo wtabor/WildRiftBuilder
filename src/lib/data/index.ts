@@ -2,8 +2,10 @@ import {
   ChampionsFileSchema,
   ItemsFileSchema,
   PatchMetaSchema,
+  BuildsFileSchema,
   type Champion,
   type Item,
+  type BuildPreset,
   type PatchMeta,
   type Provenance,
 } from "@/lib/schema";
@@ -11,6 +13,7 @@ import {
 import championsRaw from "@data/patches/7.1/champions.json";
 import itemsRaw from "@data/patches/7.1/items.json";
 import metaRaw from "@data/patches/7.1/meta.json";
+import buildsRaw from "@data/patches/7.1/builds.json";
 import registryRaw from "@data/patches/registry.json";
 
 /**
@@ -24,9 +27,16 @@ export const CURRENT_PATCH = "7.1g";
 export const patchMeta: PatchMeta = PatchMetaSchema.parse(metaRaw);
 export const champions: Champion[] = ChampionsFileSchema.parse(championsRaw);
 export const items: Item[] = ItemsFileSchema.parse(itemsRaw);
+export const builds: BuildPreset[] = BuildsFileSchema.parse(buildsRaw);
 
 const championById = new Map(champions.map((c) => [c.id, c]));
 const itemById = new Map(items.map((i) => [i.id, i]));
+const buildsByChampion = new Map<string, BuildPreset[]>();
+for (const b of builds) {
+  const list = buildsByChampion.get(b.championId);
+  if (list) list.push(b);
+  else buildsByChampion.set(b.championId, [b]);
+}
 
 export function getChampion(id: string): Champion | undefined {
   return championById.get(id);
@@ -38,6 +48,11 @@ export function getItem(id: string): Item | undefined {
 
 export function getItems(ids: string[]): Item[] {
   return ids.map((id) => itemById.get(id)).filter((i): i is Item => Boolean(i));
+}
+
+/** Curated "standing builds" for a champion, in authored order. */
+export function getBuilds(championId: string): BuildPreset[] {
+  return buildsByChampion.get(championId) ?? [];
 }
 
 /* -------------------------------------------------------------------------- */

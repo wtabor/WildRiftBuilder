@@ -19,14 +19,15 @@
   --ae-surface: color-mix(in srgb, #fff8f0 4%, transparent);
   --ae-surface-2: color-mix(in srgb, #fff8f0 9%, transparent);
 
-  /* foreground ramp */
+  /* foreground ramp — lifted at the low end so small mono text stays legible
+     on the near-black field while keeping the warm, atmospheric falloff */
   --ae-fg: #fff8f0;
-  --ae-fg-body: #ede8e0;
-  --ae-fg-soft: #dcd6ce;
-  --ae-fg-dimmed: #c9c3ba;
-  --ae-fg-dim: #b5aea4;
-  --ae-fg-muted: #a8a095;
-  --ae-fg-subtle: #7a736a;
+  --ae-fg-body: #f1ece5;
+  --ae-fg-soft: #e4dfd7;
+  --ae-fg-dimmed: #d7d1c8;
+  --ae-fg-dim: #cbc5bb;
+  --ae-fg-muted: #bcb5a9;
+  --ae-fg-subtle: #968e81;
 
   /* borders + scrims */
   --ae-border: color-mix(in srgb, #fff8f0 9%, transparent);

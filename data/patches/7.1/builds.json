@@ -1,0 +1,59 @@
+[
+  {
+    "id": "ezreal-crit",
+    "championId": "ezreal",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "The reliable carry path. Essence Reaver and Navori keep Q on a near-permanent cooldown while Infinity Edge turns every auto and Q into a crit.",
+    "items": [
+      "essence-reaver",
+      "infinity-edge",
+      "navori-quickblades",
+      "phantom-dancer",
+      "the-collector",
+      "lord-dominiks-regard"
+    ],
+    "boots": "berserkers-greaves",
+    "enchant": "galeforce",
+    "level": 15,
+    "meme": false
+  },
+  {
+    "id": "ezreal-on-hit",
+    "championId": "ezreal",
+    "name": "On-Hit",
+    "archetype": "on-hit",
+    "description": "Trinity proc plus stacked on-hit effects. Blade, Kraken, Terminus and Wit's End make every basic bite, with Rageblade amplifying the whole package.",
+    "items": [
+      "trinity-force",
+      "blade-of-the-ruined-king",
+      "kraken-slayer",
+      "terminus",
+      "wits-end",
+      "guinsoos-rageblade"
+    ],
+    "boots": "berserkers-greaves",
+    "enchant": "stridebreaker",
+    "level": 15,
+    "meme": false
+  },
+  {
+    "id": "ezreal-permafrost",
+    "championId": "ezreal",
+    "name": "Permafrost",
+    "archetype": "meme",
+    "description": "The ultimate slow build. Rylai's, Iceborn, Frozen Heart, Dead Man's and Randuin's mean nothing within range ever moves at full speed again. Pure menace, zero meta.",
+    "items": [
+      "rylais-crystal-scepter",
+      "iceborn-gauntlet",
+      "frozen-heart",
+      "dead-mans-plate",
+      "randuins-omen",
+      "winters-approach"
+    ],
+    "boots": "ionian-boots-of-lucidity",
+    "enchant": "stridebreaker",
+    "level": 15,
+    "meme": true
+  }
+]

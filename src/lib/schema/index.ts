@@ -177,6 +177,39 @@ export const ChampionSchema = z.object({
 export type Champion = z.infer<typeof ChampionSchema>;
 
 /* -------------------------------------------------------------------------- */
+/*  Build presets — curated "standing builds" per champion                     */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * A curated, one-click-loadable build for a champion (a "standing build").
+ * Item/boots/enchant references are patch-local ids; the validator enforces
+ * that they exist and sit in the right slot, so a preset can never point at a
+ * missing or mis-slotted item.
+ */
+export const BuildPresetSchema = z.object({
+  id: z.string(),
+  championId: z.string(),
+  name: z.string(),
+  archetype: z.enum(["crit", "on-hit", "ability", "lethality", "bruiser", "tank", "meme"]),
+  description: z.string().default(""),
+  /** Ordered core items for the 6 main slots (excludes boots + enchant). */
+  items: z.array(z.string()).max(6).default([]),
+  boots: z.string().optional(),
+  /** Enchant riding on the boots; ignored if `boots` is absent. */
+  enchant: z.string().optional(),
+  /** Level to preview the build at when it's loaded. */
+  level: z.number().int().min(1).max(15).default(15),
+  /** Source URL the build was verified against. Omit for editorial/meme builds. */
+  source: z.string().url().optional(),
+  /** Editorial off-meta "for fun" build — not claimed as competitive. */
+  meme: z.boolean().default(false),
+});
+
+export type BuildPreset = z.infer<typeof BuildPresetSchema>;
+
+export const BuildsFileSchema = z.array(BuildPresetSchema);
+
+/* -------------------------------------------------------------------------- */
 /*  Patch dataset                                                              */
 /* -------------------------------------------------------------------------- */
 

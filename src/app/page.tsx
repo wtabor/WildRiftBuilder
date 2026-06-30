@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import MetaDesign from "@/designs/meta/MetaDesign";
+import AerstrikeDesign from "@/designs/aerstrike/AerstrikeDesign";
 
 export const metadata: Metadata = {
   title: "Wild Rift Builder — champion stats & item build calculator",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <MetaDesign />;
+  return <AerstrikeDesign />;
 }

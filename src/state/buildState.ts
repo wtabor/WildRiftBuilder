@@ -130,6 +130,33 @@ export function useBuildState() {
     setBuild((b) => ({ ...b, level: Math.max(1, Math.min(15, level)) }));
   }, []);
 
+  /**
+   * Replace build A wholesale from a curated preset (a "standing build"):
+   * champion, level, the 6 items, and boots + enchant. Comparison build B is
+   * cleared so the loaded build is what's shown; the user's damage target is
+   * preserved. An enchant only sticks if the preset also brings boots.
+   */
+  const loadBuild = useCallback(
+    (preset: {
+      championId: string;
+      items: string[];
+      boots?: string;
+      enchant?: string;
+      level?: number;
+    }) => {
+      setBuild((b) => ({
+        ...DEFAULT,
+        target: b.target,
+        championId: preset.championId,
+        level: preset.level ? Math.max(1, Math.min(15, preset.level)) : b.level,
+        itemIds: preset.items.slice(0, MAX_ITEMS),
+        bootsId: preset.boots ?? null,
+        enchantId: preset.boots ? preset.enchant ?? null : null,
+      }));
+    },
+    [],
+  );
+
   /** Add to whichever build is active. Max 6, and never two of the same item. */
   const addItem = useCallback((itemId: string) => {
     setBuild((b) => {
@@ -230,6 +257,7 @@ export function useBuildState() {
     patch: CURRENT_PATCH,
     setChampion,
     setLevel,
+    loadBuild,
     addItem,
     removeItemAt,
     setBoots,

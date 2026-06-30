@@ -1,12 +1,9 @@
-import type { Metadata } from "next";
-import AerstrikeDesign from "@/designs/aerstrike/AerstrikeDesign";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "AerStrike · Wild Rift Builder",
-  description:
-    "Experimental AerStrike-styled variant of the Wild Rift stat & build calculator — dark, monospaced, terminal-flavored.",
-};
-
+/**
+ * The AerStrike design is now the default experience at `/`. This route is kept
+ * only to redirect any existing links (preview deployments, shared URLs) home.
+ */
 export default function Page() {
-  return <AerstrikeDesign />;
+  redirect("/");
 }
