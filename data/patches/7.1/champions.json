@@ -91,7 +91,10 @@
         ]
       }
     ],
-    "icon": "Ashe"
+    "icon": "Ashe",
+    "provenance": {
+      "maxHealth": "7.0c"
+    }
   },
   {
     "id": "ahri",
@@ -860,7 +863,10 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Corki"
+    "icon": "Corki",
+    "provenance": {
+      "attackDamage": "7.1"
+    }
   },
   {
     "id": "diana",
@@ -1625,7 +1631,10 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Hecarim"
+    "icon": "Hecarim",
+    "provenance": {
+      "attackDamage": "7.0d"
+    }
   },
   {
     "id": "heimerdinger",
@@ -1864,7 +1873,10 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Jax"
+    "icon": "Jax",
+    "provenance": {
+      "armor": "7.1b"
+    }
   },
   {
     "id": "jayce",
@@ -2246,7 +2258,10 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Katarina"
+    "icon": "Katarina",
+    "provenance": {
+      "armor": "7.0c"
+    }
   },
   {
     "id": "kayle",
@@ -2294,7 +2309,11 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Kayle"
+    "icon": "Kayle",
+    "provenance": {
+      "attackDamage": "7.1f",
+      "manaRegen": "7.1f"
+    }
   },
   {
     "id": "kayn",
@@ -4110,7 +4129,11 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Rell"
+    "icon": "Rell",
+    "provenance": {
+      "armor": "7.0d",
+      "attackDamage": "7.0d"
+    }
   },
   {
     "id": "renekton",
@@ -4158,7 +4181,10 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Renekton"
+    "icon": "Renekton",
+    "provenance": {
+      "attackDamage": "7.1b"
+    }
   },
   {
     "id": "rengar",
@@ -4349,7 +4375,10 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Ryze"
+    "icon": "Ryze",
+    "provenance": {
+      "attackDamage": "7.1e"
+    }
   },
   {
     "id": "samira",
@@ -4588,7 +4617,10 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Shyvana"
+    "icon": "Shyvana",
+    "provenance": {
+      "attackDamage": "7.1e"
+    }
   },
   {
     "id": "singed",
@@ -4731,7 +4763,10 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Sivir"
+    "icon": "Sivir",
+    "provenance": {
+      "attackDamage": "7.1d"
+    }
   },
   {
     "id": "skarner",
@@ -4827,7 +4862,10 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Smolder"
+    "icon": "Smolder",
+    "provenance": {
+      "attackDamage": "7.0f"
+    }
   },
   {
     "id": "sona",
@@ -5401,7 +5439,10 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Urgot"
+    "icon": "Urgot",
+    "provenance": {
+      "attackDamage": "7.1d"
+    }
   },
   {
     "id": "varus",
@@ -5830,7 +5871,10 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Vladimir"
+    "icon": "Vladimir",
+    "provenance": {
+      "armor": "7.1d"
+    }
   },
   {
     "id": "volibear",
@@ -6307,7 +6351,10 @@
       "critDamageBase": 0.75
     },
     "abilities": [],
-    "icon": "Zeri"
+    "icon": "Zeri",
+    "provenance": {
+      "attackDamage": "7.1d"
+    }
   },
   {
     "id": "ziggs",

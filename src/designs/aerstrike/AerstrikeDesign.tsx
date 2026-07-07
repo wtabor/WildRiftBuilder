@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { champions, getChampion, getItem, getItems, items, patchMeta } from "@/lib/data";
+import { champions, getBuilds, getChampion, getItem, getItems, items, patchMeta } from "@/lib/data";
 import { computeBuild, goldEfficiency, type BuildTotals } from "@/lib/stats/engine";
 import { autoAttackDps, type AutoAttackDps } from "@/lib/damage/engine";
-import { encodeBuild, useBuildState, type TargetStats } from "@/state/buildState";
-import { type Ability, type Champion, type Item, type StatBlock, type StatKey } from "@/lib/schema";
+import { encodeBuild, useBuildState, type BuildKey, type TargetStats } from "@/state/buildState";
+import { type Ability, type BuildPreset, type Champion, type Item, type StatBlock, type StatKey } from "@/lib/schema";
 import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/statDisplay";
 import { formatStat, formatGold } from "@/lib/format";
 import { initials, championIconUrl, itemIconUrl } from "@/lib/visual";
@@ -31,14 +31,14 @@ const SLOT_LABEL: Record<Ability["slot"], string> = { passive: "P", Q: "Q", W: "
 
 export default function AerstrikeDesign() {
   const {
-    build, patch, setChampion, setLevel, addItem, removeItemAt, clearItems,
+    build, patch, setChampion, setLevel, loadBuild, addItem, removeItemAt, clearItems,
     setBoots, removeBoots, setEnchant, removeEnchant, setActive, setTarget, toggleCompare, maxItems,
   } = useBuildState();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [champQuery, setChampQuery] = useState("");
 
   useEffect(() => {
-    document.title = "AerStrike · Wild Rift Builder";
+    document.title = "Wild Rift Builder — stat & build calculator";
   }, []);
 
   const champion = build.championId ? getChampion(build.championId) : undefined;
@@ -84,6 +84,12 @@ export default function AerstrikeDesign() {
   const activeEnchant = build.active === "B" ? build.enchantIdB : build.enchantId;
   const full = activeList.length >= maxItems;
   const showPicker = !champion || pickerOpen;
+
+  // Curated "standing builds" for this champion. When present they take the
+  // first section slot, pushing the rest down by one (so numbering stays 01-N).
+  const presets = champion ? getBuilds(champion.id) : [];
+  const sectionOffset = presets.length > 0 ? 1 : 0;
+  const sn = (i: number) => String(i + sectionOffset).padStart(2, "0");
 
   function handleAdd(id: string) {
     const slot = getItem(id)?.slot;
@@ -133,13 +139,24 @@ export default function AerstrikeDesign() {
             <div className="space-y-8">
               <ChampionHeader champion={champion} level={build.level} onChange={() => setPickerOpen(true)} />
 
+              {presets.length > 0 && (
+                <section>
+                  <Eyebrow
+                    n="01"
+                    label="Standing builds"
+                    right={build.compare ? <span className="ae-chip ae-chip--teal">→ Build {build.active}</span> : undefined}
+                  />
+                  <StandingBuilds presets={presets} onLoad={loadBuild} targetKey={build.compare ? build.active : undefined} />
+                </section>
+              )}
+
               <section>
-                <Eyebrow n="01" label="Level" />
+                <Eyebrow n={sn(1)} label="Level" />
                 <LevelBar level={build.level} onChange={setLevel} />
               </section>
 
               <section>
-                <Eyebrow n="02" label="Stat readout" />
+                <Eyebrow n={sn(2)} label="Stat readout" />
                 <StatStrip totals={totals} dps={dps} />
               </section>
 
@@ -147,14 +164,16 @@ export default function AerstrikeDesign() {
                 <div className="min-w-0 space-y-8">
                   <section>
                     <Eyebrow
-                      n="03"
+                      n={sn(3)}
                       label={build.compare ? "Build A" : "Your build"}
                       right={
                         <button
                           onClick={toggleCompare}
-                          className={`ae-chip ${build.compare ? "ae-chip--accent" : ""}`}
+                          className={`ae-btn ${build.compare ? "ae-btn--primary" : ""}`}
+                          title="Build a second build side-by-side and compare stats + DPS"
                         >
-                          {build.compare ? "Comparing" : "Compare A/B"}
+                          {build.compare ? "Comparing A/B" : "Compare A/B"}
+                          <span className="ae-arrow">{build.compare ? "✕" : "+"}</span>
                         </button>
                       }
                     />
@@ -193,7 +212,7 @@ export default function AerstrikeDesign() {
 
                   <section>
                     <Eyebrow
-                      n="04"
+                      n={sn(4)}
                       label="Item shop"
                       right={build.compare ? <span className="ae-chip ae-chip--teal">→ Build {build.active}</span> : undefined}
                     />
@@ -208,11 +227,11 @@ export default function AerstrikeDesign() {
 
                 <aside className="space-y-8">
                   <section>
-                    <Eyebrow n="05" label="Target dummy" />
+                    <Eyebrow n={sn(5)} label="Target dummy" />
                     <TargetDummy target={build.target} onChange={setTarget} />
                   </section>
                   <section>
-                    <Eyebrow n="06" label="Stat sheet" />
+                    <Eyebrow n={sn(6)} label="Stat sheet" />
                     {build.compare && totalsB && dps && dpsB ? (
                       <CompareStatPanel a={totals} b={totalsB} dpsA={dps} dpsB={dpsB} />
                     ) : (
@@ -244,6 +263,64 @@ function Eyebrow({ n, label, right }: { n: string; label: string; right?: React.
       </div>
       {right}
     </div>
+  );
+}
+
+/* ── Standing builds (curated presets) ────────────────────────────────── */
+
+function StandingBuilds({
+  presets,
+  onLoad,
+  targetKey,
+}: {
+  presets: BuildPreset[];
+  onLoad: (p: BuildPreset) => void;
+  /** Which build ("A"/"B") a load will fill; undefined when not comparing. */
+  targetKey?: BuildKey;
+}) {
+  return (
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {presets.map((p) => (
+        <PresetCard key={p.id} preset={p} onLoad={onLoad} targetKey={targetKey} />
+      ))}
+    </div>
+  );
+}
+
+function PresetCard({
+  preset,
+  onLoad,
+  targetKey,
+}: {
+  preset: BuildPreset;
+  onLoad: (p: BuildPreset) => void;
+  targetKey?: BuildKey;
+}) {
+  const boots = preset.boots ? getItem(preset.boots) : undefined;
+  const coreItems = getItems(preset.items);
+  return (
+    <button onClick={() => onLoad(preset)} className="ae-item group">
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-sm font-bold text-[var(--ae-fg)]">{preset.name}</span>
+        <span className={`ae-chip ${preset.meme ? "ae-chip--teal" : "ae-chip--accent"}`}>
+          {preset.meme ? "for fun" : preset.archetype}
+        </span>
+      </div>
+      <p className="mt-1.5 min-h-[3.6em] text-xs leading-relaxed text-[var(--ae-fg-dim)]">
+        {preset.description}
+      </p>
+      <div className="mt-2.5 flex flex-wrap items-center gap-1">
+        {boots && (
+          <Portrait name={boots.name} src={boots.icon ? itemIconUrl(boots.icon) : undefined} size={26} />
+        )}
+        {coreItems.map((it) => (
+          <Portrait key={it.id} name={it.name} src={it.icon ? itemIconUrl(it.icon) : undefined} size={26} />
+        ))}
+      </div>
+      <span className="mt-3 inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-[var(--ae-accent)]">
+        {targetKey ? `Load into build ${targetKey}` : "Load build"} <span className="ae-arrow">→</span>
+      </span>
+    </button>
   );
 }
 

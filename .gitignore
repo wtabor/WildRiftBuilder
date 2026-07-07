@@ -32,3 +32,6 @@ yarn-error.log*
 
 # test
 /coverage
+
+# data-fill scraper scratch output
+/tools/data-fill/out/

@@ -50,6 +50,11 @@ const SLOT_LABEL: Record<Ability["slot"], string> = {
   R: "R",
 };
 
+/**
+ * @deprecated The default Wild Rift Builder UI is now the AerStrike design
+ * (`src/designs/aerstrike/AerstrikeDesign.tsx`, served at `/`). This design is
+ * kept reachable at `/meta` for reference/comparison only.
+ */
 export default function MetaDesign() {
   const {
     build, patch, setChampion, setLevel, addItem, removeItemAt, clearItems,
@@ -59,7 +64,7 @@ export default function MetaDesign() {
   const [champQuery, setChampQuery] = useState("");
 
   useEffect(() => {
-    document.title = "Meta · Wild Rift Builder";
+    document.title = "Meta (deprecated) · Wild Rift Builder";
   }, []);
 
   const champion = build.championId ? getChampion(build.championId) : undefined;
@@ -233,6 +238,7 @@ export default function MetaDesign() {
                             attackSpeed={totals.attackSpeed}
                             items={allItems}
                             dps={dps}
+                            provenance={champion?.provenance}
                           />
                         )
                       )}
@@ -1066,11 +1072,13 @@ function StatPanel({
   attackSpeed,
   items,
   dps,
+  provenance,
 }: {
   stats: StatBlock;
   attackSpeed: number;
   items: Item[];
   dps: AutoAttackDps;
+  provenance?: Champion["provenance"];
 }) {
   const rows = statRows(stats, attackSpeed);
   const groups: StatGroup[] = ["offense", "defense", "utility"];
@@ -1097,7 +1105,9 @@ function StatPanel({
                       <StatIcon statKey={r.key} width={14} height={14} className="text-meta-mute" />
                       {r.label}
                     </span>
-                    <span className="tabular font-bold text-meta-text">{r.display}</span>
+                    <ProvenanceTooltip provenance={provenance} valueKey={r.key}>
+                      <span className="tabular font-bold text-meta-text">{r.display}</span>
+                    </ProvenanceTooltip>
                   </div>
                 ))}
               </div>

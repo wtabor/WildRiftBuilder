@@ -41,12 +41,13 @@ Before committing, the gate is: `typecheck` + `test` + `validate-data` + `build`
 - `data/patches/<patch>/` — versioned static JSON: `champions.json`, `items.json`, `meta.json`.
   Registry of patches in `data/patches/registry.json`. Current patch: `7.1` (7.1g).
 - `src/lib/stats/` — pure stat engine (champion + items → totals). `src/lib/damage/` — pure damage engine.
-- `src/lib/data/` — typed loaders/selectors over the JSON.
-- `src/designs/meta/MetaDesign.tsx` — the one shipped UI (presentation only).
+- `src/lib/data/` — typed loaders/selectors over the JSON (incl. `getBuilds` for curated presets).
+- `src/designs/aerstrike/AerstrikeDesign.tsx` — the default shipped UI, served at `/` (presentation only).
+- `src/designs/meta/MetaDesign.tsx` — **deprecated** original design, kept reachable at `/meta` for reference only.
 
 **Separation rule:** *what a number is* lives in `src/lib/` and is shared; *how it looks* lives in
-`src/designs/meta/`. Stat values come from `statDisplay`, gold from `formatGold` — never re-implement
-formatting in a component. See `DESIGN_WORKFLOW.md` for UI iteration + the polish checklist.
+the design layer (`src/designs/aerstrike/`). Stat values come from `statDisplay`, gold from `formatGold` —
+never re-implement formatting in a component. See `DESIGN_WORKFLOW.md` for UI iteration + the polish checklist.
 
 ## Conventions
 
