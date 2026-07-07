@@ -558,7 +558,7 @@ function HeroBand({
               src={champion.icon ? championIconUrl(champion.icon) : undefined}
               size={72}
             />
-            <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 border border-[var(--ae-accent)] bg-[var(--ae-bg)] px-2 py-0.5 text-[10px] font-bold tracking-[0.12em] text-[var(--ae-accent)]">
+            <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 border border-[var(--ae-accent)] bg-[var(--ae-bg)] px-2 py-0.5 text-[11px] font-bold tracking-[0.12em] text-[var(--ae-accent)]">
               LV {level}
             </span>
           </div>
@@ -772,7 +772,7 @@ function BuildPath({
                   </span>
                 )}
               </button>
-              <span className="line-clamp-1 text-center text-[10px] text-[var(--ae-fg-subtle)]">
+              <span className="line-clamp-1 text-center text-[11px] text-[var(--ae-fg-subtle)]">
                 {enchant ? enchant.name : boots.name}
               </span>
             </div>
@@ -781,7 +781,7 @@ function BuildPath({
               <span className="ae-slot h-12 w-12 border-[color-mix(in_srgb,var(--ae-accent)_40%,transparent)] text-[var(--ae-accent)]">
                 ⌂
               </span>
-              <span className="text-[10px] text-[var(--ae-accent)]">boots</span>
+              <span className="text-[11px] text-[var(--ae-accent)]">boots</span>
             </div>
           )}
           <span className="mb-4 h-8 w-px self-center bg-[var(--ae-border)]" />
@@ -804,12 +804,12 @@ function BuildPath({
                     ✕
                   </span>
                 </span>
-                <span className="line-clamp-1 text-center text-[10px] text-[var(--ae-fg-subtle)]">{it.name}</span>
+                <span className="line-clamp-1 text-center text-[11px] text-[var(--ae-fg-subtle)]">{it.name}</span>
               </button>
             ) : (
               <div className="flex w-16 flex-col items-center gap-1">
                 <span className="ae-slot h-12 w-12">+</span>
-                <span className="text-[10px] text-[var(--ae-fg-subtle)]">empty</span>
+                <span className="text-[11px] text-[var(--ae-fg-subtle)]">empty</span>
               </div>
             )}
             {i < maxItems - 1 && <span className="ae-arrow mb-4 text-[var(--ae-fg-subtle)]">→</span>}
@@ -939,19 +939,19 @@ function ItemCard({
           <span className="ae-arrow shrink-0 text-[var(--ae-accent)] transition group-hover:translate-x-0.5">→</span>
         )}
       </div>
-      <ul className="mt-2.5 space-y-0.5">
+      <ul className="mt-2.5 space-y-1">
         {lines.map((l) => (
-          <li key={l.key} className="flex items-center gap-2 text-[11px] text-[var(--ae-fg-dim)]">
-            <span className="ae-num font-medium text-[var(--ae-fg)]">+{l.display}</span>
-            <span className="text-[var(--ae-fg-subtle)]">{l.label}</span>
+          <li key={l.key} className="flex items-center gap-2 text-[11.5px] text-[var(--ae-fg-dim)]">
+            <span className="ae-num font-semibold text-[var(--ae-fg)]">+{l.display}</span>
+            <span className="text-[var(--ae-fg-dim)]">{l.label}</span>
           </li>
         ))}
       </ul>
       {item.effects.length > 0 && (
-        <ul className="mt-2.5 space-y-1 border-t border-[var(--ae-border)] pt-2.5">
+        <ul className="mt-2.5 space-y-1.5 border-t border-[var(--ae-border)] pt-2.5">
           {item.effects.map((e) => (
-            <li key={e.name} className="text-[10px] leading-snug text-[var(--ae-fg-muted)]">
-              <span className="font-bold text-[var(--ae-fg-soft)]">{e.name}</span> {e.description}
+            <li key={e.name} className="text-[11.5px] leading-relaxed text-[var(--ae-fg-dim)]">
+              <span className="font-bold text-[var(--ae-fg)]">{e.name}</span> {e.description}
             </li>
           ))}
         </ul>
@@ -986,7 +986,7 @@ function TargetDummy({ target, onChange }: { target: TargetStats; onChange: (pat
       <div className="grid grid-cols-3 gap-2">
         {fields.map((f) => (
           <label key={f.key} className="flex flex-col gap-1.5">
-            <span className="text-[10px] uppercase tracking-[0.12em] text-[var(--ae-fg-subtle)]">{f.label}</span>
+            <span className="text-[11px] uppercase tracking-[0.12em] text-[var(--ae-fg-subtle)]">{f.label}</span>
             <input
               type="number"
               min={0}
@@ -1013,7 +1013,7 @@ function DamageReadout({ dps }: { dps: AutoAttackDps }) {
   return (
     <div className="mt-4 border-t border-[var(--ae-border)] pt-3">
       <h3 className="ae-eyebrow ae-eyebrow-accent">Auto-attack damage</h3>
-      <p className="mb-2 mt-1 text-[10px] text-[var(--ae-fg-subtle)]">
+      <p className="mb-2 mt-1 text-[11px] text-[var(--ae-fg-subtle)]">
         Sustained, incl. crit &amp; on-hit, vs the target dummy.
       </p>
       <div className="flex items-baseline justify-between">
@@ -1116,7 +1116,7 @@ function EffectRow({ e }: { e: BuildEffect }) {
         <span className="font-semibold text-[var(--ae-fg-soft)]">{e.name}</span>
         <span className="text-[9px] text-[var(--ae-fg-subtle)]">· {e.itemName}</span>
       </span>
-      <span className="block text-[10px] text-[var(--ae-fg-muted)]">{e.description}</span>
+      <span className="block text-[11px] text-[var(--ae-fg-muted)]">{e.description}</span>
     </li>
   );
 }
@@ -1127,7 +1127,7 @@ function CombatEffects({ items: list }: { items: Item[] }) {
   return (
     <div className="mt-4 border-t border-[var(--ae-border)] pt-3">
       <h3 className="ae-eyebrow ae-eyebrow-accent">Combat effects</h3>
-      <p className="mb-2 mt-1 text-[10px] text-[var(--ae-fg-subtle)]">Not counted in the stats above.</p>
+      <p className="mb-2 mt-1 text-[11px] text-[var(--ae-fg-subtle)]">Not counted in the stats above.</p>
       <ul className="space-y-1.5">
         {effects.map((e) => (
           <EffectRow key={`${e.itemId}-${e.name}`} e={e} />
@@ -1191,7 +1191,7 @@ function CompareStatPanel({
           <span className="w-14 text-right text-[var(--ae-accent)]">B</span>
         </div>
         <div className="mt-1 flex items-center justify-between gap-2">
-          <span className="flex-1 text-[10px] text-[var(--ae-fg-subtle)]" title={`Δ ${Math.round(goldDelta)} gold`}>
+          <span className="flex-1 text-[11px] text-[var(--ae-fg-subtle)]" title={`Δ ${Math.round(goldDelta)} gold`}>
             vs target dummy
           </span>
           <span className="ae-num w-14 text-right text-lg font-bold text-[var(--ae-fg)]">
@@ -1331,7 +1331,7 @@ function Footer({ patch, query }: { patch: string; query: string }) {
       <div className="grid grid-cols-2 gap-6 border-y border-[var(--ae-border)] py-8 sm:grid-cols-4">
         {stats.map(([k, v]) => (
           <div key={k} className="flex flex-col gap-1.5">
-            <span className="text-[10px] uppercase tracking-[0.22em] text-[var(--ae-fg-subtle)]">{k}</span>
+            <span className="text-[11px] uppercase tracking-[0.22em] text-[var(--ae-fg-subtle)]">{k}</span>
             <span className="text-sm font-bold text-[var(--ae-fg)]">{v}</span>
           </div>
         ))}
@@ -1339,7 +1339,7 @@ function Footer({ patch, query }: { patch: string; query: string }) {
       <div className="mt-8 text-[clamp(3rem,11vw,7rem)] font-bold leading-[0.86] tracking-[-0.045em] text-[var(--ae-fg)]">
         WILD RIFT<span className="ae-dot">.</span>
       </div>
-      <p className="mt-6 text-[10px] uppercase tracking-[0.18em] text-[var(--ae-fg-subtle)]">
+      <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-[var(--ae-fg-subtle)]">
         Wild Rift Builder / Patch {patch} / Raw logic. Refined form.
         {query ? <span className="ml-2 text-[var(--ae-border-strong)]">· ?{query.slice(0, 24)}…</span> : null}
       </p>
