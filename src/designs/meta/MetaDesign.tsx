@@ -238,6 +238,7 @@ export default function MetaDesign() {
                             attackSpeed={totals.attackSpeed}
                             items={allItems}
                             dps={dps}
+                            provenance={champion?.provenance}
                           />
                         )
                       )}
@@ -1071,11 +1072,13 @@ function StatPanel({
   attackSpeed,
   items,
   dps,
+  provenance,
 }: {
   stats: StatBlock;
   attackSpeed: number;
   items: Item[];
   dps: AutoAttackDps;
+  provenance?: Champion["provenance"];
 }) {
   const rows = statRows(stats, attackSpeed);
   const groups: StatGroup[] = ["offense", "defense", "utility"];
@@ -1102,7 +1105,9 @@ function StatPanel({
                       <StatIcon statKey={r.key} width={14} height={14} className="text-meta-mute" />
                       {r.label}
                     </span>
-                    <span className="tabular font-bold text-meta-text">{r.display}</span>
+                    <ProvenanceTooltip provenance={provenance} valueKey={r.key}>
+                      <span className="tabular font-bold text-meta-text">{r.display}</span>
+                    </ProvenanceTooltip>
                   </div>
                 ))}
               </div>
