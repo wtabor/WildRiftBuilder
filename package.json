@@ -16,6 +16,7 @@
     "verify-data": "node scripts/verify-data.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
     "geist": "^1.7.2",
     "next": "^15.5.19",
     "react": "19.1.0",
