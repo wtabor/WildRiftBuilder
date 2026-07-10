@@ -8,9 +8,9 @@ name: Patch Watch (roll data forward to the newest WR patch)
 # ship, and when it finds one it rolls the dataset forward — applying every
 # balance/item change from the notes — on a branch and opens a PR.
 #
-# Like the backfill loop, it works one patch per run and re-dispatches itself
-# until we're caught up, so being several patches behind self-heals over a few
-# runs rather than in one giant unreviewable PR.
+# One patch per run, once a day. If we're ever several patches behind, it rolls
+# forward one step per day over consecutive days (keeps each PR small and
+# reviewable), rather than chaining runs — no self-dispatch, so no PAT needed.
 
 on:
   schedule:
@@ -22,10 +22,6 @@ on:
         description: "Specific patch version to roll to (e.g. 7.2b). Blank = next unshipped patch from the notes."
         required: false
         default: ""
-      continue:
-        description: "Re-dispatch self until caught up to the newest patch (needs WORKFLOW_PAT)"
-        required: false
-        default: "true"
 
 permissions:
   contents: write # commit the rolled-forward data to a branch
@@ -40,8 +36,6 @@ concurrency:
 jobs:
   patch-watch:
     runs-on: ubuntu-latest
-    outputs:
-      behind: ${{ steps.agent.outputs.behind }}
     steps:
       - uses: actions/checkout@v4
 
@@ -70,7 +64,9 @@ jobs:
             record you touch stays schema-valid and uses Wild Rift values only.
 
             GOAL: keep the app's shipped data on the CURRENT Wild Rift patch. This run
-            rolls forward by ONE patch; the workflow re-runs until we're caught up.
+            rolls forward by AT MOST ONE patch (the oldest one we don't yet ship). If
+            we're several patches behind, tomorrow's run takes the next step — keep each
+            PR to a single patch so it stays reviewable.
 
             ── How patch data is wired (read carefully) ────────────────────────────
               - Data lives in data/patches/<major.minor>/ (e.g. `7.1`) with
@@ -92,7 +88,7 @@ jobs:
                  find the OLDEST patch newer than what we ship and target that one (roll
                  forward one step at a time so each PR is reviewable).
               3. If we already ship the newest published patch, make NO changes: print
-                 "Already current on <patch>", set the `behind` output to 0, and stop.
+                 "Already current on <patch>" to the run summary and stop.
 
             ── Don't collide with in-flight work ───────────────────────────────────
               3a. Before doing ANY work on the target patch, run
@@ -100,8 +96,7 @@ jobs:
                  branch named `claude/patch-<target>` or `patch/<target>*`. If an OPEN
                  PR already rolls the data to this target patch, that work is already in
                  flight — do NOT redo it. Print "Patch <target> already has open PR #<n>,
-                 skipping", set `behind` to the number of published patches still newer
-                 than that target (0 if none), and stop. This is what keeps the loop from
+                 skipping" to the run summary and stop. This is what keeps the loop from
                  clashing with a patch update someone opened by hand.
 
             ── Roll the dataset forward ────────────────────────────────────────────
@@ -131,35 +126,13 @@ jobs:
                  open a PR titled "Patch <new patch>: roll data forward". The PR body
                  lists every change as `entity.field: old -> new (source URL)`, plus any
                  additions/removals.
-             10. Report how many published patches we are STILL behind AFTER this run to
-                 the step output `behind` (e.g. `echo "behind=1" >> "$GITHUB_OUTPUT"`);
-                 use 0 when caught up. Append a one-line tally to the run summary.
+             10. Append a one-line tally to the run summary: which patch we rolled to and
+                 how many published patches (if any) are STILL newer than it — those get
+                 picked up on the following days, one per run.
 
             If the official patch notes are unreachable from the runner (network
             policy), do NOT guess: open an issue "Patch watch: notes unreachable"
-            describing what you could not fetch, set `behind` to empty, and stop.
+            describing what you could not fetch, and stop.
             Be conservative — only change a value a verified source clearly states.
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Loop: if we're still behind and continuation is on, queue the next roll.
-      # GITHUB_TOKEN-triggered dispatches do NOT start new workflow runs, so this
-      # uses WORKFLOW_PAT (a repo/Actions-scoped PAT). Without it, the loop stops
-      # after one patch and you re-run manually.
-      - name: Re-dispatch self until caught up
-        if: >-
-          github.event.inputs.continue != 'false' &&
-          steps.agent.outputs.behind != '' &&
-          steps.agent.outputs.behind != '0'
-        env:
-          GH_TOKEN: ${{ secrets.WORKFLOW_PAT }}
-        run: |
-          if [ -z "$GH_TOKEN" ]; then
-            echo "::warning::WORKFLOW_PAT not set — stopping after this patch. Re-run manually to continue."
-            exit 0
-          fi
-          echo "Still ${{ steps.agent.outputs.behind }} patch(es) behind; queuing next roll-forward."
-          gh workflow run patch-watch.yml \
-            --ref "${{ github.ref_name }}" \
-            -f target_patch="" \
-            -f continue=true

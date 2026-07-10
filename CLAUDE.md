@@ -56,10 +56,10 @@ never re-implement formatting in a component. See `DESIGN_WORKFLOW.md` for UI it
 - Roster is already complete (139 champions / 100 items); new work is patch updates and corrections,
   not initial fill. Roster progress tracked in `ROSTER.md`.
 - Three Claude-driven GitHub Actions keep data honest and current: `data-verify.yml` (daily audit →
-  corrections PR), `patch-watch.yml` (daily → rolls the dataset forward to the newest WR patch, one
-  patch per PR, self-dispatching), and `data-backfill.yml` (batched roster fill — roster is now
-  complete, so this idles). `patch-watch` skips any patch that already has an open PR. Keep their
-  behavior in mind before duplicating work.
+  corrections PR), `patch-watch.yml` (daily → rolls the dataset forward one patch per PR toward the
+  newest WR patch), and `data-backfill.yml` (batched roster fill — roster is now complete, so this
+  idles). `patch-watch` skips any patch that already has an open PR. Keep their behavior in mind
+  before duplicating work.
 - Don't commit, push, or open PRs unless asked. Branch off `main` for changes; the data workflows use
   `claude/data-verify-<run_id>`-style branches and list every change as `field: old -> new (source URL)`.
 
