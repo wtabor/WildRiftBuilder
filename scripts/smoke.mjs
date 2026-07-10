@@ -12,7 +12,7 @@
 const BASE = process.env.BASE_URL ?? "http://localhost:3000";
 
 const ROUTES = [
-  { path: "/", marker: "Champion Select" },
+  { path: "/", marker: "Champion select" },
 ];
 
 let failures = 0;

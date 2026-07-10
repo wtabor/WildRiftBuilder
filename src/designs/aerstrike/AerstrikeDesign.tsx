@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import { champions, getBuilds, getChampion, getItem, getItems, items, patchMeta } from "@/lib/data";
 import { computeBuild, goldEfficiency, type BuildTotals } from "@/lib/stats/engine";
 import { autoAttackDps, type AutoAttackDps } from "@/lib/damage/engine";
@@ -10,10 +11,21 @@ import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/stat
 import { formatStat, formatGold } from "@/lib/format";
 import { initials, championIconUrl, itemIconUrl } from "@/lib/visual";
 import { useShare } from "@/lib/useShare";
+import { useAnimatedNumber, useIncreaseFlash, useInView } from "./motion";
 import "./aerstrike.css";
 
 /* AerStrike visual language applied to the Wild Rift Builder. Presentation
    only — every number, gold figure, and DPS still comes from src/lib. */
+
+/* The reactor is code-split and client-only (three.js): keeps it out of the
+   initial bundle and off the SSR path. */
+const ReactorCore = dynamic(() => import("./ReactorCore"), {
+  ssr: false,
+  loading: () => <div className="ae-reactor" aria-hidden="true" />,
+});
+
+const clamp01 = (n: number) => (n < 0 ? 0 : n > 1 ? 1 : n);
+const clampRange = (n: number, a: number, b: number) => (n < a ? a : n > b ? b : n);
 
 const STAT_FILTERS: { key: StatKey; label: string }[] = [
   { key: "attackDamage", label: "AD" },
@@ -78,6 +90,26 @@ export default function AerstrikeDesign() {
         : null,
     [totalsB, build.level, allItemsB, build.target],
   );
+  // Reactor readout mapping — presentation-only params derived from the shared
+  // engine totals/dps (never the reverse). Reflects the primary build (A).
+  const reactor = useMemo(() => {
+    if (!totals) return { power: 0, physicalShare: 1, energy: 0, spin: 0.2, shards: 0 };
+    const st = totals.stats;
+    // Hue reads the build's damage identity (AD vs AP), not the auto-attack
+    // breakdown — autos are physical for almost everyone, so AD/AP is the
+    // signal that actually swings a mage's core teal.
+    const ad = st.attackDamage ?? 0;
+    const ap = st.abilityPower ?? 0;
+    const share = ad + ap > 0 ? ad / (ad + ap) : 1;
+    return {
+      power: clamp01(totals.goldCost / 15000),
+      physicalShare: share,
+      energy: clamp01((dps?.dps ?? 0) / 700),
+      spin: clampRange((totals.attackSpeed - 0.6) / 1.4, 0.05, 1.2),
+      shards: Math.min(allItems.length, 6),
+    };
+  }, [totals, dps, allItems]);
+
   const query = encodeBuild(build);
   const activeList = build.active === "B" ? build.itemIdsB : build.itemIds;
   const activeBoots = build.active === "B" ? build.bootsIdB : build.bootsId;
@@ -123,7 +155,7 @@ export default function AerstrikeDesign() {
 
       <Ticker champion={champion} patch={patch} dps={dps} goldCost={totals?.goldCost ?? 0} />
 
-      <main className="relative z-10 mx-auto max-w-[68rem] px-4 py-10">
+      <main className="relative z-10 mx-auto max-w-[88rem] px-4 py-10">
         {showPicker ? (
           <ChampionGrid
             query={champQuery}
@@ -137,108 +169,125 @@ export default function AerstrikeDesign() {
           champion &&
           totals && (
             <div className="space-y-8">
-              <ChampionHeader champion={champion} level={build.level} onChange={() => setPickerOpen(true)} />
+              <Reveal>
+                <HeroBand
+                  champion={champion}
+                  level={build.level}
+                  totals={totals}
+                  dps={dps}
+                  reactor={reactor}
+                  onChange={() => setPickerOpen(true)}
+                />
+              </Reveal>
 
               {presets.length > 0 && (
-                <section>
-                  <Eyebrow
-                    n="01"
-                    label="Standing builds"
-                    right={build.compare ? <span className="ae-chip ae-chip--teal">→ Build {build.active}</span> : undefined}
-                  />
-                  <StandingBuilds presets={presets} onLoad={loadBuild} targetKey={build.compare ? build.active : undefined} />
-                </section>
-              )}
-
-              <section>
-                <Eyebrow n={sn(1)} label="Level" />
-                <LevelBar level={build.level} onChange={setLevel} />
-              </section>
-
-              <section>
-                <Eyebrow n={sn(2)} label="Stat readout" />
-                <StatStrip totals={totals} dps={dps} />
-              </section>
-
-              <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_22rem]">
-                <div className="min-w-0 space-y-8">
+                <Reveal delay={80}>
                   <section>
                     <Eyebrow
-                      n={sn(3)}
-                      label={build.compare ? "Build A" : "Your build"}
-                      right={
-                        <button
-                          onClick={toggleCompare}
-                          className={`ae-btn ${build.compare ? "ae-btn--primary" : ""}`}
-                          title="Build a second build side-by-side and compare stats + DPS"
-                        >
-                          {build.compare ? "Comparing A/B" : "Compare A/B"}
-                          <span className="ae-arrow">{build.compare ? "✕" : "+"}</span>
-                        </button>
-                      }
-                    />
-                    <BuildPath
-                      items={buildItems}
-                      boots={boots ?? null}
-                      enchant={enchant ?? null}
-                      maxItems={maxItems}
-                      goldCost={totals.goldCost}
-                      onRemove={(i) => removeItemAt("A", i)}
-                      onRemoveBoots={() => removeBoots("A")}
-                      onRemoveEnchant={() => removeEnchant("A")}
-                      onClear={() => clearItems("A")}
-                      active={build.compare && build.active === "A"}
-                      onFocus={build.compare ? () => setActive("A") : undefined}
-                    />
-                    {build.compare && totalsB && (
-                      <div className="mt-4">
-                        <div className="ae-eyebrow mb-2">Build B</div>
-                        <BuildPath
-                          items={buildItemsB}
-                          boots={bootsB ?? null}
-                          enchant={enchantB ?? null}
-                          maxItems={maxItems}
-                          goldCost={totalsB.goldCost}
-                          onRemove={(i) => removeItemAt("B", i)}
-                          onRemoveBoots={() => removeBoots("B")}
-                          onRemoveEnchant={() => removeEnchant("B")}
-                          onClear={() => clearItems("B")}
-                          active={build.active === "B"}
-                          onFocus={() => setActive("B")}
-                        />
-                      </div>
-                    )}
-                  </section>
-
-                  <section>
-                    <Eyebrow
-                      n={sn(4)}
-                      label="Item shop"
+                      n="01"
+                      label="Standing builds"
                       right={build.compare ? <span className="ae-chip ae-chip--teal">→ Build {build.active}</span> : undefined}
                     />
-                    <Shop
-                      onAdd={handleAdd}
-                      full={full}
-                      ownedIds={ownedIds}
-                      hasBoots={Boolean(activeBoots)}
-                    />
+                    <StandingBuilds presets={presets} onLoad={loadBuild} targetKey={build.compare ? build.active : undefined} />
                   </section>
+                </Reveal>
+              )}
+
+              {/* Console work area: inputs · build actions · stat readout */}
+              <div className="grid gap-6 xl:grid-cols-[15rem_minmax(0,1fr)_20rem]">
+                <div className="space-y-8">
+                  <Reveal>
+                    <section>
+                      <Eyebrow n={sn(1)} label="Level" />
+                      <LevelBar level={build.level} onChange={setLevel} />
+                    </section>
+                  </Reveal>
+                  <Reveal delay={60}>
+                    <section>
+                      <Eyebrow n={sn(2)} label="Target dummy" />
+                      <TargetDummy target={build.target} onChange={setTarget} />
+                    </section>
+                  </Reveal>
                 </div>
 
-                <aside className="space-y-8">
+                <div className="min-w-0 space-y-8">
+                  <Reveal delay={40}>
+                    <section>
+                      <Eyebrow
+                        n={sn(3)}
+                        label={build.compare ? "Build A" : "Your build"}
+                        right={
+                          <button
+                            onClick={toggleCompare}
+                            className={`ae-btn ${build.compare ? "ae-btn--primary" : ""}`}
+                            title="Build a second build side-by-side and compare stats + DPS"
+                          >
+                            {build.compare ? "Comparing A/B" : "Compare A/B"}
+                            <span className="ae-arrow">{build.compare ? "✕" : "+"}</span>
+                          </button>
+                        }
+                      />
+                      <BuildPath
+                        items={buildItems}
+                        boots={boots ?? null}
+                        enchant={enchant ?? null}
+                        maxItems={maxItems}
+                        goldCost={totals.goldCost}
+                        onRemove={(i) => removeItemAt("A", i)}
+                        onRemoveBoots={() => removeBoots("A")}
+                        onRemoveEnchant={() => removeEnchant("A")}
+                        onClear={() => clearItems("A")}
+                        active={build.compare && build.active === "A"}
+                        onFocus={build.compare ? () => setActive("A") : undefined}
+                      />
+                      {build.compare && totalsB && (
+                        <div className="mt-4">
+                          <div className="ae-eyebrow mb-2">Build B</div>
+                          <BuildPath
+                            items={buildItemsB}
+                            boots={bootsB ?? null}
+                            enchant={enchantB ?? null}
+                            maxItems={maxItems}
+                            goldCost={totalsB.goldCost}
+                            onRemove={(i) => removeItemAt("B", i)}
+                            onRemoveBoots={() => removeBoots("B")}
+                            onRemoveEnchant={() => removeEnchant("B")}
+                            onClear={() => clearItems("B")}
+                            active={build.active === "B"}
+                            onFocus={() => setActive("B")}
+                          />
+                        </div>
+                      )}
+                    </section>
+                  </Reveal>
+
+                  <Reveal delay={80}>
+                    <section>
+                      <Eyebrow
+                        n={sn(4)}
+                        label="Item shop"
+                        right={build.compare ? <span className="ae-chip ae-chip--teal">→ Build {build.active}</span> : undefined}
+                      />
+                      <Shop
+                        onAdd={handleAdd}
+                        full={full}
+                        ownedIds={ownedIds}
+                        hasBoots={Boolean(activeBoots)}
+                      />
+                    </section>
+                  </Reveal>
+                </div>
+
+                <Reveal delay={120}>
                   <section>
-                    <Eyebrow n={sn(5)} label="Target dummy" />
-                    <TargetDummy target={build.target} onChange={setTarget} />
-                  </section>
-                  <section>
-                    <Eyebrow n={sn(6)} label="Stat sheet" />
+                    <Eyebrow n={sn(5)} label="Stat sheet" />
                     {build.compare && totalsB && dps && dpsB ? (
                       <CompareStatPanel a={totals} b={totalsB} dpsA={dps} dpsB={dpsB} />
                     ) : (
                       dps && <StatPanel stats={totals.stats} attackSpeed={totals.attackSpeed} items={allItems} dps={dps} />
                     )}
                   </section>
-                </aside>
+                </Reveal>
               </div>
             </div>
           )
@@ -374,7 +423,7 @@ function Nav({
   const clock = useUtcClock();
   return (
     <header className="ae-nav">
-      <div className="mx-auto flex h-14 max-w-[68rem] items-center gap-4 px-4">
+      <div className="mx-auto flex h-14 max-w-[88rem] items-center gap-4 px-4">
         <span className="inline-flex items-center gap-2.5">
           <span className="ae-pulse" />
           <span className="text-[13px] font-bold tracking-[0.18em] text-[var(--ae-fg)]">
@@ -457,80 +506,157 @@ function Ticker({
   );
 }
 
-/* ── Champion header ──────────────────────────────────────────────────── */
+/* ── Reveal (scroll-in, once) ─────────────────────────────────────────── */
 
-function ChampionHeader({ champion, level, onChange }: { champion: Champion; level: number; onChange: () => void }) {
-  const abilityBySlot = new Map(champion.abilities.map((a) => [a.slot, a]));
+function Reveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const [ref, shown] = useInView<HTMLDivElement>();
   return (
-    <section className="ae-panel ae-panel--corner ae-panel--accent p-6">
-      <div className="ae-in flex flex-wrap items-start gap-5">
-        <div className="relative">
-          <Portrait
-            name={champion.name}
-            src={champion.icon ? championIconUrl(champion.icon) : undefined}
-            size={84}
-          />
-          <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 border border-[var(--ae-accent)] bg-[var(--ae-bg)] px-2 py-0.5 text-[10px] font-bold tracking-[0.12em] text-[var(--ae-accent)]">
-            LV {level}
+    <div
+      ref={ref}
+      className={`ae-reveal ${shown ? "ae-reveal--in" : ""} ${className}`}
+      style={delay ? ({ "--ae-reveal-delay": `${delay}ms` } as React.CSSProperties) : undefined}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* ── Hero band — identity · reactor core · live HUD readout ────────────── */
+
+function HeroBand({
+  champion,
+  level,
+  totals,
+  dps,
+  reactor,
+  onChange,
+}: {
+  champion: Champion;
+  level: number;
+  totals: BuildTotals;
+  dps: AutoAttackDps | null;
+  reactor: { power: number; physicalShare: number; energy: number; spin: number; shards: number };
+  onChange: () => void;
+}) {
+  const abilityBySlot = new Map(champion.abilities.map((a) => [a.slot, a]));
+  const s = totals.stats;
+  return (
+    <section className="ae-panel ae-panel--corner ae-panel--accent ae-hero">
+      <div className="ae-hero__zone ae-hero__identity">
+        <div className="flex items-start gap-4">
+          <div className="relative shrink-0">
+            <Portrait
+              name={champion.name}
+              src={champion.icon ? championIconUrl(champion.icon) : undefined}
+              size={72}
+            />
+            <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 border border-[var(--ae-accent)] bg-[var(--ae-bg)] px-2 py-0.5 text-[11px] font-bold tracking-[0.12em] text-[var(--ae-accent)]">
+              LV {level}
+            </span>
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="ae-eyebrow mb-1">
+              <span className="ae-eyebrow-accent">00/</span> Champion
+            </div>
+            <h1 className="text-[2rem] font-bold leading-[0.95] tracking-[-0.03em] text-[var(--ae-fg)]">
+              {champion.name}
+              <span className="ae-dot">.</span>
+            </h1>
+            <p className="mt-1 text-sm text-[var(--ae-fg-dim)]">{champion.title}</p>
+          </div>
+          <button onClick={onChange} className="ae-btn shrink-0">
+            Change <span className="ae-arrow">→</span>
+          </button>
+        </div>
+
+        <div className="mt-4 flex flex-wrap items-center gap-1.5">
+          {champion.roles.map((r) => (
+            <span key={r} className="ae-tag">
+              {r}
+            </span>
+          ))}
+          <span className="ae-tag ae-chip--teal border-[var(--ae-border-strong)] text-[var(--ae-accent-secondary)]">
+            {champion.resourceType}
           </span>
         </div>
 
-        <div className="min-w-0 flex-1">
-          <div className="ae-eyebrow mb-1.5">
-            <span className="ae-eyebrow-accent">00/</span> Champion
-          </div>
-          <h1 className="text-[2.25rem] font-bold leading-[0.95] tracking-[-0.03em] text-[var(--ae-fg)]">
-            {champion.name}
-            <span className="ae-dot">.</span>
-          </h1>
-          <p className="mt-1 text-sm text-[var(--ae-fg-dim)]">{champion.title}</p>
-
-          <div className="mt-3 flex flex-wrap items-center gap-1.5">
-            {champion.roles.map((r) => (
-              <span key={r} className="ae-tag">
-                {r}
+        <div className="mt-3 flex items-center gap-1.5">
+          {ABILITY_SLOTS.map((slot) => {
+            const a = abilityBySlot.get(slot);
+            const on = Boolean(a);
+            const ult = slot === "R";
+            return (
+              <span
+                key={slot}
+                title={a ? `${SLOT_LABEL[slot]} · ${a.name}: ${a.description}` : `${SLOT_LABEL[slot]} (no data)`}
+                className="grid h-9 w-9 place-items-center border text-xs font-bold"
+                style={{
+                  borderColor: !on ? "var(--ae-border)" : ult ? "var(--ae-accent)" : "var(--ae-border-strong)",
+                  color: !on ? "var(--ae-fg-subtle)" : ult ? "var(--ae-accent)" : "var(--ae-accent-secondary)",
+                }}
+              >
+                {SLOT_LABEL[slot]}
               </span>
-            ))}
-            <span className="ae-tag ae-chip--teal border-[var(--ae-border-strong)] text-[var(--ae-accent-secondary)]">
-              {champion.resourceType}
-            </span>
-          </div>
-
-          <div className="mt-4 flex items-center gap-1.5">
-            {ABILITY_SLOTS.map((slot) => {
-              const a = abilityBySlot.get(slot);
-              const on = Boolean(a);
-              const ult = slot === "R";
-              return (
-                <span
-                  key={slot}
-                  title={a ? `${SLOT_LABEL[slot]} · ${a.name}: ${a.description}` : `${SLOT_LABEL[slot]} (no data)`}
-                  className="grid h-9 w-9 place-items-center border text-xs font-bold"
-                  style={{
-                    borderColor: !on
-                      ? "var(--ae-border)"
-                      : ult
-                        ? "var(--ae-accent)"
-                        : "var(--ae-border-strong)",
-                    color: !on
-                      ? "var(--ae-fg-subtle)"
-                      : ult
-                        ? "var(--ae-accent)"
-                        : "var(--ae-accent-secondary)",
-                  }}
-                >
-                  {SLOT_LABEL[slot]}
-                </span>
-              );
-            })}
-          </div>
+            );
+          })}
         </div>
+      </div>
 
-        <button onClick={onChange} className="ae-btn self-start">
-          Change <span className="ae-arrow">→</span>
-        </button>
+      <div className="ae-hero__reactor">
+        <ReactorCore
+          power={reactor.power}
+          physicalShare={reactor.physicalShare}
+          energy={reactor.energy}
+          spin={reactor.spin}
+          shards={reactor.shards}
+        />
+      </div>
+
+      <div className="ae-hero__zone">
+        <div className="ae-eyebrow mb-3 flex items-center gap-2">
+          <span className="ae-pulse" />
+          <span><span className="ae-eyebrow-accent">RT/</span> Live readout</span>
+        </div>
+        <div className="ae-hud">
+          <HudStat label="Auto DPS" value={dps?.dps ?? 0} render={(n) => Math.round(n).toLocaleString("en-US")} accent="var(--ae-accent)" />
+          <HudStat label="Build cost" value={totals.goldCost} render={(n) => formatGold(Math.round(n))} accent="var(--ae-accent-tertiary)" />
+          <HudStat label="Attack dmg" value={s.attackDamage ?? 0} render={(n) => formatStat("attackDamage", n)} />
+          <HudStat label="Ability pwr" value={s.abilityPower ?? 0} render={(n) => formatStat("abilityPower", n)} />
+        </div>
       </div>
     </section>
+  );
+}
+
+/* One HUD figure — count-up + a one-shot flash when it rises. */
+function HudStat({
+  label,
+  value,
+  render,
+  accent,
+}: {
+  label: string;
+  value: number;
+  render: (n: number) => string;
+  accent?: string;
+}) {
+  const n = useAnimatedNumber(value);
+  const flash = useIncreaseFlash(value);
+  return (
+    <div className="ae-hud__cell">
+      <div className="ae-hud__k">{label}</div>
+      <div className={`ae-hud__v ae-num ${flash ? "ae-flash" : ""}`} style={accent ? { color: accent } : undefined}>
+        {render(n)}
+      </div>
+    </div>
   );
 }
 
@@ -567,43 +693,6 @@ function LevelBar({ level, onChange }: { level: number; onChange: (n: number) =>
       <span className="ae-meta">
         Lvl <span className="ae-num text-[var(--ae-accent)]">{level}</span> / 15
       </span>
-    </div>
-  );
-}
-
-/* ── Stat strip ───────────────────────────────────────────────────────── */
-
-function StatStrip({ totals, dps }: { totals: BuildTotals; dps: AutoAttackDps | null }) {
-  const s = totals.stats;
-  const cells: { label: string; value: string; accent?: string }[] = [
-    { label: "Gold", value: formatGold(totals.goldCost), accent: "var(--ae-accent-tertiary)" },
-    { label: "Attack Dmg", value: formatStat("attackDamage", s.attackDamage ?? 0) },
-    { label: "Ability Pwr", value: formatStat("abilityPower", s.abilityPower ?? 0) },
-    { label: "Health", value: formatStat("maxHealth", s.maxHealth ?? 0) },
-    { label: "Armor", value: formatStat("armor", s.armor ?? 0) },
-    { label: "Magic Resist", value: formatStat("magicResist", s.magicResist ?? 0) },
-    { label: "Atk Speed", value: totals.attackSpeed.toFixed(2) },
-    { label: "Auto DPS", value: dps ? Math.round(dps.dps).toLocaleString("en-US") : "—", accent: "var(--ae-accent)" },
-  ];
-  return (
-    <div className="ae-panel grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8">
-      {cells.map((c, i) => (
-        <div
-          key={c.label}
-          className="ae-statcell border-[var(--ae-border)]"
-          style={{
-            borderRightWidth: 1,
-            borderBottomWidth: 1,
-            borderRightStyle: "solid",
-            borderBottomStyle: "solid",
-          }}
-        >
-          <div className="ae-statcell__k">{c.label}</div>
-          <div className="ae-statcell__v ae-num" style={c.accent ? { color: c.accent } : undefined}>
-            {c.value}
-          </div>
-        </div>
-      ))}
     </div>
   );
 }
@@ -683,7 +772,7 @@ function BuildPath({
                   </span>
                 )}
               </button>
-              <span className="line-clamp-1 text-center text-[10px] text-[var(--ae-fg-subtle)]">
+              <span className="line-clamp-1 text-center text-[11px] text-[var(--ae-fg-subtle)]">
                 {enchant ? enchant.name : boots.name}
               </span>
             </div>
@@ -692,7 +781,7 @@ function BuildPath({
               <span className="ae-slot h-12 w-12 border-[color-mix(in_srgb,var(--ae-accent)_40%,transparent)] text-[var(--ae-accent)]">
                 ⌂
               </span>
-              <span className="text-[10px] text-[var(--ae-accent)]">boots</span>
+              <span className="text-[11px] text-[var(--ae-accent)]">boots</span>
             </div>
           )}
           <span className="mb-4 h-8 w-px self-center bg-[var(--ae-border)]" />
@@ -715,12 +804,12 @@ function BuildPath({
                     ✕
                   </span>
                 </span>
-                <span className="line-clamp-1 text-center text-[10px] text-[var(--ae-fg-subtle)]">{it.name}</span>
+                <span className="line-clamp-1 text-center text-[11px] text-[var(--ae-fg-subtle)]">{it.name}</span>
               </button>
             ) : (
               <div className="flex w-16 flex-col items-center gap-1">
                 <span className="ae-slot h-12 w-12">+</span>
-                <span className="text-[10px] text-[var(--ae-fg-subtle)]">empty</span>
+                <span className="text-[11px] text-[var(--ae-fg-subtle)]">empty</span>
               </div>
             )}
             {i < maxItems - 1 && <span className="ae-arrow mb-4 text-[var(--ae-fg-subtle)]">→</span>}
@@ -795,7 +884,7 @@ function Shop({
         </p>
       )}
 
-      <div className="mt-4 grid max-h-[42rem] grid-cols-1 gap-2.5 overflow-y-auto pr-1 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-4 grid max-h-[42rem] grid-cols-1 gap-2.5 overflow-y-auto pr-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filtered.map((it) => {
           const isOwned = owned.has(it.id);
           const isBootsLike = it.slot === "boots" || it.slot === "enchant";
@@ -850,19 +939,19 @@ function ItemCard({
           <span className="ae-arrow shrink-0 text-[var(--ae-accent)] transition group-hover:translate-x-0.5">→</span>
         )}
       </div>
-      <ul className="mt-2.5 space-y-0.5">
+      <ul className="mt-2.5 space-y-1">
         {lines.map((l) => (
-          <li key={l.key} className="flex items-center gap-2 text-[11px] text-[var(--ae-fg-dim)]">
-            <span className="ae-num font-medium text-[var(--ae-fg)]">+{l.display}</span>
-            <span className="text-[var(--ae-fg-subtle)]">{l.label}</span>
+          <li key={l.key} className="flex items-center gap-2 text-[11.5px] text-[var(--ae-fg-dim)]">
+            <span className="ae-num font-semibold text-[var(--ae-fg)]">+{l.display}</span>
+            <span className="text-[var(--ae-fg-dim)]">{l.label}</span>
           </li>
         ))}
       </ul>
       {item.effects.length > 0 && (
-        <ul className="mt-2.5 space-y-1 border-t border-[var(--ae-border)] pt-2.5">
+        <ul className="mt-2.5 space-y-1.5 border-t border-[var(--ae-border)] pt-2.5">
           {item.effects.map((e) => (
-            <li key={e.name} className="text-[10px] leading-snug text-[var(--ae-fg-muted)]">
-              <span className="font-bold text-[var(--ae-fg-soft)]">{e.name}</span> {e.description}
+            <li key={e.name} className="text-[11.5px] leading-relaxed text-[var(--ae-fg-dim)]">
+              <span className="font-bold text-[var(--ae-fg)]">{e.name}</span> {e.description}
             </li>
           ))}
         </ul>
@@ -897,7 +986,7 @@ function TargetDummy({ target, onChange }: { target: TargetStats; onChange: (pat
       <div className="grid grid-cols-3 gap-2">
         {fields.map((f) => (
           <label key={f.key} className="flex flex-col gap-1.5">
-            <span className="text-[10px] uppercase tracking-[0.12em] text-[var(--ae-fg-subtle)]">{f.label}</span>
+            <span className="text-[11px] uppercase tracking-[0.12em] text-[var(--ae-fg-subtle)]">{f.label}</span>
             <input
               type="number"
               min={0}
@@ -924,7 +1013,7 @@ function DamageReadout({ dps }: { dps: AutoAttackDps }) {
   return (
     <div className="mt-4 border-t border-[var(--ae-border)] pt-3">
       <h3 className="ae-eyebrow ae-eyebrow-accent">Auto-attack damage</h3>
-      <p className="mb-2 mt-1 text-[10px] text-[var(--ae-fg-subtle)]">
+      <p className="mb-2 mt-1 text-[11px] text-[var(--ae-fg-subtle)]">
         Sustained, incl. crit &amp; on-hit, vs the target dummy.
       </p>
       <div className="flex items-baseline justify-between">
@@ -1027,7 +1116,7 @@ function EffectRow({ e }: { e: BuildEffect }) {
         <span className="font-semibold text-[var(--ae-fg-soft)]">{e.name}</span>
         <span className="text-[9px] text-[var(--ae-fg-subtle)]">· {e.itemName}</span>
       </span>
-      <span className="block text-[10px] text-[var(--ae-fg-muted)]">{e.description}</span>
+      <span className="block text-[11px] text-[var(--ae-fg-muted)]">{e.description}</span>
     </li>
   );
 }
@@ -1038,7 +1127,7 @@ function CombatEffects({ items: list }: { items: Item[] }) {
   return (
     <div className="mt-4 border-t border-[var(--ae-border)] pt-3">
       <h3 className="ae-eyebrow ae-eyebrow-accent">Combat effects</h3>
-      <p className="mb-2 mt-1 text-[10px] text-[var(--ae-fg-subtle)]">Not counted in the stats above.</p>
+      <p className="mb-2 mt-1 text-[11px] text-[var(--ae-fg-subtle)]">Not counted in the stats above.</p>
       <ul className="space-y-1.5">
         {effects.map((e) => (
           <EffectRow key={`${e.itemId}-${e.name}`} e={e} />
@@ -1102,7 +1191,7 @@ function CompareStatPanel({
           <span className="w-14 text-right text-[var(--ae-accent)]">B</span>
         </div>
         <div className="mt-1 flex items-center justify-between gap-2">
-          <span className="flex-1 text-[10px] text-[var(--ae-fg-subtle)]" title={`Δ ${Math.round(goldDelta)} gold`}>
+          <span className="flex-1 text-[11px] text-[var(--ae-fg-subtle)]" title={`Δ ${Math.round(goldDelta)} gold`}>
             vs target dummy
           </span>
           <span className="ae-num w-14 text-right text-lg font-bold text-[var(--ae-fg)]">
@@ -1242,7 +1331,7 @@ function Footer({ patch, query }: { patch: string; query: string }) {
       <div className="grid grid-cols-2 gap-6 border-y border-[var(--ae-border)] py-8 sm:grid-cols-4">
         {stats.map(([k, v]) => (
           <div key={k} className="flex flex-col gap-1.5">
-            <span className="text-[10px] uppercase tracking-[0.22em] text-[var(--ae-fg-subtle)]">{k}</span>
+            <span className="text-[11px] uppercase tracking-[0.22em] text-[var(--ae-fg-subtle)]">{k}</span>
             <span className="text-sm font-bold text-[var(--ae-fg)]">{v}</span>
           </div>
         ))}
@@ -1250,7 +1339,7 @@ function Footer({ patch, query }: { patch: string; query: string }) {
       <div className="mt-8 text-[clamp(3rem,11vw,7rem)] font-bold leading-[0.86] tracking-[-0.045em] text-[var(--ae-fg)]">
         WILD RIFT<span className="ae-dot">.</span>
       </div>
-      <p className="mt-6 text-[10px] uppercase tracking-[0.18em] text-[var(--ae-fg-subtle)]">
+      <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-[var(--ae-fg-subtle)]">
         Wild Rift Builder / Patch {patch} / Raw logic. Refined form.
         {query ? <span className="ml-2 text-[var(--ae-border-strong)]">· ?{query.slice(0, 24)}…</span> : null}
       </p>

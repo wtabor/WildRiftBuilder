@@ -10,8 +10,6 @@
    shipped MetaDesign.
    ================================================================= */
 
-@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap");
-
 .ae-root {
   /* surfaces */
   --ae-bg: #0b0a09;
@@ -20,14 +18,16 @@
   --ae-surface-2: color-mix(in srgb, #fff8f0 9%, transparent);
 
   /* foreground ramp — lifted at the low end so small mono text stays legible
-     on the near-black field while keeping the warm, atmospheric falloff */
+     on the near-black field while keeping the warm, atmospheric falloff. The
+     two dimmest steps (muted/subtle) carry most of the small-label + prose
+     text, so they're kept high-contrast rather than truly faded. */
   --ae-fg: #fff8f0;
   --ae-fg-body: #f1ece5;
   --ae-fg-soft: #e4dfd7;
   --ae-fg-dimmed: #d7d1c8;
   --ae-fg-dim: #cbc5bb;
-  --ae-fg-muted: #bcb5a9;
-  --ae-fg-subtle: #968e81;
+  --ae-fg-muted: #c9c2b6;
+  --ae-fg-subtle: #b3ab9d;
 
   /* borders + scrims */
   --ae-border: color-mix(in srgb, #fff8f0 9%, transparent);
@@ -49,7 +49,7 @@
     transparent 70%
   );
 
-  --ae-font-mono: "Geist Mono", ui-monospace, "SF Mono", "Menlo", monospace;
+  --ae-font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, "SF Mono", "Menlo", monospace;
 
   position: relative;
   isolation: isolate;
@@ -234,7 +234,7 @@
 
 /* ── Chips / tags ──────────────────────────────────────────────── */
 .ae-chip {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 3px 8px;
@@ -329,7 +329,7 @@
 /* ── Stat strip ────────────────────────────────────────────────── */
 .ae-statcell { padding: 14px 16px; }
 .ae-statcell__k {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ae-fg-subtle);
@@ -405,8 +405,80 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Scroll reveal (once, staggered) ───────────────────────────── */
+.ae-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--ae-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.ae-reveal--in { opacity: 1; transform: none; }
+
+/* ── Value flash on increase ───────────────────────────────────── */
+.ae-flash { animation: ae-flash 0.6s ease-out; }
+@keyframes ae-flash {
+  0% { filter: brightness(1.75); }
+  100% { filter: brightness(1); }
+}
+
+/* ── Hero band (console cockpit) ───────────────────────────────── */
+.ae-hero { display: grid; grid-template-columns: 1fr; }
+.ae-hero__zone { padding: 20px 22px; min-width: 0; }
+.ae-hero__identity { border-bottom: 1px solid var(--ae-border); }
+.ae-hero__reactor {
+  order: -1;
+  display: grid;
+  place-items: center;
+  padding: 14px;
+  border-bottom: 1px solid var(--ae-border);
+  background: radial-gradient(
+    ellipse 78% 62% at 50% 42%,
+    color-mix(in srgb, var(--ae-accent-secondary) 8%, transparent),
+    transparent 72%
+  );
+}
+@media (min-width: 900px) {
+  .ae-hero { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: stretch; }
+  .ae-hero__reactor { order: 0; }
+  .ae-hero__identity,
+  .ae-hero__reactor { border-bottom: none; border-right: 1px solid var(--ae-border); }
+}
+
+/* Bounded reactor canvas — never a full-page/fixed layer. */
+.ae-reactor { width: 100%; max-width: 300px; height: 220px; }
+@media (min-width: 900px) { .ae-reactor { width: 248px; height: 248px; } }
+
+/* ── HUD readout (headline numbers) ────────────────────────────── */
+.ae-hud { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.ae-hud__cell { padding: 6px 4px; }
+.ae-hud__k {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ae-fg-subtle);
+}
+.ae-hud__v {
+  font-size: clamp(1.6rem, 4.5vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 5px;
+  color: var(--ae-fg);
+  font-feature-settings: "ss01", "ss02", "cv11";
+}
+
+/* ── Focus visibility (a11y) ───────────────────────────────────── */
+.ae-root :focus-visible {
+  outline: 2px solid var(--ae-accent-secondary);
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ae-in,
   .ae-ticker__track,
   .ae-pulse::before { animation: none; }
+  .ae-reveal { opacity: 1; transform: none; transition: none; }
+  .ae-flash { animation: none; }
 }
