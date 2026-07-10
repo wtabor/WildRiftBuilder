@@ -104,9 +104,11 @@ export default function AerstrikeDesign() {
       physicalShare: share,
       energy: clamp01((dps?.dps ?? 0) / 700),
       spin: clampRange((totals.attackSpeed - 0.6) / 1.4, 0.05, 1.2),
-      shards: Math.min(allItems.length, 6),
+      // Core item slots only (0-6) — boots are a separate slot, matching how
+      // the rest of the UI counts "X/6 items" + boots.
+      shards: Math.min(buildItems.length, 6),
     };
-  }, [totals, dps, allItems]);
+  }, [totals, dps, allItems, buildItems]);
 
   const query = encodeBuild(build);
   const activeList = build.active === "B" ? build.itemIdsB : build.itemIds;
@@ -522,6 +524,21 @@ function Reveal({
 
 /* ── Hero band — identity · reactor core · live HUD readout ────────────── */
 
+/** Turns the reactor's raw visual params into a legend + accessible description. */
+function describeReactor(r: { physicalShare: number; shards: number }) {
+  const pct = Math.round(r.physicalShare * 100);
+  const balanced = pct > 42 && pct < 58;
+  const dmgLabel = balanced ? "Balanced" : pct >= 50 ? `${pct}% Physical` : `${100 - pct}% Magic`;
+  const dmgColor = balanced
+    ? "var(--ae-fg-dim)"
+    : pct >= 50
+      ? "var(--ae-accent)"
+      : "var(--ae-accent-secondary)";
+  const shardsLabel = `${Math.round(r.shards)}/6 items`;
+  const ariaLabel = `Build reactor core: ${dmgLabel.toLowerCase()} damage, ${shardsLabel} equipped. Glow brightness tracks auto DPS; spin speed tracks attack speed.`;
+  return { dmgLabel, dmgColor, shardsLabel, ariaLabel };
+}
+
 function HeroBand({
   champion,
   level,
@@ -539,6 +556,7 @@ function HeroBand({
 }) {
   const abilityBySlot = new Map(champion.abilities.map((a) => [a.slot, a]));
   const s = totals.stats;
+  const reactorInfo = describeReactor(reactor);
   return (
     <section className="ae-panel ae-panel--corner ae-panel--accent ae-hero">
       <div className="ae-hero__zone ae-hero__identity">
@@ -602,13 +620,29 @@ function HeroBand({
       </div>
 
       <div className="ae-hero__reactor">
-        <ReactorCore
-          power={reactor.power}
-          physicalShare={reactor.physicalShare}
-          energy={reactor.energy}
-          spin={reactor.spin}
-          shards={reactor.shards}
-        />
+        <div className="flex flex-col items-center gap-2">
+          <ReactorCore
+            power={reactor.power}
+            physicalShare={reactor.physicalShare}
+            energy={reactor.energy}
+            spin={reactor.spin}
+            shards={reactor.shards}
+            ariaLabel={reactorInfo.ariaLabel}
+          />
+          <div className="flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.08em]">
+            <span className="flex items-center gap-1.5" style={{ color: reactorInfo.dmgColor }}>
+              <span aria-hidden className="inline-block h-2 w-2 rounded-full" style={{ background: "currentColor" }} />
+              {reactorInfo.dmgLabel}
+            </span>
+            <span className="text-[var(--ae-fg-subtle)]" aria-hidden>
+              ·
+            </span>
+            <span className="text-[var(--ae-fg-dim)]">{reactorInfo.shardsLabel}</span>
+          </div>
+          <p className="max-w-[210px] text-center text-[10px] leading-relaxed text-[var(--ae-fg-subtle)]">
+            Glow tracks Auto DPS · spin tracks Attack Speed
+          </p>
+        </div>
       </div>
 
       <div className="ae-hero__zone">

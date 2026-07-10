@@ -25,6 +25,8 @@ export interface ReactorProps {
   spin: number;
   shards: number;
   className?: string;
+  /** Live description of what's currently rendered; falls back to a generic label. */
+  ariaLabel?: string;
 }
 
 const ORANGE = new THREE.Color("#ff8811");
@@ -38,6 +40,7 @@ export default function ReactorCore({
   spin,
   shards,
   className = "",
+  ariaLabel,
 }: ReactorProps) {
   const reduced = usePrefersReducedMotion();
   const mountRef = useRef<HTMLDivElement>(null);
@@ -269,7 +272,7 @@ export default function ReactorCore({
       ref={mountRef}
       className={`ae-reactor ${className}`}
       role="img"
-      aria-label="Build reactor core — a live 3D readout of your build's power and damage type"
+      aria-label={ariaLabel ?? "Build reactor core — a live 3D readout of your build's power and damage type"}
     />
   );
 }
