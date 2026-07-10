@@ -12,6 +12,7 @@ import { formatStat, formatGold } from "@/lib/format";
 import { initials, championIconUrl, itemIconUrl } from "@/lib/visual";
 import { useShare } from "@/lib/useShare";
 import { useAnimatedNumber, useIncreaseFlash, useInView } from "./motion";
+import { CompareItemsModal } from "./CompareItemsModal";
 import "./aerstrike.css";
 
 /* AerStrike visual language applied to the Wild Rift Builder. Presentation
@@ -48,6 +49,7 @@ export default function AerstrikeDesign() {
   } = useBuildState();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [champQuery, setChampQuery] = useState("");
+  const [compareItemsOpen, setCompareItemsOpen] = useState(false);
 
   useEffect(() => {
     document.title = "Wild Rift Builder — stat & build calculator";
@@ -151,6 +153,12 @@ export default function AerstrikeDesign() {
           setPickerOpen(true);
         }}
         onFocusSearch={() => setPickerOpen(true)}
+        onCompareItems={() => setCompareItemsOpen(true)}
+      />
+      <CompareItemsModal
+        open={compareItemsOpen}
+        onClose={() => setCompareItemsOpen(false)}
+        defaultChampionId={build.championId}
       />
 
       <Ticker champion={champion} patch={patch} dps={dps} goldCost={totals?.goldCost ?? 0} />
@@ -413,11 +421,13 @@ function Nav({
   search,
   onSearch,
   onFocusSearch,
+  onCompareItems,
 }: {
   patch: string;
   search: string;
   onSearch: (v: string) => void;
   onFocusSearch: () => void;
+  onCompareItems: () => void;
 }) {
   const { copied, copy } = useShare();
   const clock = useUtcClock();
@@ -449,6 +459,10 @@ function Nav({
           >
             Patch {patch}
           </span>
+          <button onClick={onCompareItems} className="ae-btn hidden sm:inline-flex" title="Ask AI which of two items is better for a champion">
+            Compare items
+            <span className="ae-arrow">✦</span>
+          </button>
           <button onClick={copy} className="ae-btn ae-btn--primary">
             {copied ? "Copied" : "Share"}
             <span className="ae-arrow">↗</span>
