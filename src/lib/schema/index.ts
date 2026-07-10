@@ -203,6 +203,29 @@ export const BuildPresetSchema = z.object({
   source: z.string().url().optional(),
   /** Editorial off-meta "for fun" build — not claimed as competitive. */
   meme: z.boolean().default(false),
+  /**
+   * Live meta stats for this build's champion, from a third-party WR stats
+   * source (e.g. wr-meta.com), refreshed on a cadence. These are CHAMPION-level
+   * (by role) — no public WR source publishes per-loadout win rates, so they
+   * describe the champion the build is for, not the exact item set. All optional
+   * so hand-authored/meme builds can omit them.
+   */
+  stats: z
+    .object({
+      /** Lane/role the stats are measured in, e.g. "Duo", "Mid". */
+      role: z.string().optional(),
+      /** Tier label as published, e.g. "S+", "A". */
+      tier: z.string().optional(),
+      /** Win rate as a percentage, e.g. 50.74. */
+      winRate: z.number().min(0).max(100).optional(),
+      /** Pick rate as a percentage. */
+      pickRate: z.number().min(0).max(100).optional(),
+      /** Ban rate as a percentage. */
+      banRate: z.number().min(0).max(100).optional(),
+      /** ISO date (YYYY-MM-DD) the source last refreshed these numbers. */
+      updatedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+    })
+    .optional(),
 });
 
 export type BuildPreset = z.infer<typeof BuildPresetSchema>;

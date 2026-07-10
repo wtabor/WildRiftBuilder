@@ -12,6 +12,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "validate-data": "tsx scripts/validate.ts",
+    "scrape-builds": "tsx scripts/scrape-builds/index.ts",
     "smoke": "node scripts/smoke.mjs",
     "verify-data": "node scripts/verify-data.mjs"
   },

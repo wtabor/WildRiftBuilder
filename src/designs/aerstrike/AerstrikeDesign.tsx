@@ -347,6 +347,7 @@ function PresetCard({
 }) {
   const boots = preset.boots ? getItem(preset.boots) : undefined;
   const coreItems = getItems(preset.items);
+  const stats = preset.stats;
   return (
     <button onClick={() => onLoad(preset)} className="ae-item group">
       <div className="flex items-center justify-between gap-2">
@@ -355,6 +356,26 @@ function PresetCard({
           {preset.meme ? "for fun" : preset.archetype}
         </span>
       </div>
+      {stats && (stats.tier || stats.winRate != null || stats.pickRate != null) && (
+        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] tracking-[0.04em]">
+          {stats.tier && (
+            <span className="inline-flex items-center gap-1 font-bold text-[var(--ae-accent)]">
+              <span className="opacity-60">TIER</span> {stats.tier}
+            </span>
+          )}
+          {stats.winRate != null && (
+            <span className="text-[var(--ae-fg)]">
+              <span className="text-[var(--ae-fg-subtle)]">WR</span> {stats.winRate.toFixed(2)}%
+            </span>
+          )}
+          {stats.pickRate != null && (
+            <span className="text-[var(--ae-fg-dim)]">
+              <span className="text-[var(--ae-fg-subtle)]">PICK</span> {stats.pickRate.toFixed(2)}%
+            </span>
+          )}
+          {stats.role && <span className="text-[var(--ae-fg-subtle)]">{stats.role}</span>}
+        </div>
+      )}
       <p className="mt-1.5 min-h-[3.6em] text-xs leading-relaxed text-[var(--ae-fg-dim)]">
         {preset.description}
       </p>
@@ -369,8 +390,23 @@ function PresetCard({
       <span className="mt-3 inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-[var(--ae-accent)]">
         {targetKey ? `Load into build ${targetKey}` : "Load build"} <span className="ae-arrow">→</span>
       </span>
+      {stats?.updatedAt && (
+        <span className="mt-2 block text-[10px] tracking-[0.04em] text-[var(--ae-fg-subtle)]">
+          Updated {stats.updatedAt}
+          {preset.source ? ` · ${sourceHost(preset.source)}` : ""}
+        </span>
+      )}
     </button>
   );
+}
+
+/** Bare hostname for a source URL, e.g. "wr-meta.com". */
+function sourceHost(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
 }
 
 /* ── Portrait (square monogram box + optional CDN art) ────────────────── */
