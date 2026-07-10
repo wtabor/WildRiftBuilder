@@ -6,7 +6,7 @@ import type { Provenance } from "@/lib/schema";
 
 /**
  * Wraps a displayed value and, on hover/focus, reveals which patch that value
- * last changed in — e.g. "Patch 7.1g · Jun 1, 2026".
+ * last changed in — e.g. "Patch 7.2 · Jul 9, 2026".
  *
  * Deliberately non-interactive (no <a>): these tooltips render inside the item
  * shop cards, which are themselves <button>s, and nesting a link inside a button

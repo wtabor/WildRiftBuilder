@@ -58,7 +58,7 @@ const SLOT_LABEL: Record<Ability["slot"], string> = {
 export default function MetaDesign() {
   const {
     build, patch, setChampion, setLevel, addItem, removeItemAt, clearItems,
-    setBoots, removeBoots, setEnchant, removeEnchant, setActive, setTarget, toggleCompare, maxItems,
+    setBoots, removeBoots, setActive, setTarget, toggleCompare, maxItems,
   } = useBuildState();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [champQuery, setChampQuery] = useState("");
@@ -72,16 +72,14 @@ export default function MetaDesign() {
   const buildItemsB = useMemo(() => getItems(build.itemIdsB), [build.itemIdsB]);
   const boots = build.bootsId ? getItem(build.bootsId) : undefined;
   const bootsB = build.bootsIdB ? getItem(build.bootsIdB) : undefined;
-  const enchant = build.enchantId ? getItem(build.enchantId) : undefined;
-  const enchantB = build.enchantIdB ? getItem(build.enchantIdB) : undefined;
-  // Boots and their enchant are stat/gold sources — fold them into the totals.
+  // Boots are a stat/gold source — fold them into the totals.
   const allItems = useMemo(
-    () => [...buildItems, boots, enchant].filter((i): i is Item => Boolean(i)),
-    [buildItems, boots, enchant],
+    () => [...buildItems, boots].filter((i): i is Item => Boolean(i)),
+    [buildItems, boots],
   );
   const allItemsB = useMemo(
-    () => [...buildItemsB, bootsB, enchantB].filter((i): i is Item => Boolean(i)),
-    [buildItemsB, bootsB, enchantB],
+    () => [...buildItemsB, bootsB].filter((i): i is Item => Boolean(i)),
+    [buildItemsB, bootsB],
   );
   const totals = useMemo(
     () => (champion ? computeBuild(champion, build.level, allItems) : null),
@@ -108,24 +106,19 @@ export default function MetaDesign() {
   const query = encodeBuild(build);
   const activeList = build.active === "B" ? build.itemIdsB : build.itemIds;
   const activeBoots = build.active === "B" ? build.bootsIdB : build.bootsId;
-  const activeEnchant = build.active === "B" ? build.enchantIdB : build.enchantId;
   const full = activeList.length >= maxItems;
   const showPicker = !champion || pickerOpen;
 
-  /**
-   * Route a shop selection to its slot: boots → boots slot, enchant → the
-   * enchant riding on the boots, everything else → the 6 item slots.
-   */
+  /** Route a shop selection to its slot: boots → boots slot, everything else → the 6 item slots. */
   function handleAdd(id: string) {
     const slot = getItem(id)?.slot;
     if (slot === "boots") setBoots(id);
-    else if (slot === "enchant") setEnchant(id);
     else addItem(id);
   }
-  // Shop "owned" markers + the active build's boots & enchant.
+  // Shop "owned" markers + the active build's boots.
   const ownedIds = useMemo(
-    () => [...activeList, activeBoots, activeEnchant].filter((x): x is string => Boolean(x)),
-    [activeList, activeBoots, activeEnchant],
+    () => [...activeList, activeBoots].filter((x): x is string => Boolean(x)),
+    [activeList, activeBoots],
   );
 
   function pick(id: string) {
@@ -183,12 +176,10 @@ export default function MetaDesign() {
                         label={build.compare ? "Build A" : "Your Build"}
                         items={buildItems}
                         boots={boots ?? null}
-                        enchant={enchant ?? null}
                         maxItems={maxItems}
                         goldCost={totals.goldCost}
                         onRemove={(i) => removeItemAt("A", i)}
                         onRemoveBoots={() => removeBoots("A")}
-                        onRemoveEnchant={() => removeEnchant("A")}
                         onClear={() => clearItems("A")}
                         active={build.compare && build.active === "A"}
                         onFocus={build.compare ? () => setActive("A") : undefined}
@@ -200,12 +191,10 @@ export default function MetaDesign() {
                           label="Build B"
                           items={buildItemsB}
                           boots={bootsB ?? null}
-                          enchant={enchantB ?? null}
                           maxItems={maxItems}
                           goldCost={totalsB.goldCost}
                           onRemove={(i) => removeItemAt("B", i)}
                           onRemoveBoots={() => removeBoots("B")}
-                          onRemoveEnchant={() => removeEnchant("B")}
                           onClear={() => clearItems("B")}
                           active={build.active === "B"}
                           onFocus={() => setActive("B")}
@@ -216,7 +205,6 @@ export default function MetaDesign() {
                         onAdd={handleAdd}
                         full={full}
                         ownedIds={ownedIds}
-                        hasBoots={Boolean(activeBoots)}
                         addingTo={build.compare ? build.active : undefined}
                       />
                     </div>
@@ -628,12 +616,10 @@ function BuildPath({
   label = "Your Build",
   items: buildItems,
   boots = null,
-  enchant = null,
   maxItems,
   goldCost,
   onRemove,
   onRemoveBoots,
-  onRemoveEnchant,
   onClear,
   active = false,
   onFocus,
@@ -643,12 +629,10 @@ function BuildPath({
   label?: string;
   items: Item[];
   boots?: Item | null;
-  enchant?: Item | null;
   maxItems: number;
   goldCost: number;
   onRemove: (i: number) => void;
   onRemoveBoots?: () => void;
-  onRemoveEnchant?: () => void;
   onClear: () => void;
   active?: boolean;
   onFocus?: () => void;
@@ -665,9 +649,7 @@ function BuildPath({
     >
       <SectionTitle
         title={label}
-        sub={`${buildItems.length}/${maxItems} items${boots ? " + boots" : ""}${
-          enchant ? " + enchant" : ""
-        }`}
+        sub={`${buildItems.length}/${maxItems} items${boots ? " + boots" : ""}`}
         right={
           <div className="flex items-center gap-3">
             {active && (
@@ -727,27 +709,9 @@ function BuildPath({
                   <span className="absolute inset-0 grid place-items-center rounded-xl bg-meta-bg2/85 opacity-0 transition group-hover:opacity-100">
                     <XIcon width={16} height={16} className="text-meta-coral" />
                   </span>
-                  {enchant && (
-                    <span
-                      title={`Enchant: ${enchant.name}`}
-                      className="absolute -right-1 -top-1 grid h-4 w-4 place-items-center rounded-full bg-meta-purple text-[9px] font-bold text-white ring-2 ring-meta-panel"
-                    >
-                      ✦
-                    </span>
-                  )}
                 </span>
               </button>
-              {enchant ? (
-                <button
-                  onClick={onRemoveEnchant}
-                  title={`Remove enchant ${enchant.name}`}
-                  className="line-clamp-1 text-center text-[10px] font-medium text-meta-purple hover:text-meta-coral"
-                >
-                  {enchant.name}
-                </button>
-              ) : (
-                <span className="line-clamp-1 text-center text-[10px] text-meta-mute">{boots.name}</span>
-              )}
+              <span className="line-clamp-1 text-center text-[10px] text-meta-mute">{boots.name}</span>
             </div>
           ) : (
             <div className="flex w-16 flex-col items-center gap-1">
@@ -805,13 +769,11 @@ function Shop({
   onAdd,
   full,
   ownedIds,
-  hasBoots,
   addingTo,
 }: {
   onAdd: (id: string) => void;
   full: boolean;
   ownedIds: string[];
-  hasBoots: boolean;
   addingTo?: "A" | "B";
 }) {
   const owned = useMemo(() => new Set(ownedIds), [ownedIds]);
@@ -887,20 +849,10 @@ function Shop({
       <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-3">
         {filtered.map((it) => {
           const isOwned = owned.has(it.id);
-          // Boots and enchants live in their own slot, so a full 6-item build
-          // never blocks them; enchants additionally require equipped boots.
-          const isBootsLike = it.slot === "boots" || it.slot === "enchant";
-          const disabled =
-            isOwned || (full && !isBootsLike) || (it.slot === "enchant" && !hasBoots);
+          // Boots live in their own slot, so a full 6-item build never blocks it.
+          const disabled = isOwned || (full && it.slot !== "boots");
           return (
-            <ItemCard
-              key={it.id}
-              item={it}
-              onAdd={onAdd}
-              disabled={disabled}
-              owned={isOwned}
-              note={it.slot === "enchant" && !hasBoots ? "Needs boots" : undefined}
-            />
+            <ItemCard key={it.id} item={it} onAdd={onAdd} disabled={disabled} owned={isOwned} />
           );
         })}
         {filtered.length === 0 && (
@@ -916,13 +868,11 @@ function ItemCard({
   onAdd,
   disabled,
   owned,
-  note,
 }: {
   item: Item;
   onAdd: (id: string) => void;
   disabled: boolean;
   owned?: boolean;
-  note?: string;
 }) {
   const eff = goldEfficiency(item);
   const lines = itemStatLines(item);
@@ -952,10 +902,6 @@ function ItemCard({
         {owned ? (
           <span className="shrink-0 rounded bg-meta-green/15 px-1.5 py-0.5 text-[10px] font-bold text-meta-green">
             Owned
-          </span>
-        ) : note ? (
-          <span className="shrink-0 rounded bg-meta-raised px-1.5 py-0.5 text-[10px] font-bold text-meta-mute">
-            {note}
           </span>
         ) : (
           <span className="grid h-6 w-6 shrink-0 place-items-center rounded bg-meta-raised text-meta-mute transition group-hover:bg-meta-blue group-hover:text-white">

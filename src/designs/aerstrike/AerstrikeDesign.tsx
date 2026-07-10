@@ -44,7 +44,7 @@ const SLOT_LABEL: Record<Ability["slot"], string> = { passive: "P", Q: "Q", W: "
 export default function AerstrikeDesign() {
   const {
     build, patch, setChampion, setLevel, loadBuild, addItem, removeItemAt, clearItems,
-    setBoots, removeBoots, setEnchant, removeEnchant, setActive, setTarget, toggleCompare, maxItems,
+    setBoots, removeBoots, setActive, setTarget, toggleCompare, maxItems,
   } = useBuildState();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [champQuery, setChampQuery] = useState("");
@@ -58,15 +58,13 @@ export default function AerstrikeDesign() {
   const buildItemsB = useMemo(() => getItems(build.itemIdsB), [build.itemIdsB]);
   const boots = build.bootsId ? getItem(build.bootsId) : undefined;
   const bootsB = build.bootsIdB ? getItem(build.bootsIdB) : undefined;
-  const enchant = build.enchantId ? getItem(build.enchantId) : undefined;
-  const enchantB = build.enchantIdB ? getItem(build.enchantIdB) : undefined;
   const allItems = useMemo(
-    () => [...buildItems, boots, enchant].filter((i): i is Item => Boolean(i)),
-    [buildItems, boots, enchant],
+    () => [...buildItems, boots].filter((i): i is Item => Boolean(i)),
+    [buildItems, boots],
   );
   const allItemsB = useMemo(
-    () => [...buildItemsB, bootsB, enchantB].filter((i): i is Item => Boolean(i)),
-    [buildItemsB, bootsB, enchantB],
+    () => [...buildItemsB, bootsB].filter((i): i is Item => Boolean(i)),
+    [buildItemsB, bootsB],
   );
   const totals = useMemo(
     () => (champion ? computeBuild(champion, build.level, allItems) : null),
@@ -113,7 +111,6 @@ export default function AerstrikeDesign() {
   const query = encodeBuild(build);
   const activeList = build.active === "B" ? build.itemIdsB : build.itemIds;
   const activeBoots = build.active === "B" ? build.bootsIdB : build.bootsId;
-  const activeEnchant = build.active === "B" ? build.enchantIdB : build.enchantId;
   const full = activeList.length >= maxItems;
   const showPicker = !champion || pickerOpen;
 
@@ -126,13 +123,12 @@ export default function AerstrikeDesign() {
   function handleAdd(id: string) {
     const slot = getItem(id)?.slot;
     if (slot === "boots") setBoots(id);
-    else if (slot === "enchant") setEnchant(id);
     else addItem(id);
   }
 
   const ownedIds = useMemo(
-    () => [...activeList, activeBoots, activeEnchant].filter((x): x is string => Boolean(x)),
-    [activeList, activeBoots, activeEnchant],
+    () => [...activeList, activeBoots].filter((x): x is string => Boolean(x)),
+    [activeList, activeBoots],
   );
 
   function pick(id: string) {
@@ -230,12 +226,10 @@ export default function AerstrikeDesign() {
                       <BuildPath
                         items={buildItems}
                         boots={boots ?? null}
-                        enchant={enchant ?? null}
                         maxItems={maxItems}
                         goldCost={totals.goldCost}
                         onRemove={(i) => removeItemAt("A", i)}
                         onRemoveBoots={() => removeBoots("A")}
-                        onRemoveEnchant={() => removeEnchant("A")}
                         onClear={() => clearItems("A")}
                         active={build.compare && build.active === "A"}
                         onFocus={build.compare ? () => setActive("A") : undefined}
@@ -246,12 +240,10 @@ export default function AerstrikeDesign() {
                           <BuildPath
                             items={buildItemsB}
                             boots={bootsB ?? null}
-                            enchant={enchantB ?? null}
                             maxItems={maxItems}
                             goldCost={totalsB.goldCost}
                             onRemove={(i) => removeItemAt("B", i)}
                             onRemoveBoots={() => removeBoots("B")}
-                            onRemoveEnchant={() => removeEnchant("B")}
                             onClear={() => clearItems("B")}
                             active={build.active === "B"}
                             onFocus={() => setActive("B")}
@@ -272,7 +264,6 @@ export default function AerstrikeDesign() {
                         onAdd={handleAdd}
                         full={full}
                         ownedIds={ownedIds}
-                        hasBoots={Boolean(activeBoots)}
                       />
                     </section>
                   </Reveal>
@@ -702,24 +693,20 @@ function LevelBar({ level, onChange }: { level: number; onChange: (n: number) =>
 function BuildPath({
   items: buildItems,
   boots = null,
-  enchant = null,
   maxItems,
   goldCost,
   onRemove,
   onRemoveBoots,
-  onRemoveEnchant,
   onClear,
   active = false,
   onFocus,
 }: {
   items: Item[];
   boots?: Item | null;
-  enchant?: Item | null;
   maxItems: number;
   goldCost: number;
   onRemove: (i: number) => void;
   onRemoveBoots?: () => void;
-  onRemoveEnchant?: () => void;
   onClear: () => void;
   active?: boolean;
   onFocus?: () => void;
@@ -732,7 +719,7 @@ function BuildPath({
     >
       <div className="mb-3 flex items-center justify-between gap-3">
         <span className="ae-meta">
-          {buildItems.length}/{maxItems} items{boots ? " + boots" : ""}{enchant ? " + enchant" : ""}
+          {buildItems.length}/{maxItems} items{boots ? " + boots" : ""}
           {active && <span className="ae-chip ae-chip--accent ml-2">Adding here</span>}
         </span>
         <div className="flex items-center gap-3">
@@ -766,14 +753,9 @@ function BuildPath({
                 <span className="absolute inset-0 grid place-items-center bg-[color-mix(in_srgb,var(--ae-bg)_82%,transparent)] text-[var(--ae-accent)] opacity-0 transition group-hover:opacity-100">
                   ✕
                 </span>
-                {enchant && (
-                  <span className="absolute -right-1 -top-1 grid h-4 w-4 place-items-center border border-[var(--ae-accent)] bg-[var(--ae-bg)] text-[9px] font-bold text-[var(--ae-accent)]">
-                    ✦
-                  </span>
-                )}
               </button>
               <span className="line-clamp-1 text-center text-[11px] text-[var(--ae-fg-subtle)]">
-                {enchant ? enchant.name : boots.name}
+                {boots.name}
               </span>
             </div>
           ) : (
@@ -826,12 +808,10 @@ function Shop({
   onAdd,
   full,
   ownedIds,
-  hasBoots,
 }: {
   onAdd: (id: string) => void;
   full: boolean;
   ownedIds: string[];
-  hasBoots: boolean;
 }) {
   const owned = useMemo(() => new Set(ownedIds), [ownedIds]);
   const [q, setQ] = useState("");
@@ -887,17 +867,10 @@ function Shop({
       <div className="mt-4 grid max-h-[42rem] grid-cols-1 gap-2.5 overflow-y-auto pr-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filtered.map((it) => {
           const isOwned = owned.has(it.id);
-          const isBootsLike = it.slot === "boots" || it.slot === "enchant";
-          const disabled = isOwned || (full && !isBootsLike) || (it.slot === "enchant" && !hasBoots);
+          // Boots live in their own slot, so a full 6-item build never blocks it.
+          const disabled = isOwned || (full && it.slot !== "boots");
           return (
-            <ItemCard
-              key={it.id}
-              item={it}
-              onAdd={onAdd}
-              disabled={disabled}
-              owned={isOwned}
-              note={it.slot === "enchant" && !hasBoots ? "Needs boots" : undefined}
-            />
+            <ItemCard key={it.id} item={it} onAdd={onAdd} disabled={disabled} owned={isOwned} />
           );
         })}
         {filtered.length === 0 && (
@@ -913,13 +886,11 @@ function ItemCard({
   onAdd,
   disabled,
   owned,
-  note,
 }: {
   item: Item;
   onAdd: (id: string) => void;
   disabled: boolean;
   owned?: boolean;
-  note?: string;
 }) {
   const eff = goldEfficiency(item);
   const lines = itemStatLines(item);
@@ -933,8 +904,6 @@ function ItemCard({
         </div>
         {owned ? (
           <span className="ae-chip ae-chip--teal shrink-0">Owned</span>
-        ) : note ? (
-          <span className="ae-chip shrink-0">{note}</span>
         ) : (
           <span className="ae-arrow shrink-0 text-[var(--ae-accent)] transition group-hover:translate-x-0.5">→</span>
         )}

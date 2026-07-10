@@ -76,10 +76,6 @@ for (const dir of patches) {
         if (b.boots && slotById.get(b.boots) !== "boots") {
           errors.push(`${b.id}: "${b.boots}" is not a boots`);
         }
-        if (b.enchant) {
-          if (!b.boots) errors.push(`${b.id}: enchant "${b.enchant}" needs boots`);
-          if (slotById.get(b.enchant) !== "enchant") errors.push(`${b.id}: "${b.enchant}" is not an enchant`);
-        }
       }
       if (errors.length) throw new Error(errors.join("\n    "));
     });
