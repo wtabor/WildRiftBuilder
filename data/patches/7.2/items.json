@@ -109,7 +109,10 @@
         "description": "UNIQUE - OVERKILL: Increases ability power by 30%."
       }
     ],
-    "icon": "3089"
+    "icon": "3089",
+    "provenance": {
+      "abilityPower": "7.2"
+    }
   },
   {
     "id": "ludens-echo",
@@ -134,7 +137,13 @@
         "description": "UNIQUE - DISCORDIC ECHO: Damaging an enemy champion with an ability deals 110 (+10% AP) bonus magic damage to your target and up to 3 nearby enemies (10 second cooldown)."
       }
     ],
-    "icon": "3285"
+    "icon": "3285",
+    "provenance": {
+      "cost": "7.2",
+      "mana": "7.2",
+      "abilityPower": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "warmogs-armor",
@@ -213,7 +222,11 @@
         "description": "Upon taking lethal damage, you enter resurrection for 4 seconds, undergoing stasis. Afterwards, you heal for 50% base health and restore 100% maximum mana. 180 second cooldown."
       }
     ],
-    "icon": "3026"
+    "icon": "3026",
+    "provenance": {
+      "cost": "7.2",
+      "attackDamage": "7.2"
+    }
   },
   {
     "id": "gluttonous-greaves",
@@ -236,7 +249,10 @@
         "kind": "passive",
         "description": "Unique - Conversion: +7% Omnivamp (heals for 7% of all damage dealt). Boots item; you may only equip one pair of boots per champion. Can be upgraded with a boots enchantment."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2"
+    }
   },
   {
     "id": "abyssal-mask",
@@ -312,7 +328,12 @@
         "description": "Generates a charge every 3.3 seconds, up to 3 charges. Each mana expenditure consumes a charge and grants +14 mana, stacking up to 700 mana. Transforms into Seraph's Embrace at +700 mana."
       }
     ],
-    "icon": "3003"
+    "icon": "3003",
+    "provenance": {
+      "cost": "7.2",
+      "abilityPower": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "ardent-censer",
@@ -343,7 +364,11 @@
         "description": "Healing or shielding another allied champion will enhance them for 6 seconds, granting 15% - 34% (based on level) bonus attack speed and 16 - 30 (based on level) bonus magic damage on-hit on basic attacks. The damage is affected by critical strike modifiers."
       }
     ],
-    "icon": "3504"
+    "icon": "3504",
+    "provenance": {
+      "abilityPower": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "berserkers-greaves",
@@ -368,7 +393,10 @@
         "description": "Basic attacks heal for 10 on-hit."
       }
     ],
-    "icon": "3006"
+    "icon": "3006",
+    "provenance": {
+      "cost": "7.2"
+    }
   },
   {
     "id": "black-cleaver",
@@ -440,7 +468,10 @@
         "description": "Hitting a champion with 3 basic attacks or abilities within 2 seconds will deal 30 - 100 (based on level) magic damage on-hit and slow the target by 25% for 2 seconds, while granting you 25% bonus move speed for the same duration (60 second cooldown)."
       }
     ],
-    "icon": "3153"
+    "icon": "3153",
+    "provenance": {
+      "attackDamage": "7.2"
+    }
   },
   {
     "id": "boots-of-dynamism",
@@ -462,7 +493,10 @@
         "kind": "passive",
         "description": "+8 armor penetration."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2"
+    }
   },
   {
     "id": "boots-of-mana",
@@ -495,7 +529,10 @@
         "kind": "passive",
         "description": "Gain +50% base health regeneration if you do not use mana."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2"
+    }
   },
   {
     "id": "chempunk-chainsword",
@@ -550,7 +587,13 @@
         "description": "Damaging an enemy champion with abilities or empowered attacks grants bonus move speed equal to 30 (+ 70% ability haste from items), decaying over 2 seconds (1 second cooldown per source)."
       }
     ],
-    "icon": "4629"
+    "icon": "4629",
+    "provenance": {
+      "cost": "7.2",
+      "abilityPower": "7.2",
+      "maxHealth": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "dawnshroud",
@@ -739,7 +782,10 @@
         "description": "Grants a spell shield that blocks the next enemy ability."
       }
     ],
-    "icon": "3814"
+    "icon": "3814",
+    "provenance": {
+      "cost": "7.2"
+    }
   },
   {
     "id": "essence-reaver",
@@ -768,7 +814,10 @@
         "description": "Basic attacks restore 3% missing mana on-hit."
       }
     ],
-    "icon": "3508"
+    "icon": "3508",
+    "provenance": {
+      "attackDamage": "7.2"
+    }
   },
   {
     "id": "experimental-hexplate",
@@ -848,7 +897,12 @@
         "description": "Against champions, basic attacks and magic damage you deal or take will inflict a stack of Chill lasting 3 seconds, refreshing on subsequent hits and stacking up to 4 times (1 second cooldown per ability per target). Each stack cripples the target's attack speed by 9%, stacking up to 36% reduction."
       }
     ],
-    "icon": "3110"
+    "icon": "3110",
+    "provenance": {
+      "cost": "7.2",
+      "mana": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "guinsoos-rageblade",
@@ -910,7 +964,12 @@
         "kind": "passive",
         "description": "Your movement and ability casts will generate stacks of Harmony, stacking up to 100 times. At maximum stacks, your next heal or shield ability on another allied champion will consume them all to heal them for 120 - 180 (based on level) (+ 15% AP), increased to 150% (225 + 22.5% AP) if they are below 30% health."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "healAndShieldPower": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "heartsteel",
@@ -1072,7 +1131,10 @@
         "description": "Abilities that slow or immobilize enemy champions will deal 47 - 75 (based on level) bonus magic damage and mark them for 4 seconds (6 second cooldown per target). Allied champions that damage marked enemies consume the mark to deal 94 - 150 (based on ally's level) bonus magic damage and grant both of you 20% bonus move speed for 2 seconds."
       }
     ],
-    "icon": "4005"
+    "icon": "4005",
+    "provenance": {
+      "abilityPower": "7.2"
+    }
   },
   {
     "id": "infinity-orb",
@@ -1135,7 +1197,10 @@
         "description": "Reduces spell cooldowns by 15%."
       }
     ],
-    "icon": "3158"
+    "icon": "3158",
+    "provenance": {
+      "cost": "7.2"
+    }
   },
   {
     "id": "kaenic-rookern",
@@ -1246,7 +1311,11 @@
         "description": "Your ability damage and empowered attacks inflict a burn dealing magic damage equal to 2% of the target's maximum health every second over 3 seconds, for a total of 6% of the target's maximum health."
       }
     ],
-    "icon": "6653"
+    "icon": "6653",
+    "provenance": {
+      "abilityPower": "7.2",
+      "maxHealth": "7.2"
+    }
   },
   {
     "id": "lich-bane",
@@ -1335,7 +1404,13 @@
         "description": "Your ultimate ability damage against champions will scorch the ground beneath them for 3 seconds, inflicting a burn to enemies within that deals 15 (+ 1.25% AP) magic damage every 0.25 seconds (180 (+ 15% AP) total magic damage over the duration) and reduces their magic resistance by 10 (3 second cooldown per target, starts on zone creation)."
       }
     ],
-    "icon": "3118"
+    "icon": "3118",
+    "provenance": {
+      "cost": "7.2",
+      "mana": "7.2",
+      "abilityPower": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "manamune",
@@ -1442,7 +1517,10 @@
         "description": "Reduces the duration of stuns, slows, taunts, fears, silences, blinds, and immobilizes by 30%."
       }
     ],
-    "icon": "3111"
+    "icon": "3111",
+    "provenance": {
+      "cost": "7.2"
+    }
   },
   {
     "id": "morellonomicon",
@@ -1623,7 +1701,10 @@
         "description": "Blocks 15% of incoming damage from basic attacks."
       }
     ],
-    "icon": "3047"
+    "icon": "3047",
+    "provenance": {
+      "cost": "7.2"
+    }
   },
   {
     "id": "radiant-virtue",
@@ -1704,7 +1785,14 @@
         "description": "+50% base Mana Regeneration."
       }
     ],
-    "icon": "3107"
+    "icon": "3107",
+    "provenance": {
+      "mana": "7.2",
+      "abilityPower": "7.2",
+      "healAndShieldPower": "7.2",
+      "maxHealth": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "riftmaker",
@@ -1735,7 +1823,12 @@
         "description": "Generates a stack of Corruption every second in champion combat, which expires out of combat and stacks up to 3 times. Each stack increases your magic damage by 2.5%, stacking up to 7.5%, upon which it converts into true damage."
       }
     ],
-    "icon": "4633"
+    "icon": "4633",
+    "provenance": {
+      "cost": "7.2",
+      "abilityPower": "7.2",
+      "maxHealth": "7.2"
+    }
   },
   {
     "id": "rod-of-ages",
@@ -1766,7 +1859,13 @@
         "description": "This item gains 15 bonus health, 30 bonus mana and 4 ability power every 35 seconds, stacking up to 10 times for a maximum of 150 bonus health, 300 bonus mana and 40 ability power."
       }
     ],
-    "icon": "6657"
+    "icon": "6657",
+    "provenance": {
+      "cost": "7.2",
+      "mana": "7.2",
+      "abilityPower": "7.2",
+      "maxHealth": "7.2"
+    }
   },
   {
     "id": "runaans-hurricane",
@@ -2385,7 +2484,12 @@
         "description": "Healing or shielding another allied champion grants both of you 10 ability haste and 20 – 40 (based on target's level) ability power for 6 seconds."
       }
     ],
-    "icon": "6616"
+    "icon": "6616",
+    "provenance": {
+      "cost": "7.2",
+      "abilityPower": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "goredrinker",
@@ -2410,7 +2514,14 @@
         "kind": "active",
         "description": "Deal 175% AD physical damage to nearby enemies, healing for 20% AD (+ 10% missing health) for each champion hit (400-range) (12-second cooldown)."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "attackDamage": "7.2",
+      "maxHealth": "7.2",
+      "abilityHaste": "7.2",
+      "omnivamp": "7.2"
+    }
   },
   {
     "id": "stridebreaker",
@@ -2438,7 +2549,13 @@
         "kind": "passive",
         "description": "Dealing physical damage grants 20 bonus move speed for 2 seconds."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "attackDamage": "7.2",
+      "maxHealth": "7.2",
+      "attackSpeed": "7.2"
+    }
   },
   {
     "id": "galeforce",
@@ -2463,7 +2580,14 @@
         "kind": "active",
         "description": "Dash in the target direction (325-range), firing three missiles at the most wounded enemy, prioritizing champions (600-range) (60-second cooldown). Each missile deals 40 – 125 (based on level) (+ 35% bonus AD) physical damage."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "moveSpeedPercent": "7.2",
+      "attackDamage": "7.2",
+      "critChance": "7.2",
+      "attackSpeed": "7.2"
+    }
   },
   {
     "id": "hextech-rocketbelt",
@@ -2486,7 +2610,13 @@
         "kind": "active",
         "description": "Dash forward and unleash 7 bolts dealing 100 (+ 10% AP) magic damage each; additional bolts beyond the first to hit a target deal only 10% damage (30-second cooldown)."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "abilityPower": "7.2",
+      "maxHealth": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "zhonyas-hourglass",
@@ -2507,7 +2637,12 @@
         "kind": "active",
         "description": "Put yourself in stasis for 2.5 seconds, rendering yourself untargetable and invulnerable but unable to move, attack, cast abilities/item actives, or use summoner spells during this time (120-second cooldown)."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "armor": "7.2",
+      "abilityPower": "7.2"
+    }
   },
   {
     "id": "quicksilver-sash",
@@ -2527,7 +2662,11 @@
         "kind": "active",
         "description": "Remove all crowd control effects currently affecting you and gain 0.25 seconds of crowd-control immunity, then 30% Tenacity and 30% slow resist for 1.5 seconds (60-second cooldown)."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "magicResist": "7.2"
+    }
   },
   {
     "id": "gargoyle-stoneplate",
@@ -2552,7 +2691,14 @@
         "kind": "active",
         "description": "Gain a shield equal to 100 (+ 90% bonus health) that decays over 2.5 seconds (60-second cooldown)."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "magicResist": "7.2",
+      "armor": "7.2",
+      "maxHealth": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "mercurial-scimitar",
@@ -2579,7 +2725,12 @@
         "kind": "passive",
         "description": "+10% Physical Vamp (heal for a portion of all physical damage dealt)."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "magicResist": "7.2",
+      "attackDamage": "7.2"
+    }
   },
   {
     "id": "blackfire-torch",
@@ -2607,7 +2758,13 @@
         "kind": "passive",
         "description": "Each enemy champion, epic monster, and large monster affected by Baleful Blaze grants 4% bonus ability power."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "mana": "7.2",
+      "abilityPower": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "void-amethyst",
@@ -2628,7 +2785,12 @@
         "kind": "passive",
         "description": "+10% Magic Penetration."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "abilityPower": "7.2",
+      "magicPenPercent": "7.2"
+    }
   },
   {
     "id": "verdant-barrier",
@@ -2649,7 +2811,12 @@
         "kind": "active",
         "description": "Grants a spell shield that blocks the next enemy ability (30-second cooldown)."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "magicResist": "7.2",
+      "abilityPower": "7.2"
+    }
   },
   {
     "id": "dusk-and-dawn",
@@ -2674,7 +2841,14 @@
         "kind": "passive",
         "description": "After casting an ability, your next basic attack deals an additional 75% base AD (+ 10% AP) magic damage on-hit."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "abilityPower": "7.2",
+      "maxHealth": "7.2",
+      "abilityHaste": "7.2",
+      "attackSpeed": "7.2"
+    }
   },
   {
     "id": "locket-of-the-iron-solari",
@@ -2700,7 +2874,14 @@
         "kind": "active",
         "description": "Grant nearby allied champions a shield of 250 – 370 (based on level) for 2.5 seconds; half value if applied to a champion recently shielded by Locket (60-second cooldown)."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "magicResist": "7.2",
+      "armor": "7.2",
+      "maxHealth": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "shurelyas-battlesong",
@@ -2729,7 +2910,13 @@
         "kind": "passive",
         "description": "+50% base Mana Regeneration."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "moveSpeedPercent": "7.2",
+      "abilityPower": "7.2",
+      "abilityHaste": "7.2"
+    }
   },
   {
     "id": "banshees-veil",
@@ -2750,7 +2937,12 @@
         "kind": "active",
         "description": "Grants a spell shield that blocks the next enemy ability (30-second cooldown)."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "magicResist": "7.2",
+      "abilityPower": "7.2"
+    }
   },
   {
     "id": "spellslingers-shoes",
@@ -2781,7 +2973,14 @@
         "kind": "passive",
         "description": "+100% base Mana Regeneration."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "abilityPower": "7.2",
+      "magicPenFlat": "7.2",
+      "moveSpeedFlat": "7.2",
+      "magicPenPercent": "7.2"
+    }
   },
   {
     "id": "chainlaced-crushers",
@@ -2807,7 +3006,14 @@
         "kind": "passive",
         "description": "Taking magic damage from an enemy champion grants a magic shield equal to 20 – 140 (based on level) (+ 5% max health) (12-second cooldown)."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "magicResist": "7.2",
+      "tenacity": "7.2",
+      "maxHealth": "7.2",
+      "moveSpeedFlat": "7.2"
+    }
   },
   {
     "id": "gunmetal-greaves",
@@ -2834,7 +3040,12 @@
         "kind": "passive",
         "description": "Basic attacks against champions grant 15% (melee) / 10% (ranged) burst move speed for 2 seconds."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "moveSpeedFlat": "7.2",
+      "attackSpeed": "7.2"
+    }
   },
   {
     "id": "armored-advance",
@@ -2863,7 +3074,13 @@
         "kind": "passive",
         "description": "Taking physical damage from an enemy champion grants a physical shield equal to 20 – 140 (based on level) (+ 5% max health) (12-second cooldown)."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "armor": "7.2",
+      "maxHealth": "7.2",
+      "moveSpeedFlat": "7.2"
+    }
   },
   {
     "id": "immortal-treads",
@@ -2895,7 +3112,12 @@
         "kind": "passive",
         "description": "While above 50% health, deal 50% bonus damage on this item's Omnivamp. While below 50% health, gain 12% increased healing and shielding received."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "moveSpeedFlat": "7.2",
+      "omnivamp": "7.2"
+    }
   },
   {
     "id": "armorcrusher-boots",
@@ -2920,7 +3142,14 @@
         "kind": "passive",
         "description": "+20 out-of-combat move speed."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "attackDamage": "7.2",
+      "armorPenPercent": "7.2",
+      "lethality": "7.2",
+      "moveSpeedFlat": "7.2"
+    }
   },
   {
     "id": "crimson-lucidity",
@@ -2948,6 +3177,11 @@
         "kind": "passive",
         "description": "After damaging an enemy champion with an ability, healing/shielding an ally, or casting a Summoner Spell, gain 10% (melee) / 8% (ranged) move speed for 4 seconds."
       }
-    ]
+    ],
+    "provenance": {
+      "cost": "7.2",
+      "moveSpeedFlat": "7.2",
+      "abilityHaste": "7.2"
+    }
   }
 ]

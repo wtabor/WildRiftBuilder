@@ -47,14 +47,14 @@ export function ProvenanceTooltip({
       className="group/prov relative inline-flex items-center"
       title={info?.url ? `${headline}: ${patchLabel} — ${info.url}` : `${headline}: ${patchLabel}`}
     >
-      <span className="cursor-help underline decoration-dotted decoration-meta-dim/60 underline-offset-2">
+      <span className="cursor-help underline decoration-dotted decoration-[var(--ae-fg-subtle)]/60 underline-offset-2">
         {children}
       </span>
       <span
         role="tooltip"
-        className="pointer-events-none invisible absolute bottom-full left-1/2 z-30 mb-1 -translate-x-1/2 whitespace-nowrap rounded border border-meta-border bg-meta-bg2 px-2 py-1 text-[10px] font-medium text-meta-text opacity-0 shadow-lg transition group-hover/prov:visible group-hover/prov:opacity-100"
+        className="pointer-events-none invisible absolute bottom-full left-1/2 z-30 mb-1 -translate-x-1/2 whitespace-nowrap border border-[var(--ae-border-strong)] bg-[var(--ae-bg-elev)] px-2 py-1 text-[10px] font-medium text-[var(--ae-fg)] opacity-0 shadow-lg transition group-hover/prov:visible group-hover/prov:opacity-100"
       >
-        {headline}: <span className="font-semibold text-meta-blue">{patchLabel}</span>
+        {headline}: <span className="font-bold text-[var(--ae-accent-secondary)]">{patchLabel}</span>
       </span>
     </span>
   );

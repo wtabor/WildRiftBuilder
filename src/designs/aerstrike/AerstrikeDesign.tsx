@@ -6,12 +6,13 @@ import { champions, getBuilds, getChampion, getItem, getItems, items, patchMeta 
 import { computeBuild, goldEfficiency, type BuildTotals } from "@/lib/stats/engine";
 import { autoAttackDps, type AutoAttackDps } from "@/lib/damage/engine";
 import { encodeBuild, useBuildState, type BuildKey, type TargetStats } from "@/state/buildState";
-import { type Ability, type BuildPreset, type Champion, type Item, type StatBlock, type StatKey } from "@/lib/schema";
+import { type Ability, type BuildPreset, type Champion, type Item, type Provenance, type StatBlock, type StatKey } from "@/lib/schema";
 import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/statDisplay";
 import { formatStat, formatGold } from "@/lib/format";
 import { initials, championIconUrl, itemIconUrl } from "@/lib/visual";
 import { useShare } from "@/lib/useShare";
 import { useAnimatedNumber, useIncreaseFlash, useInView } from "./motion";
+import { ProvenanceTooltip } from "./ProvenanceTooltip";
 import "./aerstrike.css";
 
 /* AerStrike visual language applied to the Wild Rift Builder. Presentation
@@ -275,9 +276,17 @@ export default function AerstrikeDesign() {
                   <section>
                     <Eyebrow n={sn(5)} label="Stat sheet" />
                     {build.compare && totalsB && dps && dpsB ? (
-                      <CompareStatPanel a={totals} b={totalsB} dpsA={dps} dpsB={dpsB} />
+                      <CompareStatPanel a={totals} b={totalsB} dpsA={dps} dpsB={dpsB} provenance={champion.provenance} />
                     ) : (
-                      dps && <StatPanel stats={totals.stats} attackSpeed={totals.attackSpeed} items={allItems} dps={dps} />
+                      dps && (
+                        <StatPanel
+                          stats={totals.stats}
+                          attackSpeed={totals.attackSpeed}
+                          items={allItems}
+                          dps={dps}
+                          provenance={champion.provenance}
+                        />
+                      )
                     )}
                   </section>
                 </Reveal>
@@ -934,7 +943,11 @@ function ItemCard({
         <Portrait name={item.name} src={item.icon ? itemIconUrl(item.icon) : undefined} size={40} />
         <div className="min-w-0 flex-1">
           <div className="truncate text-sm font-bold text-[var(--ae-fg)]">{item.name}</div>
-          <div className="ae-num text-xs font-medium text-[var(--ae-accent-tertiary)]">{formatGold(item.cost)} G</div>
+          <div className="ae-num text-xs font-medium text-[var(--ae-accent-tertiary)]">
+            <ProvenanceTooltip provenance={item.provenance} valueKey="cost">
+              {formatGold(item.cost)} G
+            </ProvenanceTooltip>
+          </div>
         </div>
         {owned ? (
           <span className="ae-chip ae-chip--teal shrink-0">Owned</span>
@@ -945,7 +958,9 @@ function ItemCard({
       <ul className="mt-2.5 space-y-1">
         {lines.map((l) => (
           <li key={l.key} className="flex items-center gap-2 text-[11.5px] text-[var(--ae-fg-dim)]">
-            <span className="ae-num font-semibold text-[var(--ae-fg)]">+{l.display}</span>
+            <ProvenanceTooltip provenance={item.provenance} valueKey={l.key}>
+              <span className="ae-num font-semibold text-[var(--ae-fg)]">+{l.display}</span>
+            </ProvenanceTooltip>
             <span className="text-[var(--ae-fg-dim)]">{l.label}</span>
           </li>
         ))}
@@ -1050,11 +1065,13 @@ function StatPanel({
   attackSpeed,
   items: buildItems,
   dps,
+  provenance,
 }: {
   stats: StatBlock;
   attackSpeed: number;
   items: Item[];
   dps: AutoAttackDps;
+  provenance?: Provenance;
 }) {
   const rows = statRows(stats, attackSpeed);
   const groups: StatGroup[] = ["offense", "defense", "utility"];
@@ -1074,7 +1091,9 @@ function StatPanel({
                     className="flex items-center justify-between border-b border-[var(--ae-border)] py-1.5 text-sm last:border-0"
                   >
                     <span className="text-[var(--ae-fg-dim)]">{r.label}</span>
-                    <span className="ae-num font-bold text-[var(--ae-fg)]">{r.display}</span>
+                    <ProvenanceTooltip provenance={provenance} valueKey={r.key}>
+                      <span className="ae-num font-bold text-[var(--ae-fg)]">{r.display}</span>
+                    </ProvenanceTooltip>
                   </div>
                 ))}
               </div>
@@ -1147,11 +1166,13 @@ function CompareStatPanel({
   b,
   dpsA,
   dpsB,
+  provenance,
 }: {
   a: BuildTotals;
   b: BuildTotals;
   dpsA: AutoAttackDps;
   dpsB: AutoAttackDps;
+  provenance?: Provenance;
 }) {
   const rowsA = statRows(a.stats, a.attackSpeed);
   const rowsB = statRows(b.stats, b.attackSpeed);
@@ -1220,10 +1241,14 @@ function CompareStatPanel({
                     className="flex items-center justify-between gap-2 border-b border-[var(--ae-border)] py-1.5 text-sm last:border-0"
                   >
                     <span className="flex-1 text-[var(--ae-fg-dim)]">{c.label}</span>
-                    <span className="ae-num w-14 text-right font-bold text-[var(--ae-fg)]">{c.aDisp ?? "—"}</span>
-                    <span className="ae-num w-14 text-right font-bold" style={{ color: better(c.bVal, c.aVal) }}>
-                      {c.bDisp ?? "—"}
-                    </span>
+                    <ProvenanceTooltip provenance={provenance} valueKey={key}>
+                      <span className="ae-num w-14 text-right font-bold text-[var(--ae-fg)]">{c.aDisp ?? "—"}</span>
+                    </ProvenanceTooltip>
+                    <ProvenanceTooltip provenance={provenance} valueKey={key}>
+                      <span className="ae-num w-14 text-right font-bold" style={{ color: better(c.bVal, c.aVal) }}>
+                        {c.bDisp ?? "—"}
+                      </span>
+                    </ProvenanceTooltip>
                   </div>
                 ))}
               </div>

@@ -106,6 +106,32 @@ patch notes + community cross-checks — re-verify once the wiki catches up).
   Luden's Echo, Malignance, and the five Tier-2 boots priced up to 1200g
   (Gluttonous Greaves / Ionian Boots of Lucidity to 1000g).
 
+### Follow-up: provenance tooltips ported to AerStrike + backfilled for 7.2
+
+The provenance-tooltip feature (hover a stat/cost to see which patch it last
+changed in, linking the patch notes) existed only in the deprecated Meta
+design — it was never ported to AerStrike, the shipped default, so the app's
+core differentiator (traceable, sourced data) was invisible in production.
+Fixed:
+
+- Ported `ProvenanceTooltip` to `src/designs/aerstrike/` and wired it into
+  the item shop (cost + stat lines) and both stat panels (single + A/B
+  compare).
+- **Backfilled provenance stamps for every item touched in the 7.2 sweep
+  above**, by diffing `data/patches/7.1/items.json` against `7.2` field-by-
+  field rather than relying on memory of what changed — e.g. Blade of the
+  Ruined King's Attack Damage (25→40) is now stamped `"7.2"` and its tooltip
+  links straight to the official patch notes. None of this had been stamped
+  when the sweep originally landed.
+- Fixed a real accuracy bug this surfaced: `provenanceFor()` falls back to
+  `CURRENT_PATCH` for any value with no explicit stamp (by design — a "still
+  accurate as of this patch" default, not a change record). The tooltip
+  wording didn't distinguish the two cases, so **every unstamped value**
+  (e.g. Infinity Edge's cost, never touched this patch) was claiming "Last
+  changed: Patch 7.2" — false. Tooltip now checks for an explicit stamp and
+  says "No change on record — accurate as of Patch 7.2" for the fallback
+  case instead of overclaiming a specific patch. Applies to both designs.
+
 ### Follow-up: the "missing items" from the initial 7.2 pass weren't gaps
 
 An initial pass flagged Lost Chapter, Haunting Guise, Stormsurge, Void Staff,
