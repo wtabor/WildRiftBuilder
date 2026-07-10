@@ -175,6 +175,25 @@
   border-bottom: 1px solid var(--ae-border);
 }
 
+/* ── Item hover card (WildRiftFire-style tooltip) ─────────────────
+   Rendered through a portal into <body> (see ItemHoverCard.tsx) so it can
+   escape `overflow-y-auto` ancestors like the item shop's scroll list —
+   position is `fixed` with `top`/`left` set inline per-instance in JS;
+   this stylesheet only owns the fixed visual chrome + anchor origin. */
+.ae-tip-panel {
+  position: fixed;
+  z-index: 200;
+  width: 16.5rem;
+  padding: 12px 14px;
+  background: var(--ae-bg-elev);
+  border: 1px solid var(--ae-border-strong);
+  box-shadow: 0 16px 32px color-mix(in srgb, black 55%, transparent);
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+}
+.ae-tip-panel--left { transform: translate(0, -100%); }
+.ae-tip-panel--right { transform: translate(-100%, -100%); }
+
 /* ── Panels ────────────────────────────────────────────────────── */
 .ae-panel {
   position: relative;

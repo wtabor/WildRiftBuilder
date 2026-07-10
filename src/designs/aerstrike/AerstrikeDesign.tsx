@@ -7,12 +7,13 @@ import { computeBuild, goldEfficiency, type BuildTotals } from "@/lib/stats/engi
 import { autoAttackDps, type AutoAttackDps } from "@/lib/damage/engine";
 import { encodeBuild, useBuildState, type BuildKey, type TargetStats } from "@/state/buildState";
 import { type Ability, type BuildPreset, type Champion, type Item, type StatBlock, type StatKey } from "@/lib/schema";
-import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/statDisplay";
+import { statRows, GROUP_LABEL, type StatGroup } from "@/lib/statDisplay";
 import { formatStat, formatGold } from "@/lib/format";
 import { initials, championIconUrl, itemIconUrl } from "@/lib/visual";
 import { useShare } from "@/lib/useShare";
 import { useAnimatedNumber, useIncreaseFlash, useInView } from "./motion";
 import { CompareItemsModal } from "./CompareItemsModal";
+import { ItemHoverCard } from "./ItemHoverCard";
 import "./aerstrike.css";
 
 /* AerStrike visual language applied to the Wild Rift Builder. Presentation
@@ -768,24 +769,26 @@ function BuildPath({
         <div className="flex items-center gap-2">
           {boots ? (
             <div className="flex w-16 flex-col items-center gap-1">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onRemoveBoots?.();
-                }}
-                title={`Remove ${boots.name}`}
-                className="group relative block"
-              >
-                <Portrait name={boots.name} src={boots.icon ? itemIconUrl(boots.icon) : undefined} size={48} />
-                <span className="absolute inset-0 grid place-items-center bg-[color-mix(in_srgb,var(--ae-bg)_82%,transparent)] text-[var(--ae-accent)] opacity-0 transition group-hover:opacity-100">
-                  ✕
-                </span>
-                {enchant && (
-                  <span className="absolute -right-1 -top-1 grid h-4 w-4 place-items-center border border-[var(--ae-accent)] bg-[var(--ae-bg)] text-[9px] font-bold text-[var(--ae-accent)]">
-                    ✦
+              <ItemHoverCard item={enchant ?? boots} align="left">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onRemoveBoots?.();
+                  }}
+                  aria-label={`Remove ${boots.name}`}
+                  className="group relative block"
+                >
+                  <Portrait name={boots.name} src={boots.icon ? itemIconUrl(boots.icon) : undefined} size={48} />
+                  <span className="absolute inset-0 grid place-items-center bg-[color-mix(in_srgb,var(--ae-bg)_82%,transparent)] text-[var(--ae-accent)] opacity-0 transition group-hover:opacity-100">
+                    ✕
                   </span>
-                )}
-              </button>
+                  {enchant && (
+                    <span className="absolute -right-1 -top-1 grid h-4 w-4 place-items-center border border-[var(--ae-accent)] bg-[var(--ae-bg)] text-[9px] font-bold text-[var(--ae-accent)]">
+                      ✦
+                    </span>
+                  )}
+                </button>
+              </ItemHoverCard>
               <span className="line-clamp-1 text-center text-[11px] text-[var(--ae-fg-subtle)]">
                 {enchant ? enchant.name : boots.name}
               </span>
@@ -804,22 +807,24 @@ function BuildPath({
         {slots.map((it, i) => (
           <div key={i} className="flex items-center gap-2">
             {it ? (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onRemove(i);
-                }}
-                title={`Remove ${it.name}`}
-                className="group flex w-16 flex-col items-center gap-1"
-              >
-                <span className="relative">
-                  <Portrait name={it.name} src={it.icon ? itemIconUrl(it.icon) : undefined} size={48} />
-                  <span className="absolute inset-0 grid place-items-center bg-[color-mix(in_srgb,var(--ae-bg)_82%,transparent)] text-[var(--ae-accent)] opacity-0 transition group-hover:opacity-100">
-                    ✕
+              <ItemHoverCard item={it} align={i === 0 ? "left" : i === maxItems - 1 ? "right" : "center"}>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onRemove(i);
+                  }}
+                  aria-label={`Remove ${it.name}`}
+                  className="group flex w-16 flex-col items-center gap-1"
+                >
+                  <span className="relative">
+                    <Portrait name={it.name} src={it.icon ? itemIconUrl(it.icon) : undefined} size={48} />
+                    <span className="absolute inset-0 grid place-items-center bg-[color-mix(in_srgb,var(--ae-bg)_82%,transparent)] text-[var(--ae-accent)] opacity-0 transition group-hover:opacity-100">
+                      ✕
+                    </span>
                   </span>
-                </span>
-                <span className="line-clamp-1 text-center text-[11px] text-[var(--ae-fg-subtle)]">{it.name}</span>
-              </button>
+                  <span className="line-clamp-1 text-center text-[11px] text-[var(--ae-fg-subtle)]">{it.name}</span>
+                </button>
+              </ItemHoverCard>
             ) : (
               <div className="flex w-16 flex-col items-center gap-1">
                 <span className="ae-slot h-12 w-12">+</span>
@@ -936,53 +941,32 @@ function ItemCard({
   note?: string;
 }) {
   const eff = goldEfficiency(item);
-  const lines = itemStatLines(item);
   return (
-    <button onClick={() => onAdd(item.id)} disabled={disabled} className="ae-item group">
-      <div className="flex items-start gap-2.5">
-        <Portrait name={item.name} src={item.icon ? itemIconUrl(item.icon) : undefined} size={40} />
-        <div className="min-w-0 flex-1">
-          <div className="truncate text-sm font-bold text-[var(--ae-fg)]">{item.name}</div>
-          <div className="ae-num text-xs font-medium text-[var(--ae-accent-tertiary)]">{formatGold(item.cost)} G</div>
+    <ItemHoverCard item={item}>
+      <button onClick={() => onAdd(item.id)} disabled={disabled} className="ae-item group w-full">
+        <div className="flex items-center gap-2.5">
+          <Portrait name={item.name} src={item.icon ? itemIconUrl(item.icon) : undefined} size={40} />
+          <div className="min-w-0 flex-1">
+            <div className="truncate text-sm font-bold text-[var(--ae-fg)]">{item.name}</div>
+            <div className="ae-num text-xs font-medium text-[var(--ae-accent-tertiary)]">{formatGold(item.cost)} G</div>
+          </div>
+          {owned ? (
+            <span className="ae-chip ae-chip--teal shrink-0">Owned</span>
+          ) : note ? (
+            <span className="ae-chip shrink-0">{note}</span>
+          ) : eff !== null && eff >= 1 ? (
+            <span
+              className="ae-chip shrink-0"
+              style={{ color: "var(--ae-accent-secondary)", borderColor: "var(--ae-border-strong)" }}
+            >
+              {Math.round(eff * 100)}%
+            </span>
+          ) : (
+            <span className="ae-arrow shrink-0 text-[var(--ae-accent)] transition group-hover:translate-x-0.5">→</span>
+          )}
         </div>
-        {owned ? (
-          <span className="ae-chip ae-chip--teal shrink-0">Owned</span>
-        ) : note ? (
-          <span className="ae-chip shrink-0">{note}</span>
-        ) : (
-          <span className="ae-arrow shrink-0 text-[var(--ae-accent)] transition group-hover:translate-x-0.5">→</span>
-        )}
-      </div>
-      <ul className="mt-2.5 space-y-1">
-        {lines.map((l) => (
-          <li key={l.key} className="flex items-center gap-2 text-[11.5px] text-[var(--ae-fg-dim)]">
-            <span className="ae-num font-semibold text-[var(--ae-fg)]">+{l.display}</span>
-            <span className="text-[var(--ae-fg-dim)]">{l.label}</span>
-          </li>
-        ))}
-      </ul>
-      {item.effects.length > 0 && (
-        <ul className="mt-2.5 space-y-1.5 border-t border-[var(--ae-border)] pt-2.5">
-          {item.effects.map((e) => (
-            <li key={e.name} className="text-[11.5px] leading-relaxed text-[var(--ae-fg-dim)]">
-              <span className="font-bold text-[var(--ae-fg)]">{e.name}</span> {e.description}
-            </li>
-          ))}
-        </ul>
-      )}
-      {eff !== null && (
-        <span
-          className="ae-chip mt-2.5 w-fit"
-          style={
-            eff >= 1
-              ? { color: "var(--ae-accent-secondary)", borderColor: "var(--ae-border-strong)" }
-              : undefined
-          }
-        >
-          {Math.round(eff * 100)}% gold eff
-        </span>
-      )}
-    </button>
+      </button>
+    </ItemHoverCard>
   );
 }
 
