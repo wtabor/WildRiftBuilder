@@ -222,10 +222,13 @@ and 7.2 snapshots in this repo store `maxHealth.base: 610` — 20 below what
 every available source says it should be. This predates the 7.2 work (it's
 already wrong in 7.1) and isn't a provenance gap; it's an existing data-value
 error that happens to have been surfaced by this spot-check.
-**Not fixed here** — out of scope for a provenance audit, and correcting a
-base stat should go through the normal `/add-entity` correction flow (touches
-both snapshots, needs the full validate/typecheck/test gate). Flagged via
-`spawn_task` for a dedicated follow-up.
+**Fixed as a follow-up**: `maxHealth.base` corrected 610 → 630 in both
+`data/patches/7.1/champions.json` and `data/patches/7.2/champions.json`,
+re-confirmed directly against the official 7.0c patch notes ("Base Health:
+600 → 630") before writing. The existing `"7.0c"` provenance stamp was
+already correct and needed no change — this was a stat-value bug, not a
+provenance-stamp bug. Full gate (validate-data/typecheck/test) green after
+the fix.
 
 One correction to the search process itself: the initial (non-primary-source)
 web search summary for Corki claimed attack-damage *growth* also changed
