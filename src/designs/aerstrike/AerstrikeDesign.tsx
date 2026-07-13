@@ -660,10 +660,25 @@ function HeroBand({
           <span><span className="ae-eyebrow-accent">RT/</span> Live readout</span>
         </div>
         <div className="ae-hud">
+          {/* Auto DPS and Build cost are computed aggregates (the DPS formula;
+              a sum of item costs) — neither is a single StatKey, so there's no
+              clean provenance value to hang a tooltip on. Left untouched. */}
           <HudStat label="Auto DPS" value={dps?.dps ?? 0} render={(n) => Math.round(n).toLocaleString("en-US")} accent="var(--ae-accent)" />
           <HudStat label="Build cost" value={totals.goldCost} render={(n) => formatGold(Math.round(n))} accent="var(--ae-accent-tertiary)" />
-          <HudStat label="Attack dmg" value={s.attackDamage ?? 0} render={(n) => formatStat("attackDamage", n)} />
-          <HudStat label="Ability pwr" value={s.abilityPower ?? 0} render={(n) => formatStat("abilityPower", n)} />
+          <HudStat
+            label="Attack dmg"
+            value={s.attackDamage ?? 0}
+            render={(n) => formatStat("attackDamage", n)}
+            provenance={champion.provenance}
+            valueKey="attackDamage"
+          />
+          <HudStat
+            label="Ability pwr"
+            value={s.abilityPower ?? 0}
+            render={(n) => formatStat("abilityPower", n)}
+            provenance={champion.provenance}
+            valueKey="abilityPower"
+          />
         </div>
       </div>
     </section>
@@ -676,19 +691,31 @@ function HudStat({
   value,
   render,
   accent,
+  provenance,
+  valueKey,
 }: {
   label: string;
   value: number;
   render: (n: number) => string;
   accent?: string;
+  /** Only set for tiles backed by a single champion StatKey (see call sites). */
+  provenance?: Provenance;
+  valueKey?: StatKey;
 }) {
   const n = useAnimatedNumber(value);
   const flash = useIncreaseFlash(value);
+  const display = render(n);
   return (
     <div className="ae-hud__cell">
       <div className="ae-hud__k">{label}</div>
       <div className={`ae-hud__v ae-num ${flash ? "ae-flash" : ""}`} style={accent ? { color: accent } : undefined}>
-        {render(n)}
+        {valueKey ? (
+          <ProvenanceTooltip provenance={provenance} valueKey={valueKey}>
+            <span>{display}</span>
+          </ProvenanceTooltip>
+        ) : (
+          display
+        )}
       </div>
     </div>
   );
