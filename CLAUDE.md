@@ -33,6 +33,9 @@ Before committing, the gate is: `typecheck` + `test` + `validate-data` + `build`
   `validate-data` whenever you edit a `data/patches/**/*.json` file — fix any failure before moving on.
 - When you change data, update `meta.json` `sources` with the URLs you verified against, and set
   `verified: true` **only** if the whole file was verified against a primary source.
+- Whenever you change or add a `stats`/`cost` value on a champion/item that already existed in a
+  prior patch, also stamp `provenance[<key>] = "<patch>"` on that same object in the same edit — see
+  the `/add-entity` skill (step 6) for the exact rule and example.
 
 ## Architecture
 
