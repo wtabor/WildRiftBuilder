@@ -61,6 +61,14 @@ about *how it looks* lives in `src/designs/meta/`. Keep formatting in `statDispl
 > `geist` package (bundled woff2, no build-time network). The automated visual signal is the
 > `smoke` route-render check plus the production build; pixel-level review is the Preview pane's job.
 
+## Troubleshooting
+
+**Silent UI failures after long edit sessions.** If an interactive element (e.g., clicking a champion card)
+silently does nothing — no state update, no URL change, no console errors of any kind — don't assume it's
+a real regression. The dev server's hot-reload state can get corrupted after many rapid edits or multiple
+restarts, causing phantom bugs. Verify against a fresh production build first: `npm run build && npm run start -- -p <spare-port>`.
+If the interaction works there, the issue was dev-server stale state; restart with `Ctrl+C` and `npm run dev`.
+
 ## Polish checklist
 
 - [ ] **Responsive** — usable at ~360px and at ≥1280px; no horizontal overflow.
