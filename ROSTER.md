@@ -163,3 +163,85 @@ per-item wiki lookups reversed that:
   hallucinated or wrong-page fetch. Couldn't get a reliable verified stat
   block; left unadded rather than guessed. Revisit with a cleaner source if
   this item's absence turns out to matter.
+
+### Provenance completeness audit (bounded, patch 7.2 follow-up)
+
+Follow-up to the item-provenance backfill above: same gap (values that changed
+in some patch but were never stamped, so `provenanceFor()` silently falls back
+to "accurate as of current patch") checked for champions, plus a plausibility
+spot-check of stamps already on the books. Scoped as a bounded audit, not a
+full re-verification — see limits at the end.
+
+**1. Registry vs. real snapshots.** `data/patches/registry.json` lists 10
+patches (7.0c, 7.0d, 7.0f, 7.1, 7.1b, 7.1d, 7.1e, 7.1f, 7.1g, 7.2), but only
+`data/patches/7.1/` and `data/patches/7.2/` exist as real data directories —
+confirmed with `ls data/patches/`. The other 8 are registry-only entries (date
++ official patch-notes URL), used solely so `provenanceFor()` can resolve a
+link for values already stamped with those versions. **A full historical diff
+chain (7.0c→7.0d→7.0f→7.1) is not reconstructable from data alone** — there's
+no snapshot for any of those four, so nothing to mechanically diff. This is a
+hard limitation of the two-snapshot setup, not something this audit could
+close.
+
+**2. Champion `stats` diff, 7.1 → 7.2.** Field-by-field diff (Python,
+`json.load` + dict compare) of `stats` (attackDamage, attackSpeed, armor,
+magicResist, maxHealth, healthRegen, mana, manaRegen, moveSpeed,
+critDamageBase — both `base` and `perLevel` where applicable) across all 139
+champions shared between `data/patches/7.1/champions.json` and
+`data/patches/7.2/champions.json` (Yunara is 7.2-only, skipped — no 7.1
+baseline). **Result: zero diffs**, confirmed both key-by-key and via
+whole-object (`champ71['stats'] == champ72['stats']`) comparison. Matches
+expectation — this session's 7.2 work touched abilities/descriptions for 14
+named champions, not raw stat blocks. Nothing to stamp.
+
+**3. Spot-check of 9 pre-existing stamps** (all older than 7.1g), each
+checked against the official patch notes for the claimed patch
+(`wildrift.leagueoflegends.com/.../wild-rift-patch-notes-<version>/`), 1–2
+lookups each, ~16 total web calls:
+
+| Champion | Stat | Stamp | Stored value | Patch notes say | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| corki | attackDamage | 7.1 | base 54 | "Attack Damage: 50 → 54" | matches |
+| jax | armor | 7.1b | perLevel 4.5 | armor growth "3.9 → 4.5" | matches |
+| katarina | armor | 7.0c | base 34 | "base armor... 30 to 34" | matches |
+| kayle | attackDamage, manaRegen | 7.1f | base 54 AD, base 16 MR | AD "50→54", mana regen "12→16" | matches |
+| rell | armor, attackDamage | 7.0d | base 46 armor, base 62 AD | "Base Armor: 40→46", "Base Attack Damage: 58→62" | matches |
+| renekton | attackDamage | 7.1b | base 66 | "Attack Damage: 70 → 66" | matches |
+| ryze | attackDamage | 7.1e | base 54 | "Base Attack Damage: 58 → 54" | matches |
+| shyvana | attackDamage | 7.1e | base 62 | "Base Attack Damage: 58 → 62" | matches |
+| **ashe** | **maxHealth** | **7.0c** | **base 610** | **"Base Health: 600 → 630"** | **mismatch — see below** |
+
+8 of 9 clean. **Ashe is a real find, but it's a stat-value bug, not a
+provenance-stamp bug:** patch 7.0c genuinely did touch Ashe's `maxHealth` (so
+the *stamp* `"7.0c"` is plausible/correct), confirmed against two independent
+sources — the official 7.0c patch notes text ("Base Health: 600 → 630") and
+the current `wildriftfire.com/guide/ashe` stat block ("Level 1 Ashe Stats:
+Health 630"). Neither 7.0d, 7.0f, nor 7.1 patch notes mention Ashe at all, so
+there's no documented patch that reverted her back down. Yet both the 7.1
+and 7.2 snapshots in this repo store `maxHealth.base: 610` — 20 below what
+every available source says it should be. This predates the 7.2 work (it's
+already wrong in 7.1) and isn't a provenance gap; it's an existing data-value
+error that happens to have been surfaced by this spot-check.
+**Not fixed here** — out of scope for a provenance audit, and correcting a
+base stat should go through the normal `/add-entity` correction flow (touches
+both snapshots, needs the full validate/typecheck/test gate). Flagged via
+`spawn_task` for a dedicated follow-up.
+
+One correction to the search process itself: the initial (non-primary-source)
+web search summary for Corki claimed attack-damage *growth* also changed
+("3.6 → 4" in patch 7.1) — re-checking against the actual fetched patch-notes
+page showed **no such change is mentioned**, only the base-AD change already
+stamped. Search-engine summaries synthesized answers that weren't always
+backed by the primary text; every finding above was confirmed against a
+direct fetch of the official patch-notes page (or, for Ashe, two independent
+direct fetches) before being reported as a match or a mismatch.
+
+**What remains genuinely unverifiable given the two-snapshot limit:** any
+stat/cost stamped with 7.0c, 7.0d, 7.0f, 7.1b, 7.1d, 7.1e, or 7.1f that
+*wasn't* in this 9-item sample. Confirming those would require re-deriving
+values from patch-notes prose one-by-one (as done here), not diffing —
+there's no snapshot to diff against for those versions. Recommend treating
+this as done for now (this pass covered the cheap mechanical check in full,
+plus a representative spot-check) and only opening a dedicated full-history
+verification session if a specific older-patch stamp is called into question
+again.
