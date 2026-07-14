@@ -20,10 +20,8 @@ export interface BuildState {
   level: number;
   itemIds: string[]; // build A — the 6 regular item slots
   bootsId: string | null; // build A — the dedicated boots slot (1 of 7 boots)
-  enchantId: string | null; // build A — enchant riding on the boots (needs boots)
   itemIdsB: string[]; // build B — the optional comparison build
   bootsIdB: string | null; // build B — its boots slot
-  enchantIdB: string | null; // build B — its boots enchant
   compare: boolean; // whether the comparison build is shown
   active: BuildKey; // which build the shop adds items to
   target: TargetStats; // the enemy the damage engine computes against
@@ -34,10 +32,8 @@ const DEFAULT: BuildState = {
   level: 1,
   itemIds: [],
   bootsId: null,
-  enchantId: null,
   itemIdsB: [],
   bootsIdB: null,
-  enchantIdB: null,
   compare: false,
   active: "A",
   target: DEFAULT_TARGET,
@@ -51,11 +47,9 @@ export function encodeBuild(b: BuildState): string {
   params.set("lvl", String(b.level));
   if (b.itemIds.length) params.set("i", b.itemIds.join(","));
   if (b.bootsId) params.set("b", b.bootsId);
-  if (b.enchantId) params.set("e", b.enchantId);
   if (b.compare) params.set("cmp", "1");
   if (b.itemIdsB.length) params.set("i2", b.itemIdsB.join(","));
   if (b.bootsIdB) params.set("b2", b.bootsIdB);
-  if (b.enchantIdB) params.set("e2", b.enchantIdB);
   if (b.active === "B") params.set("a", "B");
   const { armor, magicResist, maxHealth } = b.target;
   if (armor !== DEFAULT_TARGET.armor || magicResist !== DEFAULT_TARGET.magicResist || maxHealth !== DEFAULT_TARGET.maxHealth) {
@@ -72,19 +66,14 @@ export function decodeBuild(search: string): BuildState {
   const itemsB = params.get("i2");
   const boots = params.get("b");
   const bootsB = params.get("b2");
-  // An enchant only exists while it has boots to ride on; drop a stray stamp.
-  const enchant = boots ? params.get("e") : null;
-  const enchantB = bootsB ? params.get("e2") : null;
   const target = parseTarget(params.get("t"));
   return {
     championId: champ || null,
     level: Number.isFinite(lvl) && lvl >= 1 ? Math.min(lvl, 15) : 1,
     itemIds: items ? items.split(",").filter(Boolean).slice(0, MAX_ITEMS) : [],
     bootsId: boots || null,
-    enchantId: enchant || null,
     itemIdsB: itemsB ? itemsB.split(",").filter(Boolean).slice(0, MAX_ITEMS) : [],
     bootsIdB: bootsB || null,
-    enchantIdB: enchantB || null,
     compare: params.get("cmp") === "1" || Boolean(itemsB) || Boolean(bootsB),
     active: params.get("a") === "B" ? "B" : "A",
     target,
@@ -142,21 +131,18 @@ export function useBuildState() {
       championId: string;
       items: string[];
       boots?: string;
-      enchant?: string;
       level?: number;
     }) => {
       setBuild((b) => {
         const isB = b.active === "B";
         const itemsField = isB ? "itemIdsB" : "itemIds";
         const bootsField = isB ? "bootsIdB" : "bootsId";
-        const enchantField = isB ? "enchantIdB" : "enchantId";
         return {
           ...b,
           championId: preset.championId,
           level: preset.level ? Math.max(1, Math.min(15, preset.level)) : b.level,
           [itemsField]: preset.items.slice(0, MAX_ITEMS),
           [bootsField]: preset.boots ?? null,
-          [enchantField]: preset.boots ? preset.enchant ?? null : null,
         };
       });
     },
@@ -182,55 +168,24 @@ export function useBuildState() {
 
   /**
    * Set (or, when re-selecting the same boots, clear) the active build's
-   * dedicated boots slot. Boots live outside the 6 item slots. Removing the
-   * boots also drops any enchant riding on them.
+   * dedicated boots slot. Boots live outside the 6 item slots.
    */
   const setBoots = useCallback((bootsId: string) => {
     setBuild((b) => {
       const isB = b.active === "B";
       const bootsField = isB ? "bootsIdB" : "bootsId";
-      const enchantField = isB ? "enchantIdB" : "enchantId";
       const cleared = b[bootsField] === bootsId;
-      return {
-        ...b,
-        [bootsField]: cleared ? null : bootsId,
-        // Re-selecting (clearing) the boots also clears its enchant.
-        ...(cleared ? { [enchantField]: null } : {}),
-      };
+      return { ...b, [bootsField]: cleared ? null : bootsId };
     });
   }, []);
 
   const removeBoots = useCallback((key: BuildKey) => {
-    setBuild((b) =>
-      key === "B"
-        ? { ...b, bootsIdB: null, enchantIdB: null }
-        : { ...b, bootsId: null, enchantId: null },
-    );
-  }, []);
-
-  /**
-   * Set (or toggle off) the enchant riding on the active build's boots. A
-   * no-op unless boots are equipped — enchants upgrade boots, nothing else.
-   */
-  const setEnchant = useCallback((enchantId: string) => {
-    setBuild((b) => {
-      const isB = b.active === "B";
-      const hasBoots = (isB ? b.bootsIdB : b.bootsId) !== null;
-      if (!hasBoots) return b;
-      const field = isB ? "enchantIdB" : "enchantId";
-      return { ...b, [field]: b[field] === enchantId ? null : enchantId };
-    });
-  }, []);
-
-  const removeEnchant = useCallback((key: BuildKey) => {
-    setBuild((b) => ({ ...b, [key === "B" ? "enchantIdB" : "enchantId"]: null }));
+    setBuild((b) => (key === "B" ? { ...b, bootsIdB: null } : { ...b, bootsId: null }));
   }, []);
 
   const clearItems = useCallback((key: BuildKey) => {
     setBuild((b) =>
-      key === "B"
-        ? { ...b, itemIdsB: [], bootsIdB: null, enchantIdB: null }
-        : { ...b, itemIds: [], bootsId: null, enchantId: null },
+      key === "B" ? { ...b, itemIdsB: [], bootsIdB: null } : { ...b, itemIds: [], bootsId: null },
     );
   }, []);
 
@@ -268,8 +223,6 @@ export function useBuildState() {
     removeItemAt,
     setBoots,
     removeBoots,
-    setEnchant,
-    removeEnchant,
     clearItems,
     setActive,
     setTarget,

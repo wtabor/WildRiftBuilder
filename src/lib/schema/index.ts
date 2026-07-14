@@ -98,7 +98,10 @@ export const ItemSchema = z.object({
   /** Total gold value if built from components; used for gold efficiency. */
   totalCost: z.number().int().nonnegative().optional(),
   tags: z.array(z.string()).default([]),
-  /** "boots", "enchant", or "item" — drives which build slot it occupies. */
+  /** "boots" or "item" — drives which build slot it occupies. Patch 7.2 removed
+   * the boot-enchantment mechanic; former enchants are now ordinary items.
+   * "enchant" is kept only so the frozen pre-7.2 patch snapshots stay
+   * schema-valid — no patch from 7.2 onward should use it. */
   slot: z.enum(["item", "boots", "enchant"]).default("item"),
   stats: StatBlockSchema.default({}),
   effects: z.array(ItemEffectSchema).default([]),
@@ -182,9 +185,9 @@ export type Champion = z.infer<typeof ChampionSchema>;
 
 /**
  * A curated, one-click-loadable build for a champion (a "standing build").
- * Item/boots/enchant references are patch-local ids; the validator enforces
- * that they exist and sit in the right slot, so a preset can never point at a
- * missing or mis-slotted item.
+ * Item/boots references are patch-local ids; the validator enforces that they
+ * exist and sit in the right slot, so a preset can never point at a missing
+ * or mis-slotted item.
  */
 export const BuildPresetSchema = z.object({
   id: z.string(),
@@ -192,11 +195,9 @@ export const BuildPresetSchema = z.object({
   name: z.string(),
   archetype: z.enum(["crit", "on-hit", "ability", "lethality", "bruiser", "tank", "meme"]),
   description: z.string().default(""),
-  /** Ordered core items for the 6 main slots (excludes boots + enchant). */
+  /** Ordered core items for the 6 main slots (excludes boots). */
   items: z.array(z.string()).max(6).default([]),
   boots: z.string().optional(),
-  /** Enchant riding on the boots; ignored if `boots` is absent. */
-  enchant: z.string().optional(),
   /** Level to preview the build at when it's loaded. */
   level: z.number().int().min(1).max(15).default(15),
   /** Source URL the build was verified against. Omit for editorial/meme builds. */

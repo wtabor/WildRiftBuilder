@@ -6,12 +6,13 @@ import { champions, getBuilds, getChampion, getItem, getItems, items, patchMeta 
 import { computeBuild, goldEfficiency, type BuildTotals } from "@/lib/stats/engine";
 import { autoAttackDps, type AutoAttackDps } from "@/lib/damage/engine";
 import { encodeBuild, useBuildState, type BuildKey, type TargetStats } from "@/state/buildState";
-import { type Ability, type BuildPreset, type Champion, type Item, type StatBlock, type StatKey } from "@/lib/schema";
+import { type Ability, type BuildPreset, type Champion, type Item, type Provenance, type StatBlock, type StatKey } from "@/lib/schema";
 import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/statDisplay";
 import { formatStat, formatGold } from "@/lib/format";
 import { initials, championIconUrl, itemIconUrl } from "@/lib/visual";
 import { useShare } from "@/lib/useShare";
 import { useAnimatedNumber, useIncreaseFlash, useInView } from "./motion";
+import { ProvenanceTooltip } from "./ProvenanceTooltip";
 import "./aerstrike.css";
 
 /* AerStrike visual language applied to the Wild Rift Builder. Presentation
@@ -44,7 +45,7 @@ const SLOT_LABEL: Record<Ability["slot"], string> = { passive: "P", Q: "Q", W: "
 export default function AerstrikeDesign() {
   const {
     build, patch, setChampion, setLevel, loadBuild, addItem, removeItemAt, clearItems,
-    setBoots, removeBoots, setEnchant, removeEnchant, setActive, setTarget, toggleCompare, maxItems,
+    setBoots, removeBoots, setActive, setTarget, toggleCompare, maxItems,
   } = useBuildState();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [champQuery, setChampQuery] = useState("");
@@ -58,15 +59,13 @@ export default function AerstrikeDesign() {
   const buildItemsB = useMemo(() => getItems(build.itemIdsB), [build.itemIdsB]);
   const boots = build.bootsId ? getItem(build.bootsId) : undefined;
   const bootsB = build.bootsIdB ? getItem(build.bootsIdB) : undefined;
-  const enchant = build.enchantId ? getItem(build.enchantId) : undefined;
-  const enchantB = build.enchantIdB ? getItem(build.enchantIdB) : undefined;
   const allItems = useMemo(
-    () => [...buildItems, boots, enchant].filter((i): i is Item => Boolean(i)),
-    [buildItems, boots, enchant],
+    () => [...buildItems, boots].filter((i): i is Item => Boolean(i)),
+    [buildItems, boots],
   );
   const allItemsB = useMemo(
-    () => [...buildItemsB, bootsB, enchantB].filter((i): i is Item => Boolean(i)),
-    [buildItemsB, bootsB, enchantB],
+    () => [...buildItemsB, bootsB].filter((i): i is Item => Boolean(i)),
+    [buildItemsB, bootsB],
   );
   const totals = useMemo(
     () => (champion ? computeBuild(champion, build.level, allItems) : null),
@@ -106,14 +105,15 @@ export default function AerstrikeDesign() {
       physicalShare: share,
       energy: clamp01((dps?.dps ?? 0) / 700),
       spin: clampRange((totals.attackSpeed - 0.6) / 1.4, 0.05, 1.2),
-      shards: Math.min(allItems.length, 6),
+      // Core item slots only (0-6) — boots are a separate slot, matching how
+      // the rest of the UI counts "X/6 items" + boots.
+      shards: Math.min(buildItems.length, 6),
     };
-  }, [totals, dps, allItems]);
+  }, [totals, dps, allItems, buildItems]);
 
   const query = encodeBuild(build);
   const activeList = build.active === "B" ? build.itemIdsB : build.itemIds;
   const activeBoots = build.active === "B" ? build.bootsIdB : build.bootsId;
-  const activeEnchant = build.active === "B" ? build.enchantIdB : build.enchantId;
   const full = activeList.length >= maxItems;
   const showPicker = !champion || pickerOpen;
 
@@ -126,13 +126,12 @@ export default function AerstrikeDesign() {
   function handleAdd(id: string) {
     const slot = getItem(id)?.slot;
     if (slot === "boots") setBoots(id);
-    else if (slot === "enchant") setEnchant(id);
     else addItem(id);
   }
 
   const ownedIds = useMemo(
-    () => [...activeList, activeBoots, activeEnchant].filter((x): x is string => Boolean(x)),
-    [activeList, activeBoots, activeEnchant],
+    () => [...activeList, activeBoots].filter((x): x is string => Boolean(x)),
+    [activeList, activeBoots],
   );
 
   function pick(id: string) {
@@ -230,12 +229,10 @@ export default function AerstrikeDesign() {
                       <BuildPath
                         items={buildItems}
                         boots={boots ?? null}
-                        enchant={enchant ?? null}
                         maxItems={maxItems}
                         goldCost={totals.goldCost}
                         onRemove={(i) => removeItemAt("A", i)}
                         onRemoveBoots={() => removeBoots("A")}
-                        onRemoveEnchant={() => removeEnchant("A")}
                         onClear={() => clearItems("A")}
                         active={build.compare && build.active === "A"}
                         onFocus={build.compare ? () => setActive("A") : undefined}
@@ -246,12 +243,10 @@ export default function AerstrikeDesign() {
                           <BuildPath
                             items={buildItemsB}
                             boots={bootsB ?? null}
-                            enchant={enchantB ?? null}
                             maxItems={maxItems}
                             goldCost={totalsB.goldCost}
                             onRemove={(i) => removeItemAt("B", i)}
                             onRemoveBoots={() => removeBoots("B")}
-                            onRemoveEnchant={() => removeEnchant("B")}
                             onClear={() => clearItems("B")}
                             active={build.active === "B"}
                             onFocus={() => setActive("B")}
@@ -272,7 +267,6 @@ export default function AerstrikeDesign() {
                         onAdd={handleAdd}
                         full={full}
                         ownedIds={ownedIds}
-                        hasBoots={Boolean(activeBoots)}
                       />
                     </section>
                   </Reveal>
@@ -282,9 +276,17 @@ export default function AerstrikeDesign() {
                   <section>
                     <Eyebrow n={sn(5)} label="Stat sheet" />
                     {build.compare && totalsB && dps && dpsB ? (
-                      <CompareStatPanel a={totals} b={totalsB} dpsA={dps} dpsB={dpsB} />
+                      <CompareStatPanel a={totals} b={totalsB} dpsA={dps} dpsB={dpsB} provenance={champion.provenance} />
                     ) : (
-                      dps && <StatPanel stats={totals.stats} attackSpeed={totals.attackSpeed} items={allItems} dps={dps} />
+                      dps && (
+                        <StatPanel
+                          stats={totals.stats}
+                          attackSpeed={totals.attackSpeed}
+                          items={allItems}
+                          dps={dps}
+                          provenance={champion.provenance}
+                        />
+                      )
                     )}
                   </section>
                 </Reveal>
@@ -531,6 +533,21 @@ function Reveal({
 
 /* ── Hero band — identity · reactor core · live HUD readout ────────────── */
 
+/** Turns the reactor's raw visual params into a legend + accessible description. */
+function describeReactor(r: { physicalShare: number; shards: number }) {
+  const pct = Math.round(r.physicalShare * 100);
+  const balanced = pct > 42 && pct < 58;
+  const dmgLabel = balanced ? "Balanced" : pct >= 50 ? `${pct}% Physical` : `${100 - pct}% Magic`;
+  const dmgColor = balanced
+    ? "var(--ae-fg-dim)"
+    : pct >= 50
+      ? "var(--ae-accent)"
+      : "var(--ae-accent-secondary)";
+  const shardsLabel = `${Math.round(r.shards)}/6 items`;
+  const ariaLabel = `Build reactor core: ${dmgLabel.toLowerCase()} damage, ${shardsLabel} equipped. Glow brightness tracks auto DPS; spin speed tracks attack speed.`;
+  return { dmgLabel, dmgColor, shardsLabel, ariaLabel };
+}
+
 function HeroBand({
   champion,
   level,
@@ -548,6 +565,7 @@ function HeroBand({
 }) {
   const abilityBySlot = new Map(champion.abilities.map((a) => [a.slot, a]));
   const s = totals.stats;
+  const reactorInfo = describeReactor(reactor);
   return (
     <section className="ae-panel ae-panel--corner ae-panel--accent ae-hero">
       <div className="ae-hero__zone ae-hero__identity">
@@ -611,13 +629,29 @@ function HeroBand({
       </div>
 
       <div className="ae-hero__reactor">
-        <ReactorCore
-          power={reactor.power}
-          physicalShare={reactor.physicalShare}
-          energy={reactor.energy}
-          spin={reactor.spin}
-          shards={reactor.shards}
-        />
+        <div className="flex flex-col items-center gap-2">
+          <ReactorCore
+            power={reactor.power}
+            physicalShare={reactor.physicalShare}
+            energy={reactor.energy}
+            spin={reactor.spin}
+            shards={reactor.shards}
+            ariaLabel={reactorInfo.ariaLabel}
+          />
+          <div className="flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.08em]">
+            <span className="flex items-center gap-1.5" style={{ color: reactorInfo.dmgColor }}>
+              <span aria-hidden className="inline-block h-2 w-2 rounded-full" style={{ background: "currentColor" }} />
+              {reactorInfo.dmgLabel}
+            </span>
+            <span className="text-[var(--ae-fg-subtle)]" aria-hidden>
+              ·
+            </span>
+            <span className="text-[var(--ae-fg-dim)]">{reactorInfo.shardsLabel}</span>
+          </div>
+          <p className="max-w-[210px] text-center text-[10px] leading-relaxed text-[var(--ae-fg-subtle)]">
+            Glow tracks Auto DPS · spin tracks Attack Speed
+          </p>
+        </div>
       </div>
 
       <div className="ae-hero__zone">
@@ -626,10 +660,25 @@ function HeroBand({
           <span><span className="ae-eyebrow-accent">RT/</span> Live readout</span>
         </div>
         <div className="ae-hud">
+          {/* Auto DPS and Build cost are computed aggregates (the DPS formula;
+              a sum of item costs) — neither is a single StatKey, so there's no
+              clean provenance value to hang a tooltip on. Left untouched. */}
           <HudStat label="Auto DPS" value={dps?.dps ?? 0} render={(n) => Math.round(n).toLocaleString("en-US")} accent="var(--ae-accent)" />
           <HudStat label="Build cost" value={totals.goldCost} render={(n) => formatGold(Math.round(n))} accent="var(--ae-accent-tertiary)" />
-          <HudStat label="Attack dmg" value={s.attackDamage ?? 0} render={(n) => formatStat("attackDamage", n)} />
-          <HudStat label="Ability pwr" value={s.abilityPower ?? 0} render={(n) => formatStat("abilityPower", n)} />
+          <HudStat
+            label="Attack dmg"
+            value={s.attackDamage ?? 0}
+            render={(n) => formatStat("attackDamage", n)}
+            provenance={champion.provenance}
+            valueKey="attackDamage"
+          />
+          <HudStat
+            label="Ability pwr"
+            value={s.abilityPower ?? 0}
+            render={(n) => formatStat("abilityPower", n)}
+            provenance={champion.provenance}
+            valueKey="abilityPower"
+          />
         </div>
       </div>
     </section>
@@ -642,19 +691,31 @@ function HudStat({
   value,
   render,
   accent,
+  provenance,
+  valueKey,
 }: {
   label: string;
   value: number;
   render: (n: number) => string;
   accent?: string;
+  /** Only set for tiles backed by a single champion StatKey (see call sites). */
+  provenance?: Provenance;
+  valueKey?: StatKey;
 }) {
   const n = useAnimatedNumber(value);
   const flash = useIncreaseFlash(value);
+  const display = render(n);
   return (
     <div className="ae-hud__cell">
       <div className="ae-hud__k">{label}</div>
       <div className={`ae-hud__v ae-num ${flash ? "ae-flash" : ""}`} style={accent ? { color: accent } : undefined}>
-        {render(n)}
+        {valueKey ? (
+          <ProvenanceTooltip provenance={provenance} valueKey={valueKey}>
+            <span>{display}</span>
+          </ProvenanceTooltip>
+        ) : (
+          display
+        )}
       </div>
     </div>
   );
@@ -702,24 +763,20 @@ function LevelBar({ level, onChange }: { level: number; onChange: (n: number) =>
 function BuildPath({
   items: buildItems,
   boots = null,
-  enchant = null,
   maxItems,
   goldCost,
   onRemove,
   onRemoveBoots,
-  onRemoveEnchant,
   onClear,
   active = false,
   onFocus,
 }: {
   items: Item[];
   boots?: Item | null;
-  enchant?: Item | null;
   maxItems: number;
   goldCost: number;
   onRemove: (i: number) => void;
   onRemoveBoots?: () => void;
-  onRemoveEnchant?: () => void;
   onClear: () => void;
   active?: boolean;
   onFocus?: () => void;
@@ -732,7 +789,7 @@ function BuildPath({
     >
       <div className="mb-3 flex items-center justify-between gap-3">
         <span className="ae-meta">
-          {buildItems.length}/{maxItems} items{boots ? " + boots" : ""}{enchant ? " + enchant" : ""}
+          {buildItems.length}/{maxItems} items{boots ? " + boots" : ""}
           {active && <span className="ae-chip ae-chip--accent ml-2">Adding here</span>}
         </span>
         <div className="flex items-center gap-3">
@@ -766,14 +823,9 @@ function BuildPath({
                 <span className="absolute inset-0 grid place-items-center bg-[color-mix(in_srgb,var(--ae-bg)_82%,transparent)] text-[var(--ae-accent)] opacity-0 transition group-hover:opacity-100">
                   ✕
                 </span>
-                {enchant && (
-                  <span className="absolute -right-1 -top-1 grid h-4 w-4 place-items-center border border-[var(--ae-accent)] bg-[var(--ae-bg)] text-[9px] font-bold text-[var(--ae-accent)]">
-                    ✦
-                  </span>
-                )}
               </button>
               <span className="line-clamp-1 text-center text-[11px] text-[var(--ae-fg-subtle)]">
-                {enchant ? enchant.name : boots.name}
+                {boots.name}
               </span>
             </div>
           ) : (
@@ -826,12 +878,10 @@ function Shop({
   onAdd,
   full,
   ownedIds,
-  hasBoots,
 }: {
   onAdd: (id: string) => void;
   full: boolean;
   ownedIds: string[];
-  hasBoots: boolean;
 }) {
   const owned = useMemo(() => new Set(ownedIds), [ownedIds]);
   const [q, setQ] = useState("");
@@ -887,17 +937,10 @@ function Shop({
       <div className="mt-4 grid max-h-[42rem] grid-cols-1 gap-2.5 overflow-y-auto pr-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filtered.map((it) => {
           const isOwned = owned.has(it.id);
-          const isBootsLike = it.slot === "boots" || it.slot === "enchant";
-          const disabled = isOwned || (full && !isBootsLike) || (it.slot === "enchant" && !hasBoots);
+          // Boots live in their own slot, so a full 6-item build never blocks it.
+          const disabled = isOwned || (full && it.slot !== "boots");
           return (
-            <ItemCard
-              key={it.id}
-              item={it}
-              onAdd={onAdd}
-              disabled={disabled}
-              owned={isOwned}
-              note={it.slot === "enchant" && !hasBoots ? "Needs boots" : undefined}
-            />
+            <ItemCard key={it.id} item={it} onAdd={onAdd} disabled={disabled} owned={isOwned} />
           );
         })}
         {filtered.length === 0 && (
@@ -913,13 +956,11 @@ function ItemCard({
   onAdd,
   disabled,
   owned,
-  note,
 }: {
   item: Item;
   onAdd: (id: string) => void;
   disabled: boolean;
   owned?: boolean;
-  note?: string;
 }) {
   const eff = goldEfficiency(item);
   const lines = itemStatLines(item);
@@ -929,12 +970,14 @@ function ItemCard({
         <Portrait name={item.name} src={item.icon ? itemIconUrl(item.icon) : undefined} size={40} />
         <div className="min-w-0 flex-1">
           <div className="truncate text-sm font-bold text-[var(--ae-fg)]">{item.name}</div>
-          <div className="ae-num text-xs font-medium text-[var(--ae-accent-tertiary)]">{formatGold(item.cost)} G</div>
+          <div className="ae-num text-xs font-medium text-[var(--ae-accent-tertiary)]">
+            <ProvenanceTooltip provenance={item.provenance} valueKey="cost">
+              {formatGold(item.cost)} G
+            </ProvenanceTooltip>
+          </div>
         </div>
         {owned ? (
           <span className="ae-chip ae-chip--teal shrink-0">Owned</span>
-        ) : note ? (
-          <span className="ae-chip shrink-0">{note}</span>
         ) : (
           <span className="ae-arrow shrink-0 text-[var(--ae-accent)] transition group-hover:translate-x-0.5">→</span>
         )}
@@ -942,7 +985,9 @@ function ItemCard({
       <ul className="mt-2.5 space-y-1">
         {lines.map((l) => (
           <li key={l.key} className="flex items-center gap-2 text-[11.5px] text-[var(--ae-fg-dim)]">
-            <span className="ae-num font-semibold text-[var(--ae-fg)]">+{l.display}</span>
+            <ProvenanceTooltip provenance={item.provenance} valueKey={l.key}>
+              <span className="ae-num font-semibold text-[var(--ae-fg)]">+{l.display}</span>
+            </ProvenanceTooltip>
             <span className="text-[var(--ae-fg-dim)]">{l.label}</span>
           </li>
         ))}
@@ -1047,11 +1092,13 @@ function StatPanel({
   attackSpeed,
   items: buildItems,
   dps,
+  provenance,
 }: {
   stats: StatBlock;
   attackSpeed: number;
   items: Item[];
   dps: AutoAttackDps;
+  provenance?: Provenance;
 }) {
   const rows = statRows(stats, attackSpeed);
   const groups: StatGroup[] = ["offense", "defense", "utility"];
@@ -1071,7 +1118,9 @@ function StatPanel({
                     className="flex items-center justify-between border-b border-[var(--ae-border)] py-1.5 text-sm last:border-0"
                   >
                     <span className="text-[var(--ae-fg-dim)]">{r.label}</span>
-                    <span className="ae-num font-bold text-[var(--ae-fg)]">{r.display}</span>
+                    <ProvenanceTooltip provenance={provenance} valueKey={r.key}>
+                      <span className="ae-num font-bold text-[var(--ae-fg)]">{r.display}</span>
+                    </ProvenanceTooltip>
                   </div>
                 ))}
               </div>
@@ -1144,11 +1193,13 @@ function CompareStatPanel({
   b,
   dpsA,
   dpsB,
+  provenance,
 }: {
   a: BuildTotals;
   b: BuildTotals;
   dpsA: AutoAttackDps;
   dpsB: AutoAttackDps;
+  provenance?: Provenance;
 }) {
   const rowsA = statRows(a.stats, a.attackSpeed);
   const rowsB = statRows(b.stats, b.attackSpeed);
@@ -1217,10 +1268,14 @@ function CompareStatPanel({
                     className="flex items-center justify-between gap-2 border-b border-[var(--ae-border)] py-1.5 text-sm last:border-0"
                   >
                     <span className="flex-1 text-[var(--ae-fg-dim)]">{c.label}</span>
-                    <span className="ae-num w-14 text-right font-bold text-[var(--ae-fg)]">{c.aDisp ?? "—"}</span>
-                    <span className="ae-num w-14 text-right font-bold" style={{ color: better(c.bVal, c.aVal) }}>
-                      {c.bDisp ?? "—"}
-                    </span>
+                    <ProvenanceTooltip provenance={provenance} valueKey={key}>
+                      <span className="ae-num w-14 text-right font-bold text-[var(--ae-fg)]">{c.aDisp ?? "—"}</span>
+                    </ProvenanceTooltip>
+                    <ProvenanceTooltip provenance={provenance} valueKey={key}>
+                      <span className="ae-num w-14 text-right font-bold" style={{ color: better(c.bVal, c.aVal) }}>
+                        {c.bDisp ?? "—"}
+                      </span>
+                    </ProvenanceTooltip>
                   </div>
                 ))}
               </div>

@@ -371,7 +371,7 @@
       {
         "slot": "W",
         "name": "Crippling Strike",
-        "description": "Empowers his next attack for bonus physical damage and a heavy slow.",
+        "description": "Empowers his next attack for bonus physical damage and a heavy slow. On takedown, refunds 50% of the ability's cooldown and 100% of its mana cost (patch 7.2).",
         "baseDamage": [],
         "damageType": "physical",
         "scalings": [],
@@ -3126,7 +3126,7 @@
       {
         "slot": "Q",
         "name": "Terrify",
-        "description": "Fiddlesticks throws a crow to the target enemy that deals magic damage, which has a minimum damage threshold and is capped at 400 against monsters.",
+        "description": "Fiddlesticks throws a crow to the target enemy that deals magic damage, which has a minimum damage threshold and is capped at 400 against monsters. Fear-application timing was tightened and related bugs were fixed in patch 7.2.",
         "baseDamage": [
           4,
           5,
@@ -5710,7 +5710,7 @@
       {
         "slot": "R",
         "name": "Killer Instinct",
-        "description": "Kai'Sa shields herself for 2 seconds and dashes to a target location near a visible enemy champion that was affected by Plasma within the last 4 seconds.",
+        "description": "Kai'Sa shields herself for 2 seconds and dashes (range increased to 5.5, from 4, in patch 7.2) to a target location near a visible enemy champion that was affected by Plasma within the last 4 seconds.",
         "baseDamage": [],
         "damageType": "none",
         "scalings": [],
@@ -6533,7 +6533,7 @@
       {
         "slot": "R",
         "name": "Umbral Trespass",
-        "description": "Kayn vanishes and dashes to a _marked_ enemy champion.",
+        "description": "Kayn vanishes and dashes to a _marked_ enemy champion. Exit dash distance increased and post-exit recovery lockout reduced in patch 7.2.",
         "baseDamage": [
           200,
           300,
@@ -7209,7 +7209,7 @@
       {
         "slot": "R",
         "name": "All Out",
-        "description": "Knocks a champion back and goes All Out, gaining stats and a reformed kit.",
+        "description": "Knocks a champion back and goes All Out, gaining stats and a reformed kit. All Out grants 50% Bonus Armor Penetration (patch 7.2).",
         "baseDamage": [
           80,
           115,
@@ -7286,16 +7286,16 @@
         "name": "Sonic Wave / Resonating Strike",
         "description": "Fires a wave for physical damage, then can dash to the marked target for more.",
         "baseDamage": [
-          55,
-          90,
-          125,
-          160
+          60,
+          100,
+          140,
+          180
         ],
         "damageType": "physical",
         "scalings": [
           {
             "stat": "bonusAttackDamage",
-            "ratio": 1.0
+            "ratio": 0.9
           }
         ],
         "cooldown": [
@@ -7324,16 +7324,16 @@
         "name": "Tempest / Cripple",
         "description": "Smashes the ground for magic damage and reveal; recast slows enemies hit.",
         "baseDamage": [
-          90,
-          140,
-          190,
-          240
+          35,
+          70,
+          105,
+          140
         ],
         "damageType": "magic",
         "scalings": [
           {
             "stat": "attackDamage",
-            "ratio": 1.25
+            "ratio": 0.9
           }
         ],
         "cooldown": [
@@ -10228,7 +10228,7 @@
       {
         "slot": "W",
         "name": "Journey to Nowhere",
-        "description": "Norra tosses a portal to the target location, dealing magic damage to enemies hit and banishing them to the _Spirit Realm_ for 2.25 seconds.",
+        "description": "Norra tosses a portal to the target location, dealing magic damage to enemies hit and banishing them to the _Spirit Realm_ for 1.5 seconds (reduced from 2.25 in patch 7.2), then applying an 80% slow for 0.75 seconds.",
         "baseDamage": [
           65,
           105,
@@ -14276,7 +14276,7 @@
       {
         "slot": "E",
         "name": "Scatter the Weak",
-        "description": "Syndra propels a wave of force in a cone in the target direction that deals magic damage to enemies hit and knocks them back, though not through terrain.",
+        "description": "Syndra propels a wave of force in a cone in the target direction that deals magic damage to enemies hit and knocks them back (distance 7.5, up from 7.2 in patch 7.2), though not through terrain.",
         "baseDamage": [
           70,
           110,
@@ -15471,7 +15471,7 @@
       {
         "slot": "R",
         "name": "Chain of Corruption",
-        "description": "Varus unleashes a tendril of corruption in the target direction that infects the first enemy champion hit, dealing magic damage, #Root \"An icon representing the keyword Wr root\") rooting them for 2 seconds, and revealing them for 4 seconds.",
+        "description": "Varus unleashes a tendril of corruption in the target direction that infects the first enemy champion hit, dealing magic damage, #Root \"An icon representing the keyword Wr root\") rooting them for 2 seconds, and revealing them for 4 seconds. Blight stacks applied to the target now refresh over 1.5 seconds (reduced from 3 in patch 7.2).",
         "baseDamage": [
           150,
           250,
@@ -17308,7 +17308,7 @@
       {
         "slot": "passive",
         "name": "Way of the Wanderer",
-        "description": "Innate - Intent: Yasuo'stotal critical rate is doubled from all other sources. Additionally,「 every 1% critical rate in excess of 100% is converted into 0.6 bonus attack damage. 」「 every 50% critical rate in excess of 100% is converted into",
+        "description": "Innate - Intent: Yasuo's total critical rate is doubled from all other sources. Additionally, every 1% critical rate in excess of 100% is converted into 0.6 bonus attack damage, and every 50% critical rate in excess of 100% is converted into a 125-680 shield (scaling with excess critical rate) that lasts 1 second.",
         "baseDamage": [],
         "damageType": "none",
         "scalings": [],
@@ -17341,16 +17341,16 @@
         "damageType": "none",
         "scalings": [],
         "cooldown": [
+          22,
+          20,
           18,
-          18,
-          18,
-          18
+          16
         ]
       },
       {
         "slot": "E",
         "name": "Sweeping Blade",
-        "description": "Yasuo dashes a fixed distance in the direction of the target enemy.",
+        "description": "Yasuo dashes a fixed distance in the direction of the target enemy. Repeated dashes within a short window stack a damage-amplification bonus (max 75%) up to 3 times (raised from 2 in patch 7.2).",
         "baseDamage": [
           70,
           80,
@@ -17369,7 +17369,7 @@
       {
         "slot": "R",
         "name": "Last Breath",
-        "description": "Yasuo blinks to the other side of a visible airborne enemy champion, instantly generating maximum Flow while resetting _Gathering Storm_ stacks.",
+        "description": "Yasuo blinks to the other side of a visible airborne enemy champion, instantly generating maximum Flow while resetting _Gathering Storm_ stacks. Grants 55% Bonus Armor Penetration on Critical Strikes for 15 seconds (up from 40%, patch 7.2).",
         "baseDamage": [
           250,
           400,
@@ -17503,6 +17503,137 @@
       }
     ],
     "icon": "Yone"
+  },
+  {
+    "id": "yunara",
+    "name": "Yunara",
+    "title": "the Unbroken Faith",
+    "roles": [
+      "Marksman"
+    ],
+    "resourceType": "mana",
+    "stats": {
+      "attackDamage": {
+        "base": 58,
+        "perLevel": 3
+      },
+      "attackSpeed": {
+        "base": 0.75,
+        "perLevel": 0.02
+      },
+      "armor": {
+        "base": 35,
+        "perLevel": 4.5
+      },
+      "magicResist": {
+        "base": 30,
+        "perLevel": 1.43
+      },
+      "maxHealth": {
+        "base": 600,
+        "perLevel": 128
+      },
+      "healthRegen": {
+        "base": 6,
+        "perLevel": 0.58
+      },
+      "mana": {
+        "base": 345,
+        "perLevel": 33
+      },
+      "manaRegen": {
+        "base": 9,
+        "perLevel": 0.72
+      },
+      "moveSpeed": 335,
+      "critDamageBase": 0.75
+    },
+    "abilities": [
+      {
+        "slot": "passive",
+        "name": "Vow of the First Lands",
+        "description": "Yunara's critical strikes deal bonus magic damage equal to 10% of her Ability Power.",
+        "baseDamage": [],
+        "damageType": "magic",
+        "scalings": [],
+        "cooldown": []
+      },
+      {
+        "slot": "Q",
+        "name": "Cultivation of Spirit",
+        "description": "Yunara's attacks deal bonus magic damage and grant a stack of Unleash (2 stacks against champions, max 6, decaying if not refreshed). Recast (Spirit Unbound) consumes Unleash for bonus attack speed for 5 seconds; empowered attacks during this window spread damage to nearby enemies.",
+        "baseDamage": [
+          10,
+          15,
+          20,
+          25
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "abilityPower",
+            "ratio": 0.2
+          }
+        ],
+        "cooldown": []
+      },
+      {
+        "slot": "W",
+        "name": "Arc of Judgment",
+        "description": "Yunara spins her prayer beads in an arc, dealing magic damage and slowing enemies hit, then lingers dealing damage over time. Expands to a wider hitbox at max range. During her Transcendent State, this becomes Arc of Ruin, a laser dealing mixed physical and magic damage.",
+        "baseDamage": [
+          60,
+          110,
+          160,
+          210
+        ],
+        "damageType": "magic",
+        "scalings": [
+          {
+            "stat": "bonusAttackDamage",
+            "ratio": 0.85
+          },
+          {
+            "stat": "abilityPower",
+            "ratio": 0.5
+          }
+        ],
+        "cooldown": [
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "slot": "E",
+        "name": "Kanmei's Steps",
+        "description": "Yunara gains bonus movement speed (more when moving toward enemies) and becomes Ghosted for a duration. During her Transcendent State, this becomes Untouchable Shadow, a dash instead.",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          9,
+          9,
+          9,
+          9
+        ]
+      },
+      {
+        "slot": "R",
+        "name": "Transcend One's Self",
+        "description": "Yunara enters a Transcendent State for 15 seconds, during which her basic abilities are empowered and cost no Mana: Arc of Judgment upgrades to Arc of Ruin (its remaining cooldown reduced 80% on entering/exiting the state) and Kanmei's Steps upgrades to Untouchable Shadow (its cooldown refreshes on entering/exiting the state).",
+        "baseDamage": [],
+        "damageType": "none",
+        "scalings": [],
+        "cooldown": [
+          70,
+          60,
+          50
+        ]
+      }
+    ],
+    "icon": "Yunara"
   },
   {
     "id": "yuumi",
@@ -17742,14 +17873,14 @@
       {
         "slot": "R",
         "name": "Death Mark",
-        "description": "Zed becomes untargetable and, after a 0.6-second delay, he dashes beyond the target enemy champion from his position at the end of the delay over 0.35 seconds.",
+        "description": "Zed becomes untargetable and, after a 0.6-second delay, he dashes beyond the target enemy champion from his position at the end of the delay over 0.35 seconds. Adds a 0.5-second return-cast window after the dash (patch 7.2).",
         "baseDamage": [],
         "damageType": "none",
         "scalings": [],
         "cooldown": [
           85,
-          65,
-          45
+          70,
+          55
         ]
       }
     ],
@@ -18370,7 +18501,7 @@
       {
         "slot": "passive",
         "name": "Garden of Thorns",
-        "description": "Zyra's abilities spawn _Thorn Spitters_ upon hitting certain targets.",
+        "description": "Zyra's abilities spawn _Thorn Spitters_ upon hitting certain targets. Thorn Spitters deal magic damage scaling at a 10% Ability Power ratio (reduced from 15% in patch 7.2) and inherit Zyra's Magic Penetration.",
         "baseDamage": [],
         "damageType": "none",
         "scalings": [],
@@ -18871,7 +19002,7 @@
       {
         "slot": "R",
         "name": "Summon: Tibbers",
-        "description": "Annie summons Tibbers to the target location in a burst of flame, dealing magic damage to enemies near him.",
+        "description": "Annie summons Tibbers to the target location in a burst of flame, dealing magic damage to enemies near him. Tibbers' basic attacks inherit Annie's Magic Penetration (patch 7.2).",
         "baseDamage": [
           130,
           230,

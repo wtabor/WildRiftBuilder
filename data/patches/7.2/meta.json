@@ -1,0 +1,15 @@
+{
+  "patch": "7.2",
+  "releaseDate": "2026-07-09",
+  "sources": [
+    "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-2/",
+    "https://wildrift.leagueoflegends.com/en-us/news/game-updates/patch-7-2-enchantment-system-rework/",
+    "https://wildrift.leagueoflegends.com/en-us/news/game-updates/patch-7-2-champion-release-update/",
+    "https://www.wildriftfire.com/patch-notes",
+    "https://www.wildriftfire.com/guide/yunara",
+    "https://wr-meta.com/545-yunara.html",
+    "Seeded from data/patches/7.1 (7.1g); unstamped values carry over unchanged and remain accurate as of 7.1g verification.",
+    "verified: false — the official WR wiki had not published 7.2 item/champion numbers as of this update (Yunara's own wiki page was an unpopulated stub; new/reworked item pages 404'd). Values are sourced from official Riot patch notes cross-checked against wildriftfire/wr-meta. Re-verify against the official wiki once it catches up. See ROSTER.md \"Patch 7.2\" section for exactly what's pending, including one unresolved discrepancy (Yunara's base attack speed: wildriftfire says 0.77, wr-meta says 0.75 — wr-meta used)."
+  ],
+  "verified": false
+}

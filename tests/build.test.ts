@@ -18,10 +18,8 @@ const base: BuildState = {
   level: 1,
   itemIds: [],
   bootsId: null,
-  enchantId: null,
   itemIdsB: [],
   bootsIdB: null,
-  enchantIdB: null,
   compare: false,
   active: "A",
   target: DEFAULT_TARGET,
@@ -51,8 +49,8 @@ describe("encode/decode round-trip", () => {
   it("preserves a build through the URL", () => {
     const b: BuildState = {
       championId: "ashe", level: 7, itemIds: ["infinity-edge"],
-      bootsId: null, enchantId: null, itemIdsB: [], bootsIdB: null,
-      enchantIdB: null, compare: false, active: "A", target: DEFAULT_TARGET,
+      bootsId: null, itemIdsB: [], bootsIdB: null,
+      compare: false, active: "A", target: DEFAULT_TARGET,
     };
     expect(decodeBuild(encodeBuild(b))).toEqual(b);
   });
@@ -60,29 +58,22 @@ describe("encode/decode round-trip", () => {
   it("preserves a two-build comparison through the URL", () => {
     const b: BuildState = {
       championId: "ashe", level: 9, itemIds: ["infinity-edge"],
-      bootsId: null, enchantId: null,
-      itemIdsB: ["bloodthirster", "phantom-dancer"], bootsIdB: null, enchantIdB: null,
+      bootsId: null,
+      itemIdsB: ["bloodthirster", "phantom-dancer"], bootsIdB: null,
       compare: true, active: "B", target: DEFAULT_TARGET,
     };
     expect(decodeBuild(encodeBuild(b))).toEqual(b);
   });
 
-  it("preserves boots + enchant + a custom target through the URL", () => {
+  it("preserves boots + a custom target through the URL", () => {
     const b: BuildState = {
       championId: "ashe", level: 12, itemIds: ["infinity-edge"],
-      bootsId: "berserkers-greaves", enchantId: "stasis",
-      itemIdsB: ["bloodthirster"], bootsIdB: "plated-steelcaps", enchantIdB: "gargoyle",
+      bootsId: "berserkers-greaves",
+      itemIdsB: ["bloodthirster"], bootsIdB: "plated-steelcaps",
       compare: true, active: "A",
       target: { armor: 150, magicResist: 80, maxHealth: 2500 },
     };
     expect(decodeBuild(encodeBuild(b))).toEqual(b);
-  });
-
-  it("drops a stray enchant when its build has no boots", () => {
-    // ?e=stasis with no ?b should not resurrect an enchant on a bootless build.
-    const decoded = decodeBuild("c=ashe&lvl=5&e=stasis");
-    expect(decoded.bootsId).toBeNull();
-    expect(decoded.enchantId).toBeNull();
   });
 });
 

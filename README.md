@@ -38,7 +38,14 @@ Build state is URL-encoded, so any build is shareable straight from its link.
 
 > ✅ The data under `data/patches/7.1/` (patch **7.1g**) has been verified against the official
 > Riot 7.1g patch notes and the official Wild Rift wiki item infoboxes (`meta.json` →
-> `"verified": true`). Champion stats remain illustrative pending a separate verification pass.
+> `"verified": true`).
+>
+> ⚠️ `data/patches/7.2/` is the current patch but is **not yet fully verified**
+> (`meta.json` → `"verified": false`) — patch 7.2 overhauled the item/boot system
+> and the official WR wiki hadn't finished publishing 7.2 numbers as of this
+> update. Values were sourced from official Riot patch notes plus community
+> cross-checks (wildriftfire, wr-meta); see `data/patches/7.2/meta.json` for
+> exactly what's pending re-confirmation.
 
 ## Architecture
 
