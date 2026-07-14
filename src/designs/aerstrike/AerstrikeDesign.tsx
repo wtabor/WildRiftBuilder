@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import dynamic from "next/dynamic";
 import { champions, getBuilds, getChampion, getItem, getItems, items, patchMeta } from "@/lib/data";
 import { computeBuild, goldEfficiency, type BuildTotals } from "@/lib/stats/engine";
 import { autoAttackDps, type AutoAttackDps } from "@/lib/damage/engine";
+import { analyzeBuild, compareBuilds, suggestSwap, type CompareVerdict, type Finding } from "@/lib/analysis/engine";
 import { encodeBuild, useBuildState, type BuildKey, type TargetStats } from "@/state/buildState";
 import { type Ability, type BuildPreset, type Champion, type Item, type Provenance, type StatBlock, type StatKey } from "@/lib/schema";
 import { statRows, itemStatLines, GROUP_LABEL, type StatGroup } from "@/lib/statDisplay";
@@ -17,16 +17,6 @@ import "./aerstrike.css";
 
 /* AerStrike visual language applied to the Wild Rift Builder. Presentation
    only — every number, gold figure, and DPS still comes from src/lib. */
-
-/* The reactor is code-split and client-only (three.js): keeps it out of the
-   initial bundle and off the SSR path. */
-const ReactorCore = dynamic(() => import("./ReactorCore"), {
-  ssr: false,
-  loading: () => <div className="ae-reactor" aria-hidden="true" />,
-});
-
-const clamp01 = (n: number) => (n < 0 ? 0 : n > 1 ? 1 : n);
-const clampRange = (n: number, a: number, b: number) => (n < a ? a : n > b ? b : n);
 
 const STAT_FILTERS: { key: StatKey; label: string }[] = [
   { key: "attackDamage", label: "AD" },
@@ -49,6 +39,7 @@ export default function AerstrikeDesign() {
   } = useBuildState();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [champQuery, setChampQuery] = useState("");
+  const [analysisOpen, setAnalysisOpen] = useState(false);
 
   useEffect(() => {
     document.title = "Wild Rift Builder — stat & build calculator";
@@ -89,28 +80,6 @@ export default function AerstrikeDesign() {
         : null,
     [totalsB, build.level, allItemsB, build.target],
   );
-  // Reactor readout mapping — presentation-only params derived from the shared
-  // engine totals/dps (never the reverse). Reflects the primary build (A).
-  const reactor = useMemo(() => {
-    if (!totals) return { power: 0, physicalShare: 1, energy: 0, spin: 0.2, shards: 0 };
-    const st = totals.stats;
-    // Hue reads the build's damage identity (AD vs AP), not the auto-attack
-    // breakdown — autos are physical for almost everyone, so AD/AP is the
-    // signal that actually swings a mage's core teal.
-    const ad = st.attackDamage ?? 0;
-    const ap = st.abilityPower ?? 0;
-    const share = ad + ap > 0 ? ad / (ad + ap) : 1;
-    return {
-      power: clamp01(totals.goldCost / 15000),
-      physicalShare: share,
-      energy: clamp01((dps?.dps ?? 0) / 700),
-      spin: clampRange((totals.attackSpeed - 0.6) / 1.4, 0.05, 1.2),
-      // Core item slots only (0-6) — boots are a separate slot, matching how
-      // the rest of the UI counts "X/6 items" + boots.
-      shards: Math.min(buildItems.length, 6),
-    };
-  }, [totals, dps, allItems, buildItems]);
-
   const query = encodeBuild(build);
   const activeList = build.active === "B" ? build.itemIdsB : build.itemIds;
   const activeBoots = build.active === "B" ? build.bootsIdB : build.bootsId;
@@ -174,7 +143,6 @@ export default function AerstrikeDesign() {
                   level={build.level}
                   totals={totals}
                   dps={dps}
-                  reactor={reactor}
                   onChange={() => setPickerOpen(true)}
                 />
               </Reveal>
@@ -216,14 +184,24 @@ export default function AerstrikeDesign() {
                         n={sn(3)}
                         label={build.compare ? "Build A" : "Your build"}
                         right={
-                          <button
-                            onClick={toggleCompare}
-                            className={`ae-btn ${build.compare ? "ae-btn--primary" : ""}`}
-                            title="Build a second build side-by-side and compare stats + DPS"
-                          >
-                            {build.compare ? "Comparing A/B" : "Compare A/B"}
-                            <span className="ae-arrow">{build.compare ? "✕" : "+"}</span>
-                          </button>
+                          <div className="flex flex-wrap items-center justify-end gap-2">
+                            <button
+                              onClick={() => setAnalysisOpen((v) => !v)}
+                              className={`ae-btn ${analysisOpen ? "ae-btn--primary" : ""}`}
+                              title="Rule-based build check — wasted stats, kit mismatches, and swap suggestions straight from the stat engines"
+                            >
+                              {analysisOpen ? "Analysis on" : "Analyze"}
+                              <span className="ae-arrow">{analysisOpen ? "✕" : "→"}</span>
+                            </button>
+                            <button
+                              onClick={toggleCompare}
+                              className={`ae-btn ${build.compare ? "ae-btn--primary" : ""}`}
+                              title="Build a second build side-by-side and compare stats + DPS"
+                            >
+                              {build.compare ? "Comparing A/B" : "Compare A/B"}
+                              <span className="ae-arrow">{build.compare ? "✕" : "+"}</span>
+                            </button>
+                          </div>
                         }
                       />
                       <BuildPath
@@ -250,6 +228,19 @@ export default function AerstrikeDesign() {
                             onClear={() => clearItems("B")}
                             active={build.active === "B"}
                             onFocus={() => setActive("B")}
+                          />
+                        </div>
+                      )}
+                      {analysisOpen && (
+                        <div className="mt-4">
+                          <AnalysisPanel
+                            champion={champion}
+                            level={build.level}
+                            itemsA={buildItems}
+                            bootsA={boots ?? null}
+                            itemsB={build.compare ? buildItemsB : null}
+                            bootsB={bootsB ?? null}
+                            target={build.target}
                           />
                         </div>
                       )}
@@ -531,41 +522,23 @@ function Reveal({
   );
 }
 
-/* ── Hero band — identity · reactor core · live HUD readout ────────────── */
-
-/** Turns the reactor's raw visual params into a legend + accessible description. */
-function describeReactor(r: { physicalShare: number; shards: number }) {
-  const pct = Math.round(r.physicalShare * 100);
-  const balanced = pct > 42 && pct < 58;
-  const dmgLabel = balanced ? "Balanced" : pct >= 50 ? `${pct}% Physical` : `${100 - pct}% Magic`;
-  const dmgColor = balanced
-    ? "var(--ae-fg-dim)"
-    : pct >= 50
-      ? "var(--ae-accent)"
-      : "var(--ae-accent-secondary)";
-  const shardsLabel = `${Math.round(r.shards)}/6 items`;
-  const ariaLabel = `Build reactor core: ${dmgLabel.toLowerCase()} damage, ${shardsLabel} equipped. Glow brightness tracks auto DPS; spin speed tracks attack speed.`;
-  return { dmgLabel, dmgColor, shardsLabel, ariaLabel };
-}
+/* ── Hero band — identity · live HUD readout ────────────────────────────── */
 
 function HeroBand({
   champion,
   level,
   totals,
   dps,
-  reactor,
   onChange,
 }: {
   champion: Champion;
   level: number;
   totals: BuildTotals;
   dps: AutoAttackDps | null;
-  reactor: { power: number; physicalShare: number; energy: number; spin: number; shards: number };
   onChange: () => void;
 }) {
   const abilityBySlot = new Map(champion.abilities.map((a) => [a.slot, a]));
   const s = totals.stats;
-  const reactorInfo = describeReactor(reactor);
   return (
     <section className="ae-panel ae-panel--corner ae-panel--accent ae-hero">
       <div className="ae-hero__zone ae-hero__identity">
@@ -628,32 +601,6 @@ function HeroBand({
         </div>
       </div>
 
-      <div className="ae-hero__reactor">
-        <div className="flex flex-col items-center gap-2">
-          <ReactorCore
-            power={reactor.power}
-            physicalShare={reactor.physicalShare}
-            energy={reactor.energy}
-            spin={reactor.spin}
-            shards={reactor.shards}
-            ariaLabel={reactorInfo.ariaLabel}
-          />
-          <div className="flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.08em]">
-            <span className="flex items-center gap-1.5" style={{ color: reactorInfo.dmgColor }}>
-              <span aria-hidden className="inline-block h-2 w-2 rounded-full" style={{ background: "currentColor" }} />
-              {reactorInfo.dmgLabel}
-            </span>
-            <span className="text-[var(--ae-fg-subtle)]" aria-hidden>
-              ·
-            </span>
-            <span className="text-[var(--ae-fg-dim)]">{reactorInfo.shardsLabel}</span>
-          </div>
-          <p className="max-w-[210px] text-center text-[10px] leading-relaxed text-[var(--ae-fg-subtle)]">
-            Glow tracks Auto DPS · spin tracks Attack Speed
-          </p>
-        </div>
-      </div>
-
       <div className="ae-hero__zone">
         <div className="ae-eyebrow mb-3 flex items-center gap-2">
           <span className="ae-pulse" />
@@ -679,6 +626,40 @@ function HeroBand({
             provenance={champion.provenance}
             valueKey="abilityPower"
           />
+          {/* Secondary row — final attacks/sec plus the defensive line, so the
+              band reads as a full stat readout now that the reactor is gone. */}
+          <HudStat
+            sub
+            label="Attack spd"
+            value={totals.attackSpeed}
+            render={(n) => n.toFixed(2)}
+            provenance={champion.provenance}
+            valueKey="attackSpeed"
+          />
+          <HudStat
+            sub
+            label="Health"
+            value={s.maxHealth ?? 0}
+            render={(n) => formatStat("maxHealth", n)}
+            provenance={champion.provenance}
+            valueKey="maxHealth"
+          />
+          <HudStat
+            sub
+            label="Armor"
+            value={s.armor ?? 0}
+            render={(n) => formatStat("armor", n)}
+            provenance={champion.provenance}
+            valueKey="armor"
+          />
+          <HudStat
+            sub
+            label="Magic res"
+            value={s.magicResist ?? 0}
+            render={(n) => formatStat("magicResist", n)}
+            provenance={champion.provenance}
+            valueKey="magicResist"
+          />
         </div>
       </div>
     </section>
@@ -693,6 +674,7 @@ function HudStat({
   accent,
   provenance,
   valueKey,
+  sub = false,
 }: {
   label: string;
   value: number;
@@ -701,6 +683,8 @@ function HudStat({
   /** Only set for tiles backed by a single champion StatKey (see call sites). */
   provenance?: Provenance;
   valueKey?: StatKey;
+  /** Secondary tile — smaller figure, for the defensive/utility row. */
+  sub?: boolean;
 }) {
   const n = useAnimatedNumber(value);
   const flash = useIncreaseFlash(value);
@@ -708,7 +692,10 @@ function HudStat({
   return (
     <div className="ae-hud__cell">
       <div className="ae-hud__k">{label}</div>
-      <div className={`ae-hud__v ae-num ${flash ? "ae-flash" : ""}`} style={accent ? { color: accent } : undefined}>
+      <div
+        className={`ae-hud__v ${sub ? "ae-hud__v--sub" : ""} ae-num ${flash ? "ae-flash" : ""}`}
+        style={accent ? { color: accent } : undefined}
+      >
         {valueKey ? (
           <ProvenanceTooltip provenance={provenance} valueKey={valueKey}>
             <span>{display}</span>
@@ -872,6 +859,173 @@ function BuildPath({
   );
 }
 
+/* ── Build analysis (rule-based, from src/lib/analysis) ───────────────── */
+
+const FINDING_STYLE: Record<Finding["severity"], { chip: string; color: string }> = {
+  warn: { chip: "!", color: "var(--ae-accent)" },
+  info: { chip: "i", color: "var(--ae-accent-secondary)" },
+  good: { chip: "OK", color: "var(--ae-accent-tertiary)" },
+};
+
+function FindingsList({ findings }: { findings: Finding[] }) {
+  if (findings.length === 0) {
+    return <p className="text-sm text-[var(--ae-fg-dim)]">Add items to analyze this build.</p>;
+  }
+  return (
+    <ul className="space-y-2">
+      {findings.map((f) => {
+        const s = FINDING_STYLE[f.severity];
+        return (
+          <li key={f.id} className="flex items-start gap-2">
+            <span
+              className="mt-px grid h-4 min-w-4 shrink-0 place-items-center border px-0.5 text-[8px] font-bold"
+              style={{ color: s.color, borderColor: `color-mix(in srgb, ${s.color} 45%, transparent)` }}
+            >
+              {s.chip}
+            </span>
+            <span className="min-w-0 text-[12px] leading-snug">
+              <span className="font-bold text-[var(--ae-fg)]">{f.title}</span>
+              <span className="block text-[11px] text-[var(--ae-fg-muted)]">{f.detail}</span>
+            </span>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function VerdictBlock({ v }: { v: CompareVerdict }) {
+  const winner = v.dpsB >= v.dpsA ? "B" : "A";
+  const hi = Math.max(v.dpsA, v.dpsB);
+  const lo = Math.min(v.dpsA, v.dpsB);
+  const dpsLine =
+    hi - lo < 1
+      ? "A and B deal effectively equal auto DPS."
+      : `Build ${winner} deals ${lo > 0 ? `${Math.round(((hi - lo) / lo) * 100)}% ` : ""}more auto DPS (${Math.round(v.dpsA).toLocaleString("en-US")} vs ${Math.round(v.dpsB).toLocaleString("en-US")}).`;
+  const goldDelta = v.goldB - v.goldA;
+  const goldLine =
+    goldDelta === 0
+      ? "Both builds cost the same."
+      : `Build B costs ${formatGold(Math.abs(goldDelta))} G ${goldDelta > 0 ? "more" : "less"} (${formatGold(v.goldA)} vs ${formatGold(v.goldB)}).`;
+  const durabilityParts = [
+    v.armorDelta !== 0 ? `${v.armorDelta > 0 ? "+" : "−"}${Math.round(Math.abs(v.armorDelta))} armor` : null,
+    v.magicResistDelta !== 0 ? `${v.magicResistDelta > 0 ? "+" : "−"}${Math.round(Math.abs(v.magicResistDelta))} magic resist` : null,
+    v.maxHealthDelta !== 0 ? `${v.maxHealthDelta > 0 ? "+" : "−"}${Math.round(Math.abs(v.maxHealthDelta))} health` : null,
+  ].filter((x): x is string => x !== null);
+
+  return (
+    <div className="border border-[var(--ae-border-strong)] p-2.5">
+      <div className="ae-eyebrow mb-1.5 text-[var(--ae-accent-secondary)]">A/B verdict</div>
+      <ul className="space-y-1 text-[11.5px] leading-snug text-[var(--ae-fg-dim)]">
+        <li>{dpsLine}</li>
+        <li>{goldLine}</li>
+        {durabilityParts.length > 0 && <li>Durability (B − A): {durabilityParts.join(" · ")}.</li>}
+      </ul>
+    </div>
+  );
+}
+
+function AnalysisPanel({
+  champion,
+  level,
+  itemsA,
+  bootsA,
+  itemsB,
+  bootsB,
+  target,
+}: {
+  champion: Champion;
+  level: number;
+  itemsA: Item[];
+  bootsA: Item | null;
+  /** null when compare mode is off. */
+  itemsB: Item[] | null;
+  bootsB: Item | null;
+  target: TargetStats;
+}) {
+  const comparing = itemsB !== null;
+  const a = useMemo(
+    () => analyzeBuild(champion, level, { items: itemsA, boots: bootsA }),
+    [champion, level, itemsA, bootsA],
+  );
+  // Swap search walks the whole catalog (~6 slots × ~100 items of pure math);
+  // memoized so it only reruns when the build actually changes.
+  const swap = useMemo(
+    () => suggestSwap(champion, level, { items: itemsA, boots: bootsA }, target, items),
+    [champion, level, itemsA, bootsA, target],
+  );
+  const b = useMemo(
+    () => (itemsB ? analyzeBuild(champion, level, { items: itemsB, boots: bootsB }) : null),
+    [champion, level, itemsB, bootsB],
+  );
+  const verdict = useMemo(
+    () =>
+      itemsB
+        ? compareBuilds(champion, level, { items: itemsA, boots: bootsA }, { items: itemsB, boots: bootsB }, target)
+        : null,
+    [champion, level, itemsA, bootsA, itemsB, bootsB, target],
+  );
+
+  const emptyA = itemsA.length === 0 && !bootsA;
+  const emptyB = comparing && itemsB.length === 0 && !bootsB;
+  return (
+    <div className="ae-panel ae-panel--corner ae-panel--accent p-4">
+      <h3 className="ae-eyebrow">
+        <span className="ae-eyebrow-accent">AN/</span> Build analysis
+      </h3>
+      <p className="mb-3 mt-1 text-[11px] text-[var(--ae-fg-subtle)]">
+        Deterministic checks from the same stat &amp; damage engines as the stat sheet — no guesswork.
+      </p>
+      {emptyA && !comparing ? (
+        <p className="text-sm text-[var(--ae-fg-dim)]">Add items to analyze this build.</p>
+      ) : (
+        <div className="space-y-4">
+          <div>
+            {comparing && <div className="ae-eyebrow mb-1.5 text-[var(--ae-accent-secondary)]">Build A</div>}
+            {emptyA ? (
+              <p className="text-sm text-[var(--ae-fg-dim)]">Build A is empty.</p>
+            ) : (
+              <>
+                <FindingsList findings={a.findings} />
+                {swap ? (
+                  <p className="mt-2.5 border border-[var(--ae-border)] p-2 text-[11.5px] leading-snug text-[var(--ae-fg-dim)]">
+                    <span className="font-bold text-[var(--ae-fg)]">Swap idea:</span> {swap.outName}{" "}
+                    <span className="ae-arrow text-[var(--ae-accent)]">→</span> {swap.inName} adds ~
+                    {Math.round(swap.dpsDelta)} auto DPS for{" "}
+                    {swap.goldDelta === 0
+                      ? "the same gold"
+                      : `${formatGold(Math.abs(swap.goldDelta))} G ${swap.goldDelta > 0 ? "more" : "less"}`}
+                    .
+                    <span className="block text-[10px] text-[var(--ae-fg-subtle)]">
+                      Auto-attack DPS only — ability rotations aren&apos;t modeled yet.
+                    </span>
+                  </p>
+                ) : a.identity === "magic" ? (
+                  <p className="mt-2.5 text-[10.5px] text-[var(--ae-fg-subtle)]">
+                    Swap suggestions are skipped for ability-scaling champions — the engine models auto-attack DPS
+                    only.
+                  </p>
+                ) : null}
+              </>
+            )}
+          </div>
+          {comparing && (
+            <div>
+              <div className="ae-eyebrow mb-1.5 text-[var(--ae-accent)]">Build B</div>
+              {emptyB ? (
+                <p className="text-sm text-[var(--ae-fg-dim)]">Build B is empty.</p>
+              ) : (
+                b && <FindingsList findings={b.findings} />
+              )}
+            </div>
+          )}
+          {verdict && !emptyA && !emptyB && <VerdictBlock v={verdict} />}
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ── Shop ─────────────────────────────────────────────────────────────── */
 
 function Shop({
@@ -964,9 +1118,25 @@ function ItemCard({
 }) {
   const eff = goldEfficiency(item);
   const lines = itemStatLines(item);
+  const hasDetail = lines.length > 0 || item.effects.length > 0 || eff !== null;
+  // The visible card is just icon + name + cost; stats, effects, and gold
+  // efficiency live in one popover shown on card hover/focus. The native
+  // title mirrors it for keyboard/AT users (the popover is CSS-only and
+  // pointer-events-none, so it can't host its own interactive tooltips —
+  // per-stat provenance remains on the stat sheet).
+  const tip = [
+    ...lines.map((l) => `+${l.display} ${l.label}`),
+    ...item.effects.map((e) => `${e.name}: ${e.description}`),
+    ...(eff !== null ? [`${Math.round(eff * 100)}% gold efficient (raw stats vs cost)`] : []),
+  ].join("\n");
   return (
-    <button onClick={() => onAdd(item.id)} disabled={disabled} className="ae-item group">
-      <div className="flex items-start gap-2.5">
+    <button
+      onClick={() => onAdd(item.id)}
+      disabled={disabled}
+      className="ae-item group"
+      title={tip || undefined}
+    >
+      <div className="flex items-center gap-2.5">
         <Portrait name={item.name} src={item.icon ? itemIconUrl(item.icon) : undefined} size={40} />
         <div className="min-w-0 flex-1">
           <div className="truncate text-sm font-bold text-[var(--ae-fg)]">{item.name}</div>
@@ -982,36 +1152,43 @@ function ItemCard({
           <span className="ae-arrow shrink-0 text-[var(--ae-accent)] transition group-hover:translate-x-0.5">→</span>
         )}
       </div>
-      <ul className="mt-2.5 space-y-1">
-        {lines.map((l) => (
-          <li key={l.key} className="flex items-center gap-2 text-[11.5px] text-[var(--ae-fg-dim)]">
-            <ProvenanceTooltip provenance={item.provenance} valueKey={l.key}>
-              <span className="ae-num font-semibold text-[var(--ae-fg)]">+{l.display}</span>
-            </ProvenanceTooltip>
-            <span className="text-[var(--ae-fg-dim)]">{l.label}</span>
-          </li>
-        ))}
-      </ul>
-      {item.effects.length > 0 && (
-        <ul className="mt-2.5 space-y-1.5 border-t border-[var(--ae-border)] pt-2.5">
-          {item.effects.map((e) => (
-            <li key={e.name} className="text-[11.5px] leading-relaxed text-[var(--ae-fg-dim)]">
-              <span className="font-bold text-[var(--ae-fg)]">{e.name}</span> {e.description}
-            </li>
-          ))}
-        </ul>
-      )}
-      {eff !== null && (
-        <span
-          className="ae-chip mt-2.5 w-fit"
-          style={
-            eff >= 1
-              ? { color: "var(--ae-accent-secondary)", borderColor: "var(--ae-border-strong)" }
-              : undefined
-          }
+      {hasDetail && (
+        <div
+          role="tooltip"
+          className="pointer-events-none invisible absolute left-0 top-full z-30 mt-1 w-64 max-w-[80vw] border border-[var(--ae-border-strong)] bg-[var(--ae-bg-elev)] p-2.5 text-left opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100"
         >
-          {Math.round(eff * 100)}% gold eff
-        </span>
+          {lines.length > 0 && (
+            <ul className="space-y-1">
+              {lines.map((l) => (
+                <li key={l.key} className="flex items-center gap-2 text-[11.5px] text-[var(--ae-fg-dim)]">
+                  <span className="ae-num font-semibold text-[var(--ae-fg)]">+{l.display}</span>
+                  <span>{l.label}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+          {item.effects.length > 0 && (
+            <div className={`space-y-1.5 ${lines.length > 0 ? "mt-2 border-t border-[var(--ae-border)] pt-2" : ""}`}>
+              {item.effects.map((e) => (
+                <p key={e.name} className="text-[11px] leading-relaxed text-[var(--ae-fg-dim)]">
+                  <span className="font-bold text-[var(--ae-fg)]">{e.name}</span> {e.description}
+                </p>
+              ))}
+            </div>
+          )}
+          {eff !== null && (
+            <span
+              className="ae-chip mt-2 w-fit"
+              style={
+                eff >= 1
+                  ? { color: "var(--ae-accent-secondary)", borderColor: "var(--ae-border-strong)" }
+                  : undefined
+              }
+            >
+              {Math.round(eff * 100)}% gold eff
+            </span>
+          )}
+        </div>
       )}
     </button>
   );

@@ -360,6 +360,13 @@
   border-color: color-mix(in srgb, var(--ae-accent) 55%, transparent);
   transform: translateY(-2px);
 }
+/* The hover transform creates a stacking context, which would let later
+   sibling cards paint over this card's detail popover — lift the active
+   card above its siblings so the popover always wins. */
+.ae-item:hover,
+.ae-item:focus-visible {
+  z-index: 30;
+}
 .ae-item:disabled { cursor: not-allowed; opacity: 0.4; transform: none; }
 
 /* ── Empty slot ────────────────────────────────────────────────── */
@@ -428,28 +435,10 @@
 .ae-hero { display: grid; grid-template-columns: 1fr; }
 .ae-hero__zone { padding: 20px 22px; min-width: 0; }
 .ae-hero__identity { border-bottom: 1px solid var(--ae-border); }
-.ae-hero__reactor {
-  order: -1;
-  display: grid;
-  place-items: center;
-  padding: 14px;
-  border-bottom: 1px solid var(--ae-border);
-  background: radial-gradient(
-    ellipse 78% 62% at 50% 42%,
-    color-mix(in srgb, var(--ae-accent-secondary) 8%, transparent),
-    transparent 72%
-  );
-}
 @media (min-width: 900px) {
-  .ae-hero { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: stretch; }
-  .ae-hero__reactor { order: 0; }
-  .ae-hero__identity,
-  .ae-hero__reactor { border-bottom: none; border-right: 1px solid var(--ae-border); }
+  .ae-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
+  .ae-hero__identity { border-bottom: none; border-right: 1px solid var(--ae-border); }
 }
-
-/* Bounded reactor canvas — never a full-page/fixed layer. */
-.ae-reactor { width: 100%; max-width: 300px; height: 220px; }
-@media (min-width: 900px) { .ae-reactor { width: 248px; height: 248px; } }
 
 /* ── HUD readout (headline numbers) ────────────────────────────── */
 .ae-hud { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
@@ -467,6 +456,10 @@
   margin-top: 5px;
   color: var(--ae-fg);
   font-feature-settings: "ss01", "ss02", "cv11";
+}
+.ae-hud__v--sub {
+  font-size: clamp(1.05rem, 3vw, 1.3rem);
+  color: var(--ae-fg-soft);
 }
 
 /* ── Focus visibility (a11y) ───────────────────────────────────── */
