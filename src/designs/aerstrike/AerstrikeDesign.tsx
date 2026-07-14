@@ -1040,6 +1040,8 @@ function Shop({
   const owned = useMemo(() => new Set(ownedIds), [ownedIds]);
   const [q, setQ] = useState("");
   const [filters, setFilters] = useState<Set<StatKey>>(new Set());
+  // Boots are a slot, not a stat, so they get their own filter toggle.
+  const [bootsOnly, setBootsOnly] = useState(false);
 
   function toggle(k: StatKey) {
     setFilters((prev) => {
@@ -1053,11 +1055,12 @@ function Shop({
   const filtered = useMemo(
     () =>
       items.filter((it) => {
+        if (bootsOnly && it.slot !== "boots") return false;
         if (q && !it.name.toLowerCase().includes(q.toLowerCase())) return false;
         for (const f of filters) if (!it.stats[f]) return false;
         return true;
       }),
-    [q, filters],
+    [q, filters, bootsOnly],
   );
 
   return (
@@ -1072,6 +1075,14 @@ function Shop({
               </button>
             );
           })}
+          <button
+            onClick={() => setBootsOnly((v) => !v)}
+            className={`ae-chip ${bootsOnly ? "ae-chip--teal" : ""}`}
+            aria-pressed={bootsOnly}
+            title="Show only boots (they have their own build slot)"
+          >
+            Boots
+          </button>
         </div>
         <input
           value={q}
