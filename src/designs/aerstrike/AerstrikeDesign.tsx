@@ -160,28 +160,26 @@ export default function AerstrikeDesign() {
                 </Reveal>
               )}
 
-              {/* Console work area: inputs · build actions · stat readout */}
-              <div className="grid gap-6 xl:grid-cols-[15rem_minmax(0,1fr)_20rem]">
-                <div className="space-y-8">
+              {/* Console work area: build column · stat readout. Level and
+                  target share one horizontal bar — as separate stacked panels
+                  they orphaned a skinny third column of mostly empty space. */}
+              <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
+                <div className="min-w-0 space-y-8">
                   <Reveal>
                     <section>
-                      <Eyebrow n={sn(1)} label="Level" />
-                      <LevelBar level={build.level} onChange={setLevel} />
+                      <Eyebrow n={sn(1)} label="Level & target" />
+                      <ConditionsBar
+                        level={build.level}
+                        onLevel={setLevel}
+                        target={build.target}
+                        onTarget={setTarget}
+                      />
                     </section>
                   </Reveal>
-                  <Reveal delay={60}>
-                    <section>
-                      <Eyebrow n={sn(2)} label="Target dummy" />
-                      <TargetDummy target={build.target} onChange={setTarget} />
-                    </section>
-                  </Reveal>
-                </div>
-
-                <div className="min-w-0 space-y-8">
                   <Reveal delay={40}>
                     <section>
                       <Eyebrow
-                        n={sn(3)}
+                        n={sn(2)}
                         label={build.compare ? "Build A" : "Your build"}
                         right={
                           <div className="flex flex-wrap items-center justify-end gap-2">
@@ -250,7 +248,7 @@ export default function AerstrikeDesign() {
                   <Reveal delay={80}>
                     <section>
                       <Eyebrow
-                        n={sn(4)}
+                        n={sn(3)}
                         label="Item shop"
                         right={build.compare ? <span className="ae-chip ae-chip--teal">→ Build {build.active}</span> : undefined}
                       />
@@ -265,7 +263,7 @@ export default function AerstrikeDesign() {
 
                 <Reveal delay={120}>
                   <section>
-                    <Eyebrow n={sn(5)} label="Stat sheet" />
+                    <Eyebrow n={sn(4)} label="Stat sheet" />
                     {build.compare && totalsB && dps && dpsB ? (
                       <CompareStatPanel a={totals} b={totalsB} dpsA={dps} dpsB={dpsB} provenance={champion.provenance} />
                     ) : (
@@ -708,39 +706,75 @@ function HudStat({
   );
 }
 
-/* ── Level ────────────────────────────────────────────────────────────── */
+/* ── Level & target conditions bar ────────────────────────────────────── */
 
-function LevelBar({ level, onChange }: { level: number; onChange: (n: number) => void }) {
+function ConditionsBar({
+  level,
+  onLevel,
+  target,
+  onTarget,
+}: {
+  level: number;
+  onLevel: (n: number) => void;
+  target: TargetStats;
+  onTarget: (patch: Partial<TargetStats>) => void;
+}) {
+  const fields: { key: keyof TargetStats; label: string }[] = [
+    { key: "armor", label: "Armor" },
+    { key: "magicResist", label: "MR" },
+    { key: "maxHealth", label: "Health" },
+  ];
   return (
-    <div className="ae-panel flex flex-wrap items-center gap-4 p-4">
-      <button
-        onClick={() => onChange(1)}
-        aria-label="Set level 1"
-        aria-pressed={level === 1}
-        className={`ae-lvl ae-num ${level === 1 ? "ae-lvl--on" : ""}`}
-      >
-        1
-      </button>
-      <input
-        type="range"
-        min={1}
-        max={15}
-        value={level}
-        onChange={(e) => onChange(Number(e.target.value))}
-        className="ae-range max-w-[16rem] flex-1"
-        aria-label="Champion level"
-      />
-      <button
-        onClick={() => onChange(15)}
-        aria-label="Set max level"
-        aria-pressed={level === 15}
-        className={`ae-lvl ae-lvl--wide ae-num ${level === 15 ? "ae-lvl--on" : ""}`}
-      >
-        MAX
-      </button>
-      <span className="ae-meta">
-        Lvl <span className="ae-num text-[var(--ae-accent)]">{level}</span> / 15
-      </span>
+    <div className="ae-panel flex flex-wrap items-center gap-x-6 gap-y-4 p-4">
+      <div className="flex min-w-0 flex-1 items-center gap-3 sm:flex-none">
+        <button
+          onClick={() => onLevel(1)}
+          aria-label="Set level 1"
+          aria-pressed={level === 1}
+          className={`ae-lvl ae-num ${level === 1 ? "ae-lvl--on" : ""}`}
+        >
+          1
+        </button>
+        <input
+          type="range"
+          min={1}
+          max={15}
+          value={level}
+          onChange={(e) => onLevel(Number(e.target.value))}
+          className="ae-range min-w-0 flex-1 sm:w-56 sm:flex-none"
+          aria-label="Champion level"
+        />
+        <button
+          onClick={() => onLevel(15)}
+          aria-label="Set max level"
+          aria-pressed={level === 15}
+          className={`ae-lvl ae-lvl--wide ae-num ${level === 15 ? "ae-lvl--on" : ""}`}
+        >
+          MAX
+        </button>
+        <span className="ae-meta whitespace-nowrap">
+          Lvl <span className="ae-num text-[var(--ae-accent)]">{level}</span> / 15
+        </span>
+      </div>
+
+      <span aria-hidden className="hidden h-8 w-px bg-[var(--ae-border)] md:block" />
+
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+        <span className="ae-meta whitespace-nowrap">Enemy to hit</span>
+        {fields.map((f) => (
+          <label key={f.key} className="flex items-center gap-1.5">
+            <span className="text-[11px] uppercase tracking-[0.12em] text-[var(--ae-fg-subtle)]">{f.label}</span>
+            <input
+              type="number"
+              min={0}
+              value={target[f.key]}
+              onChange={(e) => onTarget({ [f.key]: Number(e.target.value) } as Partial<TargetStats>)}
+              className="ae-input ae-num max-w-[4.5rem]"
+              aria-label={`Target ${f.label}`}
+            />
+          </label>
+        ))}
+      </div>
     </div>
   );
 }
@@ -1205,35 +1239,6 @@ function ItemCard({
   );
 }
 
-/* ── Target dummy ─────────────────────────────────────────────────────── */
-
-function TargetDummy({ target, onChange }: { target: TargetStats; onChange: (patch: Partial<TargetStats>) => void }) {
-  const fields: { key: keyof TargetStats; label: string }[] = [
-    { key: "armor", label: "Armor" },
-    { key: "magicResist", label: "Magic Resist" },
-    { key: "maxHealth", label: "Health" },
-  ];
-  return (
-    <div className="ae-panel p-4">
-      <p className="ae-meta mb-3">Enemy to hit</p>
-      <div className="grid grid-cols-3 gap-2">
-        {fields.map((f) => (
-          <label key={f.key} className="flex flex-col gap-1.5">
-            <span className="text-[11px] uppercase tracking-[0.12em] text-[var(--ae-fg-subtle)]">{f.label}</span>
-            <input
-              type="number"
-              min={0}
-              value={target[f.key]}
-              onChange={(e) => onChange({ [f.key]: Number(e.target.value) } as Partial<TargetStats>)}
-              className="ae-input ae-num"
-            />
-          </label>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 /* ── Damage readout ───────────────────────────────────────────────────── */
 
 function DamageReadout({ dps }: { dps: AutoAttackDps }) {
@@ -1376,6 +1381,71 @@ function CombatEffects({ items: list }: { items: Item[] }) {
 
 /* ── Compare ──────────────────────────────────────────────────────────── */
 
+/* A and B keep one fixed identity color each (A teal, B orange — same as the
+   Build A/B labels elsewhere). Winning is shown by weight, not by recoloring:
+   the winner's value is bright + bold, the loser's is dimmed, and a chip in
+   the winner's color names the winner and the margin ("B +25"). */
+const SIDE = {
+  A: "var(--ae-accent-secondary)",
+  B: "var(--ae-accent)",
+} as const;
+
+function WinnerChip({
+  winner,
+  delta,
+}: {
+  winner: "A" | "B" | null;
+  delta: string;
+}) {
+  if (!winner) {
+    return <span className="w-16 shrink-0 text-right text-[10px] text-[var(--ae-fg-subtle)]">even</span>;
+  }
+  return (
+    <span className="flex w-16 shrink-0 justify-end">
+      <span
+        className="ae-num border px-1 py-px text-[10px] font-bold leading-snug"
+        style={{ color: SIDE[winner], borderColor: `color-mix(in srgb, ${SIDE[winner]} 45%, transparent)` }}
+      >
+        {winner} +{delta}
+      </span>
+    </span>
+  );
+}
+
+function CompareRow({
+  label,
+  aDisp,
+  bDisp,
+  winner,
+  delta,
+  size = "sm",
+}: {
+  label: React.ReactNode;
+  aDisp: string;
+  bDisp: string;
+  winner: "A" | "B" | null;
+  delta: string;
+  size?: "sm" | "lg";
+}) {
+  const val = (disp: string, mine: "A" | "B") => (
+    <span
+      className={`ae-num w-14 shrink-0 text-right ${size === "lg" ? "text-lg" : ""} ${
+        winner === null || winner === mine ? "font-bold text-[var(--ae-fg)]" : "text-[var(--ae-fg-subtle)]"
+      }`}
+    >
+      {disp}
+    </span>
+  );
+  return (
+    <div className="flex items-center gap-2 border-b border-[var(--ae-border)] py-1.5 text-sm last:border-0">
+      <span className="min-w-0 flex-1 truncate text-[var(--ae-fg-dim)]">{label}</span>
+      {val(aDisp, "A")}
+      {val(bDisp, "B")}
+      <WinnerChip winner={winner} delta={delta} />
+    </div>
+  );
+}
+
 function CompareStatPanel({
   a,
   b,
@@ -1402,44 +1472,49 @@ function CompareStatPanel({
   }
   const groups: StatGroup[] = ["offense", "defense", "utility"];
   const cells = [...byKey.entries()];
-  const goldDelta = b.goldCost - a.goldCost;
 
-  const better = (bv: number, av: number) =>
-    bv > av ? "var(--ae-accent-secondary)" : bv < av ? "var(--ae-accent)" : "var(--ae-fg)";
+  /** Winner + formatted margin; `lowerWins` flips the rule (gold). */
+  const verdict = (aVal: number, bVal: number, fmt: (n: number) => string, lowerWins = false) => {
+    const diff = bVal - aVal;
+    if (Math.abs(diff) < 1e-9) return { winner: null as "A" | "B" | null, delta: "" };
+    const bWins = lowerWins ? diff < 0 : diff > 0;
+    return { winner: (bWins ? "B" : "A") as "A" | "B", delta: fmt(Math.abs(diff)) };
+  };
+
+  const dps = verdict(dpsA.dps, dpsB.dps, (n) => Math.round(n).toLocaleString("en-US"));
+  const gold = verdict(a.goldCost, b.goldCost, (n) => formatGold(Math.round(n)), true);
 
   return (
     <div className="ae-panel p-4">
-      <div className="flex items-center justify-between gap-2 border-b border-[var(--ae-border)] pb-1.5 text-[11px] font-bold uppercase tracking-[0.18em]">
+      <div className="flex items-center gap-2 border-b border-[var(--ae-border)] pb-1.5 text-[11px] font-bold uppercase tracking-[0.18em]">
         <span className="flex-1 text-[var(--ae-fg-muted)]">Stat</span>
-        <span className="w-14 text-right text-[var(--ae-accent-secondary)]">A</span>
-        <span className="w-14 text-right text-[var(--ae-accent)]">B</span>
+        <span className="w-14 shrink-0 text-right" style={{ color: SIDE.A }}>A</span>
+        <span className="w-14 shrink-0 text-right" style={{ color: SIDE.B }}>B</span>
+        <span className="w-16 shrink-0 text-right text-[var(--ae-fg-subtle)]">Winner</span>
+      </div>
+      <p className="mb-1 mt-1.5 text-[10px] leading-snug text-[var(--ae-fg-subtle)]">
+        Bright value wins the row; the chip names the winner and the margin. Gold: the cheaper build wins.
+      </p>
+
+      <div className="mt-1.5 border border-[var(--ae-border-strong)] px-2.5 py-1">
+        <CompareRow
+          label={<span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--ae-fg-muted)]">Auto DPS</span>}
+          aDisp={Math.round(dpsA.dps).toLocaleString("en-US")}
+          bDisp={Math.round(dpsB.dps).toLocaleString("en-US")}
+          winner={dps.winner}
+          delta={dps.delta}
+          size="lg"
+        />
       </div>
 
-      <div className="flex items-center justify-between gap-2 border-b border-[var(--ae-border)] py-1.5 text-sm">
-        <span className="flex-1 text-[var(--ae-fg-dim)]">Gold</span>
-        <span className="ae-num w-14 text-right font-bold text-[var(--ae-fg)]">{formatGold(a.goldCost)}</span>
-        <span className="ae-num w-14 text-right font-bold" style={{ color: better(a.goldCost, b.goldCost) }}>
-          {formatGold(b.goldCost)}
-        </span>
-      </div>
-
-      <div className="mt-3 border border-[var(--ae-border-strong)] p-2.5">
-        <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.18em]">
-          <span className="flex-1 text-[var(--ae-accent)]">Auto DPS</span>
-          <span className="w-14 text-right text-[var(--ae-accent-secondary)]">A</span>
-          <span className="w-14 text-right text-[var(--ae-accent)]">B</span>
-        </div>
-        <div className="mt-1 flex items-center justify-between gap-2">
-          <span className="flex-1 text-[11px] text-[var(--ae-fg-subtle)]" title={`Δ ${Math.round(goldDelta)} gold`}>
-            vs target dummy
-          </span>
-          <span className="ae-num w-14 text-right text-lg font-bold text-[var(--ae-fg)]">
-            {Math.round(dpsA.dps).toLocaleString("en-US")}
-          </span>
-          <span className="ae-num w-14 text-right text-lg font-bold" style={{ color: better(dpsB.dps, dpsA.dps) }}>
-            {Math.round(dpsB.dps).toLocaleString("en-US")}
-          </span>
-        </div>
+      <div className="mt-1.5">
+        <CompareRow
+          label={<span title="Cheaper build wins this row">Gold</span>}
+          aDisp={formatGold(a.goldCost)}
+          bDisp={formatGold(b.goldCost)}
+          winner={gold.winner}
+          delta={gold.delta}
+        />
       </div>
 
       <div className="mt-3 space-y-4">
@@ -1450,22 +1525,26 @@ function CompareStatPanel({
             <div key={g}>
               <h3 className="ae-eyebrow ae-eyebrow-accent mb-1.5">{GROUP_LABEL[g]}</h3>
               <div>
-                {gr.map(([key, c]) => (
-                  <div
-                    key={key}
-                    className="flex items-center justify-between gap-2 border-b border-[var(--ae-border)] py-1.5 text-sm last:border-0"
-                  >
-                    <span className="flex-1 text-[var(--ae-fg-dim)]">{c.label}</span>
-                    <ProvenanceTooltip provenance={provenance} valueKey={key}>
-                      <span className="ae-num w-14 text-right font-bold text-[var(--ae-fg)]">{c.aDisp ?? "—"}</span>
-                    </ProvenanceTooltip>
-                    <ProvenanceTooltip provenance={provenance} valueKey={key}>
-                      <span className="ae-num w-14 text-right font-bold" style={{ color: better(c.bVal, c.aVal) }}>
-                        {c.bDisp ?? "—"}
-                      </span>
-                    </ProvenanceTooltip>
-                  </div>
-                ))}
+                {gr.map(([key, c]) => {
+                  // statRows displays attack speed as final attacks/sec, so
+                  // its margin uses the same unit instead of formatStat's %.
+                  const fmt = (n: number) => (key === "attackSpeed" ? n.toFixed(2) : formatStat(key, n));
+                  const v = verdict(c.aVal, c.bVal, fmt);
+                  return (
+                    <CompareRow
+                      key={key}
+                      label={
+                        <ProvenanceTooltip provenance={provenance} valueKey={key}>
+                          {c.label}
+                        </ProvenanceTooltip>
+                      }
+                      aDisp={c.aDisp ?? fmt(0)}
+                      bDisp={c.bDisp ?? fmt(0)}
+                      winner={v.winner}
+                      delta={v.delta}
+                    />
+                  );
+                })}
               </div>
             </div>
           );

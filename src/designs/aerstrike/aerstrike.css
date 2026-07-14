@@ -54,6 +54,11 @@
   position: relative;
   isolation: isolate;
   min-height: 100vh;
+  /* Absolute-positioned tooltips/popovers near the viewport edge would
+     otherwise extend the page's scrollable width on small screens. `clip`
+     (unlike hidden) doesn't create a scroll container, so sticky nav keeps
+     working. */
+  overflow-x: clip;
   background: var(--ae-bg);
   color: var(--ae-fg);
   color-scheme: dark;
