@@ -97,19 +97,41 @@ export function computeBuild(
 /**
  * Gold efficiency: value of an item's raw stats vs its cost, using standard
  * per-stat gold costs. >100% means stat-efficient before counting passives.
+ *
+ * Values are gold per one point of the stat *as stored in the schema* — and
+ * percent-type stats are stored as ratios (0.15 = 15%), so their entries are
+ * the per-1% price × 100.
+ *
+ * Derived from Wild Rift component item prices (never PC League values),
+ * verified 2026-07-14 against two sources:
+ *   https://wiki.leagueoflegends.com/en-us/WR:Gold_efficiency
+ *   https://liquipedia.net/wildrift/Portal:Items (per-item pages)
+ * e.g. Long Sword 500g / 12 AD, Amplifying Tome 500g / 25 AP, Dagger
+ * 500g / 15% AS, Ruby Crystal 500g / 150 HP, Brawler's Gloves 500g / 10% crit.
+ * Stats with no clean component reference (crit damage, regen, tenacity,
+ * heal & shield power, omnivamp, %armor pen) are left unpriced on purpose.
  */
 export const GOLD_VALUES: Partial<Record<StatKey, number>> = {
-  attackDamage: 35,
-  abilityPower: 21.75,
-  attackSpeed: 30, // per 1.0 ratio (i.e. per +100%); scaled below
-  armor: 20,
-  magicResist: 20,
-  maxHealth: 13.33,
-  mana: 4,
-  critChance: 40, // per 1.0 (per +100%)
-  abilityHaste: 26.67,
-  lethality: 30,
-  moveSpeedFlat: 12,
+  attackDamage: 41.67,
+  abilityPower: 20,
+  attackSpeed: 3333, // 33.33 per 1%
+  critChance: 5000, // 50 per 1%
+  armor: 25,
+  magicResist: 25,
+  maxHealth: 3.33,
+  mana: 3.5,
+  abilityHaste: 30,
+  lethality: 20.83, // WR "armor penetration" (flat), via Serrated Dirk
+  magicPenFlat: 26.67, // via Prophet's Pendant
+  // Derived from this repo's own 7.2 Void Amethyst (1000g / 20 AP / 10% pen,
+  // provenance-stamped from Riot patch notes): (1000 − 20×20) / 0.10 = 6000.
+  // The wiki's pre-7.2 derivation (35 per 1%) is stale for the live economy.
+  magicPenPercent: 6000,
+  lifeSteal: 3667, // 36.67 per 1% (WR "physical vamp"), via Vampiric Scepter
+  // Boots of Speed derivation: sources disagree (400g / 25 MS on the wiki vs
+  // / 20 MS on Liquipedia) — using the wiki's 16/point until re-verified.
+  moveSpeedFlat: 16,
+  moveSpeedPercent: 5000, // 50 per 1%, via Aether Wisp
 };
 
 export function goldEfficiency(item: Item): number | null {
