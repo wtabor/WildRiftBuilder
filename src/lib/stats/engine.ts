@@ -110,6 +110,18 @@ export function computeBuild(
  * 500g / 15% AS, Ruby Crystal 500g / 150 HP, Brawler's Gloves 500g / 10% crit.
  * Stats with no clean component reference (crit damage, regen, tenacity,
  * heal & shield power, omnivamp, %armor pen) are left unpriced on purpose.
+ *
+ * %armor pen and omnivamp were researched 2026-07-14 and deliberately left
+ * unpriced — do not fill these without a better reference:
+ * - armorPenPercent: the reference component (Last Whisper) has three
+ *   irreconcilable versions across sources — 800g / 12% pen / no AD (LoL wiki
+ *   WR page, updated 7.1), 1100g / 15 AD / 10% (Liquipedia), 1300g / 15 AD /
+ *   20% (lolwildriftbuild) — implying anywhere from 3375 to 6667 gold per 1.0
+ *   ratio. Even the wiki's own gold-efficiency table shows a broken expression
+ *   for this stat. riftgg's shop view isn't scrapable per-item.
+ * - omnivamp: no WR component grants it (only Goredrinker / Immortal Treads,
+ *   both passive-laden, so residual-value derivation would be dishonest).
+ *   PC League's omnivamp price exists but PC values are never used here.
  */
 export const GOLD_VALUES: Partial<Record<StatKey, number>> = {
   attackDamage: 41.67,
