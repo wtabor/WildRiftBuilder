@@ -4,7 +4,7 @@
     "championId": "ezreal",
     "name": "Standard Crit",
     "archetype": "crit",
-    "description": "The reliable carry path. Essence Reaver and Navori keep Q on a near-permanent cooldown while Infinity Edge turns every auto and Q into a crit. Galeforce — now a standalone item since patch 7.2 folded boot enchants into the regular item pool — adds a crit-fueled dash and execute.",
+    "description": "The reliable carry path. Essence Reaver and Navori keep Q on a near-permanent cooldown while Infinity Edge turns every auto and Q into a crit. Galeforce \u2014 now a standalone item since patch 7.2 folded boot enchants into the regular item pool \u2014 adds a crit-fueled dash and execute.",
     "items": [
       "essence-reaver",
       "infinity-edge",
@@ -22,7 +22,7 @@
     "championId": "ezreal",
     "name": "On-Hit",
     "archetype": "on-hit",
-    "description": "Trinity proc plus stacked on-hit effects. Blade, Kraken and Wit's End make every basic bite, with Rageblade amplifying the whole package and Stridebreaker — a standalone item since patch 7.2 — adding more attack speed to feed procs.",
+    "description": "Trinity proc plus stacked on-hit effects. Blade, Kraken and Wit's End make every basic bite, with Rageblade amplifying the whole package and Stridebreaker \u2014 a standalone item since patch 7.2 \u2014 adding more attack speed to feed procs.",
     "items": [
       "trinity-force",
       "blade-of-the-ruined-king",
@@ -40,7 +40,7 @@
     "championId": "ezreal",
     "name": "Permafrost",
     "archetype": "meme",
-    "description": "The ultimate slow build. Rylai's, Iceborn, Frozen Heart, Dead Man's and Randuin's mean nothing within range ever moves at full speed again — and Stridebreaker, now a standalone item since patch 7.2, brings one more slow on its dash. Pure menace, zero meta.",
+    "description": "The ultimate slow build. Rylai's, Iceborn, Frozen Heart, Dead Man's and Randuin's mean nothing within range ever moves at full speed again \u2014 and Stridebreaker, now a standalone item since patch 7.2, brings one more slow on its dash. Pure menace, zero meta.",
     "items": [
       "rylais-crystal-scepter",
       "iceborn-gauntlet",
@@ -52,5 +52,2305 @@
     "boots": "ionian-boots-of-lucidity",
     "level": 15,
     "meme": true
+  },
+  {
+    "id": "aatrox-standard",
+    "championId": "aatrox",
+    "name": "Bruiser",
+    "archetype": "bruiser",
+    "description": "Damage with staying power \u2014 Eclipse and Trinity Force keep you fighting through extended trades. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "eclipse",
+      "trinity-force",
+      "seryldas-grudge",
+      "deaths-dance",
+      "guardian-angel",
+      "stridebreaker"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/aatrox",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "ahri-standard",
+    "championId": "ahri",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Malignance and Lich Bane feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "malignance",
+      "lich-bane",
+      "rabadons-deathcap",
+      "infinity-orb"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/ahri",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "akshan-standard",
+    "championId": "akshan",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Galeforce and Magnetic Blaster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "galeforce",
+      "magnetic-blaster",
+      "mortal-reminder",
+      "infinity-edge",
+      "bloodthirster"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/akshan",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "alistar-standard",
+    "championId": "alistar",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Zeke's Convergence and Radiant Virtue stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "zekes-convergence",
+      "radiant-virtue",
+      "force-of-nature",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/alistar",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "ambessa-standard",
+    "championId": "ambessa",
+    "name": "Bruiser",
+    "archetype": "bruiser",
+    "description": "Damage with staying power \u2014 Eclipse and Goredrinker keep you fighting through extended trades. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "eclipse",
+      "goredrinker",
+      "seryldas-grudge",
+      "deaths-dance",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/ambessa",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "amumu-standard",
+    "championId": "amumu",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Searing Crown and Liandry's Torment stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "searing-crown",
+      "liandrys-torment",
+      "amaranths-twinguard",
+      "abyssal-mask",
+      "thornmail"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/amumu",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "annie-standard",
+    "championId": "annie",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Malignance and Hextech Rocketbelt feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "malignance",
+      "hextech-rocketbelt",
+      "rabadons-deathcap",
+      "infinity-orb"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/annie",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "ashe-standard",
+    "championId": "ashe",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Kraken Slayer and Blade of the Ruined King turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "kraken-slayer",
+      "blade-of-the-ruined-king",
+      "mortal-reminder",
+      "runaans-hurricane",
+      "phantom-dancer",
+      "galeforce"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/ashe",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "aurelion-sol-standard",
+    "championId": "aurelion-sol",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Rylai's Crystal Scepter and Liandry's Torment feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "rylais-crystal-scepter",
+      "liandrys-torment",
+      "infinity-orb",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/aurelion-sol",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "blitzcrank-standard",
+    "championId": "blitzcrank",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Yordle Trap and Warmog's Armor stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "yordle-trap",
+      "warmogs-armor",
+      "frozen-heart",
+      "force-of-nature"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/blitzcrank",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "brand-standard",
+    "championId": "brand",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Blackfire Torch and Liandry's Torment feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blackfire-torch",
+      "liandrys-torment",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/brand",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "braum-standard",
+    "championId": "braum",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Warmog's Armor and Knight's Vow stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "warmogs-armor",
+      "knights-vow",
+      "radiant-virtue",
+      "force-of-nature"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/braum",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "caitlyn-standard",
+    "championId": "caitlyn",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 The Collector and Magnetic Blaster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "the-collector",
+      "magnetic-blaster",
+      "mortal-reminder",
+      "infinity-edge",
+      "bloodthirster",
+      "galeforce"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/caitlyn",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "camille-standard",
+    "championId": "camille",
+    "name": "Bruiser",
+    "archetype": "bruiser",
+    "description": "Damage with staying power \u2014 Trinity Force and Goredrinker keep you fighting through extended trades. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "goredrinker",
+      "hullbreaker",
+      "sundered-sky",
+      "spear-of-shojin"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/camille",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "corki-standard",
+    "championId": "corki",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Essence Reaver and Magnetic Blaster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "essence-reaver",
+      "magnetic-blaster",
+      "mortal-reminder",
+      "infinity-edge",
+      "bloodthirster"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/corki",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "darius-standard",
+    "championId": "darius",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Stridebreaker and Trinity Force stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "stridebreaker",
+      "trinity-force",
+      "steraks-gage",
+      "amaranths-twinguard",
+      "force-of-nature"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/darius",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "diana-standard",
+    "championId": "diana",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Lich Bane and Infinity Orb feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "lich-bane",
+      "infinity-orb",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/diana",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "dr-mundo-standard",
+    "championId": "dr-mundo",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Heartsteel and Sunfire Aegis stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "heartsteel",
+      "sunfire-aegis",
+      "thornmail",
+      "gargoyle-stoneplate",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/dr-mundo",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "draven-standard",
+    "championId": "draven",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Bloodthirster and Essence Reaver turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "bloodthirster",
+      "essence-reaver",
+      "mortal-reminder",
+      "magnetic-blaster",
+      "infinity-edge"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/draven",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "ekko-standard",
+    "championId": "ekko",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Dusk and Dawn and Rabadon's Deathcap feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "dusk-and-dawn",
+      "rabadons-deathcap",
+      "infinity-orb",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/ekko",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "evelynn-standard",
+    "championId": "evelynn",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Lich Bane and Rabadon's Deathcap feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "lich-bane",
+      "rabadons-deathcap",
+      "hextech-rocketbelt",
+      "infinity-orb"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/evelynn",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "fiddlesticks-standard",
+    "championId": "fiddlesticks",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Hextech Rocketbelt and Blackfire Torch feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "hextech-rocketbelt",
+      "blackfire-torch",
+      "infinity-orb",
+      "rabadons-deathcap"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/fiddlesticks",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "fiora-standard",
+    "championId": "fiora",
+    "name": "Bruiser",
+    "archetype": "bruiser",
+    "description": "Damage with staying power \u2014 Trinity Force and Goredrinker keep you fighting through extended trades. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "goredrinker",
+      "hullbreaker",
+      "deaths-dance",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/fiora",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "fizz-standard",
+    "championId": "fizz",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Lich Bane and Rabadon's Deathcap feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "lich-bane",
+      "rabadons-deathcap",
+      "infinity-orb",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/fizz",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "galio-standard",
+    "championId": "galio",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Hollow Radiance and Thornmail stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "hollow-radiance",
+      "thornmail",
+      "riftmaker",
+      "unending-despair",
+      "dawnshroud"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/galio",
+    "meme": false,
+    "boots": "mercurys-treads"
+  },
+  {
+    "id": "garen-standard",
+    "championId": "garen",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Black Cleaver and Dead Man's Plate stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "black-cleaver",
+      "dead-mans-plate",
+      "spear-of-shojin",
+      "force-of-nature",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/garen",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "gnar-standard",
+    "championId": "gnar",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Trinity Force and Black Cleaver stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "black-cleaver",
+      "steraks-gage",
+      "amaranths-twinguard",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/gnar",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "gragas-standard",
+    "championId": "gragas",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Lich Bane and Rabadon's Deathcap feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "lich-bane",
+      "rabadons-deathcap",
+      "infinity-orb",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/gragas",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "graves-standard",
+    "championId": "graves",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 The Collector and Galeforce turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "the-collector",
+      "galeforce",
+      "lord-dominiks-regard",
+      "bloodthirster",
+      "infinity-edge"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/graves",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "gwen-standard",
+    "championId": "gwen",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Dusk and Dawn and Riftmaker feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "dusk-and-dawn",
+      "riftmaker",
+      "rabadons-deathcap",
+      "infinity-orb"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/gwen",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "hecarim-standard",
+    "championId": "hecarim",
+    "name": "Bruiser",
+    "archetype": "bruiser",
+    "description": "Damage with staying power \u2014 Trinity Force and Manamune keep you fighting through extended trades. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "manamune",
+      "seryldas-grudge",
+      "deaths-dance",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/hecarim",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "irelia-standard",
+    "championId": "irelia",
+    "name": "Bruiser",
+    "archetype": "bruiser",
+    "description": "Damage with staying power \u2014 Trinity Force and Blade of the Ruined King keep you fighting through extended trades. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "blade-of-the-ruined-king",
+      "hullbreaker",
+      "deaths-dance",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/irelia",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "janna-standard",
+    "championId": "janna",
+    "name": "Enchanter",
+    "archetype": "ability",
+    "description": "Enchanter path \u2014 Ardent Censer and Harmonic Echo amplify your healing and shielding to keep the carry alive. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "ardent-censer",
+      "harmonic-echo",
+      "redemption",
+      "staff-of-flowing-water"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/janna",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "jarvan-iv-standard",
+    "championId": "jarvan-iv",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Trinity Force and Radiant Virtue stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "radiant-virtue",
+      "zekes-convergence",
+      "amaranths-twinguard",
+      "force-of-nature",
+      "goredrinker"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/jarvan-iv",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "jax-standard",
+    "championId": "jax",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Dusk and Dawn and Blade of the Ruined King feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "dusk-and-dawn",
+      "blade-of-the-ruined-king",
+      "hullbreaker",
+      "zhonyas-hourglass",
+      "riftmaker"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/jax",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "jayce-standard",
+    "championId": "jayce",
+    "name": "Lethality",
+    "archetype": "lethality",
+    "description": "Flat armor penetration to threaten squishy targets, led by Youmuu's Ghostblade. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "youmuus-ghostblade",
+      "manamune",
+      "seryldas-grudge",
+      "edge-of-night",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/jayce",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "jhin-standard",
+    "championId": "jhin",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 The Collector and Galeforce turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "the-collector",
+      "galeforce",
+      "lord-dominiks-regard",
+      "magnetic-blaster",
+      "infinity-edge"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/jhin",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "jinx-standard",
+    "championId": "jinx",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Galeforce and Magnetic Blaster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "galeforce",
+      "magnetic-blaster",
+      "mortal-reminder",
+      "runaans-hurricane",
+      "infinity-edge"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/jinx",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "kaisa-standard",
+    "championId": "kaisa",
+    "name": "On-Hit",
+    "archetype": "on-hit",
+    "description": "On-hit stacking \u2014 Kraken Slayer and Guinsoo's Rageblade make each basic attack carry bonus damage. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "kraken-slayer",
+      "guinsoos-rageblade",
+      "terminus",
+      "runaans-hurricane",
+      "blade-of-the-ruined-king"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/kaisa",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "kalista-standard",
+    "championId": "kalista",
+    "name": "On-Hit",
+    "archetype": "on-hit",
+    "description": "On-hit stacking \u2014 Blade of the Ruined King and Guinsoo's Rageblade make each basic attack carry bonus damage. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blade-of-the-ruined-king",
+      "guinsoos-rageblade",
+      "runaans-hurricane",
+      "terminus",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/kalista",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "karma-standard",
+    "championId": "karma",
+    "name": "Enchanter",
+    "archetype": "ability",
+    "description": "Enchanter path \u2014 Ardent Censer and Harmonic Echo amplify your healing and shielding to keep the carry alive. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "ardent-censer",
+      "harmonic-echo",
+      "redemption",
+      "staff-of-flowing-water"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/karma",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "kassadin-standard",
+    "championId": "kassadin",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Rod of Ages and Archangel's Staff feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "rod-of-ages",
+      "archangels-staff",
+      "rabadons-deathcap",
+      "malignance",
+      "infinity-orb"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/kassadin",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "kayle-standard",
+    "championId": "kayle",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Nashor's Tooth and Dusk and Dawn feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "nashors-tooth",
+      "dusk-and-dawn",
+      "rabadons-deathcap",
+      "infinity-orb"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/kayle",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "kayn-standard",
+    "championId": "kayn",
+    "name": "Lethality",
+    "archetype": "lethality",
+    "description": "Flat armor penetration to threaten squishy targets, led by Youmuu's Ghostblade. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "youmuus-ghostblade",
+      "manamune",
+      "seryldas-grudge",
+      "serpents-fang",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/kayn",
+    "meme": false,
+    "boots": "boots-of-dynamism"
+  },
+  {
+    "id": "khazix-standard",
+    "championId": "khazix",
+    "name": "Lethality",
+    "archetype": "lethality",
+    "description": "Flat armor penetration to threaten squishy targets, led by Youmuu's Ghostblade. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "youmuus-ghostblade",
+      "duskblade-of-draktharr",
+      "seryldas-grudge",
+      "serpents-fang",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/khazix",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "kindred-standard",
+    "championId": "kindred",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Kraken Slayer and The Collector turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "kraken-slayer",
+      "the-collector",
+      "mortal-reminder",
+      "magnetic-blaster",
+      "bloodthirster"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/kindred",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "kogmaw-standard",
+    "championId": "kogmaw",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Blade of the Ruined King and Guinsoo's Rageblade turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blade-of-the-ruined-king",
+      "guinsoos-rageblade",
+      "navori-quickblades",
+      "runaans-hurricane",
+      "terminus"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/kogmaw",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "ksante-standard",
+    "championId": "ksante",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Iceborn Gauntlet and Unending Despair stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "iceborn-gauntlet",
+      "unending-despair",
+      "thornmail",
+      "gargoyle-stoneplate",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/ksante",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "lee-sin-standard",
+    "championId": "lee-sin",
+    "name": "Lethality",
+    "archetype": "lethality",
+    "description": "Flat armor penetration to threaten squishy targets, led by Youmuu's Ghostblade. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "youmuus-ghostblade",
+      "trinity-force",
+      "seryldas-grudge",
+      "serpents-fang",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/lee-sin",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "leona-standard",
+    "championId": "leona",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Locket of the Iron Solari and Dawnshroud stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "locket-of-the-iron-solari",
+      "dawnshroud",
+      "thornmail",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/leona",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "lillia-standard",
+    "championId": "lillia",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Liandry's Torment and Riftmaker feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "liandrys-torment",
+      "riftmaker",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/lillia",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "lissandra-standard",
+    "championId": "lissandra",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Malignance and Infinity Orb feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "malignance",
+      "infinity-orb",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/lissandra",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "lucian-standard",
+    "championId": "lucian",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Essence Reaver and Magnetic Blaster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "essence-reaver",
+      "magnetic-blaster",
+      "infinity-edge",
+      "lord-dominiks-regard",
+      "bloodthirster",
+      "galeforce"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/lucian",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "lulu-standard",
+    "championId": "lulu",
+    "name": "Enchanter",
+    "archetype": "ability",
+    "description": "Enchanter path \u2014 Ardent Censer and Redemption amplify your healing and shielding to keep the carry alive. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "ardent-censer",
+      "redemption",
+      "harmonic-echo",
+      "knights-vow"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/lulu",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "malphite-standard",
+    "championId": "malphite",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Iceborn Gauntlet and Thornmail stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "iceborn-gauntlet",
+      "thornmail",
+      "frozen-heart",
+      "gargoyle-stoneplate",
+      "force-of-nature"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/malphite",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "maokai-standard",
+    "championId": "maokai",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Locket of the Iron Solari and Warmog's Armor stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "locket-of-the-iron-solari",
+      "warmogs-armor",
+      "frozen-heart",
+      "force-of-nature"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/maokai",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "master-yi-standard",
+    "championId": "master-yi",
+    "name": "On-Hit",
+    "archetype": "on-hit",
+    "description": "On-hit stacking \u2014 Blade of the Ruined King and Guinsoo's Rageblade make each basic attack carry bonus damage. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blade-of-the-ruined-king",
+      "guinsoos-rageblade",
+      "terminus",
+      "deaths-dance",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/master-yi",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "mel-standard",
+    "championId": "mel",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Blackfire Torch and Infinity Orb feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blackfire-torch",
+      "infinity-orb",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/mel",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "milio-standard",
+    "championId": "milio",
+    "name": "Enchanter",
+    "archetype": "ability",
+    "description": "Enchanter path \u2014 Ardent Censer and Redemption amplify your healing and shielding to keep the carry alive. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "ardent-censer",
+      "redemption",
+      "harmonic-echo",
+      "knights-vow"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/milio",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "miss-fortune-standard",
+    "championId": "miss-fortune",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Duskblade of Draktharr and The Collector turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "duskblade-of-draktharr",
+      "the-collector",
+      "lord-dominiks-regard",
+      "infinity-edge",
+      "bloodthirster"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/miss-fortune",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "mordekaiser-standard",
+    "championId": "mordekaiser",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Riftmaker and Liandry's Torment feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "riftmaker",
+      "liandrys-torment",
+      "rabadons-deathcap",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/mordekaiser",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "morgana-standard",
+    "championId": "morgana",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Blackfire Torch and Liandry's Torment feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blackfire-torch",
+      "liandrys-torment",
+      "rylais-crystal-scepter",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/morgana",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "nami-standard",
+    "championId": "nami",
+    "name": "Enchanter",
+    "archetype": "ability",
+    "description": "Enchanter path \u2014 Harmonic Echo and Ardent Censer amplify your healing and shielding to keep the carry alive. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "harmonic-echo",
+      "ardent-censer",
+      "redemption",
+      "staff-of-flowing-water"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/nami",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "nasus-standard",
+    "championId": "nasus",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Trinity Force and Sundered Sky stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "sundered-sky",
+      "seryldas-grudge",
+      "amaranths-twinguard",
+      "frozen-heart"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/nasus",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "nautilus-standard",
+    "championId": "nautilus",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Locket of the Iron Solari and Warmog's Armor stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "locket-of-the-iron-solari",
+      "warmogs-armor",
+      "frozen-heart",
+      "force-of-nature"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/nautilus",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "nidalee-standard",
+    "championId": "nidalee",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Lich Bane and Rabadon's Deathcap feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "lich-bane",
+      "rabadons-deathcap",
+      "infinity-orb",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/nidalee",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "nilah-standard",
+    "championId": "nilah",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Essence Reaver and The Collector turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "essence-reaver",
+      "the-collector",
+      "lord-dominiks-regard",
+      "infinity-edge",
+      "bloodthirster"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/nilah",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "nocturne-standard",
+    "championId": "nocturne",
+    "name": "Lethality",
+    "archetype": "lethality",
+    "description": "Flat armor penetration to threaten squishy targets, led by Duskblade of Draktharr. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "duskblade-of-draktharr",
+      "serpents-fang",
+      "seryldas-grudge",
+      "sundered-sky",
+      "guardian-angel",
+      "stridebreaker"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/nocturne",
+    "meme": false,
+    "boots": "boots-of-dynamism"
+  },
+  {
+    "id": "norra-standard",
+    "championId": "norra",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Luden's Echo and Infinity Orb feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "ludens-echo",
+      "infinity-orb",
+      "horizon-focus",
+      "rabadons-deathcap"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/norra",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "nunu-amp-willump-standard",
+    "championId": "nunu-amp-willump",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Searing Crown and Thornmail stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "searing-crown",
+      "thornmail",
+      "force-of-nature",
+      "warmogs-armor",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/nunu-amp-willump",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "olaf-standard",
+    "championId": "olaf",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Trinity Force and Zeke's Convergence stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "zekes-convergence",
+      "deaths-dance",
+      "force-of-nature",
+      "steraks-gage"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/olaf",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "orianna-standard",
+    "championId": "orianna",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Blackfire Torch and Infinity Orb feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blackfire-torch",
+      "infinity-orb",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/orianna",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "ornn-standard",
+    "championId": "ornn",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Heartsteel and Sunfire Aegis stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "heartsteel",
+      "sunfire-aegis",
+      "thornmail",
+      "gargoyle-stoneplate",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/ornn",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "pantheon-standard",
+    "championId": "pantheon",
+    "name": "Lethality",
+    "archetype": "lethality",
+    "description": "Flat armor penetration to threaten squishy targets, led by Serpent's Fang. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "serpents-fang",
+      "seryldas-grudge",
+      "blade-of-the-ruined-king",
+      "edge-of-night",
+      "guardian-angel",
+      "galeforce"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/pantheon",
+    "meme": false,
+    "boots": "boots-of-dynamism"
+  },
+  {
+    "id": "poppy-standard",
+    "championId": "poppy",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Sunfire Aegis and Thornmail stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "sunfire-aegis",
+      "thornmail",
+      "force-of-nature",
+      "gargoyle-stoneplate",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/poppy",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "pyke-standard",
+    "championId": "pyke",
+    "name": "Lethality",
+    "archetype": "lethality",
+    "description": "Flat armor penetration to threaten squishy targets, led by Youmuu's Ghostblade. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "youmuus-ghostblade",
+      "serpents-fang",
+      "edge-of-night",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/pyke",
+    "meme": false,
+    "boots": "boots-of-dynamism"
+  },
+  {
+    "id": "rakan-standard",
+    "championId": "rakan",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Imperial Mandate and Zeke's Convergence stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "imperial-mandate",
+      "zekes-convergence",
+      "oceanids-trident",
+      "abyssal-mask"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/rakan",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "rammus-standard",
+    "championId": "rammus",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Searing Crown and Thornmail stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "searing-crown",
+      "thornmail",
+      "iceborn-gauntlet",
+      "amaranths-twinguard",
+      "dawnshroud"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/rammus",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "rell-standard",
+    "championId": "rell",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Zeke's Convergence and Radiant Virtue stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "zekes-convergence",
+      "radiant-virtue",
+      "dawnshroud",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/rell",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "renekton-standard",
+    "championId": "renekton",
+    "name": "Bruiser",
+    "archetype": "bruiser",
+    "description": "Damage with staying power \u2014 Blade of the Ruined King and Goredrinker keep you fighting through extended trades. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blade-of-the-ruined-king",
+      "goredrinker",
+      "mortal-reminder",
+      "hullbreaker",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/renekton",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "rengar-standard",
+    "championId": "rengar",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Essence Reaver and Bloodthirster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "essence-reaver",
+      "bloodthirster",
+      "lord-dominiks-regard",
+      "infinity-edge",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/rengar",
+    "meme": false,
+    "boots": "boots-of-dynamism"
+  },
+  {
+    "id": "riven-standard",
+    "championId": "riven",
+    "name": "Bruiser",
+    "archetype": "bruiser",
+    "description": "Damage with staying power \u2014 Eclipse and Sundered Sky keep you fighting through extended trades. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "eclipse",
+      "sundered-sky",
+      "goredrinker",
+      "seryldas-grudge",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/riven",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "rumble-standard",
+    "championId": "rumble",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Liandry's Torment and Zhonya's Hourglass feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "liandrys-torment",
+      "zhonyas-hourglass",
+      "rabadons-deathcap",
+      "riftmaker"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/rumble",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "ryze-standard",
+    "championId": "ryze",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Rod of Ages and Archangel's Staff feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "rod-of-ages",
+      "archangels-staff",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/ryze",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "samira-standard",
+    "championId": "samira",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 The Collector and Bloodthirster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "the-collector",
+      "bloodthirster",
+      "infinity-edge",
+      "lord-dominiks-regard",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/samira",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "senna-standard",
+    "championId": "senna",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Serpent's Fang and Magnetic Blaster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "serpents-fang",
+      "magnetic-blaster",
+      "mortal-reminder",
+      "guardian-angel",
+      "galeforce"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/senna",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "seraphine-standard",
+    "championId": "seraphine",
+    "name": "Enchanter",
+    "archetype": "ability",
+    "description": "Enchanter path \u2014 Ardent Censer and Redemption amplify your healing and shielding to keep the carry alive. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "ardent-censer",
+      "redemption",
+      "harmonic-echo",
+      "staff-of-flowing-water"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/seraphine",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "sett-standard",
+    "championId": "sett",
+    "name": "Bruiser",
+    "archetype": "bruiser",
+    "description": "Damage with staying power \u2014 Stridebreaker and Black Cleaver keep you fighting through extended trades. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "stridebreaker",
+      "black-cleaver",
+      "overlords-bloodmail",
+      "spear-of-shojin",
+      "steraks-gage",
+      "galeforce"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/sett",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "shen-standard",
+    "championId": "shen",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Heartsteel and Sunfire Aegis stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "heartsteel",
+      "sunfire-aegis",
+      "thornmail",
+      "dawnshroud",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/shen",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "shyvana-standard",
+    "championId": "shyvana",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Trinity Force and Blade of the Ruined King stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "blade-of-the-ruined-king",
+      "deaths-dance",
+      "force-of-nature",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/shyvana",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "singed-standard",
+    "championId": "singed",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Liandry's Torment and Rylai's Crystal Scepter stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "liandrys-torment",
+      "rylais-crystal-scepter",
+      "dead-mans-plate",
+      "force-of-nature",
+      "riftmaker"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/singed",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "sion-standard",
+    "championId": "sion",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Sunfire Aegis and Thornmail stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "sunfire-aegis",
+      "thornmail",
+      "unending-despair",
+      "mantle-of-the-twelfth-hour",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/sion",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "sivir-standard",
+    "championId": "sivir",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Galeforce and Bloodthirster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "galeforce",
+      "bloodthirster",
+      "navori-quickblades",
+      "lord-dominiks-regard",
+      "infinity-edge"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/sivir",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "skarner-standard",
+    "championId": "skarner",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Searing Crown and Hollow Radiance stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "searing-crown",
+      "hollow-radiance",
+      "unending-despair",
+      "thornmail",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/skarner",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "smolder-standard",
+    "championId": "smolder",
+    "name": "Bruiser",
+    "archetype": "bruiser",
+    "description": "Damage with staying power \u2014 Manamune and Trinity Force keep you fighting through extended trades. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "manamune",
+      "trinity-force",
+      "seryldas-grudge",
+      "magnetic-blaster",
+      "spear-of-shojin"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/smolder",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "sona-standard",
+    "championId": "sona",
+    "name": "Enchanter",
+    "archetype": "ability",
+    "description": "Enchanter path \u2014 Archangel's Staff and Ardent Censer amplify your healing and shielding to keep the carry alive. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "archangels-staff",
+      "ardent-censer",
+      "redemption",
+      "harmonic-echo"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/sona",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "soraka-standard",
+    "championId": "soraka",
+    "name": "Enchanter",
+    "archetype": "ability",
+    "description": "Enchanter path \u2014 Harmonic Echo and Ardent Censer amplify your healing and shielding to keep the carry alive. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "harmonic-echo",
+      "ardent-censer",
+      "redemption",
+      "staff-of-flowing-water"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/soraka",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "swain-standard",
+    "championId": "swain",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Malignance and Infinity Orb feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "malignance",
+      "infinity-orb",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/swain",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "syndra-standard",
+    "championId": "syndra",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Blackfire Torch and Infinity Orb feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blackfire-torch",
+      "infinity-orb",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/syndra",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "taliyah-standard",
+    "championId": "taliyah",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Blackfire Torch and Infinity Orb feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blackfire-torch",
+      "infinity-orb",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/taliyah",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "talon-standard",
+    "championId": "talon",
+    "name": "Lethality",
+    "archetype": "lethality",
+    "description": "Flat armor penetration to threaten squishy targets, led by Youmuu's Ghostblade. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "youmuus-ghostblade",
+      "serpents-fang",
+      "seryldas-grudge",
+      "edge-of-night",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/talon",
+    "meme": false,
+    "boots": "boots-of-dynamism"
+  },
+  {
+    "id": "teemo-standard",
+    "championId": "teemo",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Liandry's Torment and Infinity Orb feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "liandrys-torment",
+      "infinity-orb",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/teemo",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "thresh-standard",
+    "championId": "thresh",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Locket of the Iron Solari and Warmog's Armor stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "locket-of-the-iron-solari",
+      "warmogs-armor",
+      "frozen-heart",
+      "force-of-nature"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/thresh",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "tristana-standard",
+    "championId": "tristana",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Bloodthirster and Magnetic Blaster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "bloodthirster",
+      "magnetic-blaster",
+      "navori-quickblades",
+      "lord-dominiks-regard",
+      "infinity-edge"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/tristana",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "tryndamere-standard",
+    "championId": "tryndamere",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Blade of the Ruined King and Magnetic Blaster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blade-of-the-ruined-king",
+      "magnetic-blaster",
+      "infinity-edge",
+      "mortal-reminder",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/tryndamere",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "twisted-fate-standard",
+    "championId": "twisted-fate",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Rod of Ages and Lich Bane feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "rod-of-ages",
+      "lich-bane",
+      "nashors-tooth",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/twisted-fate",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "twitch-standard",
+    "championId": "twitch",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 The Collector and Runaan's Hurricane turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "the-collector",
+      "runaans-hurricane",
+      "lord-dominiks-regard",
+      "phantom-dancer",
+      "blade-of-the-ruined-king"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/twitch",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "urgot-standard",
+    "championId": "urgot",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Black Cleaver and Sterak's Gage stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "black-cleaver",
+      "steraks-gage",
+      "thornmail",
+      "overlords-bloodmail",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/urgot",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "varus-standard",
+    "championId": "varus",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Blade of the Ruined King and Guinsoo's Rageblade turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blade-of-the-ruined-king",
+      "guinsoos-rageblade",
+      "dusk-and-dawn",
+      "runaans-hurricane",
+      "zhonyas-hourglass",
+      "galeforce"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/varus",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "vayne-standard",
+    "championId": "vayne",
+    "name": "On-Hit",
+    "archetype": "on-hit",
+    "description": "On-hit stacking \u2014 Blade of the Ruined King and Guinsoo's Rageblade make each basic attack carry bonus damage. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blade-of-the-ruined-king",
+      "guinsoos-rageblade",
+      "magnetic-blaster",
+      "terminus",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/vayne",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "velkoz-standard",
+    "championId": "velkoz",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Blackfire Torch and Infinity Orb feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blackfire-torch",
+      "infinity-orb",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/velkoz",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "vex-standard",
+    "championId": "vex",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Luden's Echo and Infinity Orb feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "ludens-echo",
+      "infinity-orb",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/vex",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "vi-standard",
+    "championId": "vi",
+    "name": "Bruiser",
+    "archetype": "bruiser",
+    "description": "Damage with staying power \u2014 Trinity Force and Blade of the Ruined King keep you fighting through extended trades. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "blade-of-the-ruined-king",
+      "deaths-dance",
+      "mortal-reminder",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/vi",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "viego-standard",
+    "championId": "viego",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Essence Reaver and The Collector turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "essence-reaver",
+      "the-collector",
+      "lord-dominiks-regard",
+      "infinity-edge",
+      "bloodthirster"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/viego",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "viktor-standard",
+    "championId": "viktor",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Blackfire Torch and Lich Bane feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blackfire-torch",
+      "lich-bane",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/viktor",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "volibear-standard",
+    "championId": "volibear",
+    "name": "Tank",
+    "archetype": "tank",
+    "description": "Frontline path \u2014 Dusk and Dawn and Navori Quickblades stack the resists to outlast the fight. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "dusk-and-dawn",
+      "navori-quickblades",
+      "unending-despair",
+      "thornmail",
+      "amaranths-twinguard"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/volibear",
+    "meme": false,
+    "boots": "plated-steelcaps"
+  },
+  {
+    "id": "warwick-standard",
+    "championId": "warwick",
+    "name": "On-Hit",
+    "archetype": "on-hit",
+    "description": "On-hit stacking \u2014 Trinity Force and Blade of the Ruined King make each basic attack carry bonus damage. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "blade-of-the-ruined-king",
+      "terminus",
+      "deaths-dance",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/warwick",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "wukong-standard",
+    "championId": "wukong",
+    "name": "Lethality",
+    "archetype": "lethality",
+    "description": "Flat armor penetration to threaten squishy targets, led by Trinity Force. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "sundered-sky",
+      "seryldas-grudge",
+      "serpents-fang",
+      "guardian-angel",
+      "stridebreaker"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/wukong",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "xayah-standard",
+    "championId": "xayah",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Galeforce and Bloodthirster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "galeforce",
+      "bloodthirster",
+      "magnetic-blaster",
+      "lord-dominiks-regard",
+      "infinity-edge"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/xayah",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "xin-zhao-standard",
+    "championId": "xin-zhao",
+    "name": "Lethality",
+    "archetype": "lethality",
+    "description": "Flat armor penetration to threaten squishy targets, led by Trinity Force. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "trinity-force",
+      "serpents-fang",
+      "mortal-reminder",
+      "deaths-dance",
+      "guardian-angel",
+      "goredrinker"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/xin-zhao",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "yasuo-standard",
+    "championId": "yasuo",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Galeforce and Bloodthirster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "galeforce",
+      "bloodthirster",
+      "lord-dominiks-regard",
+      "infinity-edge",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/yasuo",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "yone-standard",
+    "championId": "yone",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Blade of the Ruined King and Bloodthirster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blade-of-the-ruined-king",
+      "bloodthirster",
+      "lord-dominiks-regard",
+      "infinity-edge",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/yone",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "yunara-standard",
+    "championId": "yunara",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Galeforce and Magnetic Blaster turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "galeforce",
+      "magnetic-blaster",
+      "infinity-edge",
+      "lord-dominiks-regard",
+      "bloodthirster"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/yunara",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "yuumi-standard",
+    "championId": "yuumi",
+    "name": "Enchanter",
+    "archetype": "ability",
+    "description": "Enchanter path \u2014 Ardent Censer and Harmonic Echo amplify your healing and shielding to keep the carry alive. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "ardent-censer",
+      "harmonic-echo",
+      "redemption",
+      "staff-of-flowing-water"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/yuumi",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "zed-standard",
+    "championId": "zed",
+    "name": "Lethality",
+    "archetype": "lethality",
+    "description": "Flat armor penetration to threaten squishy targets, led by Eclipse. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "eclipse",
+      "trinity-force",
+      "seryldas-grudge",
+      "serpents-fang",
+      "guardian-angel"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/zed",
+    "meme": false,
+    "boots": "gluttonous-greaves"
+  },
+  {
+    "id": "zeri-standard",
+    "championId": "zeri",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "Crit-stacking carry path \u2014 Bloodthirster and Essence Reaver turn every auto into a threat. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "bloodthirster",
+      "essence-reaver",
+      "mortal-reminder",
+      "infinity-edge",
+      "navori-quickblades"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/zeri",
+    "meme": false,
+    "boots": "berserkers-greaves"
+  },
+  {
+    "id": "ziggs-standard",
+    "championId": "ziggs",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Luden's Echo and Infinity Orb feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "ludens-echo",
+      "infinity-orb",
+      "rabadons-deathcap",
+      "zhonyas-hourglass"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/ziggs",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "zilean-standard",
+    "championId": "zilean",
+    "name": "Enchanter",
+    "archetype": "ability",
+    "description": "Enchanter path \u2014 Harmonic Echo and Ardent Censer amplify your healing and shielding to keep the carry alive. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "harmonic-echo",
+      "ardent-censer",
+      "redemption",
+      "oceanids-trident"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/zilean",
+    "meme": false,
+    "boots": "ionian-boots-of-lucidity"
+  },
+  {
+    "id": "zoe-standard",
+    "championId": "zoe",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Luden's Echo and Lich Bane feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "ludens-echo",
+      "lich-bane",
+      "rabadons-deathcap",
+      "infinity-orb"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/zoe",
+    "meme": false,
+    "boots": "boots-of-mana"
+  },
+  {
+    "id": "zyra-standard",
+    "championId": "zyra",
+    "name": "Ability Power",
+    "archetype": "ability",
+    "description": "Ability-first path \u2014 Blackfire Torch and Liandry's Torment feed the burst rotation. WildRiftFire's recommended 7.2 path.",
+    "items": [
+      "blackfire-torch",
+      "liandrys-torment",
+      "rylais-crystal-scepter",
+      "rabadons-deathcap"
+    ],
+    "level": 15,
+    "source": "https://www.wildriftfire.com/guide/zyra",
+    "meme": false,
+    "boots": "boots-of-mana"
   }
 ]
