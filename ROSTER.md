@@ -162,7 +162,85 @@ per-item wiki lookups reversed that:
   matches neither of the two other sources checked — looks like a
   hallucinated or wrong-page fetch. Couldn't get a reliable verified stat
   block; left unadded rather than guessed. Revisit with a cleaner source if
-  this item's absence turns out to matter.
+  this item's absence turns out to matter. **Re-investigated 2026-07-15 —
+  still unconfirmable in this environment; see below.**
+
+#### Stormsurge re-investigation (2026-07-15) — still UNCONFIRMABLE, do not re-litigate without egress
+
+Prompted by two new datapoints: (1) WildRiftFire's live Patch 7.2 guides
+recommend Stormsurge on 8 mage champions (akali, aurora, heimerdinger,
+katarina, kennen, veigar, vladimir, bard); (2) the official-wiki page
+`wiki.leagueoflegends.com/en-us/WR:Stormsurge` exists but smells
+PC-contaminated (cost 3988, a PC-style recipe, an "added for ARAM in V5.2a"
+note). Goal was to settle definitively whether Stormsurge is purchasable in
+current WR Summoner's Rift.
+
+**Blocked before it could be settled — the tie-breaker sources are all
+unreachable from this cloud runner:**
+
+- Every WR-native host is denied by this session's **egress policy** (proxy
+  answers `403` to `CONNECT`): `wildrift.leagueoflegends.com` (the primary
+  source), `wr-meta.com`, `wildriftfire.com`, `riftgg.app`, `wiki.leagueoflegends.com`,
+  `leagueoflegends.fandom.com` — all fail `curl` with rc 56. `web.archive.org`
+  is blocked too, so archived copies of the primary source are out as well.
+- `riftgg.app` also needs the **Firecrawl key from 1Password**, but the `op`
+  CLI isn't installed here and `FIRECRAWL_API_KEY` is unset — a cloud runner
+  can't reach 1Password (this is already documented for `scripts/daily-verify.sh`).
+- The only working web channel is the Anthropic **WebSearch** tool, which
+  returns AI-summarized snippets, not raw page text. This repo's own audit
+  discipline (see the provenance spot-check note above: "search-engine
+  summaries synthesized answers that weren't always backed by the primary
+  text") requires confirming every value against a **direct fetch of the
+  primary source** before trusting it — which is exactly what's impossible here.
+
+**What the search snippets did/didn't establish:**
+
+- *Confirmed (datapoint 1 is real):* a WildRiftFire-domain-restricted search
+  confirms Stormsurge appears in WildRiftFire's Patch 7.2 build guides for
+  those 8 champions. But WildRiftFire is this project's twice-documented
+  fabricator of plausible-sounding numbers (Lee Sin R, the component-item
+  "Enlighten/Madness" passives) — build *usage* is suggestive, not a verified
+  stat block, and WildRiftFire's own item numbers can't be cross-checked
+  against a primary source from here.
+- *Suggestive but unverifiable:* multiple WebSearch queries attribute to the
+  official 7.2 notes a **new burst-mage Stormsurge** with a "Squall" passive
+  (flat magic pen; deal 25% of a target's max HP within 2.5s → inflict Squall
+  + 25% MS for 2.5s, 25s cd; after 2s deal 125 + 10% AP magic damage; on kill
+  splash it + grant 25 gold). This fits the real 7.2 mage-item rework the
+  catalog already reflects (flat-pen consolidation; Blackfire Torch, Dusk and
+  Dawn, updated Luden's Echo, Void Amethyst all shipped). *But no reachable
+  source gives the two numbers an item entry needs — base **Ability Power**
+  and **cost** — and the searches say so outright ("base stat details ... are
+  not included").*
+- *Actively contradictory:* across four searches the hard numbers never
+  agreed — cost came back as 3988 (wiki/PC), 2800 (explicitly tagged the PC
+  Summoner's Rift version), or absent; AP as 100 or 90; magic pen as "7%+15",
+  "15 flat", or "flat/unspecified"; the max-HP trigger as 25% *or* 35%; the
+  cooldown 25s *or* 30s. One summary asserted the WR version is **ARAM-only**
+  while the SR version is PC-exclusive. This is the same PC-contamination +
+  hallucination signature that got the item excluded originally.
+
+**Verdict:** Do **not** add Stormsurge. There is genuine signal it may be a
+real 7.2 burst-mage item (real WildRiftFire build usage + a self-consistent
+Squall-passive description), but no complete, primary-source-verified stat
+block (cost + AP + magic pen) can be obtained from any source reachable here,
+and the readable sources contradict each other on nearly every number and on
+SR-vs-ARAM availability. Adding it would mean inventing a cost/AP the moat
+rules forbid guessing. The dependent follow-up (re-running the standing-builds
+pipeline to rescue the 7 skipped mage champions) is therefore also **not**
+run — it's contingent on a verified add, and the pipeline cache
+(`~/.cache/wrb/builds-pipeline/`) isn't present on this runner anyway.
+
+**How to actually settle this (next session, with network egress):** from an
+environment that can reach the WR-native hosts — or on the local machine where
+`op` + Firecrawl work — directly fetch, in priority order, (a) the official
+7.2 patch notes at `wildrift.leagueoflegends.com/.../wild-rift-patch-notes-7-2/`
+and confirm Stormsurge is listed as a purchasable SR item with an exact cost
+and AP; (b) `riftgg.app/items` (Firecrawl) and `wr-meta.com` for a WR-native
+stat block to cross-check. If ≥2 primary/WR-native sources agree on a round WR
+cost and stat line, add it via `/add-entity` and then run the standing-builds
+pipeline; if they still conflict or show it as ARAM-only, mark this closed as
+"not an SR item" and stop revisiting.
 
 ### Provenance completeness audit (bounded, patch 7.2 follow-up)
 
