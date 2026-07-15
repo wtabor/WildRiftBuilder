@@ -68,6 +68,14 @@ silently does nothing — no state update, no URL change, no console errors of a
 a real regression. The dev server's hot-reload state can get corrupted after many rapid edits or multiple
 restarts, causing phantom bugs. Verify against a fresh production build first: `npm run build && npm run start -- -p <spare-port>`.
 If the interaction works there, the issue was dev-server stale state; restart with `Ctrl+C` and `npm run dev`.
+(`.claude/launch.json` has a `wildriftbuilder-prod` config that serves the last `npm run build` on port 3100.)
+
+**Black screenshots after scrolling in the Preview/Browser pane.** Screenshot captures of this design can
+come back solid black after any programmatic scroll — on dev *and* prod servers — while the DOM is fine
+(`read_page`/JS queries return content) and real users see nothing wrong. It's a capture/paint artifact of
+the pane with this page's full-height grid/glow layers, not a regression. Workaround: resize the viewport
+tall enough that the region under test needs no scrolling (e.g. `resize_window` to 1440×2200), scroll to
+top, then screenshot.
 
 ## Polish checklist
 
