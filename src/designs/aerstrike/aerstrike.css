@@ -42,6 +42,17 @@
   --ae-accent-tertiary: #f4d06f;
   --ae-on-accent: #1a1208;
 
+  /* status palette — semantic only, never decorative. Ported from the
+     AerStrike Golf redesign (styles/golf.css), which defines the same set
+     against this palette. Having these means "better/worse" never has to
+     borrow the brand accent, which reads as emphasis, not as a verdict. */
+  --ae-st-idle: #6b645c;
+  --ae-st-busy: #f4d06f;
+  --ae-st-ready: #9dd9d2;
+  --ae-st-success: #6bd39a;
+  --ae-st-warn: #ff8811;
+  --ae-st-error: #ef6a5e;
+
   /* atmosphere */
   --ae-glow: radial-gradient(
     ellipse 70% 55% at 50% 0%,
@@ -119,15 +130,43 @@
 .ae-num { font-feature-settings: "ss01", "ss02", "cv11"; }
 
 .ae-eyebrow {
-  font-size: 0.6875rem;
+  font-size: 10px;
+  font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ae-fg-muted);
+  color: var(--ae-fg-subtle);
 }
 .ae-eyebrow-accent {
   color: var(--ae-accent);
   letter-spacing: 0.3em;
 }
+.ae-eyebrow-teal { color: var(--ae-accent-secondary); }
+
+/* ── Panel head — glyph · title · right accessory ───────────────
+   The section marker. A glyph naming the panel's job, not a 01/02/03
+   numeral: this is a workspace you jump around in, not an ordered
+   flow, so sequence numbering was encoding an order that isn't real.
+   (The golf redesign draws the same distinction — its *setup wizard*
+   uses numbered beads, its *dashboard* uses these.) */
+.ae-phead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.ae-phead__ico {
+  font-size: 12px;
+  line-height: 1;
+  color: var(--ae-accent);
+}
+.ae-phead__t {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ae-fg-soft);
+}
+.ae-phead__right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 .ae-scheme {
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -138,11 +177,6 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ae-fg-muted);
-}
-.ae-tick {
-  height: 1px;
-  width: 40px;
-  background: var(--ae-border-strong);
 }
 .ae-hairline {
   height: 1px;
@@ -329,6 +363,48 @@
   color: var(--ae-accent);
   font-weight: 700;
   letter-spacing: 0.06em;
+}
+
+/* ── Compare bars ──────────────────────────────────────────────────
+   The gapping-bar pattern from the golf redesign, applied to A/B: a
+   stat's two values as proportional bars against the larger of the
+   pair, so the row is readable at a glance before you read a digit.
+   A and B keep their identity colors (teal / orange); "who won" is
+   carried by the green verdict chip, never by hue. */
+.ae-splitbar {
+  display: flex;
+  width: 3.5rem;
+  height: 6px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--ae-fg) 6%, transparent);
+}
+.ae-splitbar__a,
+.ae-splitbar__b {
+  height: 100%;
+  transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.ae-splitbar__a { background: var(--ae-accent-secondary); }
+.ae-splitbar__b { background: var(--ae-accent); }
+
+/* Verdict chip — green means "this side is better", full stop. */
+.ae-verdict {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--ae-st-success) 45%, transparent);
+  background: color-mix(in srgb, var(--ae-st-success) 12%, transparent);
+  color: var(--ae-st-success);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 1px 5px;
+  white-space: nowrap;
+  font-feature-settings: "ss01", "ss02", "cv11";
+}
+.ae-verdict--even {
+  border-color: transparent;
+  background: transparent;
+  color: var(--ae-fg-subtle);
+  font-weight: 400;
 }
 
 /* ── Stat strip ────────────────────────────────────────────────── */

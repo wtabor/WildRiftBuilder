@@ -32,6 +32,39 @@ const STAT_FILTERS: { key: StatKey; label: string }[] = [
 const ABILITY_SLOTS: Ability["slot"][] = ["passive", "Q", "W", "E", "R"];
 const SLOT_LABEL: Record<Ability["slot"], string> = { passive: "P", Q: "Q", W: "W", E: "E", R: "R" };
 
+/* The AerStrike mark — cloud + bolt. Ported from the design system's
+   shared `Mark` (brand/aerstrike-mark.svg). The cloud takes currentColor
+   so it sits on any surface; the bolt keeps its fixed metallic-orange
+   gradient per the brand notes. */
+function Mark({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={(size * 400) / 512}
+      viewBox="0 0 512 400"
+      fill="none"
+      aria-hidden="true"
+      style={{ display: "block", flex: "0 0 auto" }}
+    >
+      <defs>
+        <linearGradient id="ae-bolt" x1="256" y1="80" x2="256" y2="372" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#ffc05a" />
+          <stop offset=".46" stopColor="#ff8811" />
+          <stop offset="1" stopColor="#e06a10" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M232 302 L150 302 C112 302 90 274 100 238 C66 226 70 174 110 164 C104 120 158 104 186 136 C198 98 258 94 278 132 C300 106 348 114 352 154 C402 152 422 210 388 248 C406 284 376 304 342 302 L286 302"
+        stroke="currentColor"
+        strokeWidth="22"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M300 84 L212 284 L266 284 L246 372 L300 256 L256 256 Z" fill="url(#ae-bolt)" />
+    </svg>
+  );
+}
+
 export default function AerstrikeDesign() {
   const {
     build, patch, setChampion, setLevel, loadBuild, addItem, removeItemAt, clearItems,
@@ -86,11 +119,8 @@ export default function AerstrikeDesign() {
   const full = activeList.length >= maxItems;
   const showPicker = !champion || pickerOpen;
 
-  // Curated "standing builds" for this champion. When present they take the
-  // first section slot, pushing the rest down by one (so numbering stays 01-N).
+  // Curated "standing builds" for this champion.
   const presets = champion ? getBuilds(champion.id) : [];
-  const sectionOffset = presets.length > 0 ? 1 : 0;
-  const sn = (i: number) => String(i + sectionOffset).padStart(2, "0");
 
   function handleAdd(id: string) {
     const slot = getItem(id)?.slot;
@@ -150,8 +180,8 @@ export default function AerstrikeDesign() {
               {presets.length > 0 && (
                 <Reveal delay={80}>
                   <section>
-                    <Eyebrow
-                      n="01"
+                    <PanelHead
+                      ico="≣"
                       label="Standing builds"
                       right={build.compare ? <span className="ae-chip ae-chip--teal">→ Build {build.active}</span> : undefined}
                     />
@@ -162,12 +192,18 @@ export default function AerstrikeDesign() {
 
               {/* Console work area: build column · stat readout. Level and
                   target share one horizontal bar — as separate stacked panels
-                  they orphaned a skinny third column of mostly empty space. */}
-              <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
+                  they orphaned a skinny third column of mostly empty space.
+                  Comparing widens the readout a little: it carries two builds'
+                  worth of columns. */}
+              <div
+                className={`grid gap-6 ${
+                  build.compare ? "xl:grid-cols-[minmax(0,1fr)_25rem]" : "xl:grid-cols-[minmax(0,1fr)_22rem]"
+                }`}
+              >
                 <div className="min-w-0 space-y-8">
                   <Reveal>
                     <section>
-                      <Eyebrow n={sn(1)} label="Level & target" />
+                      <PanelHead ico="✛" label="Level & target" />
                       <ConditionsBar
                         level={build.level}
                         onLevel={setLevel}
@@ -178,8 +214,8 @@ export default function AerstrikeDesign() {
                   </Reveal>
                   <Reveal delay={40}>
                     <section>
-                      <Eyebrow
-                        n={sn(2)}
+                      <PanelHead
+                        ico="⊞"
                         label={build.compare ? "Build A" : "Your build"}
                         right={
                           <div className="flex flex-wrap items-center justify-end gap-2">
@@ -247,8 +283,8 @@ export default function AerstrikeDesign() {
 
                   <Reveal delay={80}>
                     <section>
-                      <Eyebrow
-                        n={sn(3)}
+                      <PanelHead
+                        ico="⊕"
                         label="Item shop"
                         right={build.compare ? <span className="ae-chip ae-chip--teal">→ Build {build.active}</span> : undefined}
                       />
@@ -263,7 +299,7 @@ export default function AerstrikeDesign() {
 
                 <Reveal delay={120}>
                   <section>
-                    <Eyebrow n={sn(4)} label="Stat sheet" />
+                    <PanelHead ico="∑" label="Stat sheet" />
                     {build.compare && totalsB && dps && dpsB ? (
                       <CompareStatPanel a={totals} b={totalsB} dpsA={dps} dpsB={dpsB} provenance={champion.provenance} />
                     ) : (
@@ -290,18 +326,17 @@ export default function AerstrikeDesign() {
   );
 }
 
-/* ── Eyebrow / section label ──────────────────────────────────────────── */
+/* ── Panel head / section label ───────────────────────────────────────── */
 
-function Eyebrow({ n, label, right }: { n: string; label: string; right?: React.ReactNode }) {
+/** Glyph + name. See `.ae-phead` in the CSS for why this isn't 01/02/03. */
+function PanelHead({ ico, label, right }: { ico: string; label: string; right?: React.ReactNode }) {
   return (
-    <div className="mb-3 flex items-end justify-between gap-3">
-      <div>
-        <div className="ae-eyebrow">
-          <span className="ae-eyebrow-accent">{n}/</span> {label}
-        </div>
-        <div className="ae-tick mt-2" />
-      </div>
-      {right}
+    <div className="ae-phead">
+      <span className="ae-phead__ico" aria-hidden>
+        {ico}
+      </span>
+      <h2 className="ae-phead__t">{label}</h2>
+      {right && <span className="ae-phead__right">{right}</span>}
     </div>
   );
 }
@@ -415,9 +450,11 @@ function Nav({
   return (
     <header className="ae-nav">
       <div className="mx-auto flex h-14 max-w-[88rem] items-center gap-4 px-4">
-        <span className="inline-flex items-center gap-2.5">
-          <span className="ae-pulse" />
-          <span className="text-[13px] font-bold tracking-[0.18em] text-[var(--ae-fg)]">
+        {/* Brand bar per the design system: the mark sits left of the
+            wordmark, replacing the bare status dot. */}
+        <span className="inline-flex items-center gap-2.5 text-[var(--ae-fg)]">
+          <Mark size={20} />
+          <span className="text-[13px] font-bold tracking-[0.14em]">
             WILD RIFT BUILDER<span className="ae-dot">.</span>
           </span>
         </span>
@@ -553,7 +590,7 @@ function HeroBand({
           </div>
           <div className="min-w-0 flex-1">
             <div className="ae-eyebrow mb-1">
-              <span className="ae-eyebrow-accent">00/</span> Champion
+              Champion
             </div>
             <h1 className="text-[2rem] font-bold leading-[0.95] tracking-[-0.03em] text-[var(--ae-fg)]">
               {champion.name}
@@ -602,7 +639,7 @@ function HeroBand({
       <div className="ae-hero__zone">
         <div className="ae-eyebrow mb-3 flex items-center gap-2">
           <span className="ae-pulse" />
-          <span><span className="ae-eyebrow-accent">RT/</span> Live readout</span>
+          <span>Live readout</span>
         </div>
         <div className="ae-hud">
           {/* Auto DPS and Build cost are computed aggregates (the DPS formula;
@@ -895,10 +932,13 @@ function BuildPath({
 
 /* ── Build analysis (rule-based, from src/lib/analysis) ───────────────── */
 
+/* Severity reads off the status palette, not the brand accents: "this build
+   is clean" should be green because green means good, not gold because gold
+   was the third accent left over. */
 const FINDING_STYLE: Record<Finding["severity"], { chip: string; color: string }> = {
-  warn: { chip: "!", color: "var(--ae-accent)" },
-  info: { chip: "i", color: "var(--ae-accent-secondary)" },
-  good: { chip: "OK", color: "var(--ae-accent-tertiary)" },
+  warn: { chip: "!", color: "var(--ae-st-warn)" },
+  info: { chip: "i", color: "var(--ae-st-ready)" },
+  good: { chip: "✓", color: "var(--ae-st-success)" },
 };
 
 function FindingsList({ findings }: { findings: Finding[] }) {
@@ -912,7 +952,7 @@ function FindingsList({ findings }: { findings: Finding[] }) {
         return (
           <li key={f.id} className="flex items-start gap-2">
             <span
-              className="mt-px grid h-4 min-w-4 shrink-0 place-items-center border px-0.5 text-[8px] font-bold"
+              className="mt-px grid h-4 min-w-4 shrink-0 place-items-center border px-0.5 text-[10px] font-bold"
               style={{ color: s.color, borderColor: `color-mix(in srgb, ${s.color} 45%, transparent)` }}
             >
               {s.chip}
@@ -950,7 +990,7 @@ function VerdictBlock({ v }: { v: CompareVerdict }) {
   return (
     <div className="border border-[var(--ae-border-strong)] p-2.5">
       <div className="ae-eyebrow mb-1.5 text-[var(--ae-accent-secondary)]">A/B verdict</div>
-      <ul className="space-y-1 text-[11.5px] leading-snug text-[var(--ae-fg-dim)]">
+      <ul className="space-y-1 text-[13px] leading-snug text-[var(--ae-fg-dim)]">
         <li>{dpsLine}</li>
         <li>{goldLine}</li>
         {durabilityParts.length > 0 && <li>Durability (B − A): {durabilityParts.join(" · ")}.</li>}
@@ -1004,10 +1044,13 @@ function AnalysisPanel({
   const emptyB = comparing && itemsB.length === 0 && !bootsB;
   return (
     <div className="ae-panel ae-panel--corner ae-panel--accent p-4">
-      <h3 className="ae-eyebrow">
-        <span className="ae-eyebrow-accent">AN/</span> Build analysis
-      </h3>
-      <p className="mb-3 mt-1 text-[11px] text-[var(--ae-fg-subtle)]">
+      <div className="ae-phead !mb-1">
+        <span className="ae-phead__ico" aria-hidden>
+          ≈
+        </span>
+        <h3 className="ae-phead__t">Build analysis</h3>
+      </div>
+      <p className="mb-3 text-[11px] text-[var(--ae-fg-subtle)]">
         Deterministic checks from the same stat &amp; damage engines as the stat sheet — no guesswork.
       </p>
       {emptyA && !comparing ? (
@@ -1022,7 +1065,7 @@ function AnalysisPanel({
               <>
                 <FindingsList findings={a.findings} />
                 {swap ? (
-                  <p className="mt-2.5 border border-[var(--ae-border)] p-2 text-[11.5px] leading-snug text-[var(--ae-fg-dim)]">
+                  <p className="mt-2.5 border border-[var(--ae-border)] p-2 text-[13px] leading-snug text-[var(--ae-fg-dim)]">
                     <span className="font-bold text-[var(--ae-fg)]">Swap idea:</span> {swap.outName}{" "}
                     <span className="ae-arrow text-[var(--ae-accent)]">→</span> {swap.inName} adds ~
                     {Math.round(swap.dpsDelta)} auto DPS for{" "}
@@ -1035,7 +1078,7 @@ function AnalysisPanel({
                     </span>
                   </p>
                 ) : a.identity === "magic" ? (
-                  <p className="mt-2.5 text-[10.5px] text-[var(--ae-fg-subtle)]">
+                  <p className="mt-2.5 text-[11px] text-[var(--ae-fg-subtle)]">
                     Swap suggestions are skipped for ability-scaling champions — the engine models auto-attack DPS
                     only.
                   </p>
@@ -1205,7 +1248,7 @@ function ItemCard({
           {lines.length > 0 && (
             <ul className="space-y-1">
               {lines.map((l) => (
-                <li key={l.key} className="flex items-center gap-2 text-[11.5px] text-[var(--ae-fg-dim)]">
+                <li key={l.key} className="flex items-center gap-2 text-[13px] text-[var(--ae-fg-dim)]">
                   <span className="ae-num font-semibold text-[var(--ae-fg)]">+{l.display}</span>
                   <span>{l.label}</span>
                 </li>
@@ -1250,7 +1293,7 @@ function DamageReadout({ dps }: { dps: AutoAttackDps }) {
   ].filter((p) => p.value > 0.5);
   return (
     <div className="mt-4 border-t border-[var(--ae-border)] pt-3">
-      <h3 className="ae-eyebrow ae-eyebrow-accent">Auto-attack damage</h3>
+      <h3 className="ae-eyebrow">Auto-attack damage</h3>
       <p className="mb-2 mt-1 text-[11px] text-[var(--ae-fg-subtle)]">
         Sustained, incl. crit &amp; on-hit, vs the target dummy.
       </p>
@@ -1303,7 +1346,7 @@ function StatPanel({
           if (gr.length === 0) return null;
           return (
             <div key={g}>
-              <h3 className="ae-eyebrow ae-eyebrow-accent mb-1.5">{GROUP_LABEL[g]}</h3>
+              <h3 className="ae-eyebrow mb-1.5">{GROUP_LABEL[g]}</h3>
               <div>
                 {gr.map((r) => (
                   <div
@@ -1346,7 +1389,7 @@ function EffectRow({ e }: { e: BuildEffect }) {
     <li className="leading-snug">
       <span className="inline-flex items-center gap-1.5">
         <span
-          className="border px-1 py-px text-[8px] font-bold uppercase tracking-[0.1em]"
+          className="border px-1 py-px text-[10px] font-bold uppercase tracking-[0.1em]"
           style={
             e.kind === "active"
               ? { color: "var(--ae-accent)", borderColor: "color-mix(in srgb, var(--ae-accent) 40%, transparent)" }
@@ -1356,7 +1399,7 @@ function EffectRow({ e }: { e: BuildEffect }) {
           {e.kind === "active" ? "Act" : "Pas"}
         </span>
         <span className="font-semibold text-[var(--ae-fg-soft)]">{e.name}</span>
-        <span className="text-[9px] text-[var(--ae-fg-subtle)]">· {e.itemName}</span>
+        <span className="text-[10px] text-[var(--ae-fg-subtle)]">· {e.itemName}</span>
       </span>
       <span className="block text-[11px] text-[var(--ae-fg-muted)]">{e.description}</span>
     </li>
@@ -1368,7 +1411,7 @@ function CombatEffects({ items: list }: { items: Item[] }) {
   if (effects.length === 0) return null;
   return (
     <div className="mt-4 border-t border-[var(--ae-border)] pt-3">
-      <h3 className="ae-eyebrow ae-eyebrow-accent">Combat effects</h3>
+      <h3 className="ae-eyebrow">Combat effects</h3>
       <p className="mb-2 mt-1 text-[11px] text-[var(--ae-fg-subtle)]">Not counted in the stats above.</p>
       <ul className="space-y-1.5">
         {effects.map((e) => (
@@ -1381,33 +1424,41 @@ function CombatEffects({ items: list }: { items: Item[] }) {
 
 /* ── Compare ──────────────────────────────────────────────────────────── */
 
-/* A and B keep one fixed identity color each (A teal, B orange — same as the
-   Build A/B labels elsewhere). Winning is shown by weight, not by recoloring:
-   the winner's value is bright + bold, the loser's is dimmed, and a chip in
-   the winner's color names the winner and the margin ("B +25"). */
-const SIDE = {
-  A: "var(--ae-accent-secondary)",
-  B: "var(--ae-accent)",
-} as const;
+/* A and B keep one fixed identity color each (A teal, B orange — the same
+   colors their labels carry everywhere else), so hue only ever answers
+   "which build is this?". "Which is better?" is answered separately, by a
+   green verdict chip naming the side and the margin. Those are two
+   different questions and the old panel used one channel for both. */
+type Side = "A" | "B";
 
-function WinnerChip({
-  winner,
-  delta,
-}: {
-  winner: "A" | "B" | null;
-  delta: string;
-}) {
-  if (!winner) {
-    return <span className="w-16 shrink-0 text-right text-[10px] text-[var(--ae-fg-subtle)]">even</span>;
-  }
+function Verdict({ winner, delta }: { winner: Side | null; delta: string }) {
+  // Wide enough for the longest real margin — a four-figure gold delta
+  // ("B +3,700") — so the chip never runs back into the B value.
   return (
-    <span className="flex w-16 shrink-0 justify-end">
-      <span
-        className="ae-num border px-1 py-px text-[10px] font-bold leading-snug"
-        style={{ color: SIDE[winner], borderColor: `color-mix(in srgb, ${SIDE[winner]} 45%, transparent)` }}
-      >
-        {winner} +{delta}
+    <span className="flex w-[4.25rem] shrink-0 justify-end">
+      <span className={`ae-verdict ${winner ? "" : "ae-verdict--even"}`}>
+        {winner ? `${winner} +${delta}` : "even"}
       </span>
+    </span>
+  );
+}
+
+/**
+ * One bar split by the A:B ratio — teal segment vs orange segment. Reads as
+ * "which side is bigger, and by roughly how much" in a single glance and a
+ * single line, where two stacked bars needed twice the row height and forced
+ * the labels to truncate. Magnitude only; the verdict chip says who's better.
+ */
+function CompareBar({ aVal, bVal }: { aVal: number; bVal: number }) {
+  const a = Math.max(0, aVal);
+  const b = Math.max(0, bVal);
+  const total = a + b;
+  // Both-zero has no ratio to show; split it evenly rather than fake one.
+  const aPct = total > 0 ? (a / total) * 100 : 50;
+  return (
+    <span className="ae-splitbar shrink-0" aria-hidden>
+      <span className="ae-splitbar__a" style={{ width: `${aPct}%` }} />
+      <span className="ae-splitbar__b" style={{ width: `${100 - aPct}%` }} />
     </span>
   );
 }
@@ -1416,20 +1467,24 @@ function CompareRow({
   label,
   aDisp,
   bDisp,
+  aVal,
+  bVal,
   winner,
   delta,
-  size = "sm",
+  bars = true,
 }: {
   label: React.ReactNode;
   aDisp: string;
   bDisp: string;
-  winner: "A" | "B" | null;
+  aVal: number;
+  bVal: number;
+  winner: Side | null;
   delta: string;
-  size?: "sm" | "lg";
+  bars?: boolean;
 }) {
-  const val = (disp: string, mine: "A" | "B") => (
+  const val = (disp: string, mine: Side) => (
     <span
-      className={`ae-num w-14 shrink-0 text-right ${size === "lg" ? "text-lg" : ""} ${
+      className={`ae-num w-11 shrink-0 text-right text-[13px] ${
         winner === null || winner === mine ? "font-bold text-[var(--ae-fg)]" : "text-[var(--ae-fg-subtle)]"
       }`}
     >
@@ -1437,11 +1492,12 @@ function CompareRow({
     </span>
   );
   return (
-    <div className="flex items-center gap-2 border-b border-[var(--ae-border)] py-1.5 text-sm last:border-0">
-      <span className="min-w-0 flex-1 truncate text-[var(--ae-fg-dim)]">{label}</span>
+    <div className="flex items-center gap-2 border-b border-[var(--ae-border)] py-1.5 last:border-0">
+      <span className="min-w-0 flex-1 truncate text-[12px] text-[var(--ae-fg-dim)]">{label}</span>
+      {bars && <CompareBar aVal={aVal} bVal={bVal} />}
       {val(aDisp, "A")}
       {val(bDisp, "B")}
-      <WinnerChip winner={winner} delta={delta} />
+      <Verdict winner={winner} delta={delta} />
     </div>
   );
 }
@@ -1486,32 +1542,41 @@ function CompareStatPanel({
 
   return (
     <div className="ae-panel p-4">
-      <div className="flex items-center gap-2 border-b border-[var(--ae-border)] pb-1.5 text-[11px] font-bold uppercase tracking-[0.18em]">
-        <span className="flex-1 text-[var(--ae-fg-muted)]">Stat</span>
-        <span className="w-14 shrink-0 text-right" style={{ color: SIDE.A }}>A</span>
-        <span className="w-14 shrink-0 text-right" style={{ color: SIDE.B }}>B</span>
-        <span className="w-16 shrink-0 text-right text-[var(--ae-fg-subtle)]">Winner</span>
+      {/* Legend. A/B swatches teach the bar colors once, so no row has to. */}
+      <div className="flex items-center gap-2 border-b border-[var(--ae-border)] pb-2 text-[10px] uppercase tracking-[0.14em]">
+        <span className="flex flex-1 items-center gap-2.5">
+          <span className="flex items-center gap-1" style={{ color: "var(--ae-accent-secondary)" }}>
+            <span aria-hidden className="h-[3px] w-3" style={{ background: "currentColor" }} />A
+          </span>
+          <span className="flex items-center gap-1" style={{ color: "var(--ae-accent)" }}>
+            <span aria-hidden className="h-[3px] w-3" style={{ background: "currentColor" }} />B
+          </span>
+        </span>
+        <span className="text-[var(--ae-fg-subtle)]">Better</span>
       </div>
-      <p className="mb-1 mt-1.5 text-[10px] leading-snug text-[var(--ae-fg-subtle)]">
-        Bright value wins the row; the chip names the winner and the margin. Gold: the cheaper build wins.
+      <p className="mb-2 mt-1.5 text-[10px] leading-snug text-[var(--ae-fg-subtle)]">
+        Longer bar is more. Green names the better side — for gold, that&apos;s the cheaper one.
       </p>
 
-      <div className="mt-1.5 border border-[var(--ae-border-strong)] px-2.5 py-1">
+      <div className="border border-[var(--ae-border-strong)] px-2.5">
         <CompareRow
-          label={<span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--ae-fg-muted)]">Auto DPS</span>}
+          label={<span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--ae-fg-soft)]">Auto DPS</span>}
           aDisp={Math.round(dpsA.dps).toLocaleString("en-US")}
           bDisp={Math.round(dpsB.dps).toLocaleString("en-US")}
+          aVal={dpsA.dps}
+          bVal={dpsB.dps}
           winner={dps.winner}
           delta={dps.delta}
-          size="lg"
         />
       </div>
 
       <div className="mt-1.5">
         <CompareRow
-          label={<span title="Cheaper build wins this row">Gold</span>}
+          label={<span title="The cheaper build wins this row">Gold</span>}
           aDisp={formatGold(a.goldCost)}
           bDisp={formatGold(b.goldCost)}
+          aVal={a.goldCost}
+          bVal={b.goldCost}
           winner={gold.winner}
           delta={gold.delta}
         />
@@ -1523,7 +1588,7 @@ function CompareStatPanel({
           if (gr.length === 0) return null;
           return (
             <div key={g}>
-              <h3 className="ae-eyebrow ae-eyebrow-accent mb-1.5">{GROUP_LABEL[g]}</h3>
+              <h3 className="ae-eyebrow mb-1.5">{GROUP_LABEL[g]}</h3>
               <div>
                 {gr.map(([key, c]) => {
                   // statRows displays attack speed as final attacks/sec, so
@@ -1540,6 +1605,8 @@ function CompareStatPanel({
                       }
                       aDisp={c.aDisp ?? fmt(0)}
                       bDisp={c.bDisp ?? fmt(0)}
+                      aVal={c.aVal}
+                      bVal={c.bVal}
                       winner={v.winner}
                       delta={v.delta}
                     />
@@ -1577,7 +1644,7 @@ function ChampionGrid({
       <div className="ae-in mb-6 flex items-end justify-between gap-3">
         <div>
           <div className="ae-eyebrow mb-2">
-            <span className="ae-eyebrow-accent">00/</span> Roster
+            Roster
           </div>
           <h1 className="text-[2.25rem] font-bold leading-[0.95] tracking-[-0.03em] text-[var(--ae-fg)]">
             Champion select<span className="ae-dot">.</span>
