@@ -8,7 +8,7 @@ this as it adds entities; the **Data Accuracy Verify** workflow
 | Category   | Entries | Total (live) | Status                       |
 | ---------- | ------- | ------------ | ---------------------------- |
 | Champions  | 140     | 140+         | stats/roles/titles/abilities done; Yunara added for 7.2, Cho'Gath not yet confirmed live (see below) |
-| Items      | 108     | 108          | patch 7.2 enchant→item migration + item sweep done; roster complete (see follow-up investigation below — the items once thought missing turned out not to belong in the catalog) |
+| Items      | 110     | 110          | patch 7.2 enchant→item migration + item sweep done; +2 support quest-item upgrades added (Bulwark of the Mountain, Black Mist Scythe — see follow-up below). The other items once thought missing turned out not to belong in the catalog. |
 
 ## Field completeness (champions, patch 7.1g)
 
@@ -248,3 +248,62 @@ this as done for now (this pass covered the cheap mechanical check in full,
 plus a representative spot-check) and only opening a dedicated full-history
 verification session if a specific older-patch stamp is called into question
 again.
+
+### Follow-up: support quest-item line added (Bulwark, Black Mist Scythe)
+
+The 7.2 catalog carried general support items (Harmonic Echo, Ardent Censer,
+Shurelya's, Locket, Imperial Mandate, Redemption) but was **missing the two
+support quest-item upgrades** — **Bulwark of the Mountain** (melee/Relic Shield
+line) and **Black Mist Scythe** (ranged/Spectral Sickle line). WildRiftFire's
+7.2 guides recommend Bulwark in 13 champion builds and Black Mist Scythe in 12,
+and the standing-builds work had to drop them, skipping/degrading Bard/Lux/
+Sona-style support presets. Both added (`items.json`, +2 → 110 items):
+
+- **Bulwark of the Mountain** — 500g, `maxHealth: 175` + `abilityHaste: 10`.
+  Passives (descriptive): Spoils of War (2 gold / 3s + anti-ward bonus damage),
+  Spellcraft (champion takedown → −40% active-item cooldown), completed-Quest /
+  limited-to-1.
+- **Black Mist Scythe** — 500g, `abilityHaste: 10`; Versatile grants an
+  **adaptive** 14 AD / 28 AP, kept in effect text (the catalog's existing
+  convention for adaptive stats — the engine has no adaptive concept), so the
+  modeled stat block is just ability haste. Passives: Tribute (2 gold / 3s +
+  anti-ward), Spellcraft, completed-Quest / limited-to-1.
+
+Both are **brand-new entities** (first appearance), so per the `/add-entity`
+step-6 exception they carry **no provenance stamps**; the validator's provenance
+advisory confirms "no unstamped stat/cost changes." Quest/stack/gold-generation
+mechanics don't model in the stat engine — that's expected and by design here.
+
+**Verification caveat (important).** This work ran in a remote session whose
+egress gateway **denies every WR data host** — `wiki.leagueoflegends.com`, the
+Fandom mirror, wildriftfire, lolwildriftbuild, riftgg, wr-meta, **and
+archive.org** (403 on CONNECT, confirmed in the proxy's own failure log). The
+wiki pages named in the task could not be fetched directly; values were
+cross-checked via Anthropic-side WebSearch of those same pages. Two
+summary-level conflicts were resolved by **triangulating base vs. upgrade**
+rather than trusting a single summary:
+
+- Bulwark health **175** (not 200): Relic Shield base = 100 health → Bulwark
+  = 175 on the current Relic Shield path. The "200 health" listing pairs with
+  the **removed Targon's Buckler** upgrade path (legacy).
+- Black Mist Scythe adaptive **14 AD / 28 AP** (not 20/40): Spectral Sickle
+  base = 6 AD / 12 AP → 14/28 on upgrade; the "20/40" figure didn't reconcile
+  against the base.
+
+A recurring "**Soulforce** — 75 gold / 60s, adaptive stacks" description was
+**rejected as PC-League contamination** (a same-named PC item exists; this is
+the World Atlas support line, not the WR mechanic) — the same wildriftfire/
+search-summary hazard flagged elsewhere in this file. `meta.json` `verified`
+stays **false**; re-confirm the two flagged values against the official WR wiki
+from an unrestricted network before flipping it.
+
+**Standing-builds pipeline — not re-runnable in this environment.** The task
+asked to re-run `~/.cache/wrb/builds-pipeline/{fetch_guides,gen_builds}.py`
+afterward to rescue the Bard/Lux presets. That cache dir doesn't exist in this
+fresh clone (the scripts live only on the local machine), `fetch_guides.py`'s
+source (wildriftfire) is egress-blocked here, and this branch's
+`data/patches/7.2/builds.json` holds only the 3 hand-authored Ezreal presets —
+the fuller standing-builds backfill never landed here, so there are no dropped
+Bard/Lux presets in *this* repo to rescue. The two items now exist, which is the
+prerequisite that was blocking those presets; regenerate them by running the
+pipeline locally where the scripts and open network are available.

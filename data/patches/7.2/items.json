@@ -3183,5 +3183,73 @@
       "moveSpeedFlat": "7.2",
       "abilityHaste": "7.2"
     }
+  },
+  {
+    "id": "bulwark-of-the-mountain",
+    "name": "Bulwark of the Mountain",
+    "cost": 500,
+    "tags": [
+      "Health",
+      "AbilityHaste",
+      "Support"
+    ],
+    "slot": "item",
+    "stats": {
+      "maxHealth": 175,
+      "abilityHaste": 10
+    },
+    "effects": [
+      {
+        "name": "Spoils of War",
+        "kind": "passive",
+        "description": "Passively generate 2 gold every 3 seconds. Deal 2 bonus damage to enemy Warding Totems revealed by Sweeping Lens, Control Ward, or Scryer's Bloom. (Melee support line — the completed upgrade of Relic Shield's quest.)"
+      },
+      {
+        "name": "Spellcraft",
+        "kind": "passive",
+        "description": "Scoring a takedown on an enemy champion reduces the cooldown of your active item by 40%."
+      },
+      {
+        "name": "Quest (Completed)",
+        "kind": "passive",
+        "description": "Earned once Relic Shield's quest has generated 500 gold; this is the completed upgrade. Limited to 1 Quest item."
+      }
+    ]
+  },
+  {
+    "id": "black-mist-scythe",
+    "name": "Black Mist Scythe",
+    "cost": 500,
+    "tags": [
+      "AP",
+      "AbilityHaste",
+      "Support"
+    ],
+    "slot": "item",
+    "stats": {
+      "abilityHaste": 10
+    },
+    "effects": [
+      {
+        "name": "Versatile",
+        "kind": "passive",
+        "description": "Gain 14 attack damage or 28 ability power (Adaptive)."
+      },
+      {
+        "name": "Tribute",
+        "kind": "passive",
+        "description": "Passively generate 2 gold every 3 seconds. Deal 2 bonus damage to enemy Warding Totems revealed by Sweeping Lens, Control Ward, or Scryer's Bloom. (Ranged support line — the completed upgrade of Spectral Sickle's quest.)"
+      },
+      {
+        "name": "Spellcraft",
+        "kind": "passive",
+        "description": "Scoring a takedown on an enemy champion reduces the cooldown of your active item by 40%."
+      },
+      {
+        "name": "Quest (Completed)",
+        "kind": "passive",
+        "description": "Earned once Spectral Sickle's quest has generated 500 gold; this is the completed upgrade. Limited to 1 Quest item."
+      }
+    ]
   }
 ]
