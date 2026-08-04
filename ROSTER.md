@@ -248,3 +248,55 @@ this as done for now (this pass covered the cheap mechanical check in full,
 plus a representative spot-check) and only opening a dedicated full-history
 verification session if a specific older-patch stamp is called into question
 again.
+
+## Patch 7.2a (2026-07-15) — PARTIAL roll
+
+Rolled forward from 7.2. The official notes document 18 changes; **4 were
+representable in the current schema and were applied**. The rest are recorded
+here rather than silently dropped.
+
+Sources: [Riot 7.2a notes](https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-2a/)
+· [changelog.gg](https://changelog.gg/games/wild-rift/updates/2026-07-15-wild-rift-patch-notes-7-2a-10a16fe61cc11d1e)
+
+### Applied
+
+| Entity | Change | Note |
+| --- | --- | --- |
+| Skarner | W `Seismic Bastion` cooldown `9/8/7/6` → `8/7/6/5` | |
+| Skarner | E `Ixtal's Impact` cooldown `20/18/16/14` → `18/16/14/12` | |
+| Armorcrusher Boots | `attackDamage` `25` → `20` | provenance stamped `7.2a` |
+| Armorcrusher Boots | `lethality` `12` → `10` | "Armor Penetration" in the notes; stamped `7.2a` |
+
+Description-only edits (no engine effect): Manamune `Mana Charge` +18 → +14
+mana per stack; Blade of the Ruined King `Ruined Strikes` melee 10% → 8.5%.
+BotRK's `mechanic.currentHealthPct` models the **ranged** 7% value, which the
+patch did not change, so the mechanic is untouched.
+
+### Not applied — schema does not model the mechanic
+
+| Entity | Change | Why not |
+| --- | --- | --- |
+| Nidalee | Pounce base damage `65/100/135/170` → `55/90/125/160` | W models Bushwhack (human form) only; cougar-form values are not represented |
+| Nidalee | Aspect of the Cougar bonus Armor/MR AP ratio `3%` → `2.5%` | R has no `scalings`; passive stat-conversion is not modelled |
+| Warwick | Eternal Hunger bonus AD ratio `20%` → `15%` | passive has no `scalings` |
+| Warwick | Jaws of the Beast `90%` → `85%` AP | Q has no AP scaling modelled |
+| Skarner | Q max-health damage `10%` → `11%` | max-health damage not modelled |
+| Skarner | W shield ratio `8%` → `10%` max health | shields not modelled |
+| Senna | Absolution current-health damage `1.2–12%` → `1–10%` | passive not modelled |
+| Senna | R shield `40% AP + 4/stack` → `50% AP + 2.5/stack` | shields not modelled |
+| Yuumi | E `Zoomies` mana cost `80/90/100/110` → `65/75/85/95` | ability schema has no mana-cost field |
+| Yuumi | R `Final Chapter` base healing `20/30/40` → `20/35/50` | healing not modelled |
+
+### Not applied — item absent from the dataset
+
+`Tear of the Goddess` (mana/stack 6 → 5), `Seraph's Embrace` (Lifeline shield
+20% → 16%), and `Muramana` (Shock AD ratio 6% → 4.5%) have **no record in
+`items.json`** (108 items; `Archangel's Staff` is present, the Tear line is
+not). This is a roster gap, not a 7.2a regression — it predates this patch.
+
+### Discrepancy noted
+
+changelog.gg's 7.2a summary lists only ARAM adjustments for Skarner and does
+not corroborate the two cooldown changes. The official Riot notes do list
+them, so the primary source was used per the source-priority rule. Worth a
+re-check against the wiki once it catches up.
