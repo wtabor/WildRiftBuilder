@@ -1,9 +1,10 @@
-# UI notes — the Meta builder
+# UI notes — the AerStrike builder
 
-The Wild Rift Builder ships a single, polished UI — the **Meta** design — at `/`. It reads
+The Wild Rift Builder ships a single, polished UI — the **AerStrike** design — at `/`. It reads
 from the same pure stat engine and patch-versioned data as everything else; only the
 *presentation, layout, and interaction model* live in the design layer. This document is the
-playbook for iterating on it.
+playbook for iterating on it. For how the whole system fits together, see
+[ARCHITECTURE.md](./ARCHITECTURE.md).
 
 ## Structure
 
@@ -11,23 +12,32 @@ playbook for iterating on it.
 src/
 ├─ lib/            # SHARED, presentation-agnostic
 │  ├─ stats/       #   pure stat engine (unit-tested) — the correctness moat
+│  ├─ damage/      #   pure damage engine (auto-attack DPS vs a target)
 │  ├─ schema/      #   Zod schemas + types (single source of truth)
-│  ├─ data/        #   typed loaders over patch JSON
+│  ├─ data/        #   typed loaders over patch JSON + provenance resolution
 │  ├─ statDisplay  #   turns engine totals into ordered display rows
 │  ├─ visual.ts    #   monogram initials, deterministic colors, item-class colors, champion icon URLs
 │  ├─ icons.tsx    #   inline SVG icon set (stat + UI icons)
 │  └─ useShare.ts  #   copy-build-URL hook
 ├─ state/          # SHARED build state ↔ URL (?c=…&lvl=…&i=…) → shareable builds
 ├─ designs/
-│  └─ meta/MetaDesign.tsx   # the UI: a client component, default export (presentation only)
+│  ├─ aerstrike/   # the shipped UI (presentation only)
+│  │  ├─ AerstrikeDesign.tsx    # client component, default export
+│  │  ├─ ReactorCore.tsx        # three.js visual — code-split, ssr:false
+│  │  ├─ ProvenanceTooltip.tsx  # value → the patch note that changed it
+│  │  └─ motion.ts              # animated numbers, flash-on-increase, in-view
+│  └─ meta/MetaDesign.tsx       # DEPRECATED original design, kept at /meta
 └─ app/
-   ├─ page.tsx     # the route — renders MetaDesign
+   ├─ page.tsx     # the route — renders AerstrikeDesign
+   ├─ aerstrike/   # redirects to / (keeps old shared links alive)
+   ├─ meta/        # the deprecated design, noindex + deprecation banner
    └─ layout.tsx   # root layout; self-hosts the Geist font
 ```
 
 **Rule of thumb:** anything about *what a number is* lives in `lib/` and is shared. Anything
-about *how it looks* lives in `src/designs/meta/`. Keep formatting in `statDisplay` / `formatGold`
-— never re-implement it in the component.
+about *how it looks* lives in `src/designs/aerstrike/`. Keep formatting in `statDisplay` /
+`formatGold` — never re-implement it in the component. The reactor visual is a *readout*: its
+params derive from engine totals, never the other way around.
 
 ## Icons
 
