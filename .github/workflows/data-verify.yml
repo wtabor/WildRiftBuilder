@@ -26,6 +26,7 @@ permissions:
   contents: write # commit corrections to a branch
   pull-requests: write # open the discrepancy PR
   issues: write # or file an issue if a source can't be reached
+  id-token: write # claude-code-action exchanges a GitHub OIDC token for its App token
 
 concurrency:
   # Never run two audits at once; a new schedule tick cancels a stuck one.

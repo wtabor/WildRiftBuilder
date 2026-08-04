@@ -27,6 +27,7 @@ permissions:
   contents: write # commit the rolled-forward data to a branch
   pull-requests: write # open the patch-update PR
   issues: write # file an issue if the patch notes can't be reached
+  id-token: write # claude-code-action exchanges a GitHub OIDC token for its App token
 
 concurrency:
   # Never roll two patches forward at once; a new tick waits for the running one.
