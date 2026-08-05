@@ -1,0 +1,12 @@
+{
+  "patch": "7.2b",
+  "releaseDate": "2026-07-29",
+  "sources": [
+    "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-2b/",
+    "https://www.wildriftfire.com/patch-notes",
+    "Seeded from data/patches/7.2a; unstamped values carry over unchanged and retain their prior provenance and verification status.",
+    "Every value changed in this roll was cross-confirmed against BOTH sources above (Riot primary + wildriftfire), with no discrepancies.",
+    "verified: false \u2014 7.2b is a PARTIAL roll. 14 of the patch's 24 documented changes are representable and were applied; the remaining 10 touch mechanics the schema does not model (shields, heals, ability mana costs, %-missing-health and %-health-lost damage, passive move-speed and damage-reduction effects), an item absent from the dataset (Lord Dominik's Regards), or systems with no data file at all (runes, champion bounty). See ROSTER.md \"Patch 7.2b\". The flag stays false because carried-over 7.2/7.2a values remain unverified, not because of this patch's own changes."
+  ],
+  "verified": false
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "ezreal-crit",
+    "championId": "ezreal",
+    "name": "Standard Crit",
+    "archetype": "crit",
+    "description": "The reliable carry path. Essence Reaver and Navori keep Q on a near-permanent cooldown while Infinity Edge turns every auto and Q into a crit. Galeforce — now a standalone item since patch 7.2 folded boot enchants into the regular item pool — adds a crit-fueled dash and execute.",
+    "items": [
+      "essence-reaver",
+      "infinity-edge",
+      "navori-quickblades",
+      "phantom-dancer",
+      "the-collector",
+      "galeforce"
+    ],
+    "boots": "berserkers-greaves",
+    "level": 15,
+    "meme": false
+  },
+  {
+    "id": "ezreal-on-hit",
+    "championId": "ezreal",
+    "name": "On-Hit",
+    "archetype": "on-hit",
+    "description": "Trinity proc plus stacked on-hit effects. Blade, Kraken and Wit's End make every basic bite, with Rageblade amplifying the whole package and Stridebreaker — a standalone item since patch 7.2 — adding more attack speed to feed procs.",
+    "items": [
+      "trinity-force",
+      "blade-of-the-ruined-king",
+      "kraken-slayer",
+      "wits-end",
+      "guinsoos-rageblade",
+      "stridebreaker"
+    ],
+    "boots": "berserkers-greaves",
+    "level": 15,
+    "meme": false
+  },
+  {
+    "id": "ezreal-permafrost",
+    "championId": "ezreal",
+    "name": "Permafrost",
+    "archetype": "meme",
+    "description": "The ultimate slow build. Rylai's, Iceborn, Frozen Heart, Dead Man's and Randuin's mean nothing within range ever moves at full speed again — and Stridebreaker, now a standalone item since patch 7.2, brings one more slow on its dash. Pure menace, zero meta.",
+    "items": [
+      "rylais-crystal-scepter",
+      "iceborn-gauntlet",
+      "frozen-heart",
+      "dead-mans-plate",
+      "randuins-omen",
+      "stridebreaker"
+    ],
+    "boots": "ionian-boots-of-lucidity",
+    "level": 15,
+    "meme": true
+  }
+]

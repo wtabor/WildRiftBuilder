@@ -10,10 +10,10 @@ import {
   type Provenance,
 } from "@/lib/schema";
 
-import championsRaw from "@data/patches/7.2a/champions.json";
-import itemsRaw from "@data/patches/7.2a/items.json";
-import metaRaw from "@data/patches/7.2a/meta.json";
-import buildsRaw from "@data/patches/7.2a/builds.json";
+import championsRaw from "@data/patches/7.2b/champions.json";
+import itemsRaw from "@data/patches/7.2b/items.json";
+import metaRaw from "@data/patches/7.2b/meta.json";
+import buildsRaw from "@data/patches/7.2b/builds.json";
 import registryRaw from "@data/patches/registry.json";
 
 /**
@@ -21,7 +21,7 @@ import registryRaw from "@data/patches/registry.json";
  * folder under data/patches/<patch>/ and bump these imports (or, later, make
  * this dynamic with a patch selector).
  */
-export const CURRENT_PATCH = "7.2a";
+export const CURRENT_PATCH = "7.2b";
 
 // Parse once at module load so any malformed data fails loudly and early.
 export const patchMeta: PatchMeta = PatchMetaSchema.parse(metaRaw);
