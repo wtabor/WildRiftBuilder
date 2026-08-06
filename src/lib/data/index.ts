@@ -56,6 +56,32 @@ export function getBuilds(championId: string): BuildPreset[] {
 }
 
 /* -------------------------------------------------------------------------- */
+/*  Item exclusivity — "Limited to 1 Tear of the Goddess item"                 */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The item already in `ownedIds` that blocks `candidateId`, or undefined if the
+ * candidate is addable. Two items conflict when they share an `exclusiveGroup`.
+ *
+ * Holding the same id twice is handled separately by the caller's dedup rule;
+ * this answers the narrower question "does some *different* item I own rule
+ * this one out?", so re-adding an owned item reports no conflict here.
+ */
+export function conflictingItemFor(
+  ownedIds: readonly string[],
+  candidateId: string,
+): Item | undefined {
+  const candidate = itemById.get(candidateId);
+  if (!candidate?.exclusiveGroup) return undefined;
+  for (const id of ownedIds) {
+    if (id === candidateId) continue;
+    const owned = itemById.get(id);
+    if (owned?.exclusiveGroup === candidate.exclusiveGroup) return owned;
+  }
+  return undefined;
+}
+
+/* -------------------------------------------------------------------------- */
 /*  Provenance — "which patch did this value last change in?"                  */
 /* -------------------------------------------------------------------------- */
 

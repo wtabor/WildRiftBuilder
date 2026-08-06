@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { CURRENT_PATCH } from "@/lib/data";
+import { CURRENT_PATCH, conflictingItemFor } from "@/lib/data";
 
 export type BuildKey = "A" | "B";
 
@@ -149,12 +149,22 @@ export function useBuildState() {
     [],
   );
 
-  /** Add to whichever build is active. Max 6, and never two of the same item. */
+  /**
+   * Add to whichever build is active. Max 6, never two of the same item, and
+   * never two items the game treats as mutually exclusive (the Tear line —
+   * see `conflictingItemFor`). Boots are included in the conflict check even
+   * though they occupy their own slot: nothing about exclusivity is
+   * slot-scoped, so an exclusive pair must stay blocked across both.
+   */
   const addItem = useCallback((itemId: string) => {
     setBuild((b) => {
-      const field = b.active === "B" ? "itemIdsB" : "itemIds";
+      const isB = b.active === "B";
+      const field = isB ? "itemIdsB" : "itemIds";
+      const boots = isB ? b.bootsIdB : b.bootsId;
       const list = b[field];
       if (list.length >= MAX_ITEMS || list.includes(itemId)) return b;
+      const held = boots ? [...list, boots] : list;
+      if (conflictingItemFor(held, itemId)) return b;
       return { ...b, [field]: [...list, itemId] };
     });
   }, []);

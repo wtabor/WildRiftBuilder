@@ -329,6 +329,7 @@
       }
     ],
     "icon": "3003",
+    "exclusiveGroup": "tear",
     "provenance": {
       "cost": "7.2",
       "abilityPower": "7.2",
@@ -1446,7 +1447,8 @@
         "description": "Generates a charge every 3.3 seconds, stacking up to 3 charges. Each basic attack on-hit or mana expenditure consumes a charge and grants +14 mana, stacking up to 700 mana. Transforms into Muramana at +700 mana."
       }
     ],
-    "icon": "3004"
+    "icon": "3004",
+    "exclusiveGroup": "tear"
   },
   {
     "id": "mantle-of-the-twelfth-hour",
@@ -2332,7 +2334,8 @@
         "description": "Generates a charge every 3.3 seconds, stacking up to 3 charges. Each basic attack on-hit, mana expenditure, or taking damage from champions, epic monsters, or turrets consumes a charge and grants +12 mana, stacking up to 700 mana. Transforms into Fimbulwinter at +700 mana."
       }
     ],
-    "icon": "3119"
+    "icon": "3119",
+    "exclusiveGroup": "tear"
   },
   {
     "id": "wits-end",
@@ -2450,7 +2453,7 @@
   },
   {
     "id": "lord-dominiks-regard",
-    "name": "Lord Dominik's Regard",
+    "name": "Lord Dominik's Regards",
     "cost": 3300,
     "tags": [
       "AD",
@@ -2458,7 +2461,7 @@
     ],
     "slot": "item",
     "stats": {
-      "attackDamage": 25,
+      "attackDamage": 30,
       "armorPenPercent": 0.36,
       "critChance": 0.15
     },
@@ -2469,7 +2472,10 @@
         "description": "Deal 0% \u2013 12% (based on target's bonus health) increased damage against enemy champions."
       }
     ],
-    "icon": "3036"
+    "icon": "3036",
+    "provenance": {
+      "attackDamage": "7.2b"
+    }
   },
   {
     "id": "staff-of-flowing-water",
@@ -3193,5 +3199,148 @@
       "moveSpeedFlat": "7.2",
       "abilityHaste": "7.2"
     }
+  },
+  {
+    "id": "tear-of-the-goddess",
+    "name": "Tear of the Goddess",
+    "cost": 500,
+    "tags": [
+      "AbilityHaste",
+      "Mana"
+    ],
+    "slot": "item",
+    "stats": {
+      "abilityHaste": 5,
+      "mana": 200
+    },
+    "effects": [
+      {
+        "name": "Mana Charge",
+        "kind": "passive",
+        "description": "Generates a charge every 3.3 seconds, up to 3 charges. Each mana expenditure consumes a charge and grants +5 mana, stacking up to 700 mana."
+      }
+    ],
+    "icon": "3070",
+    "exclusiveGroup": "tear",
+    "provenance": {
+      "cost": "7.2",
+      "mana": "7.2",
+      "abilityHaste": "7.2"
+    }
+  },
+  {
+    "id": "muramana",
+    "name": "Muramana",
+    "cost": 2700,
+    "tags": [
+      "AD",
+      "AbilityHaste",
+      "Mana"
+    ],
+    "slot": "item",
+    "stats": {
+      "attackDamage": 25,
+      "abilityHaste": 20,
+      "mana": 1000
+    },
+    "effects": [
+      {
+        "name": "Awe",
+        "kind": "passive",
+        "description": "Grants bonus attack damage equal to 2% maximum mana. Refunds 15% of mana spent."
+      },
+      {
+        "name": "Shock",
+        "kind": "passive",
+        "description": "Basic attacks against champions deal bonus physical damage equal to 2.5% of current mana and consume the same mana. Ability damage against champions deals bonus physical damage equal to 4% of current mana (+4.5% AD) and consumes the same mana. Occurs once per damage instance, while above 20% maximum mana."
+      },
+      {
+        "name": "Transformed",
+        "kind": "passive",
+        "description": "Upgraded form of Manamune, reached when Manamune accumulates +700 stacked mana. Not purchasable directly."
+      }
+    ],
+    "icon": "3042",
+    "exclusiveGroup": "tear",
+    "upgradesFrom": "manamune"
+  },
+  {
+    "id": "seraphs-embrace",
+    "name": "Seraph's Embrace",
+    "cost": 3000,
+    "tags": [
+      "AP",
+      "AbilityHaste",
+      "MagicPen",
+      "Mana"
+    ],
+    "slot": "item",
+    "stats": {
+      "abilityPower": 60,
+      "abilityHaste": 25,
+      "magicPenPercent": 0.07,
+      "mana": 1200
+    },
+    "effects": [
+      {
+        "name": "Awe",
+        "kind": "passive",
+        "description": "Grants bonus ability power equal to 2% maximum mana. Refunds 25% of mana spent."
+      },
+      {
+        "name": "Lifeline",
+        "kind": "passive",
+        "description": "If you would take damage that would reduce you below 35% maximum health, you first gain a shield equal to 16% of maximum mana for 2 seconds (70 second cooldown)."
+      },
+      {
+        "name": "Transformed",
+        "kind": "passive",
+        "description": "Upgraded form of Archangel's Staff, reached when Archangel's Staff accumulates +700 stacked mana. Not purchasable directly."
+      }
+    ],
+    "icon": "3040",
+    "exclusiveGroup": "tear",
+    "upgradesFrom": "archangels-staff",
+    "provenance": {
+      "cost": "7.2",
+      "abilityPower": "7.2",
+      "abilityHaste": "7.2"
+    }
+  },
+  {
+    "id": "fimbulwinter",
+    "name": "Fimbulwinter",
+    "cost": 2600,
+    "tags": [
+      "AbilityHaste",
+      "Health",
+      "Mana"
+    ],
+    "slot": "item",
+    "stats": {
+      "abilityHaste": 15,
+      "maxHealth": 350,
+      "mana": 1200
+    },
+    "effects": [
+      {
+        "name": "Awe",
+        "kind": "passive",
+        "description": "Grants bonus health equal to 10% maximum mana. Refunds 15% of mana spent."
+      },
+      {
+        "name": "Frozen Colossus",
+        "kind": "passive",
+        "description": "Immobilizing or slowing an enemy champion consumes 3% of current mana to grant a shield for 3 seconds, scaling with level and current mana (reduced for ranged champions). The shield is stronger when 2 or more enemy champions are nearby. Requires above 20% maximum mana. 8 second cooldown."
+      },
+      {
+        "name": "Transformed",
+        "kind": "passive",
+        "description": "Upgraded form of Winter's Approach, reached when Winter's Approach accumulates +700 stacked mana. Not purchasable directly."
+      }
+    ],
+    "icon": "3121",
+    "exclusiveGroup": "tear",
+    "upgradesFrom": "winters-approach"
   }
 ]
