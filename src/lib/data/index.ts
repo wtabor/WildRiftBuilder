@@ -10,10 +10,10 @@ import {
   type Provenance,
 } from "@/lib/schema";
 
-import championsRaw from "@data/patches/7.2a/champions.json";
-import itemsRaw from "@data/patches/7.2a/items.json";
-import metaRaw from "@data/patches/7.2a/meta.json";
-import buildsRaw from "@data/patches/7.2a/builds.json";
+import championsRaw from "@data/patches/7.2b/champions.json";
+import itemsRaw from "@data/patches/7.2b/items.json";
+import metaRaw from "@data/patches/7.2b/meta.json";
+import buildsRaw from "@data/patches/7.2b/builds.json";
 import registryRaw from "@data/patches/registry.json";
 
 /**
@@ -21,7 +21,7 @@ import registryRaw from "@data/patches/registry.json";
  * folder under data/patches/<patch>/ and bump these imports (or, later, make
  * this dynamic with a patch selector).
  */
-export const CURRENT_PATCH = "7.2a";
+export const CURRENT_PATCH = "7.2b";
 
 // Parse once at module load so any malformed data fails loudly and early.
 export const patchMeta: PatchMeta = PatchMetaSchema.parse(metaRaw);
@@ -53,6 +53,32 @@ export function getItems(ids: string[]): Item[] {
 /** Curated "standing builds" for a champion, in authored order. */
 export function getBuilds(championId: string): BuildPreset[] {
   return buildsByChampion.get(championId) ?? [];
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Item exclusivity — "Limited to 1 Tear of the Goddess item"                 */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The item already in `ownedIds` that blocks `candidateId`, or undefined if the
+ * candidate is addable. Two items conflict when they share an `exclusiveGroup`.
+ *
+ * Holding the same id twice is handled separately by the caller's dedup rule;
+ * this answers the narrower question "does some *different* item I own rule
+ * this one out?", so re-adding an owned item reports no conflict here.
+ */
+export function conflictingItemFor(
+  ownedIds: readonly string[],
+  candidateId: string,
+): Item | undefined {
+  const candidate = itemById.get(candidateId);
+  if (!candidate?.exclusiveGroup) return undefined;
+  for (const id of ownedIds) {
+    if (id === candidateId) continue;
+    const owned = itemById.get(id);
+    if (owned?.exclusiveGroup === candidate.exclusiveGroup) return owned;
+  }
+  return undefined;
 }
 
 /* -------------------------------------------------------------------------- */

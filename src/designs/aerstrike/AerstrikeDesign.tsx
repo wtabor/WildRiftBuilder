@@ -2,7 +2,16 @@
 
 import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
-import { champions, getBuilds, getChampion, getItem, getItems, items, patchMeta } from "@/lib/data";
+import {
+  champions,
+  conflictingItemFor,
+  getBuilds,
+  getChampion,
+  getItem,
+  getItems,
+  items,
+  patchMeta,
+} from "@/lib/data";
 import { computeBuild, goldEfficiency, type BuildTotals } from "@/lib/stats/engine";
 import { autoAttackDps, type AutoAttackDps } from "@/lib/damage/engine";
 import { encodeBuild, useBuildState, type BuildKey, type TargetStats } from "@/state/buildState";
@@ -937,10 +946,19 @@ function Shop({
       <div className="mt-4 grid max-h-[42rem] grid-cols-1 gap-2.5 overflow-y-auto pr-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filtered.map((it) => {
           const isOwned = owned.has(it.id);
+          // Mutually exclusive with something already held (the Tear line).
+          const conflict = isOwned ? undefined : conflictingItemFor(ownedIds, it.id);
           // Boots live in their own slot, so a full 6-item build never blocks it.
-          const disabled = isOwned || (full && it.slot !== "boots");
+          const disabled = isOwned || Boolean(conflict) || (full && it.slot !== "boots");
           return (
-            <ItemCard key={it.id} item={it} onAdd={onAdd} disabled={disabled} owned={isOwned} />
+            <ItemCard
+              key={it.id}
+              item={it}
+              onAdd={onAdd}
+              disabled={disabled}
+              owned={isOwned}
+              blockedBy={conflict?.name}
+            />
           );
         })}
         {filtered.length === 0 && (
@@ -956,16 +974,24 @@ function ItemCard({
   onAdd,
   disabled,
   owned,
+  blockedBy,
 }: {
   item: Item;
   onAdd: (id: string) => void;
   disabled: boolean;
   owned?: boolean;
+  /** Name of the held item that rules this one out, if any. */
+  blockedBy?: string;
 }) {
   const eff = goldEfficiency(item);
   const lines = itemStatLines(item);
   return (
-    <button onClick={() => onAdd(item.id)} disabled={disabled} className="ae-item group">
+    <button
+      onClick={() => onAdd(item.id)}
+      disabled={disabled}
+      className="ae-item group"
+      title={blockedBy ? `Can't be held with ${blockedBy}` : undefined}
+    >
       <div className="flex items-start gap-2.5">
         <Portrait name={item.name} src={item.icon ? itemIconUrl(item.icon) : undefined} size={40} />
         <div className="min-w-0 flex-1">
@@ -978,10 +1004,17 @@ function ItemCard({
         </div>
         {owned ? (
           <span className="ae-chip ae-chip--teal shrink-0">Owned</span>
+        ) : blockedBy ? (
+          <span className="ae-chip shrink-0">Blocked</span>
         ) : (
           <span className="ae-arrow shrink-0 text-[var(--ae-accent)] transition group-hover:translate-x-0.5">→</span>
         )}
       </div>
+      {blockedBy && (
+        <p className="mt-2 text-[11px] leading-tight text-[var(--ae-fg-muted)]">
+          Can&apos;t be held with {blockedBy}
+        </p>
+      )}
       <ul className="mt-2.5 space-y-1">
         {lines.map((l) => (
           <li key={l.key} className="flex items-center gap-2 text-[11.5px] text-[var(--ae-fg-dim)]">

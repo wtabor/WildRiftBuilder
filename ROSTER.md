@@ -8,7 +8,7 @@ this as it adds entities; the **Data Accuracy Verify** workflow
 | Category   | Entries | Total (live) | Status                       |
 | ---------- | ------- | ------------ | ---------------------------- |
 | Champions  | 140     | 140+         | stats/roles/titles/abilities done; Yunara added for 7.2, Cho'Gath not yet confirmed live (see below) |
-| Items      | 108     | 108          | patch 7.2 enchant→item migration + item sweep done; roster complete (see follow-up investigation below — the items once thought missing turned out not to belong in the catalog) |
+| Items      | 112     | unconfirmed  | patch 7.2 enchant→item migration + item sweep done. **Not verified complete** — the Tear line (Tear of the Goddess, Muramana, Seraph's Embrace, Fimbulwinter) was added 2026-08-06 after the earlier "roster complete" call proved wrong; see "Correction" below. No source establishes the live item total, so the target column is `unconfirmed` rather than a number copied from our own count |
 
 ## Field completeness (champions, patch 7.1g)
 
@@ -157,6 +157,13 @@ per-item wiki lookups reversed that:
   Staff's own effect text says "Transforms into Seraph's Embrace at +700
   mana," matching how this catalog already avoids double-modeling transform
   items as separate entries.
+
+> **⚠️ Superseded 2026-08-06 — two of the four bullets above were wrong.**
+> See "Correction: the Tear line really was missing" below. In short: Tear of
+> the Goddess is *not* a passive-less component (it has Mana Charge, and Riot
+> balances it by name), and Seraph's Embrace carries its own stat line that
+> Riot balances separately from Archangel's Staff. Both are now in the
+> catalog. The Void Staff and Stormsurge bullets still stand.
 - **Stormsurge**: the wiki fetch returned an implausible cost (3,988g, not a
   round WR price) and a mechanic ("Stormraider"/lightning-strike burst) that
   matches neither of the two other sources checked — looks like a
@@ -287,12 +294,14 @@ patch did not change, so the mechanic is untouched.
 | Yuumi | E `Zoomies` mana cost `80/90/100/110` → `65/75/85/95` | ability schema has no mana-cost field |
 | Yuumi | R `Final Chapter` base healing `20/30/40` → `20/35/50` | healing not modelled |
 
-### Not applied — item absent from the dataset
+### ~~Not applied — item absent from the dataset~~ → applied 2026-08-06
 
 `Tear of the Goddess` (mana/stack 6 → 5), `Seraph's Embrace` (Lifeline shield
-20% → 16%), and `Muramana` (Shock AD ratio 6% → 4.5%) have **no record in
-`items.json`** (108 items; `Archangel's Staff` is present, the Tear line is
-not). This is a roster gap, not a 7.2a regression — it predates this patch.
+20% → 16%), and `Muramana` (Shock AD ratio 6% → 4.5%) had **no record in
+`items.json`** when 7.2a was rolled. All three are now present in
+`data/patches/7.2b/items.json` with these 7.2a values already folded in — see
+"Correction: the Tear line really was missing". The 7.2a snapshot itself is
+left frozen as it shipped.
 
 ### Discrepancy noted
 
@@ -300,3 +309,180 @@ changelog.gg's 7.2a summary lists only ARAM adjustments for Skarner and does
 not corroborate the two cooldown changes. The official Riot notes do list
 them, so the primary source was used per the source-priority rule. Worth a
 re-check against the wiki once it catches up.
+
+## Patch 7.2b (2026-07-29) — PARTIAL roll
+
+Rolled forward from 7.2a. The official notes document 24 changes; **14 were
+representable and applied**. Unlike 7.2a, **every applied value was confirmed
+against both sources with no discrepancies**.
+
+Sources: [Riot 7.2b notes](https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-2b/)
+· [WildRiftFire](https://www.wildriftfire.com/patch-notes)
+
+### Applied — champions
+
+| Champion | Change | Provenance |
+| --- | --- | --- |
+| Jayce | base `armor` `46` → `37` | `7.2b` |
+| Nidalee | base `armor` `46` → `37` | `7.2b` |
+| Nidalee | base `magicResist` `40` → `36` | `7.2b` |
+| Aurora | Q `Twofold Hex` damage `35/65/95/125` → `40/70/100/130` | — |
+| Aurora | Q `Twofold Hex` AP ratio `0.30` → `0.33` | — |
+| Aurora | E `The Weirding` damage `75/125/175/225` → `80/130/180/230` | — |
+| Sona | R `Crescendo` cooldown `80/70/60` → `80/75/70` | — |
+| Kayle | Q `Radiant Blast` damage `70/120/170/220` → `60/100/140/180` | — |
+| Zilean | Q `Time Bomb` damage `70/140/210/280` → `60/125/190/255` | — |
+| Zilean | R `Chronoshift` cooldown `100/85/70` → `110/95/80` | — |
+
+Provenance stamps apply to `stats`/`cost` only, per CLAUDE.md; ability values
+are not stamped.
+
+### Applied — items
+
+| Item | Change | Provenance |
+| --- | --- | --- |
+| Iceborn Gauntlet | `cost` `3100` → `3000` | `7.2b` |
+| Iceborn Gauntlet | `maxHealth` `250` → `300` | `7.2b` |
+| Magnetic Blaster | `attackDamage` `25` → `30` | `7.2b` |
+| Navori Quickblades | `cost` `2800` → `2700` | `7.2b` |
+
+Description-only edit (no engine effect): Luden's Echo `Discordic Echo`
+`110 (+10% AP)` → `140 (+15% AP)`, cooldown 10s → 9s.
+
+### Not applied — schema does not model the mechanic
+
+| Entity | Change | Why not |
+| --- | --- | --- |
+| Nidalee | Prowl brush + marked-enemy move speed `15%` → `10%` | passive move-speed effects not modelled |
+| Ambessa | Public Execution damage reduction `30/40/50%` → `10/20/30%` | damage reduction not modelled |
+| Ambessa | Public Execution damage from health lost `20/30/40%` → `10/17.5/25%` | %-health-lost scaling not modelled |
+| Sona | Aria of Perseverance heal `45/60/75/90` → `35/50/65/80` | heals not modelled |
+| Ekko | Z-Drive Resonance AP ratio `70%` → `80%` | passive has no `scalings` |
+| Ekko | Parallel Convergence missing-health `2%+0.015% AP` → `3%+0.025% AP` | %-missing-health not modelled |
+| Kayle | Radiant Blast mana cost `80/85/90/95` → `70/80/90/100` | ability schema has no mana-cost field |
+| Kayle | Celestial Blessing mana cost + heal | same; heals not modelled |
+| Hecarim | Rampage bonus move speed on hit `30%` → `18%` | passive move-speed not modelled |
+| Lee Sin | Safeguard shield `80/140/200/260` → `100/160/220/280`, omnivamp `16–40%` → `20–50%` | shields and omnivamp not modelled |
+
+### Not applied — missing entity or missing data file
+
+- ~~**Lord Dominik's Regards** (`attackDamage` 25 → 30) has **no record in
+  `items.json`**. Same class of gap as the 7.2a Tear line.~~
+  **Wrong — retracted 2026-08-06.** The item was in `items.json` the whole
+  time, under the singular name `Lord Dominik's Regard` (id
+  `lord-dominiks-regard`). The roll searched for Riot's plural spelling,
+  missed it, and recorded it as a roster gap. `attackDamage` 25 → 30 is now
+  applied and stamped `7.2b`, bringing this patch to **15 of 24** changes
+  applied. The `name` field now uses Riot's plural; the `id` is unchanged
+  because `data/patches/7.1/builds.json` references it.
+- **Botanist rune** (plant gold 30 → 10) — there is no runes data file at all.
+- **Champion bounty system** (bounty gold rates) — no data file; not modelled.
+
+## Correction: the Tear line really was missing (2026-08-06)
+
+Hand-run backfill (the `data-verify` / `patch-watch` workflows are disabled —
+they need Anthropic API credits the org doesn't fund). This reverses part of
+the 7.2 follow-up investigation above and both "absent item" notes.
+
+**Added to `data/patches/7.2b/items.json`** (108 → 112 items):
+
+| Item | Cost | Stats | Provenance |
+| --- | --- | --- | --- |
+| Tear of the Goddess | 500 | `abilityHaste` 5, `mana` 200 | `cost`/`mana`/`abilityHaste` = `7.2` |
+| Muramana | 2700 | `attackDamage` 25, `abilityHaste` 20, `mana` 1000 | none — see below |
+| Seraph's Embrace | 3000 | `abilityPower` 60, `abilityHaste` 25, `magicPenPercent` 0.07, `mana` 1200 | `cost`/`abilityPower`/`abilityHaste` = `7.2` |
+| Fimbulwinter | 2600 | `maxHealth` 350, `abilityHaste` 15, `mana` 1200 | none — see below |
+
+**Corrected:** `Lord Dominik's Regard` → `Lord Dominik's Regards`,
+`attackDamage` 25 → 30, stamped `7.2b`.
+
+### Why the earlier "not a gap" call was wrong
+
+- **Tear of the Goddess** was dismissed as "a bare component item with no
+  passive of its own." It has a passive — Mana Charge — and Riot balances it
+  by name: 7.2 gave it an explicit stat line (price 900 → 500, mana 300 → 200,
+  ability haste 10 → 5, "Tear of the Goddess is now a basic item") and 7.2a
+  cut Mana Charge 6 → 5. A component Riot writes patch notes for is not the
+  same class of thing as Amplifying Tome.
+- **Seraph's Embrace** was dismissed as "already represented implicitly" by
+  Archangel's Staff's transform text. But Riot balances the two separately and
+  their stat lines diverge — 7.2 changed Seraph's own Awe ratio (3% → 2%) and
+  Lifeline (15% → 20% max mana, CD 90s → 70s), and 7.2a cut Lifeline again to
+  16%. None of that is derivable from Archangel's entry. Same reasoning
+  applies to Muramana vs Manamune (7.2a cut Muramana's Shock AD ratio
+  6% → 4.5%; Manamune's Mana Charge was cut separately, 18 → 14).
+- **Lord Dominik's Regards** was never missing at all — a spelling mismatch
+  (singular in our data, plural in Riot's notes) made two separate passes
+  record a present item as absent.
+
+### Provenance note
+
+Tear and Seraph's are new to *this dataset* but not new to the *game*, so the
+`/add-entity` "brand-new entity ⇒ no stamps" exception does not fit them: the
+honest answer to "when did this value last change" is a real patch we can cite
+(`7.2`), not the current-patch fallback. They are stamped accordingly.
+Muramana is deliberately left **unstamped** — no reachable source establishes
+when its 2700 / 25 AD / 20 AH last changed, so the `provenanceFor()` fallback
+("no change on record — accurate as of 7.2b") is the truthful reading. This
+matches Manamune, which is also unstamped.
+
+### Item exclusivity — the Tear line is now modelled
+
+Adding the transforms created a correctness hazard: Muramana and Seraph's
+Embrace sat in the same flat pool as Manamune and Archangel's Staff, so a build
+could hold a base item *and* its upgrade, or stack Tear alongside an item built
+out of it, and report mana totals the game cannot produce. Wild Rift's own rule
+covers all of it — **"Limited to 1 Tear of the Goddess item"** (LoL Wiki WR item
+text, corroborated by zilliongamer) — so that is what's modelled, rather than
+ad-hoc pair exclusions.
+
+Two optional `ItemSchema` fields (`src/lib/schema/index.ts`):
+
+- **`exclusiveGroup`** — items sharing a group are mutually exclusive. All seven
+  Tear-line items carry `"tear"`. Members are peers, not a hierarchy: the
+  component, everything built from it, and every transform are equally
+  incompatible with one another.
+- **`upgradesFrom`** — the base item a transform upgrades out of. Descriptive;
+  exclusivity is enforced by `exclusiveGroup`, which is broader.
+
+Enforced in three places, so the rule can't be bypassed:
+
+| Layer | Where | Behavior |
+| --- | --- | --- |
+| State | `addItem`, `src/state/buildState.ts` | refuses a conflicting add (boots included — exclusivity is not slot-scoped) |
+| Validator | `scripts/validate.ts` | **fails the gate** if a curated preset holds two group members, if `upgradesFrom` doesn't resolve, or if an upgrade isn't in its base item's group |
+| UI | `src/designs/aerstrike/AerstrikeDesign.tsx` | conflicting cards are disabled, chipped `Blocked`, and captioned "Can't be held with <item>" |
+
+`conflictingItemFor(ownedIds, candidateId)` in `src/lib/data/index.ts` is the
+single shared implementation; the state hook, the UI, and the tests all call it.
+
+**Gold efficiency is now suppressed for transform items.** Muramana was
+displaying **200% gold eff** — its 1000 mana priced against Manamune's 2700g,
+even though ~700 of that mana is stacked in play, not bought. `goldEfficiency()`
+returns `null` for anything with `upgradesFrom`; callers already render nothing
+for null. The buyable base items are unaffected.
+
+The deprecated `/meta` design gets the state-layer guard for free (shared
+`addItem`) but has no visual affordance for a blocked item. Left as-is —
+reference-only design.
+
+### Known gaps and caveats left open
+
+- **Fimbulwinter's Awe ratio is contested.** Shown as 10% maximum mana (LoL
+  Wiki WR); lolwildriftbuild.com says 8%, matching Winter's Approach's
+  un-upgraded ratio. Not resolvable from available sources. Descriptive text
+  only, no engine effect. The wiki was the more reliable of the two throughout
+  this pass, so it won — but this is a coin-flip worth re-checking.
+- **Muramana's Awe ratio (2% max mana) is single-sourced** to the official LoL
+  Wiki WR namespace. Descriptive text only — no engine effect.
+- **Seraph's Lifeline flat shield term is omitted, not resolved.** Pre-7.2 text
+  read "100 + 15% current mana"; 7.2 restates Lifeline as a max-mana
+  conversion and no reachable source confirms whether a flat term survived.
+  Recorded the confirmed 16% ratio and left the flat term out rather than
+  guess.
+- **riftgg.app returned HTTP 403** on every attempt, so the CLAUDE.md
+  priority-2 pair was covered by wildriftfire plus the official LoL Wiki WR
+  namespace. Every value above still cleared the ≥2-source bar.
+- **Ring of Revelation** stays excluded. Riot's 7.2 notes rewrote Archangel's
+  build path from `Ring of Revelation` to `Fiendish Codex`, which is
+  consistent with it no longer mattering; not re-investigated here.
