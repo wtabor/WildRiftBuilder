@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import {
   champions,
   conflictingItemFor,
@@ -1424,12 +1425,32 @@ function Footer({ patch, query }: { patch: string; query: string }) {
           </div>
         ))}
       </div>
+      {/* Real anchors to the statically-generated reference pages. The
+          calculator is one client-rendered route, so without these the 252
+          champion/item pages would have no internal link pointing at them and
+          would depend entirely on the sitemap for discovery. */}
+      <nav className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.18em]">
+        <Link href="/champions" className="text-[var(--ae-fg-dim)] transition-colors hover:text-[var(--ae-accent)]">
+          All {champions.length} champions →
+        </Link>
+        <Link href="/items" className="text-[var(--ae-fg-dim)] transition-colors hover:text-[var(--ae-accent)]">
+          All {items.length} items →
+        </Link>
+      </nav>
+
       <div className="mt-8 text-[clamp(3rem,11vw,7rem)] font-bold leading-[0.86] tracking-[-0.045em] text-[var(--ae-fg)]">
         WILD RIFT<span className="ae-dot">.</span>
       </div>
       <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-[var(--ae-fg-subtle)]">
         Wild Rift Builder / Patch {patch} / Raw logic. Refined form.
         {query ? <span className="ml-2 text-[var(--ae-border-strong)]">· ?{query.slice(0, 24)}…</span> : null}
+      </p>
+      {/* Riot's Legal Jibber Jabber policy requires this on fan projects. */}
+      <p className="mt-5 max-w-3xl text-[11px] leading-relaxed text-[var(--ae-fg-subtle)]">
+        Wild Rift Builder is an unofficial fan project. It is not endorsed by Riot Games and does not
+        reflect the views or opinions of Riot Games or anyone officially involved in producing or
+        managing Riot Games properties. Riot Games and all associated properties are trademarks or
+        registered trademarks of Riot Games, Inc.
       </p>
     </footer>
   );
