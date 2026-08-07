@@ -300,3 +300,64 @@ changelog.gg's 7.2a summary lists only ARAM adjustments for Skarner and does
 not corroborate the two cooldown changes. The official Riot notes do list
 them, so the primary source was used per the source-priority rule. Worth a
 re-check against the wiki once it catches up.
+
+## Patch 7.2b (2026-07-29) — PARTIAL roll
+
+Rolled forward from 7.2a. The official notes document 24 changes; **14 were
+representable and applied**. Unlike 7.2a, **every applied value was confirmed
+against both sources with no discrepancies**.
+
+Sources: [Riot 7.2b notes](https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-2b/)
+· [WildRiftFire](https://www.wildriftfire.com/patch-notes)
+
+### Applied — champions
+
+| Champion | Change | Provenance |
+| --- | --- | --- |
+| Jayce | base `armor` `46` → `37` | `7.2b` |
+| Nidalee | base `armor` `46` → `37` | `7.2b` |
+| Nidalee | base `magicResist` `40` → `36` | `7.2b` |
+| Aurora | Q `Twofold Hex` damage `35/65/95/125` → `40/70/100/130` | — |
+| Aurora | Q `Twofold Hex` AP ratio `0.30` → `0.33` | — |
+| Aurora | E `The Weirding` damage `75/125/175/225` → `80/130/180/230` | — |
+| Sona | R `Crescendo` cooldown `80/70/60` → `80/75/70` | — |
+| Kayle | Q `Radiant Blast` damage `70/120/170/220` → `60/100/140/180` | — |
+| Zilean | Q `Time Bomb` damage `70/140/210/280` → `60/125/190/255` | — |
+| Zilean | R `Chronoshift` cooldown `100/85/70` → `110/95/80` | — |
+
+Provenance stamps apply to `stats`/`cost` only, per CLAUDE.md; ability values
+are not stamped.
+
+### Applied — items
+
+| Item | Change | Provenance |
+| --- | --- | --- |
+| Iceborn Gauntlet | `cost` `3100` → `3000` | `7.2b` |
+| Iceborn Gauntlet | `maxHealth` `250` → `300` | `7.2b` |
+| Magnetic Blaster | `attackDamage` `25` → `30` | `7.2b` |
+| Navori Quickblades | `cost` `2800` → `2700` | `7.2b` |
+
+Description-only edit (no engine effect): Luden's Echo `Discordic Echo`
+`110 (+10% AP)` → `140 (+15% AP)`, cooldown 10s → 9s.
+
+### Not applied — schema does not model the mechanic
+
+| Entity | Change | Why not |
+| --- | --- | --- |
+| Nidalee | Prowl brush + marked-enemy move speed `15%` → `10%` | passive move-speed effects not modelled |
+| Ambessa | Public Execution damage reduction `30/40/50%` → `10/20/30%` | damage reduction not modelled |
+| Ambessa | Public Execution damage from health lost `20/30/40%` → `10/17.5/25%` | %-health-lost scaling not modelled |
+| Sona | Aria of Perseverance heal `45/60/75/90` → `35/50/65/80` | heals not modelled |
+| Ekko | Z-Drive Resonance AP ratio `70%` → `80%` | passive has no `scalings` |
+| Ekko | Parallel Convergence missing-health `2%+0.015% AP` → `3%+0.025% AP` | %-missing-health not modelled |
+| Kayle | Radiant Blast mana cost `80/85/90/95` → `70/80/90/100` | ability schema has no mana-cost field |
+| Kayle | Celestial Blessing mana cost + heal | same; heals not modelled |
+| Hecarim | Rampage bonus move speed on hit `30%` → `18%` | passive move-speed not modelled |
+| Lee Sin | Safeguard shield `80/140/200/260` → `100/160/220/280`, omnivamp `16–40%` → `20–50%` | shields and omnivamp not modelled |
+
+### Not applied — missing entity or missing data file
+
+- **Lord Dominik's Regards** (`attackDamage` 25 → 30) has **no record in
+  `items.json`**. Same class of gap as the 7.2a Tear line.
+- **Botanist rune** (plant gold 30 → 10) — there is no runes data file at all.
+- **Champion bounty system** (bounty gold rates) — no data file; not modelled.
