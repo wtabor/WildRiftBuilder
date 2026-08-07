@@ -113,6 +113,14 @@ export const GOLD_VALUES: Partial<Record<StatKey, number>> = {
 };
 
 export function goldEfficiency(item: Item): number | null {
+  // Transform items (Muramana, Seraph's Embrace, Fimbulwinter) have no
+  // meaningful gold efficiency: they cannot be bought, and their stat line
+  // includes the 700 mana the player *stacked* rather than paid for, while
+  // `cost` is only the base item's price. Dividing one by the other invents a
+  // number — Muramana would read 200% efficient. Undefined is the honest
+  // answer, and callers already render nothing for null.
+  if (item.upgradesFrom) return null;
+
   let value = 0;
   let counted = false;
   for (const key of STAT_KEYS) {

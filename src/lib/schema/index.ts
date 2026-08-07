@@ -106,6 +106,25 @@ export const ItemSchema = z.object({
   stats: StatBlockSchema.default({}),
   effects: z.array(ItemEffectSchema).default([]),
   icon: z.string().optional(),
+  /**
+   * Items sharing an `exclusiveGroup` are mutually exclusive in a build —
+   * holding one makes the rest unbuyable. This models a real Wild Rift rule
+   * ("Limited to 1 Tear of the Goddess item"), not a UI convenience: without
+   * it a build can stack Tear + Manamune + Muramana and read out mana totals
+   * the game cannot produce.
+   *
+   * Group members are peers, not a hierarchy — a component (Tear), the items
+   * it builds into (Manamune), and their transforms (Muramana) all share one
+   * group, because the game forbids every combination of them equally.
+   */
+  exclusiveGroup: z.string().optional(),
+  /**
+   * For a transform item (Muramana, Seraph's Embrace, Fimbulwinter): the id of
+   * the item it upgrades out of. Purely descriptive — exclusivity is enforced
+   * via `exclusiveGroup`, which is broader. Present so the UI can explain
+   * *why* an item is blocked, and so the pair stays greppable.
+   */
+  upgradesFrom: z.string().optional(),
   /** Sparse "value key → patch it last changed in" map; see ProvenanceSchema. */
   provenance: ProvenanceSchema.optional(),
 });

@@ -58,6 +58,29 @@ for (const dir of patches) {
   });
   check("items.json", () => {
     items = ItemsFileSchema.parse(loadJson(join(base, "items.json")));
+
+    // `upgradesFrom` must resolve, and an upgrade must share its base item's
+    // exclusive group — otherwise the pair is documented as related but a
+    // build can still hold both, which is exactly the bug the field exists to
+    // prevent.
+    const byId = new Map(items.map((i) => [i.id, i]));
+    const errors: string[] = [];
+    for (const it of items) {
+      if (!it.upgradesFrom) continue;
+      const base = byId.get(it.upgradesFrom);
+      if (!base) {
+        errors.push(`"${it.id}": upgradesFrom "${it.upgradesFrom}" is not an item`);
+        continue;
+      }
+      if (!it.exclusiveGroup || it.exclusiveGroup !== base.exclusiveGroup) {
+        errors.push(
+          `"${it.id}" upgrades from "${base.id}" but they are not in the same ` +
+            `exclusiveGroup (${it.exclusiveGroup ?? "none"} vs ${base.exclusiveGroup ?? "none"}) ` +
+            `— a build could hold both`,
+        );
+      }
+    }
+    if (errors.length) throw new Error(errors.join("\n    "));
   });
   parsedByPatch.set(dir.name, { champions, items });
 
@@ -72,6 +95,9 @@ for (const dir of patches) {
       const items = ItemsFileSchema.parse(loadJson(join(base, "items.json")));
       const champIds = new Set(champions.map((c) => c.id));
       const slotById = new Map(items.map((i) => [i.id, i.slot]));
+      const groupById = new Map(
+        items.flatMap((i) => (i.exclusiveGroup ? [[i.id, i.exclusiveGroup] as const] : [])),
+      );
       const errors: string[] = [];
 
       const seenIds = new Set<string>();
@@ -87,6 +113,23 @@ for (const dir of patches) {
         }
         if (b.boots && slotById.get(b.boots) !== "boots") {
           errors.push(`${b.id}: "${b.boots}" is not a boots`);
+        }
+
+        // A curated preset must be buildable in-game: no two items from the
+        // same exclusive group (e.g. Tear + Manamune, or Manamune + Muramana).
+        const groupOwner = new Map<string, string>();
+        for (const id of b.boots ? [...b.items, b.boots] : b.items) {
+          const group = groupById.get(id);
+          if (!group) continue;
+          const prev = groupOwner.get(group);
+          if (prev) {
+            errors.push(
+              `${b.id}: "${prev}" and "${id}" are both in exclusive group "${group}" — ` +
+                `the game allows only one`,
+            );
+          } else {
+            groupOwner.set(group, id);
+          }
         }
       }
       if (errors.length) throw new Error(errors.join("\n    "));

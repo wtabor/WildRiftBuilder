@@ -36,6 +36,13 @@ Before committing, the gate is: `typecheck` + `test` + `validate-data` + `build`
 - Whenever you change or add a `stats`/`cost` value on a champion/item that already existed in a
   prior patch, also stamp `provenance[<key>] = "<patch>"` on that same object in the same edit — see
   the `/add-entity` skill (step 6) for the exact rule and example.
+- **Mutually exclusive items must share an `exclusiveGroup`.** If the game forbids holding two items
+  together (e.g. "Limited to 1 Tear of the Goddess item" — Tear, Manamune/Muramana,
+  Archangel's/Seraph's, Winter's Approach/Fimbulwinter all share group `"tear"`), tag every member,
+  or a build can stack them and report totals the game cannot produce. Transform items also set
+  `upgradesFrom`, and get no gold-efficiency readout — they can't be bought, and their stat line
+  includes stacked mana that was never paid for. `validate-data` fails the gate on an unresolvable
+  `upgradesFrom`, an upgrade outside its base item's group, or a curated preset holding two members.
 
 ## Architecture
 
