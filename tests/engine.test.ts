@@ -8,6 +8,7 @@ import {
   MAX_LEVEL,
 } from "../src/lib/stats/engine";
 import { ChampionSchema, ItemSchema } from "../src/lib/schema/index";
+import { getItem } from "../src/lib/data";
 
 const ashe = ChampionSchema.parse({
   id: "ashe",
@@ -97,10 +98,19 @@ describe("computeBuild", () => {
 
 describe("goldEfficiency", () => {
   it("computes efficiency from raw stat gold values", () => {
-    const eff = goldEfficiency(infinityEdge);
-    expect(eff).not.toBeNull();
-    // 65 AD * 35 + 0.25 crit * 40(per100%)=... wholly stat-based ratio > 0
-    expect(eff!).toBeGreaterThan(0);
+    // 65 AD * 41.67 + 0.25 crit * 5000 = 3958.55 over 3400 gold.
+    expect(goldEfficiency(infinityEdge)).toBeCloseTo(3958.55 / 3400, 4);
+  });
+  it("prices the reference components at ~100% by construction", () => {
+    // GOLD_VALUES is derived from WR component prices, so the components
+    // themselves must come out at 1.0 — this pins the percent-stat scaling
+    // (attack speed is stored as a ratio: 0.15 = +15%).
+    const dagger = ItemSchema.parse({ id: "d", name: "d", cost: 500, stats: { attackSpeed: 0.15 } });
+    expect(goldEfficiency(dagger)).toBeCloseTo(1, 2);
+    const ruby = ItemSchema.parse({ id: "r", name: "r", cost: 500, stats: { maxHealth: 150 } });
+    expect(goldEfficiency(ruby)).toBeCloseTo(1, 2);
+    const brawlers = ItemSchema.parse({ id: "b", name: "b", cost: 500, stats: { critChance: 0.1 } });
+    expect(goldEfficiency(brawlers)).toBeCloseTo(1, 2);
   });
   it("returns null for items with no priced stats", () => {
     const item = ItemSchema.parse({
@@ -110,5 +120,12 @@ describe("goldEfficiency", () => {
       stats: { tenacity: 0.2 },
     });
     expect(goldEfficiency(item)).toBeNull();
+  });
+  it("prices the current patch's Void Amethyst at ~100% (magicPenPercent anchor)", () => {
+    // magicPenPercent is derived from this exact dataset item (1000g / 20 AP /
+    // 10% pen), so drift between GOLD_VALUES and the live data fails here.
+    const voidAmethyst = getItem("void-amethyst");
+    expect(voidAmethyst).toBeDefined();
+    expect(goldEfficiency(voidAmethyst!)).toBeCloseTo(1, 2);
   });
 });

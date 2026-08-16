@@ -47,7 +47,10 @@ export function ProvenanceTooltip({
       className="group/prov relative inline-flex items-center"
       title={info?.url ? `${headline}: ${patchLabel} — ${info.url}` : `${headline}: ${patchLabel}`}
     >
-      <span className="cursor-help underline decoration-dotted decoration-[var(--ae-fg-subtle)]/60 underline-offset-2">
+      {/* The dotted underline sits at low opacity until pointed at — with a
+          tooltip on nearly every number, full-strength underlines everywhere
+          made the whole page read as fuzzy. */}
+      <span className="cursor-help underline decoration-dotted decoration-[var(--ae-fg-subtle)]/20 underline-offset-2 transition group-hover/prov:decoration-[var(--ae-fg-subtle)]/80">
         {children}
       </span>
       <span

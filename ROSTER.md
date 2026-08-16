@@ -54,6 +54,16 @@ got balance changes. See `data/patches/7.2/meta.json` for full sources;
 publishing 7.2 numbers as of this update (values are sourced from official
 patch notes + community cross-checks — re-verify once the wiki catches up).
 
+**Standing builds (added 2026-07-14):** `builds.json` now carries one sourced
+`<champion>-standard` preset for 130 of 139 champions (plus Ezreal's 3
+hand-authored ones), item lists taken from each champion's WildRiftFire 7.2
+guide (per-preset `source` URL). Items missing from this catalog were dropped,
+never substituted — see the note in `meta.json` for the drop/skip list (Void
+Staff appears in 34 of their guides despite being removed from WR in 4.4).
+Skipped for now (guide degraded below 4 mappable items): Akali, Aurora, Bard,
+Heimerdinger, Katarina, Kennen, Lux, Veigar, Vladimir. The fetch/parse
+pipeline lives in `~/.cache/wrb/builds-pipeline/` for the next patch.
+
 - **Champions**: re-verified stats/abilities for the 14 named champions
   (Zyra, Annie, Yasuo, K'Sante, Kai'Sa, Kayn, Norra, Syndra, Orianna,
   Fiddlesticks, Varus, Zed, Darius, Lee Sin) against official patch notes;
