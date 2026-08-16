@@ -213,6 +213,12 @@ export const BuildPresetSchema = z.object({
   championId: z.string(),
   name: z.string(),
   archetype: z.enum(["crit", "on-hit", "ability", "lethality", "bruiser", "tank", "meme"]),
+  /**
+   * Which of the three per-champion slots this build fills. Orthogonal to
+   * `archetype`, which describes the build's *mechanical* identity — an
+   * "optimal" build and a "damage" build can both be crit builds.
+   */
+  kind: z.enum(["optimal", "damage", "fun"]).default("optimal"),
   description: z.string().default(""),
   /** Ordered core items for the 6 main slots (excludes boots). */
   items: z.array(z.string()).max(6).default([]),
@@ -223,6 +229,13 @@ export const BuildPresetSchema = z.object({
   source: z.string().url().optional(),
   /** Editorial off-meta "for fun" build — not claimed as competitive. */
   meme: z.boolean().default(false),
+  /**
+   * True when the item list was produced by the rule-based generator rather
+   * than transcribed from a source guide. Data accuracy is this project's
+   * whole value proposition, so a generated build must never be presentable
+   * as a verified one — the UI labels these, and they carry no `source`.
+   */
+  generated: z.boolean().default(false),
 });
 
 export type BuildPreset = z.infer<typeof BuildPresetSchema>;

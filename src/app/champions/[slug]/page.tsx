@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { champions, getChampion, CURRENT_PATCH, provenanceFor } from "@/lib/data";
+import { champions, getBuilds, getChampion, getItem, CURRENT_PATCH, provenanceFor } from "@/lib/data";
 import { computeBuild, MAX_LEVEL } from "@/lib/stats/engine";
+import { formatGold } from "@/lib/format";
 import { statRows } from "@/lib/statDisplay";
 import { championIconUrl } from "@/lib/visual";
 import { breadcrumbLd, championDescription, championPath, referenceLd } from "@/lib/seo";
@@ -55,6 +56,25 @@ function round(n: number): string {
   return Number.isInteger(r) ? String(r) : r.toFixed(2).replace(/0$/, "");
 }
 
+const KIND_LABEL: Record<string, string> = {
+  optimal: "Optimal build",
+  damage: "Max damage build",
+  fun: "For fun",
+};
+
+/**
+ * Deep link that opens the calculator with this build already loaded. Mirrors
+ * `encodeBuild`'s param names rather than importing it — that function takes
+ * the full client `BuildState`, which a server component has no business
+ * constructing.
+ */
+function buildHref(championId: string, items: string[], boots?: string): string {
+  const p = new URLSearchParams({ c: championId, lvl: String(MAX_LEVEL) });
+  if (items.length) p.set("i", items.join(","));
+  if (boots) p.set("b", boots);
+  return `/?${p.toString()}`;
+}
+
 export default async function ChampionPage({ params }: Props) {
   const { slug } = await params;
   const c = getChampion(slug);
@@ -69,6 +89,12 @@ export default async function ChampionPage({ params }: Props) {
   const lvl1 = at1.stats;
   const lvl15 = at15.stats;
   const rows15 = statRows(lvl15, at15.attackSpeed);
+
+  // Optimal first, then damage, then the meme build — the order a reader wants.
+  const kindOrder = { optimal: 0, damage: 1, fun: 2 } as const;
+  const builds = [...getBuilds(c.id)].sort(
+    (a, b) => kindOrder[a.kind] - kindOrder[b.kind],
+  );
 
   return (
     <PageShell
@@ -200,6 +226,86 @@ export default async function ChampionPage({ params }: Props) {
           </li>
         ))}
       </ul>
+
+      {/* ── Builds ────────────────────────────────────────────────────── */}
+      {builds.length > 0 && (
+        <>
+          <h2 className="mt-10 text-xl font-bold">{c.name} builds</h2>
+          <p className="mt-2 text-sm leading-relaxed text-[#b6bac2]">
+            Three item sets for {c.name} on patch {CURRENT_PATCH}. Open any of them
+            in the calculator to see full totals and swap items.
+          </p>
+          <div className="mt-4 space-y-4">
+            {builds.map((b) => {
+              const itemObjs = b.items.flatMap((id) => {
+                const it = getItem(id);
+                return it ? [it] : [];
+              });
+              const bootsObj = b.boots ? getItem(b.boots) : undefined;
+              const gold =
+                itemObjs.reduce((sum, i) => sum + i.cost, 0) + (bootsObj?.cost ?? 0);
+              return (
+                <article key={b.id} className="rounded border border-white/10 p-4">
+                  <div className="flex flex-wrap items-baseline gap-3">
+                    <span className="rounded bg-[#ff6b1a]/15 px-2 py-0.5 font-mono text-[11px] font-bold tracking-wider text-[#ff6b1a]">
+                      {KIND_LABEL[b.kind].toUpperCase()}
+                    </span>
+                    <h3 className="font-semibold">{b.name}</h3>
+                    <span className="font-mono text-[10px] tracking-wider text-[#8b8f9a]">
+                      {formatGold(gold)} G · {b.archetype.toUpperCase()}
+                    </span>
+                  </div>
+                  {b.description && (
+                    <p className="mt-2 text-sm leading-relaxed text-[#b6bac2]">
+                      {b.description}
+                    </p>
+                  )}
+                  <ul className="mt-3 flex flex-wrap gap-2">
+                    {[...itemObjs, ...(bootsObj ? [bootsObj] : [])].map((i) => (
+                      <li key={i.id}>
+                        <Link
+                          href={`/items/${i.id}`}
+                          className="inline-block rounded border border-white/10 px-2 py-1 text-xs text-[#f5f6f8] hover:border-[#ff6b1a]/50"
+                        >
+                          {i.name}{" "}
+                          <span className="font-mono text-[10px] text-[#8b8f9a]">
+                            {formatGold(i.cost)}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+                    <Link
+                      href={buildHref(c.id, b.items, b.boots)}
+                      className="font-mono text-[11px] tracking-wider text-[#ff6b1a] hover:underline"
+                    >
+                      OPEN IN CALCULATOR →
+                    </Link>
+                    {/* Accuracy is this project's whole value proposition, so a
+                        generated build must say so where the reader sees it —
+                        not only in the JSON. */}
+                    {b.generated ? (
+                      <span className="font-mono text-[10px] tracking-wider text-[#8b8f9a]">
+                        AUTO-GENERATED PLACEHOLDER — NOT SOURCE-VERIFIED
+                      </span>
+                    ) : b.source ? (
+                      <a
+                        href={b.source}
+                        rel="nofollow noopener"
+                        target="_blank"
+                        className="font-mono text-[10px] tracking-wider text-[#8b8f9a] hover:underline"
+                      >
+                        SOURCE ↗
+                      </a>
+                    ) : null}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </>
+      )}
 
       {/* ── Abilities ─────────────────────────────────────────────────── */}
       {c.abilities.length > 0 && (
