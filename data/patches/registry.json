@@ -38,5 +38,13 @@
   "7.2": {
     "date": "2026-07-09",
     "url": "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-2/"
+  },
+  "7.2a": {
+    "date": "2026-07-15",
+    "url": "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-2a/"
+  },
+  "7.2b": {
+    "date": "2026-07-29",
+    "url": "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-2b/"
   }
 }

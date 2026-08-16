@@ -1,0 +1,12 @@
+{
+  "patch": "7.2a",
+  "releaseDate": "2026-07-15",
+  "sources": [
+    "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-2a/",
+    "https://changelog.gg/games/wild-rift/updates/2026-07-15-wild-rift-patch-notes-7-2a-10a16fe61cc11d1e",
+    "Seeded from data/patches/7.2; unstamped values carry over unchanged and retain their 7.2 provenance and verification status.",
+    "verified: false \u2014 7.2a is a PARTIAL roll. Only 4 of the patch's 18 documented changes are representable in the current schema (Skarner W/E cooldowns; Armorcrusher Boots attackDamage + lethality). The remaining 14 touch mechanics this schema does not model (transform-form abilities, shields, heals, ability mana costs, max-health/current-health damage, passive stat conversions) or items absent from the dataset (Tear of the Goddess, Seraph's Embrace, Muramana). See ROSTER.md \"Patch 7.2a\" for the itemised gap list.",
+    "Armorcrusher Boots attackDamage 25->20 and lethality 12->10 cross-confirmed against Riot patch notes + changelog.gg. Skarner cooldowns come from the Riot notes; changelog.gg's summary omits them (lists only ARAM adjustments) \u2014 primary source used per source-priority rule."
+  ],
+  "verified": false
+}

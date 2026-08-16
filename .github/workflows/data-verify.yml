@@ -12,9 +12,11 @@ name: Data Accuracy Verify (daily)
 # routine that runs without anyone having to remember to do it.
 
 on:
-  schedule:
-    # 07:00 UTC every day. Cron is UTC-only; adjust if you want a local time.
-    - cron: "0 7 * * *"
+  # Daily schedule disabled 2026-08-04: needs Anthropic API credits we don't fund.
+  # Audits are run by hand in a local Claude Code session instead. Re-enable by
+  # uncommenting once the org has credits.
+  # schedule:
+  #   - cron: "0 7 * * *"
   workflow_dispatch: # also runnable on demand from the Actions tab
     inputs:
       patch:
@@ -26,6 +28,7 @@ permissions:
   contents: write # commit corrections to a branch
   pull-requests: write # open the discrepancy PR
   issues: write # or file an issue if a source can't be reached
+  id-token: write # claude-code-action exchanges a GitHub OIDC token for its App token
 
 concurrency:
   # Never run two audits at once; a new schedule tick cancels a stuck one.

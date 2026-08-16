@@ -1,7 +1,18 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { champions, getBuilds, getChampion, getItem, getItems, items, patchMeta } from "@/lib/data";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import {
+  champions,
+  conflictingItemFor,
+  getBuilds,
+  getChampion,
+  getItem,
+  getItems,
+  items,
+  patchMeta,
+} from "@/lib/data";
 import { computeBuild, goldEfficiency, type BuildTotals } from "@/lib/stats/engine";
 import { autoAttackDps, type AutoAttackDps } from "@/lib/damage/engine";
 import { analyzeBuild, compareBuilds, suggestSwap, type CompareVerdict, type Finding } from "@/lib/analysis/engine";
@@ -1179,10 +1190,19 @@ function Shop({
       <div className="mt-4 grid max-h-[42rem] grid-cols-1 gap-2.5 overflow-y-auto pr-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filtered.map((it) => {
           const isOwned = owned.has(it.id);
+          // Mutually exclusive with something already held (the Tear line).
+          const conflict = isOwned ? undefined : conflictingItemFor(ownedIds, it.id);
           // Boots live in their own slot, so a full 6-item build never blocks it.
-          const disabled = isOwned || (full && it.slot !== "boots");
+          const disabled = isOwned || Boolean(conflict) || (full && it.slot !== "boots");
           return (
-            <ItemCard key={it.id} item={it} onAdd={onAdd} disabled={disabled} owned={isOwned} />
+            <ItemCard
+              key={it.id}
+              item={it}
+              onAdd={onAdd}
+              disabled={disabled}
+              owned={isOwned}
+              blockedBy={conflict?.name}
+            />
           );
         })}
         {filtered.length === 0 && (
@@ -1198,21 +1218,25 @@ function ItemCard({
   onAdd,
   disabled,
   owned,
+  blockedBy,
 }: {
   item: Item;
   onAdd: (id: string) => void;
   disabled: boolean;
   owned?: boolean;
+  /** Name of the held item that rules this one out, if any. */
+  blockedBy?: string;
 }) {
   const eff = goldEfficiency(item);
   const lines = itemStatLines(item);
-  const hasDetail = lines.length > 0 || item.effects.length > 0 || eff !== null;
-  // The visible card is just icon + name + cost; stats, effects, and gold
-  // efficiency live in one popover shown on card hover/focus. The native
-  // title mirrors it for keyboard/AT users (the popover is CSS-only and
-  // pointer-events-none, so it can't host its own interactive tooltips —
-  // per-stat provenance remains on the stat sheet).
+  const hasDetail = lines.length > 0 || item.effects.length > 0 || eff !== null || Boolean(blockedBy);
+  // The visible card is just icon + name + cost; stats, effects, gold
+  // efficiency, and any exclusivity note live in one popover shown on card
+  // hover/focus. The native title mirrors it for keyboard/AT users (the
+  // popover is CSS-only and pointer-events-none, so it can't host its own
+  // interactive tooltips — per-stat provenance remains on the stat sheet).
   const tip = [
+    ...(blockedBy ? [`Can't be held with ${blockedBy}`] : []),
     ...lines.map((l) => `+${l.display} ${l.label}`),
     ...item.effects.map((e) => `${e.name}: ${e.description}`),
     ...(eff !== null ? [`${Math.round(eff * 100)}% gold efficient (raw stats vs cost)`] : []),
@@ -1236,6 +1260,8 @@ function ItemCard({
         </div>
         {owned ? (
           <span className="ae-chip ae-chip--teal shrink-0">Owned</span>
+        ) : blockedBy ? (
+          <span className="ae-chip shrink-0">Blocked</span>
         ) : (
           <span className="ae-arrow shrink-0 text-[var(--ae-accent)] transition group-hover:translate-x-0.5">→</span>
         )}
@@ -1245,6 +1271,17 @@ function ItemCard({
           role="tooltip"
           className="pointer-events-none invisible absolute left-0 top-full z-30 mt-1 w-64 max-w-[80vw] border border-[var(--ae-border-strong)] bg-[var(--ae-bg-elev)] p-2.5 text-left opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100"
         >
+          {blockedBy && (
+            <p
+              className={`text-[11px] font-semibold leading-tight text-[var(--ae-st-error,var(--ae-fg-muted))] ${
+                lines.length > 0 || item.effects.length > 0 || eff !== null
+                  ? "mb-2 border-b border-[var(--ae-border)] pb-2"
+                  : ""
+              }`}
+            >
+              Can&apos;t be held with {blockedBy}
+            </p>
+          )}
           {lines.length > 0 && (
             <ul className="space-y-1">
               {lines.map((l) => (
@@ -1725,12 +1762,32 @@ function Footer({ patch, query }: { patch: string; query: string }) {
           </div>
         ))}
       </div>
+      {/* Real anchors to the statically-generated reference pages. The
+          calculator is one client-rendered route, so without these the 252
+          champion/item pages would have no internal link pointing at them and
+          would depend entirely on the sitemap for discovery. */}
+      <nav className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.18em]">
+        <Link href="/champions" className="text-[var(--ae-fg-dim)] transition-colors hover:text-[var(--ae-accent)]">
+          All {champions.length} champions →
+        </Link>
+        <Link href="/items" className="text-[var(--ae-fg-dim)] transition-colors hover:text-[var(--ae-accent)]">
+          All {items.length} items →
+        </Link>
+      </nav>
+
       <div className="mt-8 text-[clamp(3rem,11vw,7rem)] font-bold leading-[0.86] tracking-[-0.045em] text-[var(--ae-fg)]">
         WILD RIFT<span className="ae-dot">.</span>
       </div>
       <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-[var(--ae-fg-subtle)]">
         Wild Rift Builder / Patch {patch} / Raw logic. Refined form.
         {query ? <span className="ml-2 text-[var(--ae-border-strong)]">· ?{query.slice(0, 24)}…</span> : null}
+      </p>
+      {/* Riot's Legal Jibber Jabber policy requires this on fan projects. */}
+      <p className="mt-5 max-w-3xl text-[11px] leading-relaxed text-[var(--ae-fg-subtle)]">
+        Wild Rift Builder is an unofficial fan project. It is not endorsed by Riot Games and does not
+        reflect the views or opinions of Riot Games or anyone officially involved in producing or
+        managing Riot Games properties. Riot Games and all associated properties are trademarks or
+        registered trademarks of Riot Games, Inc.
       </p>
     </footer>
   );

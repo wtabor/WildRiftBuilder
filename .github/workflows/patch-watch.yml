@@ -13,9 +13,12 @@ name: Patch Watch (roll data forward to the newest WR patch)
 # reviewable), rather than chaining runs — no self-dispatch, so no PAT needed.
 
 on:
-  schedule:
-    # 08:00 UTC daily — one hour after data-verify (07:00) so they don't collide.
-    - cron: "0 8 * * *"
+  # Daily schedule disabled 2026-08-04: this workflow needs Anthropic API credits,
+  # which we don't fund. Patch rolls are done by hand via the /add-entity skill in a
+  # local Claude Code session (covered by the Claude subscription, no API spend).
+  # Re-enable by uncommenting once the org has credits.
+  # schedule:
+  #   - cron: "0 8 * * *"
   workflow_dispatch:
     inputs:
       target_patch:
@@ -27,6 +30,7 @@ permissions:
   contents: write # commit the rolled-forward data to a branch
   pull-requests: write # open the patch-update PR
   issues: write # file an issue if the patch notes can't be reached
+  id-token: write # claude-code-action exchanges a GitHub OIDC token for its App token
 
 concurrency:
   # Never roll two patches forward at once; a new tick waits for the running one.
