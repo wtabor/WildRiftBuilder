@@ -111,6 +111,7 @@ Design rules:
 - Ability scalings + skill order, combo damage vs a target with chosen armor/MR/HP.
 - DPS, effective HP, burst windows, rune effects.
 - (Stretch) optimal-build search.
+- **Sliced roadmap + loop queue: see `PHASE3.md`** (auto-attack DPS pass-1 already shipped).
 
 ### Phase 4 — aggregation (optional)
 - Popular / win-rate builds via a WR stats source (e.g. statsWR).
